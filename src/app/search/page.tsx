@@ -29,11 +29,17 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Divider,
+  CircularProgress,
 } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
+import { useChat } from '@/hooks/useChat';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNotification } from '@/contexts/NotificationContext';
 import { TripCard } from '@/components/trips/TripCard';
 import { RequestCard } from '@/components/requests/RequestCard';
+import { NavBar } from '@/components/common/NavBar';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import SearchIcon from '@mui/icons-material/Search';
@@ -50,15 +56,70 @@ export default function SearchPage() {
   });
   const [activeTab, setActiveTab] = useState<'trips' | 'requests'>('trips');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [contactLoading, setContactLoading] = useState<string | null>(null);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const router = useRouter();
 
   const { trips, loading: tripsLoading } = useTrips(searchParams);
   const { requests, loading: requestsLoading } = useRequests(searchParams);
+  const { createChat } = useChat();
+  const { user } = useAuth();
+  const { showNotification } = useNotification();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+  };
+
+  const handleContactTrip = async (tripId: string, userId: string) => {
+    if (!user) {
+      showNotification('Please login to contact travelers', 'warning');
+      router.push('/login');
+      return;
+    }
+
+    if (user.id === userId) {
+      showNotification('This is your own trip', 'info');
+      return;
+    }
+
+    try {
+      setContactLoading(tripId);
+      const chatId = await createChat(userId, tripId);
+      showNotification('Chat created successfully! Redirecting...', 'success');
+      setTimeout(() => router.push(`/chats/${chatId}`), 500);
+    } catch (error) {
+      console.error('Error creating chat:', error);
+      showNotification('Failed to create chat. Please try again.', 'error');
+    } finally {
+      setContactLoading(null);
+    }
+  };
+
+  const handleContactRequest = async (requestId: string, userId: string) => {
+    if (!user) {
+      showNotification('Please login to contact senders', 'warning');
+      router.push('/login');
+      return;
+    }
+
+    if (user.id === userId) {
+      showNotification('This is your own request', 'info');
+      return;
+    }
+
+    try {
+      setContactLoading(requestId);
+      const chatId = await createChat(userId, undefined, requestId);
+      showNotification('Chat created successfully! Redirecting...', 'success');
+      setTimeout(() => router.push(`/chats/${chatId}`), 500);
+    } catch (error) {
+      console.error('Error creating chat:', error);
+      showNotification('Failed to create chat. Please try again.', 'error');
+    } finally {
+      setContactLoading(null);
+    }
   };
 
   const FilterSidebar = (
@@ -164,89 +225,16 @@ export default function SearchPage() {
   );
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: 'background.default',
+      }}
+    >
       {/* Header */}
-      <AppBar position='sticky' elevation={0}>
-        <Toolbar sx={{ py: 1 }}>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1.5,
-              flexGrow: 1,
-            }}
-          >
-            <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
-            <Typography
-              variant='h6'
-              component='div'
-              sx={{ fontWeight: 700, color: 'text.primary' }}
-            >
-              CarryOn
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              alignItems: 'center',
-              gap: 3,
-              mr: 2,
-            }}
-          >
-            <Button
-              color='inherit'
-              sx={{ color: 'primary.main', fontWeight: 600 }}
-            >
-              Browse
-            </Button>
-            <Button
-              color='inherit'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              My Trips
-            </Button>
-            <Button
-              color='inherit'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              Messages
-            </Button>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            {isMobile && (
-              <IconButton
-                onClick={() => setMobileFilterOpen(true)}
-                sx={{ color: 'text.primary' }}
-              >
-                <FilterListIcon />
-              </IconButton>
-            )}
-            <Button
-              variant='gradient'
-              startIcon={<AddIcon />}
-              size={isMobile ? 'small' : 'medium'}
-            >
-              Post a Trip
-            </Button>
-            <Avatar
-              sx={{
-                width: 40,
-                height: 40,
-                cursor: 'pointer',
-                border: 2,
-                borderColor: 'divider',
-              }}
-              src='https://i.pravatar.cc/150?img=1'
-            />
-          </Box>
-        </Toolbar>
-      </AppBar>
+      <NavBar />
 
       {/* Mobile Filter Drawer */}
       <Drawer
@@ -507,8 +495,27 @@ export default function SearchPage() {
                                 variant='contained'
                                 size='small'
                                 fullWidth
+                                onClick={() =>
+                                  handleContactTrip(trip.id, trip.userId)
+                                }
+                                disabled={
+                                  contactLoading === trip.id ||
+                                  trip.userId === user?.id
+                                }
+                                startIcon={
+                                  contactLoading === trip.id && (
+                                    <CircularProgress
+                                      size={16}
+                                      color='inherit'
+                                    />
+                                  )
+                                }
                               >
-                                View
+                                {contactLoading === trip.id
+                                  ? 'Connecting...'
+                                  : trip.userId === user?.id
+                                    ? 'Your Trip'
+                                    : 'Contact'}
                               </Button>
                             </Grid>
                           </Grid>
@@ -540,7 +547,13 @@ export default function SearchPage() {
                     </Paper>
                   ) : (
                     requests.map((request) => (
-                      <RequestCard key={request.id} request={request} />
+                      <RequestCard
+                        key={request.id}
+                        request={request}
+                        onContact={() =>
+                          handleContactRequest(request.id, request.userId)
+                        }
+                      />
                     ))
                   )}
                 </Box>

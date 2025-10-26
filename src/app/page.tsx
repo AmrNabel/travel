@@ -21,6 +21,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import { useAuth } from '@/contexts/AuthContext';
+import { NavBar } from '@/components/common/NavBar';
 import Link from 'next/link';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
@@ -427,53 +428,16 @@ export default function HomePage() {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: 'background.default',
+      }}
+    >
       {/* Header for Logged In Users */}
-      <AppBar position='static' elevation={0}>
-        <Toolbar sx={{ py: 1 }}>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1.5,
-              flexGrow: 1,
-            }}
-          >
-            <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
-            <Typography
-              variant='h6'
-              component='div'
-              sx={{ fontWeight: 700, color: 'text.primary' }}
-            >
-              Firebase Travel
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            <Link href='/search' passHref legacyBehavior>
-              <Button
-                color='inherit'
-                sx={{
-                  color: 'text.secondary',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                Search
-              </Button>
-            </Link>
-            <Link href='/add-trip' passHref legacyBehavior>
-              <Button
-                color='inherit'
-                sx={{
-                  color: 'text.secondary',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                My Trips
-              </Button>
-            </Link>
-          </Box>
-        </Toolbar>
-      </AppBar>
+      <NavBar />
 
       <Container maxWidth='lg' sx={{ flexGrow: 1, py: 8 }}>
         <Typography

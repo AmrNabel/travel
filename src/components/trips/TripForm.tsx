@@ -22,6 +22,7 @@ import {
 } from '@mui/material';
 import { CreateTripInput } from '@/types/trip';
 import { useTrips } from '@/hooks/useTrips';
+import { useNotification } from '@/contexts/NotificationContext';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -47,6 +48,7 @@ export const TripForm: React.FC = () => {
 
   const { createTrip } = useTrips();
   const router = useRouter();
+  const { showNotification } = useNotification();
   const theme = useTheme();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,10 +66,13 @@ export const TripForm: React.FC = () => {
 
     try {
       await createTrip({ ...formData, capacity: selectedSize });
-      router.push(`/search`);
+      showNotification('Trip created successfully!', 'success');
+      router.push('/my-trips');
     } catch (err: unknown) {
       const error = err as { message?: string };
-      setError(error.message || 'Failed to create trip');
+      const errorMsg = error.message || 'Failed to create trip';
+      setError(errorMsg);
+      showNotification(errorMsg, 'error');
     } finally {
       setLoading(false);
     }

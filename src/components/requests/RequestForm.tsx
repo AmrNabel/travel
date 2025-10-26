@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Box, TextField, Button, Typography, Alert, Grid } from '@mui/material';
 import { CreateRequestInput } from '@/types/request';
 import { useRequests } from '@/hooks/useRequests';
+import { useNotification } from '@/contexts/NotificationContext';
 
 export const RequestForm: React.FC = () => {
   const [formData, setFormData] = useState<CreateRequestInput>({
@@ -21,6 +22,7 @@ export const RequestForm: React.FC = () => {
 
   const { createRequest } = useRequests();
   const router = useRouter();
+  const { showNotification } = useNotification();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,10 +39,13 @@ export const RequestForm: React.FC = () => {
 
     try {
       await createRequest(formData);
-      router.push(`/search`);
+      showNotification('Request created successfully!', 'success');
+      router.push('/my-trips');
     } catch (err: unknown) {
       const error = err as { message?: string };
-      setError(error.message || 'Failed to create request');
+      const errorMsg = error.message || 'Failed to create request';
+      setError(errorMsg);
+      showNotification(errorMsg, 'error');
     } finally {
       setLoading(false);
     }
