@@ -16,7 +16,7 @@ test.describe('Accessibility', () => {
     await page.goto('/login');
 
     // All form inputs should have associated labels
-    const emailInput = page.getByLabel('Email Address');
+    const emailInput = page.getByLabel('Email');
     const passwordInput = page.getByLabel('Password');
 
     await expect(emailInput).toBeVisible();
@@ -29,11 +29,11 @@ test.describe('Accessibility', () => {
     await page.goto('/signup');
 
     // All form inputs should have associated labels
-    await expect(page.getByLabel('Name')).toBeVisible();
-    await expect(page.getByLabel('Email Address')).toBeVisible();
-    await expect(page.getByLabel('Password', { exact: true })).toBeVisible();
+    await expect(page.getByLabel('Full Name')).toBeVisible();
+    await expect(page.getByLabel('Email')).toBeVisible();
+    await expect(page.getByLabel('Password').first()).toBeVisible();
     await expect(page.getByLabel('Confirm Password')).toBeVisible();
-    await expect(page.getByLabel('I am a')).toBeVisible();
+    await expect(page.getByText('I want to:')).toBeVisible();
   });
 
   test('should have proper button roles', async ({ page }) => {
@@ -76,9 +76,7 @@ test.describe('Accessibility', () => {
     await page.keyboard.type('password123');
 
     // Verify inputs received values
-    await expect(page.getByLabel('Email Address')).toHaveValue(
-      'test@example.com'
-    );
+    await expect(page.getByLabel('Email')).toHaveValue('test@example.com');
     await expect(page.getByLabel('Password')).toHaveValue('password123');
   });
 
@@ -115,11 +113,10 @@ test.describe('Accessibility', () => {
   test('should have visible focus indicators', async ({ page }) => {
     await page.goto('/login');
 
-    const emailInput = page.getByLabel('Email Address');
+    const emailInput = page.getByLabel('Email');
     await emailInput.focus();
 
     // Check if element is focused
     await expect(emailInput).toBeFocused();
   });
 });
-

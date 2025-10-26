@@ -61,7 +61,7 @@ export const getDocument = async <T extends DocumentData>(
   return {
     id: docSnap.id,
     ...docSnap.data(),
-  } as T;
+  } as unknown as T;
 };
 
 // PATTERN: Update document

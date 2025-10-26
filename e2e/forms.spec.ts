@@ -7,18 +7,14 @@ test.describe('Form Validation', () => {
     });
 
     test('should display login form', async ({ page }) => {
-      await expect(page.getByLabel('Email Address')).toBeVisible();
+      await expect(page.getByLabel('Email')).toBeVisible();
       await expect(page.getByLabel('Password')).toBeVisible();
-      await expect(
-        page.getByRole('button', { name: 'Sign In' })
-      ).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
     });
 
     test('should accept email input', async ({ page }) => {
-      await page.getByLabel('Email Address').fill('test@example.com');
-      await expect(page.getByLabel('Email Address')).toHaveValue(
-        'test@example.com'
-      );
+      await page.getByLabel('Email').fill('test@example.com');
+      await expect(page.getByLabel('Email')).toHaveValue('test@example.com');
     });
 
     test('should accept password input', async ({ page }) => {
@@ -38,71 +34,68 @@ test.describe('Form Validation', () => {
     });
 
     test('should display all signup form fields', async ({ page }) => {
-      await expect(page.getByLabel('Name')).toBeVisible();
-      await expect(page.getByLabel('Email Address')).toBeVisible();
-      await expect(page.getByLabel('Password', { exact: true })).toBeVisible();
+      await expect(page.getByLabel('Full Name')).toBeVisible();
+      await expect(page.getByLabel('Email')).toBeVisible();
+      await expect(page.getByLabel('Password').first()).toBeVisible();
       await expect(page.getByLabel('Confirm Password')).toBeVisible();
-      await expect(page.getByLabel('I am a')).toBeVisible();
-      await expect(
-        page.getByRole('button', { name: 'Sign Up' })
-      ).toBeVisible();
+      await expect(page.getByText('I want to:')).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Sign Up' })).toBeVisible();
     });
 
     test('should accept name input', async ({ page }) => {
-      await page.getByLabel('Name').fill('John Doe');
-      await expect(page.getByLabel('Name')).toHaveValue('John Doe');
+      await page.getByLabel('Full Name').fill('John Doe');
+      await expect(page.getByLabel('Full Name')).toHaveValue('John Doe');
     });
 
     test('should accept email input', async ({ page }) => {
-      await page.getByLabel('Email Address').fill('john@example.com');
-      await expect(page.getByLabel('Email Address')).toHaveValue(
-        'john@example.com'
-      );
+      await page.getByLabel('Email').fill('john@example.com');
+      await expect(page.getByLabel('Email')).toHaveValue('john@example.com');
     });
 
-    test('should show role options when clicked', async ({ page }) => {
-      await page.getByLabel('I am a').click();
-      await expect(page.getByRole('option', { name: 'Traveler' })).toBeVisible(
-        { timeout: 2000 }
-      );
-      await expect(page.getByRole('option', { name: 'Sender' })).toBeVisible();
-      await expect(page.getByRole('option', { name: 'Both' })).toBeVisible();
+    test('should show role options', async ({ page }) => {
+      // Radio buttons should be visible
+      await expect(page.getByLabel('Deliver items as a traveler')).toBeVisible({
+        timeout: 2000,
+      });
+      await expect(page.getByLabel('Send items with travelers')).toBeVisible();
+      await expect(page.getByLabel('Both')).toBeVisible();
     });
 
     test('should select traveler role', async ({ page }) => {
-      await page.getByLabel('I am a').click();
-      await page.getByRole('option', { name: 'Traveler' }).click();
-      // After selection, the dropdown should close
+      await page.getByLabel('Deliver items as a traveler').click();
       await page.waitForTimeout(500);
+      await expect(
+        page.getByLabel('Deliver items as a traveler')
+      ).toBeChecked();
     });
 
     test('should select sender role', async ({ page }) => {
-      await page.getByLabel('I am a').click();
-      await page.getByRole('option', { name: 'Sender' }).click();
+      await page.getByLabel('Send items with travelers').click();
       await page.waitForTimeout(500);
+      await expect(page.getByLabel('Send items with travelers')).toBeChecked();
     });
 
     test('should fill complete signup form', async ({ page }) => {
       const timestamp = Date.now();
 
-      await page.getByLabel('Name').fill('Test User');
-      await page.getByLabel('Email Address').fill(`test${timestamp}@example.com`);
-      await page.getByLabel('Password', { exact: true }).fill('Password123!');
+      await page.getByLabel('Full Name').fill('Test User');
+      await page.getByLabel('Email').fill(`test${timestamp}@example.com`);
+      await page.getByLabel('Password').first().fill('Password123!');
       await page.getByLabel('Confirm Password').fill('Password123!');
-      await page.getByLabel('I am a').click();
-      await page.getByRole('option', { name: 'Both' }).click();
+      await page.getByLabel('Both').click();
 
       // Verify all fields are filled
-      await expect(page.getByLabel('Name')).toHaveValue('Test User');
-      await expect(page.getByLabel('Email Address')).toHaveValue(
+      await expect(page.getByLabel('Full Name')).toHaveValue('Test User');
+      await expect(page.getByLabel('Email')).toHaveValue(
         `test${timestamp}@example.com`
       );
-      await expect(page.getByLabel('Password', { exact: true })).toHaveValue(
+      await expect(page.getByLabel('Password').first()).toHaveValue(
         'Password123!'
       );
       await expect(page.getByLabel('Confirm Password')).toHaveValue(
         'Password123!'
       );
+      await expect(page.getByLabel('Both')).toBeChecked();
     });
   });
 
@@ -133,4 +126,3 @@ test.describe('Form Validation', () => {
     });
   });
 });
-

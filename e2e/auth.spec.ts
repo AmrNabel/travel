@@ -58,32 +58,27 @@ test.describe('Authentication Flow', () => {
     const testEmail = `test${timestamp}@example.com`;
 
     // Fill in the form
-    await page.getByLabel('Name').fill('Test User');
-    await page.getByLabel('Email Address').fill(testEmail);
-    await page.getByLabel('Password', { exact: true }).fill('Password123!');
+    await page.getByLabel('Full Name').fill('Test User');
+    await page.getByLabel('Email').fill(testEmail);
+    await page.getByLabel('Password').first().fill('Password123!');
     await page.getByLabel('Confirm Password').fill('Password123!');
 
-    // Select role (click on the select dropdown)
-    await page.getByLabel('I am a').click();
-    await page.getByRole('option', { name: 'Traveler' }).click();
+    // Select role (click on a radio button)
+    await page.getByLabel('Deliver items as a traveler').click();
 
     // The form should be filled correctly
-    await expect(page.getByLabel('Name')).toHaveValue('Test User');
-    await expect(page.getByLabel('Email Address')).toHaveValue(testEmail);
+    await expect(page.getByLabel('Full Name')).toHaveValue('Test User');
+    await expect(page.getByLabel('Email')).toHaveValue(testEmail);
   });
 
-  test('should navigate back to home from login page', async ({ page }) => {
+  test('should have link to signup from login page', async ({ page }) => {
     await page.goto('/login');
-    await page.getByRole('link', { name: 'Home' }).click();
-    await page.waitForURL('/');
-    await expect(page).toHaveURL('/');
+    await expect(page.getByText('Sign Up')).toBeVisible();
   });
 
-  test('should navigate back to home from signup page', async ({ page }) => {
+  test('should have link to login from signup page', async ({ page }) => {
     await page.goto('/signup');
-    await page.getByRole('link', { name: 'Home' }).click();
-    await page.waitForURL('/');
-    await expect(page).toHaveURL('/');
+    await expect(page.getByText('Sign In')).toBeVisible();
   });
 
   test('should navigate between login and signup pages', async ({ page }) => {
@@ -97,4 +92,3 @@ test.describe('Authentication Flow', () => {
     await expect(page).toHaveURL('/login');
   });
 });
-

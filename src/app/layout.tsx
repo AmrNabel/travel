@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { Providers } from '@/components/common/Providers';
+import { poppins } from '@/theme/theme';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-  title: 'Travel Delivery Platform',
-  description: 'Connect travelers with senders',
+  title: 'Firebase Travel - Connect Your Journey. Deliver a Smile.',
+  description:
+    "Turn your travel into a rewarding delivery route. Your journey helps someone's day!",
 };
 
 export default function RootLayout({
@@ -17,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

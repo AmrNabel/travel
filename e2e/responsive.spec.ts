@@ -48,12 +48,10 @@ test.describe('Responsive Design', () => {
     await page.goto('/login');
 
     // Should be able to interact with form on mobile
-    await page.getByLabel('Email Address').fill('test@example.com');
+    await page.getByLabel('Email').fill('test@example.com');
     await page.getByLabel('Password').fill('password123');
 
-    await expect(page.getByLabel('Email Address')).toHaveValue(
-      'test@example.com'
-    );
+    await expect(page.getByLabel('Email')).toHaveValue('test@example.com');
 
     await context.close();
   });
@@ -67,10 +65,10 @@ test.describe('Responsive Design', () => {
     await page.goto('/signup');
 
     // Should be able to interact with form on mobile
-    await page.getByLabel('Name').fill('John Doe');
-    await page.getByLabel('Email Address').fill('john@example.com');
+    await page.getByLabel('Full Name').fill('John Doe');
+    await page.getByLabel('Email').fill('john@example.com');
 
-    await expect(page.getByLabel('Name')).toHaveValue('John Doe');
+    await expect(page.getByLabel('Full Name')).toHaveValue('John Doe');
 
     await context.close();
   });
@@ -86,11 +84,11 @@ test.describe('Responsive Design', () => {
     await page.waitForURL('/login');
     await expect(page).toHaveURL('/login');
 
-    await page.getByRole('link', { name: 'Home' }).click();
-    await page.waitForURL('/');
-    await expect(page).toHaveURL('/');
+    // Navigate to signup
+    await page.getByText('Sign Up').click();
+    await page.waitForURL('/signup');
+    await expect(page).toHaveURL('/signup');
 
     await context.close();
   });
 });
-

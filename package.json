@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "unset __NEXT_PRIVATE_STANDALONE_CONFIG && unset __NEXT_PRIVATE_ORIGIN && next build",
     "start": "next start",
     "lint": "next lint",
     "test:e2e": "playwright test",
@@ -16,23 +16,26 @@
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
-    "@mui/icons-material": "^6.1.0",
+    "@mui/icons-material": "^6.5.0",
     "@mui/material": "^6.1.0",
     "date-fns": "^4.1.0",
     "firebase": "^11.1.0",
-    "next": "^15.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "firebase-admin": "^13.5.0",
+    "firebase-functions": "^6.6.0",
+    "next": "14.2.18",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@types/node": "^22.10.0",
-    "@types/react": "^19.0.1",
+    "@types/react": "19.2.2",
     "@types/react-dom": "^19.0.1",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "postcss": "^8.4.0",
+    "postcss": "^8.5.6",
     "prettier": "^3.4.0",
     "tailwindcss": "^3.4.0",
     "typescript": "5.9.3"
