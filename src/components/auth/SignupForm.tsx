@@ -245,7 +245,7 @@ export const SignupForm: React.FC = () => {
           fullWidth
           required
           margin='normal'
-          placeholder='+1 (555) 123-4567 📱'
+          placeholder='01159253977'
           sx={{ mb: 2 }}
         />
 
