@@ -91,13 +91,21 @@ export const useChat = (chatId?: string) => {
     }
 
     // Create new chat
-    const docRef = await addDoc(collection(db, 'chats'), {
+    const chatData: any = {
       participants: [user.id, otherUserId],
-      tripId,
-      requestId,
       createdAt: Timestamp.now(),
       updatedAt: Timestamp.now(),
-    });
+    };
+
+    // Only include tripId and requestId if they're defined
+    if (tripId) {
+      chatData.tripId = tripId;
+    }
+    if (requestId) {
+      chatData.requestId = requestId;
+    }
+
+    const docRef = await addDoc(collection(db, 'chats'), chatData);
 
     return docRef.id;
   };
