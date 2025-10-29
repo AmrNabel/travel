@@ -35,11 +35,16 @@ import { useRouter } from 'next/navigation';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
 import { useChat } from '@/hooks/useChat';
+import { useOffers } from '@/hooks/useOffers';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNotification } from '@/contexts/NotificationContext';
 import { TripCard } from '@/components/trips/TripCard';
 import { RequestCard } from '@/components/requests/RequestCard';
 import { NavBar } from '@/components/common/NavBar';
+import { OfferModal } from '@/components/offers/OfferModal';
+import { Trip } from '@/types/trip';
+import { DeliveryRequest } from '@/types/request';
+import { TripCardWithUser } from '@/components/search/TripCardWithUser';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import SearchIcon from '@mui/icons-material/Search';
@@ -57,16 +62,28 @@ export default function SearchPage() {
   const [activeTab, setActiveTab] = useState<'trips' | 'requests'>('trips');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [contactLoading, setContactLoading] = useState<string | null>(null);
+  const [offerModalOpen, setOfferModalOpen] = useState(false);
+  const [selectedTripForOffer, setSelectedTripForOffer] = useState<Trip | null>(
+    null
+  );
+  const [selectedRequestForOffer, setSelectedRequestForOffer] =
+    useState<DeliveryRequest | null>(null);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const router = useRouter();
 
-  const { trips, loading: tripsLoading } = useTrips(searchParams);
-  const { requests, loading: requestsLoading } = useRequests(searchParams);
-  const { createChat } = useChat();
   const { user } = useAuth();
   const { showNotification } = useNotification();
+
+  const { trips, loading: tripsLoading } = useTrips(searchParams);
+  const { requests, loading: requestsLoading } = useRequests(searchParams);
+  // Get user's own requests for sending offers
+  const { requests: myRequests } = useRequests(
+    user ? { userId: user.id } : undefined
+  );
+  const { createChat } = useChat();
+  const { createOffer } = useOffers();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,6 +136,47 @@ export default function SearchPage() {
       showNotification('Failed to create chat. Please try again.', 'error');
     } finally {
       setContactLoading(null);
+    }
+  };
+
+  const handleSendOffer = (trip: Trip) => {
+    if (!user) {
+      showNotification('Please login to send offers', 'warning');
+      router.push('/login');
+      return;
+    }
+
+    if (user.id === trip.userId) {
+      showNotification('This is your own trip', 'info');
+      return;
+    }
+
+    // Check if user has any active requests
+    const activeRequests = myRequests.filter((r) => r.status === 'pending');
+
+    if (activeRequests.length === 0) {
+      showNotification(
+        'Please create a delivery request first to send offers',
+        'warning'
+      );
+      router.push('/send-item');
+      return;
+    }
+
+    // For now, use the first active request (we can enhance this later with a selector)
+    setSelectedTripForOffer(trip);
+    setSelectedRequestForOffer(activeRequests[0]);
+    setOfferModalOpen(true);
+  };
+
+  const handleOfferSubmit = async (offerInput: any) => {
+    try {
+      await createOffer(offerInput);
+      showNotification('✅ Offer sent successfully!', 'success');
+      setOfferModalOpen(false);
+    } catch (error: any) {
+      console.error('Error sending offer:', error);
+      throw error; // Re-throw to let OfferModal handle it
     }
   };
 
@@ -334,193 +392,22 @@ export default function SearchPage() {
                     </Paper>
                   ) : (
                     trips.map((trip, index) => (
-                      <Card
+                      <TripCardWithUser
                         key={trip.id}
-                        elevation={2}
-                        sx={{
-                          position: 'relative',
-                          overflow: 'visible',
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                          border: index === 0 ? 2 : 1,
-                          borderColor:
-                            index === 0 ? 'secondary.main' : 'divider',
-                          '&:hover': {
-                            transform: 'translateY(-4px)',
-                            boxShadow: theme.shadows[8],
-                          },
-                        }}
-                      >
-                        {index === 0 && (
-                          <Box
-                            sx={{
-                              position: 'absolute',
-                              top: 12,
-                              right: -12,
-                              transform: 'rotate(45deg)',
-                              bgcolor: 'secondary.main',
-                              color: 'white',
-                              px: 4,
-                              py: 0.5,
-                              fontWeight: 700,
-                              fontSize: '0.875rem',
-                              boxShadow: theme.shadows[4],
-                            }}
-                          >
-                            Match
-                          </Box>
-                        )}
-                        <CardContent sx={{ p: 3 }}>
-                          <Grid container spacing={2} alignItems='center'>
-                            <Grid item xs={12} sm='auto'>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: 2,
-                                }}
-                              >
-                                <Avatar
-                                  sx={{ width: 48, height: 48 }}
-                                  src={`https://i.pravatar.cc/150?img=${index + 2}`}
-                                />
-                                <Box>
-                                  <Typography
-                                    variant='subtitle1'
-                                    fontWeight={700}
-                                  >
-                                    Traveler
-                                  </Typography>
-                                  <Typography
-                                    variant='caption'
-                                    color='text.secondary'
-                                  >
-                                    Verified Traveler
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </Grid>
-
-                            <Grid item xs={12} sm>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: 1,
-                                  justifyContent: 'center',
-                                }}
-                              >
-                                <Box sx={{ textAlign: 'center' }}>
-                                  <Typography variant='body1' fontWeight={700}>
-                                    {trip.fromCity || 'NYC'}
-                                  </Typography>
-                                  <Typography
-                                    variant='caption'
-                                    color='text.secondary'
-                                  >
-                                    New York
-                                  </Typography>
-                                </Box>
-                                <Box
-                                  sx={{
-                                    flex: 1,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    px: 2,
-                                  }}
-                                >
-                                  <Divider sx={{ flex: 1 }} />
-                                  <FlightIcon
-                                    sx={{ mx: 1, color: 'primary.main' }}
-                                  />
-                                  <Divider sx={{ flex: 1 }} />
-                                </Box>
-                                <Box sx={{ textAlign: 'center' }}>
-                                  <Typography variant='body1' fontWeight={700}>
-                                    {trip.toCity || 'LON'}
-                                  </Typography>
-                                  <Typography
-                                    variant='caption'
-                                    color='text.secondary'
-                                  >
-                                    London
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </Grid>
-
-                            <Grid item xs={12} sm='auto'>
-                              <Box
-                                sx={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: 1,
-                                  justifyContent: {
-                                    xs: 'center',
-                                    sm: 'flex-start',
-                                  },
-                                }}
-                              >
-                                <CalendarMonthIcon
-                                  sx={{ fontSize: 18, color: 'text.secondary' }}
-                                />
-                                <Typography
-                                  variant='body2'
-                                  color='text.secondary'
-                                >
-                                  {trip.date
-                                    ? new Date(trip.date).toLocaleDateString()
-                                    : 'Oct 15 - Oct 22'}
-                                </Typography>
-                              </Box>
-                            </Grid>
-
-                            <Grid item xs={12} sm='auto'>
-                              <Chip
-                                icon={<LuggageIcon />}
-                                label={trip.capacity || 'Small'}
-                                size='small'
-                                sx={{
-                                  bgcolor: alpha(
-                                    theme.palette.primary.main,
-                                    0.15
-                                  ),
-                                  color: 'primary.main',
-                                  fontWeight: 600,
-                                }}
-                              />
-                            </Grid>
-
-                            <Grid item xs={12} sm='auto'>
-                              <Button
-                                variant='contained'
-                                size='small'
-                                fullWidth
-                                onClick={() =>
-                                  handleContactTrip(trip.id, trip.userId)
-                                }
-                                disabled={
-                                  contactLoading === trip.id ||
-                                  trip.userId === user?.id
-                                }
-                                startIcon={
-                                  contactLoading === trip.id && (
-                                    <CircularProgress
-                                      size={16}
-                                      color='inherit'
-                                    />
-                                  )
-                                }
-                              >
-                                {contactLoading === trip.id
-                                  ? 'Connecting...'
-                                  : trip.userId === user?.id
-                                    ? 'Your Trip'
-                                    : 'Contact'}
-                              </Button>
-                            </Grid>
-                          </Grid>
-                        </CardContent>
-                      </Card>
+                        trip={trip}
+                        index={index}
+                        isMatch={index === 0}
+                        showSendOffer={
+                          myRequests.filter((r) => r.status === 'pending')
+                            .length > 0
+                        }
+                        onSendOffer={() => handleSendOffer(trip)}
+                        onMessage={() =>
+                          handleContactTrip(trip.id, trip.userId)
+                        }
+                        isOwnTrip={trip.userId === user?.id}
+                        contactLoading={contactLoading === trip.id}
+                      />
                     ))
                   )}
                 </Box>
@@ -635,6 +522,17 @@ export default function SearchPage() {
           </Button>
         </Box>
       </Box>
+
+      {/* Offer Modal */}
+      {selectedTripForOffer && selectedRequestForOffer && (
+        <OfferModal
+          open={offerModalOpen}
+          trip={selectedTripForOffer}
+          request={selectedRequestForOffer}
+          onClose={() => setOfferModalOpen(false)}
+          onSubmit={handleOfferSubmit}
+        />
+      )}
     </Box>
   );
 }

@@ -34,6 +34,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LuggageIcon from '@mui/icons-material/Luggage';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import { NotificationBell } from '@/components/notifications/NotificationBell';
 
 export const NavBar = () => {
   const { user, signOut } = useAuth();
@@ -209,6 +211,18 @@ export const NavBar = () => {
                   My Trips
                 </Button>
               </Link>
+              <Link href='/offers' passHref legacyBehavior>
+                <Button
+                  color='inherit'
+                  startIcon={<LocalOfferIcon />}
+                  sx={{
+                    color: 'text.secondary',
+                    '&:hover': { color: 'primary.main' },
+                  }}
+                >
+                  Offers
+                </Button>
+              </Link>
               <Link href='/chats' passHref legacyBehavior>
                 <Button
                   color='inherit'
@@ -267,6 +281,7 @@ export const NavBar = () => {
                 </Link>
               </>
             )}
+            {!isMobile && <NotificationBell />}
             <Avatar
               sx={{
                 width: 40,
@@ -320,6 +335,18 @@ export const NavBar = () => {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText primary='My Trips' />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              href='/offers'
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <ListItemIcon>
+                <LocalOfferIcon />
+              </ListItemIcon>
+              <ListItemText primary='Offers' />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
