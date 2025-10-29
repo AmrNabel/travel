@@ -12,7 +12,10 @@ export const NotificationBell: React.FC = () => {
 
   return (
     <>
-      <IconButton onClick={() => setOpen(true)} color='inherit'>
+      <IconButton
+        onClick={() => setOpen(true)}
+        sx={{ color: 'text.secondary' }}
+      >
         <Badge badgeContent={unreadCount} color='error'>
           <NotificationsIcon />
         </Badge>

@@ -29,25 +29,35 @@ export const useRequests = (filters?: {
   useEffect(() => {
     setLoading(true);
 
-    let q = query(
-      collection(db, 'requests'),
-      where('status', '==', 'pending'),
-      orderBy('createdAt', 'desc')
-    );
+    // Start with base query
+    let q = query(collection(db, 'requests'), orderBy('createdAt', 'desc'));
 
     // Apply filters
     if (filters?.userId) {
+      // Fetch all requests for this specific user
       q = query(
         collection(db, 'requests'),
-        where('userId', '==', filters.userId)
+        where('userId', '==', filters.userId),
+        orderBy('createdAt', 'desc')
       );
+    } else if (filters) {
+      // If filters object exists but no userId, it's from search page
+      // Show only pending requests
+      q = query(
+        collection(db, 'requests'),
+        where('status', '==', 'pending'),
+        orderBy('createdAt', 'desc')
+      );
+
+      // Apply city filters if they have values
+      if (filters.fromCity && filters.fromCity.trim()) {
+        q = query(q, where('fromCity', '==', filters.fromCity));
+      }
+      if (filters.toCity && filters.toCity.trim()) {
+        q = query(q, where('toCity', '==', filters.toCity));
+      }
     }
-    if (filters?.fromCity) {
-      q = query(q, where('fromCity', '==', filters.fromCity));
-    }
-    if (filters?.toCity) {
-      q = query(q, where('toCity', '==', filters.toCity));
-    }
+    // else: no filters at all - fetch all requests (for offers page)
 
     const unsubscribe = onSnapshot(
       q,

@@ -15,7 +15,6 @@ export const RequestForm: React.FC = () => {
     weight: '',
     offerPrice: 0,
     description: '',
-    notes: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -134,19 +133,7 @@ export const RequestForm: React.FC = () => {
             onChange={handleChange}
             fullWidth
             multiline
-            rows={2}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            label='Notes (Optional)'
-            name='notes'
-            value={formData.notes}
-            onChange={handleChange}
-            fullWidth
-            multiline
-            rows={2}
+            rows={3}
           />
         </Grid>
       </Grid>

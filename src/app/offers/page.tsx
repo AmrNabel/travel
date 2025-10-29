@@ -26,11 +26,15 @@ import {
 import { useRouter } from 'next/navigation';
 import { useOffers } from '@/hooks/useOffers';
 import { useDelivery } from '@/hooks/useDelivery';
+import { useTrip } from '@/hooks/useTrip';
 import { useRequests } from '@/hooks/useRequests';
+import { useTrips } from '@/hooks/useTrips';
+import { useUser } from '@/hooks/useUser';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNotification } from '@/contexts/NotificationContext';
 import { NavBar } from '@/components/common/NavBar';
 import { AuthGuard } from '@/components/auth/AuthGuard';
+import { RatingDialog } from '@/components/ratings/RatingDialog';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import FlightIcon from '@mui/icons-material/Flight';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -38,6 +42,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ChatIcon from '@mui/icons-material/Chat';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import FlagIcon from '@mui/icons-material/Flag';
+import StarIcon from '@mui/icons-material/Star';
 import { formatDistanceToNow } from 'date-fns';
 import { Offer } from '@/types/offer';
 
@@ -49,12 +55,20 @@ function OffersPageContent() {
     offerId: string | null;
   }>({ open: false, action: null, offerId: null });
   const [loading, setLoading] = useState(false);
+  const [ratingDialog, setRatingDialog] = useState<{
+    open: boolean;
+    toUserId: string;
+    tripId?: string;
+    requestId?: string;
+    type: 'traveler' | 'sender';
+  } | null>(null);
 
   const { user } = useAuth();
   const router = useRouter();
   const theme = useTheme();
   const { showNotification } = useNotification();
   const { markAsDelivered } = useDelivery();
+  const { markTripAsComplete } = useTrip();
 
   // Get offers sent by this user
   const {
@@ -69,8 +83,11 @@ function OffersPageContent() {
     receiverId: user?.id,
   });
 
-  // Get requests to show delivery status
-  const { requests } = useRequests({ userId: user?.id });
+  // Get ALL requests to show delivery status for both sent and received offers
+  const { requests } = useRequests();
+
+  // Get trips to show completion button
+  const { trips } = useTrips({ userId: user?.id });
 
   const handleAcceptOffer = async (offerId: string) => {
     setLoading(true);
@@ -100,14 +117,48 @@ function OffersPageContent() {
     }
   };
 
-  const handleMarkAsDelivered = async (requestId: string) => {
+  const handleMarkAsDelivered = async (requestId: string, senderId: string) => {
     setLoading(true);
     try {
       await markAsDelivered(requestId);
       showNotification('✅ Marked as delivered! Sender notified.', 'success');
+
+      // Prompt traveler to rate sender
+      setRatingDialog({
+        open: true,
+        toUserId: senderId,
+        requestId,
+        type: 'sender',
+      });
     } catch (error: any) {
       console.error('Error marking as delivered:', error);
       showNotification('Failed to mark as delivered', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCompleteTripAndRate = async (
+    tripId: string,
+    senderId: string,
+    requestId: string
+  ) => {
+    setLoading(true);
+    try {
+      await markTripAsComplete(tripId);
+      showNotification('🎉 Trip completed! All deliveries marked.', 'success');
+
+      // Prompt traveler to rate sender
+      setRatingDialog({
+        open: true,
+        toUserId: senderId,
+        tripId,
+        requestId,
+        type: 'sender',
+      });
+    } catch (error: any) {
+      console.error('Error completing trip:', error);
+      showNotification('Failed to complete trip', 'error');
     } finally {
       setLoading(false);
     }
@@ -292,18 +343,64 @@ function OffersPageContent() {
                         </Box>
                       )}
 
-                      {/* Mark as Delivered Button (for traveler/receiver) */}
+                      {/* Complete Trip & Deliver Button (for traveler/receiver) */}
                       {isReceived && request && !isDelivered && (
+                        <>
+                          <Button
+                            variant='contained'
+                            color='success'
+                            size='small'
+                            fullWidth
+                            startIcon={<FlagIcon />}
+                            onClick={() =>
+                              handleCompleteTripAndRate(
+                                offer.tripId,
+                                offer.senderId,
+                                offer.requestId
+                              )
+                            }
+                            disabled={loading}
+                          >
+                            Complete Trip & Deliver
+                          </Button>
+                          <Button
+                            variant='outlined'
+                            color='success'
+                            size='small'
+                            fullWidth
+                            startIcon={<CheckCircleIcon />}
+                            onClick={() =>
+                              handleMarkAsDelivered(
+                                offer.requestId,
+                                offer.senderId
+                              )
+                            }
+                            disabled={loading}
+                          >
+                            Mark This Item Only
+                          </Button>
+                        </>
+                      )}
+
+                      {/* Rate Traveler Button (for sender when delivered) */}
+                      {!isReceived && isDelivered && (
                         <Button
                           variant='contained'
-                          color='success'
+                          color='primary'
                           size='small'
                           fullWidth
-                          startIcon={<CheckCircleIcon />}
-                          onClick={() => handleMarkAsDelivered(offer.requestId)}
-                          disabled={loading}
+                          startIcon={<StarIcon />}
+                          onClick={() =>
+                            setRatingDialog({
+                              open: true,
+                              toUserId: offer.receiverId,
+                              tripId: offer.tripId,
+                              requestId: offer.requestId,
+                              type: 'traveler',
+                            })
+                          }
                         >
-                          Mark as Delivered
+                          Rate Traveler
                         </Button>
                       )}
 
@@ -471,6 +568,22 @@ function OffersPageContent() {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Rating Dialog */}
+      {ratingDialog && (
+        <RatingDialog
+          open={ratingDialog.open}
+          onClose={() => setRatingDialog(null)}
+          toUserId={ratingDialog.toUserId}
+          toUserName={
+            // Fetch user name
+            ratingDialog.type === 'traveler' ? 'Traveler' : 'Sender'
+          }
+          tripId={ratingDialog.tripId}
+          requestId={ratingDialog.requestId}
+          type={ratingDialog.type}
+        />
+      )}
     </Box>
   );
 }

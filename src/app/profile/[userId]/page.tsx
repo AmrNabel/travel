@@ -34,6 +34,8 @@ import ChatIcon from '@mui/icons-material/Chat';
 import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { useChat } from '@/hooks/useChat';
+import { recalculateUserRatings } from '@/utils/recalculateRatings';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 interface ProfilePageProps {
   params: { userId: string };
@@ -41,16 +43,19 @@ interface ProfilePageProps {
 
 function ProfileContent({ userId }: { userId: string }) {
   const { user: currentUser } = useAuth();
-  const { getUserRatings } = useRatings();
+  const { getUserRatingsWithDetails } = useRatings();
   const { createChat } = useChat();
   const router = useRouter();
   const theme = useTheme();
   const { showNotification } = useNotification();
 
   const [profileUser, setProfileUser] = useState<User | null>(null);
-  const [ratings, setRatings] = useState<RatingType[]>([]);
+  const [ratings, setRatings] = useState<
+    (RatingType & { fromUserName?: string })[]
+  >([]);
   const [loading, setLoading] = useState(true);
   const [contactLoading, setContactLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const isOwnProfile = currentUser?.id === userId;
 
@@ -59,18 +64,20 @@ function ProfileContent({ userId }: { userId: string }) {
       try {
         setLoading(true);
         const user = await getDocument<User>('users', userId);
-        const userRatings = await getUserRatings(userId);
+        const userRatings = await getUserRatingsWithDetails(userId);
         setProfileUser(user);
         setRatings(userRatings);
       } catch (error) {
         console.error('Error loading profile:', error);
+        showNotification('Failed to load profile', 'error');
       } finally {
         setLoading(false);
       }
     };
 
     loadProfile();
-  }, [userId, getUserRatings]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
 
   const handleContact = async () => {
     if (!currentUser) return;
@@ -85,6 +92,25 @@ function ProfileContent({ userId }: { userId: string }) {
       showNotification('Failed to create chat. Please try again.', 'error');
     } finally {
       setContactLoading(false);
+    }
+  };
+
+  const handleRefreshStats = async () => {
+    setRefreshing(true);
+    try {
+      const stats = await recalculateUserRatings(userId);
+      showNotification(
+        `✅ Stats updated! Rating: ${stats.rating.toFixed(1)}, Reviews: ${stats.totalRatings}`,
+        'success'
+      );
+      // Reload the profile to show updated stats
+      const user = await getDocument<User>('users', userId);
+      setProfileUser(user);
+    } catch (error) {
+      console.error('Error refreshing stats:', error);
+      showNotification('Failed to refresh stats. Please try again.', 'error');
+    } finally {
+      setRefreshing(false);
     }
   };
 
@@ -178,17 +204,34 @@ function ProfileContent({ userId }: { userId: string }) {
             <Typography variant='body2' color='text.secondary' sx={{ mb: 2 }}>
               {profileUser.email}
             </Typography>
-            {!isOwnProfile && (
+            <Box sx={{ display: 'flex', gap: 2 }}>
+              {!isOwnProfile && (
+                <Button
+                  variant='gradient'
+                  startIcon={<ChatIcon />}
+                  onClick={handleContact}
+                  disabled={contactLoading}
+                  sx={{ borderRadius: '9999px' }}
+                >
+                  {contactLoading ? 'Starting Chat...' : 'Send Message'}
+                </Button>
+              )}
               <Button
-                variant='gradient'
-                startIcon={<ChatIcon />}
-                onClick={handleContact}
-                disabled={contactLoading}
+                variant='outlined'
+                startIcon={
+                  refreshing ? (
+                    <CircularProgress size={16} color='inherit' />
+                  ) : (
+                    <RefreshIcon />
+                  )
+                }
+                onClick={handleRefreshStats}
+                disabled={refreshing}
                 sx={{ borderRadius: '9999px' }}
               >
-                {contactLoading ? 'Starting Chat...' : 'Send Message'}
+                {refreshing ? 'Updating...' : 'Refresh Stats'}
               </Button>
-            )}
+            </Box>
           </Grid>
         </Grid>
       </Paper>
@@ -274,6 +317,11 @@ function ProfileContent({ userId }: { userId: string }) {
                 sx={{
                   borderRadius: 2,
                   bgcolor: alpha(theme.palette.background.default, 0.5),
+                  transition: 'all 0.2s',
+                  '&:hover': {
+                    boxShadow: theme.shadows[4],
+                    transform: 'translateY(-2px)',
+                  },
                 }}
               >
                 <CardContent>
@@ -282,22 +330,57 @@ function ProfileContent({ userId }: { userId: string }) {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'flex-start',
-                      mb: 1,
+                      mb: 2,
                     }}
                   >
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <Rating value={rating.score} readOnly size='small' />
-                      <Typography variant='body2' fontWeight={600}>
-                        {rating.score.toFixed(1)}
-                      </Typography>
+                    <Box>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1,
+                          mb: 0.5,
+                        }}
+                      >
+                        <Avatar
+                          sx={{
+                            width: 32,
+                            height: 32,
+                            fontSize: '0.875rem',
+                            bgcolor: 'primary.main',
+                          }}
+                        >
+                          {rating.fromUserName?.charAt(0).toUpperCase() || '?'}
+                        </Avatar>
+                        <Typography variant='body2' fontWeight={600}>
+                          {rating.fromUserName || 'Anonymous'}
+                        </Typography>
+                      </Box>
+                      <Box
+                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                      >
+                        <Rating value={rating.score} readOnly size='small' />
+                        <Typography variant='body2' fontWeight={600}>
+                          {rating.score.toFixed(1)}
+                        </Typography>
+                      </Box>
                     </Box>
                     <Typography variant='caption' color='text.secondary'>
                       {format(rating.createdAt, 'MMM dd, yyyy')}
                     </Typography>
                   </Box>
                   {rating.comment && (
-                    <Typography variant='body2' color='text.secondary'>
-                      {rating.comment}
+                    <Typography
+                      variant='body2'
+                      color='text.secondary'
+                      sx={{
+                        fontStyle: 'italic',
+                        pl: 5,
+                        borderLeft: 2,
+                        borderColor: 'divider',
+                      }}
+                    >
+                      &quot;{rating.comment}&quot;
                     </Typography>
                   )}
                 </CardContent>
