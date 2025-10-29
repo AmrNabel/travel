@@ -9,6 +9,7 @@ import {
   Button,
 } from '@mui/material';
 import { DeliveryRequest } from '@/types/request';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface RequestCardProps {
   request: DeliveryRequest;
@@ -19,6 +20,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
   request,
   onContact,
 }) => {
+  const { t } = useLanguage();
   return (
     <Card sx={{ mb: 2 }}>
       <CardContent>
@@ -40,10 +42,10 @@ export const RequestCard: React.FC<RequestCardProps> = ({
 
         <Box mt={2}>
           <Typography variant='body2'>
-            <strong>Weight:</strong> {request.weight}
+            <strong>{t('request.weight')}:</strong> {request.weight}
           </Typography>
           <Typography variant='body2'>
-            <strong>Offer Price:</strong> ${request.offerPrice}
+            <strong>{t('request.offerPrice')}:</strong> ${request.offerPrice}
           </Typography>
           {request.description && (
             <Typography variant='body2' mt={1}>
@@ -59,7 +61,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
             onClick={onContact}
             sx={{ mt: 2 }}
           >
-            Contact Sender
+            {t('card.contactSender')}
           </Button>
         )}
       </CardContent>

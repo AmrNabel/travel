@@ -23,12 +23,14 @@ import { AuthGuard } from '@/components/auth/AuthGuard';
 import { NavBar } from '@/components/common/NavBar';
 import { useChat } from '@/hooks/useChat';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import ChatIcon from '@mui/icons-material/Chat';
 import { format } from 'date-fns';
 
 function ChatsPageContent() {
   const { chats, loading } = useChat();
   const { user } = useAuth();
+  const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
 
@@ -83,15 +85,14 @@ function ChatsPageContent() {
           <ChatIcon sx={{ fontSize: 60, color: 'primary.main' }} />
         </Box>
         <Typography variant='h5' gutterBottom fontWeight={700}>
-          No Messages Yet
+          {t('chat.noChats')}
         </Typography>
         <Typography
           variant='body1'
           color='text.secondary'
           sx={{ maxWidth: 400 }}
         >
-          Start a conversation by contacting travelers or senders from the
-          search page.
+          {t('chat.noChatsDesc')}
         </Typography>
       </Box>
     );
@@ -105,7 +106,7 @@ function ChatsPageContent() {
         fontWeight={800}
         sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, mb: 4 }}
       >
-        Messages
+        {t('chat.messages')}
       </Typography>
 
       <Paper
@@ -184,7 +185,7 @@ function ChatsPageContent() {
                               fontWeight: hasUnread ? 600 : 400,
                             }}
                           >
-                            {chat.lastMessage || 'No messages yet'}
+                            {chat.lastMessage || t('chat.noChats')}
                           </Typography>
                           {(chat.tripId || chat.requestId) && (
                             <Chip

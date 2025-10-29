@@ -23,6 +23,7 @@ import { NavBar } from '@/components/common/NavBar';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRatings } from '@/hooks/useRatings';
 import { useNotification } from '@/contexts/NotificationContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { getDocument } from '@/lib/firebase/firestore';
 import { User } from '@/types/user';
 import { Rating as RatingType } from '@/types/rating';
@@ -43,6 +44,7 @@ interface ProfilePageProps {
 
 function ProfileContent({ userId }: { userId: string }) {
   const { user: currentUser } = useAuth();
+  const { t } = useLanguage();
   const { getUserRatingsWithDetails } = useRatings();
   const { createChat } = useChat();
   const router = useRouter();
@@ -69,7 +71,7 @@ function ProfileContent({ userId }: { userId: string }) {
         setRatings(userRatings);
       } catch (error) {
         console.error('Error loading profile:', error);
-        showNotification('Failed to load profile', 'error');
+        showNotification(t('error.loadingProfile'), 'error');
       } finally {
         setLoading(false);
       }
@@ -85,11 +87,11 @@ function ProfileContent({ userId }: { userId: string }) {
     try {
       setContactLoading(true);
       const chatId = await createChat(userId);
-      showNotification('Chat created successfully!', 'success');
+      showNotification(t('chat.chatCreated'), 'success');
       setTimeout(() => router.push(`/chats/${chatId}`), 500);
     } catch (error) {
       console.error('Error creating chat:', error);
-      showNotification('Failed to create chat. Please try again.', 'error');
+      showNotification(t('chat.chatError'), 'error');
     } finally {
       setContactLoading(false);
     }
@@ -100,7 +102,7 @@ function ProfileContent({ userId }: { userId: string }) {
     try {
       const stats = await recalculateUserRatings(userId);
       showNotification(
-        `✅ Stats updated! Rating: ${stats.rating.toFixed(1)}, Reviews: ${stats.totalRatings}`,
+        t('profile.statsUpdated', { rating: stats.rating.toFixed(1), count: stats.totalRatings }),
         'success'
       );
       // Reload the profile to show updated stats
@@ -108,7 +110,7 @@ function ProfileContent({ userId }: { userId: string }) {
       setProfileUser(user);
     } catch (error) {
       console.error('Error refreshing stats:', error);
-      showNotification('Failed to refresh stats. Please try again.', 'error');
+      showNotification(t('profile.statsUpdateFailed'), 'error');
     } finally {
       setRefreshing(false);
     }
@@ -138,10 +140,10 @@ function ProfileContent({ userId }: { userId: string }) {
         }}
       >
         <Typography variant='h5' gutterBottom>
-          User not found
+          {t('profile.userNotFound')}
         </Typography>
         <Typography variant='body2' color='text.secondary'>
-          This user profile does not exist.
+          {t('profile.userNotFoundDesc')}
         </Typography>
       </Box>
     );
@@ -213,7 +215,7 @@ function ProfileContent({ userId }: { userId: string }) {
                   disabled={contactLoading}
                   sx={{ borderRadius: '9999px' }}
                 >
-                  {contactLoading ? 'Starting Chat...' : 'Send Message'}
+                  {contactLoading ? t('profile.startingChat') : t('profile.sendMessage')}
                 </Button>
               )}
               <Button
@@ -229,7 +231,7 @@ function ProfileContent({ userId }: { userId: string }) {
                 disabled={refreshing}
                 sx={{ borderRadius: '9999px' }}
               >
-                {refreshing ? 'Updating...' : 'Refresh Stats'}
+                {refreshing ? t('profile.updating') : t('profile.refreshStats')}
               </Button>
             </Box>
           </Grid>
@@ -251,7 +253,7 @@ function ProfileContent({ userId }: { userId: string }) {
               {profileUser.totalRatings}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              Total Reviews
+              {t('rating.totalReviews')}
             </Typography>
           </Paper>
         </Grid>
@@ -273,7 +275,7 @@ function ProfileContent({ userId }: { userId: string }) {
               />
             </Box>
             <Typography variant='body2' color='text.secondary'>
-              Average Rating
+              {t('rating.averageRating')}
             </Typography>
           </Paper>
         </Grid>
@@ -290,7 +292,7 @@ function ProfileContent({ userId }: { userId: string }) {
               {profileUser.verified ? '✓' : '—'}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              Verification Status
+              {t('profile.verificationStatus')}
             </Typography>
           </Paper>
         </Grid>
@@ -299,13 +301,13 @@ function ProfileContent({ userId }: { userId: string }) {
       {/* Reviews */}
       <Paper elevation={2} sx={{ p: 3, borderRadius: 3 }}>
         <Typography variant='h5' fontWeight={700} sx={{ mb: 3 }}>
-          Reviews ({ratings.length})
+          {t('rating.reviews')} ({ratings.length})
         </Typography>
 
         {ratings.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 4 }}>
             <Typography variant='body2' color='text.secondary'>
-              No reviews yet
+              {t('rating.noReviews')}
             </Typography>
           </Box>
         ) : (

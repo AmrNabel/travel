@@ -21,6 +21,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { NavBar } from '@/components/common/NavBar';
 import Link from 'next/link';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
@@ -32,6 +33,7 @@ import { useState } from 'react';
 
 export default function HomePage() {
   const { user, loading } = useAuth();
+  const { t } = useLanguage();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -74,7 +76,7 @@ export default function HomePage() {
                 component='div'
                 sx={{ fontWeight: 700, color: 'text.primary' }}
               >
-                Firebase Travel
+                {t('common.appName')}
               </Typography>
             </Box>
             {isMobile ? (
@@ -93,7 +95,7 @@ export default function HomePage() {
                     '&:hover': { color: 'primary.main' },
                   }}
                 >
-                  How it Works
+                  {t('nav.howItWorks')}
                 </Button>
                 <Button
                   color='inherit'
@@ -102,11 +104,11 @@ export default function HomePage() {
                     '&:hover': { color: 'primary.main' },
                   }}
                 >
-                  About Us
+                  {t('nav.aboutUs')}
                 </Button>
                 <Link href='/login' passHref legacyBehavior>
                   <Button variant='contained' sx={{ ml: 2 }}>
-                    Login / Sign Up
+                    {t('nav.login')} / {t('nav.signup')}
                   </Button>
                 </Link>
               </Box>
@@ -123,17 +125,17 @@ export default function HomePage() {
           <List sx={{ width: 250 }}>
             <ListItem disablePadding>
               <ListItemButton>
-                <ListItemText primary='How it Works' />
+                <ListItemText primary={t('nav.howItWorks')} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton>
-                <ListItemText primary='About Us' />
+                <ListItemText primary={t('nav.aboutUs')} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton component={Link} href='/login'>
-                <ListItemText primary='Login / Sign Up' />
+                <ListItemText primary={`${t('nav.login')} / ${t('nav.signup')}`} />
               </ListItemButton>
             </ListItem>
           </List>
@@ -157,7 +159,7 @@ export default function HomePage() {
                     backgroundClip: 'text',
                   }}
                 >
-                  Connect Your Journey. Deliver a Smile.
+                  {t('home.hero.title')}
                 </Typography>
                 <Typography
                   variant='h5'
@@ -165,8 +167,7 @@ export default function HomePage() {
                   paragraph
                   sx={{ fontSize: { xs: '1.1rem', md: '1.25rem' }, mb: 4 }}
                 >
-                  Turn your travel into a rewarding delivery route. Your journey
-                  helps someone&apos;s day!
+                  {t('home.hero.subtitle')}
                 </Typography>
 
                 <Box
@@ -182,7 +183,7 @@ export default function HomePage() {
                       size='large'
                       sx={{ flex: { xs: 1, sm: 0 } }}
                     >
-                      I&apos;m a Traveler
+                      {t('home.hero.travelerButton')}
                     </Button>
                   </Link>
                   <Link href='/signup' passHref legacyBehavior>
@@ -191,7 +192,7 @@ export default function HomePage() {
                       size='large'
                       sx={{ flex: { xs: 1, sm: 0 } }}
                     >
-                      I&apos;m a Sender
+                      {t('home.hero.senderButton')}
                     </Button>
                   </Link>
                 </Box>
@@ -227,7 +228,7 @@ export default function HomePage() {
               align='center'
               sx={{ mb: 2, fontSize: { xs: '2rem', md: '2.5rem' } }}
             >
-              A Smarter Way to Travel and Send
+              {t('home.features.title')}
             </Typography>
             <Typography
               variant='body1'
@@ -235,7 +236,7 @@ export default function HomePage() {
               color='text.secondary'
               sx={{ mb: 6, maxWidth: 720, mx: 'auto' }}
             >
-              Discover the benefits of a community-powered delivery network.
+              {t('home.features.subtitle')}
             </Typography>
 
             <Grid container spacing={3}>
@@ -269,11 +270,10 @@ export default function HomePage() {
                     />
                   </Box>
                   <Typography variant='h6' gutterBottom fontWeight={700}>
-                    Earn on Your Travels
+                    {t('home.features.earnOnTravel.title')}
                   </Typography>
                   <Typography variant='body2' color='text.secondary'>
-                    Monetize your extra luggage space by carrying items for
-                    others along your existing travel routes.
+                    {t('home.features.earnOnTravel.description')}
                   </Typography>
                 </Paper>
               </Grid>
@@ -308,11 +308,10 @@ export default function HomePage() {
                     />
                   </Box>
                   <Typography variant='h6' gutterBottom fontWeight={700}>
-                    Send with Trust
+                    {t('home.features.sendWithTrust.title')}
                   </Typography>
                   <Typography variant='body2' color='text.secondary'>
-                    Get your items delivered quickly and affordably by a trusted
-                    network of peer-to-peer travelers.
+                    {t('home.features.sendWithTrust.description')}
                   </Typography>
                 </Paper>
               </Grid>
@@ -345,11 +344,10 @@ export default function HomePage() {
                     <NatureIcon sx={{ fontSize: 28, color: '#10B981' }} />
                   </Box>
                   <Typography variant='h6' gutterBottom fontWeight={700}>
-                    Eco-Friendly Delivery
+                    {t('home.features.ecoFriendly.title')}
                   </Typography>
                   <Typography variant='body2' color='text.secondary'>
-                    Reduce carbon footprint by utilizing space in journeys
-                    already being made. Good for you, good for the planet.
+                    {t('home.features.ecoFriendly.description')}
                   </Typography>
                 </Paper>
               </Grid>
@@ -373,11 +371,10 @@ export default function HomePage() {
             color='text.secondary'
             sx={{ fontStyle: 'italic', mb: 1 }}
           >
-            &quot;The world is a book and those who do not travel read only one
-            page.&quot;
+            &quot;{t('home.footer.quote')}&quot;
           </Typography>
           <Typography variant='body2' color='text.disabled'>
-            - Saint Augustine
+            - {t('home.footer.author')}
           </Typography>
           <Box
             sx={{
@@ -396,7 +393,7 @@ export default function HomePage() {
                 '&:hover': { color: 'primary.main' },
               }}
             >
-              Terms of Service
+              {t('home.footer.terms')}
             </Button>
             <Button
               color='inherit'
@@ -406,7 +403,7 @@ export default function HomePage() {
                 '&:hover': { color: 'primary.main' },
               }}
             >
-              Privacy Policy
+              {t('home.footer.privacy')}
             </Button>
             <Button
               color='inherit'
@@ -416,11 +413,11 @@ export default function HomePage() {
                 '&:hover': { color: 'primary.main' },
               }}
             >
-              Contact Us
+              {t('home.footer.contact')}
             </Button>
           </Box>
           <Typography variant='body2' color='text.disabled' sx={{ mt: 2 }}>
-            © 2024 Firebase Travel. All rights reserved.
+            {t('home.footer.copyright')}
           </Typography>
         </Box>
       </Box>
@@ -450,7 +447,7 @@ export default function HomePage() {
             mb: 4,
           }}
         >
-          Welcome, {user.name}! 👋
+          {t('home.loggedIn.welcome', { name: user.name })}
         </Typography>
 
         <Grid container spacing={3}>
@@ -490,10 +487,10 @@ export default function HomePage() {
                   />
                 </Box>
                 <Typography variant='h6' gutterBottom fontWeight={700}>
-                  Post a Trip
+                  {t('home.loggedIn.postTripTitle')}
                 </Typography>
                 <Typography variant='body2' color='text.secondary'>
-                  Share your travel plans and earn by delivering items
+                  {t('home.loggedIn.postTripDesc')}
                 </Typography>
               </Paper>
             </Link>
@@ -535,10 +532,10 @@ export default function HomePage() {
                   />
                 </Box>
                 <Typography variant='h6' gutterBottom fontWeight={700}>
-                  Request Delivery
+                  {t('home.loggedIn.requestDeliveryTitle')}
                 </Typography>
                 <Typography variant='body2' color='text.secondary'>
-                  Send items with trusted travelers going your way
+                  {t('home.loggedIn.requestDeliveryDesc')}
                 </Typography>
               </Paper>
             </Link>
@@ -578,10 +575,10 @@ export default function HomePage() {
                   <VerifiedUserIcon sx={{ fontSize: 32, color: '#10B981' }} />
                 </Box>
                 <Typography variant='h6' gutterBottom fontWeight={700}>
-                  Browse Opportunities
+                  {t('home.loggedIn.browseTitle')}
                 </Typography>
                 <Typography variant='body2' color='text.secondary'>
-                  Find trips and delivery requests that match your plans
+                  {t('home.loggedIn.browseDesc')}
                 </Typography>
               </Paper>
             </Link>

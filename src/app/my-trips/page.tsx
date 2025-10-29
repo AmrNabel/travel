@@ -23,6 +23,7 @@ import {
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { NavBar } from '@/components/common/NavBar';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
@@ -38,6 +39,7 @@ import { DeliveryRequest } from '@/types/request';
 
 function MyTripsContent() {
   const { user } = useAuth();
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
   const [tripMenuAnchor, setTripMenuAnchor] = useState<null | HTMLElement>(
     null
@@ -118,10 +120,10 @@ function MyTripsContent() {
 
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Typography variant='body2'>
-            <strong>Capacity:</strong> {trip.capacity}
+            <strong>{t('card.capacity')}:</strong> {trip.capacity}
           </Typography>
           <Typography variant='body2'>
-            <strong>Price:</strong> ${trip.pricePerKg}/kg
+            <strong>{t('card.price')}:</strong> ${trip.pricePerKg}{t('card.perKg')}
           </Typography>
           {trip.description && (
             <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
@@ -172,10 +174,10 @@ function MyTripsContent() {
 
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Typography variant='body2'>
-            <strong>Weight:</strong> {request.weight}
+            <strong>{t('request.weight')}:</strong> {request.weight}
           </Typography>
           <Typography variant='body2'>
-            <strong>Offer Price:</strong> ${request.offerPrice}
+            <strong>{t('request.offerPrice')}:</strong> ${request.offerPrice}
           </Typography>
           {request.description && (
             <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
@@ -204,7 +206,7 @@ function MyTripsContent() {
           fontWeight={800}
           sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}
         >
-          My Activity
+          {t('myActivity.title')}
         </Typography>
         <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
           <Link href='/add-trip' passHref legacyBehavior>
@@ -213,7 +215,7 @@ function MyTripsContent() {
               startIcon={<AddIcon />}
               sx={{ borderRadius: '9999px' }}
             >
-              Post Trip
+              {t('trip.postTrip')}
             </Button>
           </Link>
           <Link href='/send-item' passHref legacyBehavior>
@@ -222,7 +224,7 @@ function MyTripsContent() {
               startIcon={<AddIcon />}
               sx={{ borderRadius: '9999px' }}
             >
-              Send Item
+              {t('request.sendItem')}
             </Button>
           </Link>
         </Box>
@@ -242,12 +244,12 @@ function MyTripsContent() {
           sx={{ mb: 3 }}
         >
           <Tab
-            label={`My Trips (${trips.length})`}
+            label={`${t('myActivity.myTrips')} (${trips.length})`}
             icon={<FlightTakeoffIcon />}
             iconPosition='start'
           />
           <Tab
-            label={`My Requests (${requests.length})`}
+            label={`${t('myActivity.myRequests')} (${requests.length})`}
             icon={<LuggageIcon />}
             iconPosition='start'
           />
@@ -276,18 +278,18 @@ function MyTripsContent() {
                   sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
                 />
                 <Typography variant='h6' gutterBottom>
-                  No trips yet
+                  {t('trip.noTrips')}
                 </Typography>
                 <Typography
                   variant='body2'
                   color='text.secondary'
                   sx={{ mb: 3 }}
                 >
-                  Post your first trip to start earning!
+                  {t('trip.noTripsDesc')}
                 </Typography>
                 <Link href='/add-trip' passHref legacyBehavior>
                   <Button variant='gradient' startIcon={<AddIcon />}>
-                    Post a Trip
+                    {t('trip.postTrip')}
                   </Button>
                 </Link>
               </Box>
@@ -326,18 +328,18 @@ function MyTripsContent() {
                   sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
                 />
                 <Typography variant='h6' gutterBottom>
-                  No requests yet
+                  {t('request.noRequests')}
                 </Typography>
                 <Typography
                   variant='body2'
                   color='text.secondary'
                   sx={{ mb: 3 }}
                 >
-                  Post your first delivery request!
+                  {t('request.noRequestsDesc')}
                 </Typography>
                 <Link href='/send-item' passHref legacyBehavior>
                   <Button variant='orange' startIcon={<AddIcon />}>
-                    Send an Item
+                    {t('request.sendItem')}
                   </Button>
                 </Link>
               </Box>
@@ -361,11 +363,11 @@ function MyTripsContent() {
       >
         <MenuItem onClick={handleEdit}>
           <EditIcon fontSize='small' sx={{ mr: 1 }} />
-          Edit
+          {t('common.edit')}
         </MenuItem>
         <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
           <DeleteIcon fontSize='small' sx={{ mr: 1 }} />
-          Delete
+          {t('common.delete')}
         </MenuItem>
       </Menu>
     </Box>

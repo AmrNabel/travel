@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -30,6 +31,7 @@ export const LoginForm: React.FC = () => {
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
 
   const { signIn } = useAuth();
+  const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
 
@@ -43,7 +45,7 @@ export const LoginForm: React.FC = () => {
       router.push('/');
     } catch (err: unknown) {
       const error = err as { message?: string };
-      setError(error.message || 'Failed to sign in');
+      setError(error.message || t('auth.invalidCredentials'));
     } finally {
       setLoading(false);
     }
@@ -79,10 +81,10 @@ export const LoginForm: React.FC = () => {
           sx={{ fontSize: 48, color: 'primary.main', mb: 1 }}
         />
         <Typography variant='h4' component='h1' gutterBottom fontWeight={800}>
-          Welcome aboard! 🚀
+          {t('home.hero.title')} 🚀
         </Typography>
         <Typography variant='body1' color='text.secondary'>
-          Join our community of travelers and senders.
+          {t('home.hero.subtitle')}
         </Typography>
       </Box>
 
@@ -112,8 +114,8 @@ export const LoginForm: React.FC = () => {
             },
           }}
         >
-          <ToggleButton value='signup'>Sign Up</ToggleButton>
-          <ToggleButton value='login'>Log In</ToggleButton>
+          <ToggleButton value='signup'>{t('auth.signup')}</ToggleButton>
+          <ToggleButton value='login'>{t('auth.login')}</ToggleButton>
         </ToggleButtonGroup>
       </Box>
 
@@ -132,7 +134,7 @@ export const LoginForm: React.FC = () => {
             },
           }}
         >
-          Continue with Google
+          {t('auth.signInWith')} Google
         </Button>
         <Button
           variant='outlined'
@@ -147,14 +149,14 @@ export const LoginForm: React.FC = () => {
             },
           }}
         >
-          Continue with Facebook
+          {t('auth.signInWith')} Facebook
         </Button>
       </Box>
 
       {/* Divider */}
       <Divider sx={{ my: 3 }}>
         <Typography variant='body2' color='text.secondary' fontWeight={600}>
-          OR
+          {t('common.or')}
         </Typography>
       </Divider>
 
@@ -168,26 +170,26 @@ export const LoginForm: React.FC = () => {
       {/* Login Form */}
       <Box component='form' onSubmit={handleSubmit}>
         <TextField
-          label='Email Address'
+          label={t('auth.email')}
           type='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           fullWidth
           required
           margin='normal'
-          placeholder='your@email.com ✉️'
+          placeholder='your@email.com'
           sx={{ mb: 2 }}
         />
 
         <TextField
-          label='Password'
+          label={t('auth.password')}
           type='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           fullWidth
           required
           margin='normal'
-          placeholder='•••••••• 🔒'
+          placeholder='••••••••'
           sx={{ mb: 3 }}
         />
 
@@ -199,13 +201,13 @@ export const LoginForm: React.FC = () => {
           size='large'
           sx={{ py: 1.5, mb: 2 }}
         >
-          {loading ? 'Signing in...' : 'Sign In to My Account'}
+          {loading ? `${t('common.loading')}...` : t('auth.login')}
         </Button>
 
         {/* Links */}
         <Box sx={{ textAlign: 'center', mt: 3 }}>
           <Typography variant='body2' color='text.secondary' sx={{ mb: 1 }}>
-            Don&apos;t have an account?{' '}
+            {t('auth.dontHaveAccount')}{' '}
             <Link href='/signup' passHref legacyBehavior>
               <MuiLink
                 sx={{
@@ -215,7 +217,7 @@ export const LoginForm: React.FC = () => {
                   '&:hover': { textDecoration: 'underline' },
                 }}
               >
-                Sign Up
+                {t('auth.signup')}
               </MuiLink>
             </Link>
           </Typography>
@@ -229,7 +231,7 @@ export const LoginForm: React.FC = () => {
               '&:hover': { textDecoration: 'underline' },
             }}
           >
-            Forgot your password?
+            {t('auth.forgotPassword')}
           </MuiLink>
         </Box>
       </Box>

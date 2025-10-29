@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { Trip } from '@/types/trip';
 import { format } from 'date-fns';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface TripCardProps {
   trip: Trip;
@@ -17,6 +18,7 @@ interface TripCardProps {
 }
 
 export const TripCard: React.FC<TripCardProps> = ({ trip, onContact }) => {
+  const { t } = useLanguage();
   return (
     <Card sx={{ mb: 2 }}>
       <CardContent>
@@ -38,10 +40,10 @@ export const TripCard: React.FC<TripCardProps> = ({ trip, onContact }) => {
 
         <Box mt={2}>
           <Typography variant='body2'>
-            <strong>Capacity:</strong> {trip.capacity}
+            <strong>{t('card.capacity')}:</strong> {trip.capacity}
           </Typography>
           <Typography variant='body2'>
-            <strong>Price:</strong> ${trip.pricePerKg}/kg
+            <strong>{t('card.price')}:</strong> ${trip.pricePerKg}{t('card.perKg')}
           </Typography>
           {trip.description && (
             <Typography variant='body2' mt={1}>
@@ -57,7 +59,7 @@ export const TripCard: React.FC<TripCardProps> = ({ trip, onContact }) => {
             onClick={onContact}
             sx={{ mt: 2 }}
           >
-            Contact Traveler
+            {t('card.contactTraveler')}
           </Button>
         )}
       </CardContent>

@@ -1,18 +1,41 @@
 'use client';
 
-import { ThemeProvider } from '@mui/material/styles';
+import { useMemo } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { NotificationProvider } from '@/contexts/NotificationContext';
+import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
 import { lightTheme } from '@/theme/theme';
+
+function ThemeWrapper({ children }: { children: React.ReactNode }) {
+  const { direction } = useLanguage();
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        ...lightTheme,
+        direction,
+      }),
+    [direction]
+  );
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
+}
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider theme={lightTheme}>
-      <CssBaseline />
-      <NotificationProvider>
-        <AuthProvider>{children}</AuthProvider>
-      </NotificationProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeWrapper>
+        <NotificationProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </NotificationProvider>
+      </ThemeWrapper>
+    </LanguageProvider>
   );
 }

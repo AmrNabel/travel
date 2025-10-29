@@ -32,6 +32,7 @@ import { useTrips } from '@/hooks/useTrips';
 import { useUser } from '@/hooks/useUser';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNotification } from '@/contexts/NotificationContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { NavBar } from '@/components/common/NavBar';
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { RatingDialog } from '@/components/ratings/RatingDialog';
@@ -64,6 +65,7 @@ function OffersPageContent() {
   } | null>(null);
 
   const { user } = useAuth();
+  const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
   const { showNotification } = useNotification();
@@ -93,11 +95,11 @@ function OffersPageContent() {
     setLoading(true);
     try {
       await acceptOffer(offerId);
-      showNotification('✅ Offer accepted! Chat is ready.', 'success');
+      showNotification(t('offer.acceptSuccess'), 'success');
       setConfirmDialog({ open: false, action: null, offerId: null });
     } catch (error: any) {
       console.error('Error accepting offer:', error);
-      showNotification('Failed to accept offer: ' + error.message, 'error');
+      showNotification(t('error.acceptingOffer'), 'error');
     } finally {
       setLoading(false);
     }
@@ -107,11 +109,11 @@ function OffersPageContent() {
     setLoading(true);
     try {
       await declineOffer(offerId);
-      showNotification('Offer declined', 'info');
+      showNotification(t('offer.declineSuccess'), 'info');
       setConfirmDialog({ open: false, action: null, offerId: null });
     } catch (error: any) {
       console.error('Error declining offer:', error);
-      showNotification('Failed to decline offer', 'error');
+      showNotification(t('error.decliningOffer'), 'error');
     } finally {
       setLoading(false);
     }
@@ -121,7 +123,7 @@ function OffersPageContent() {
     setLoading(true);
     try {
       await markAsDelivered(requestId);
-      showNotification('✅ Marked as delivered! Sender notified.', 'success');
+      showNotification(t('delivery.deliveryCompleted'), 'success');
 
       // Prompt traveler to rate sender
       setRatingDialog({
@@ -132,7 +134,7 @@ function OffersPageContent() {
       });
     } catch (error: any) {
       console.error('Error marking as delivered:', error);
-      showNotification('Failed to mark as delivered', 'error');
+      showNotification(t('delivery.deliveryFailed'), 'error');
     } finally {
       setLoading(false);
     }
@@ -146,7 +148,7 @@ function OffersPageContent() {
     setLoading(true);
     try {
       await markTripAsComplete(tripId);
-      showNotification('🎉 Trip completed! All deliveries marked.', 'success');
+      showNotification(t('delivery.tripCompleted'), 'success');
 
       // Prompt traveler to rate sender
       setRatingDialog({
@@ -158,7 +160,7 @@ function OffersPageContent() {
       });
     } catch (error: any) {
       console.error('Error completing trip:', error);
-      showNotification('Failed to complete trip', 'error');
+      showNotification(t('delivery.tripCompletionFailed'), 'error');
     } finally {
       setLoading(false);
     }
@@ -235,7 +237,7 @@ function OffersPageContent() {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
               <FlightIcon fontSize='small' color='action' />
               <Typography variant='body2' fontWeight={600}>
-                Trip Details
+                {t('trip.tripDetails')}
               </Typography>
             </Box>
             {/* Note: In a real app, you'd fetch and display trip details */}
@@ -286,7 +288,7 @@ function OffersPageContent() {
                   }
                   startIcon={<CheckCircleIcon />}
                 >
-                  Accept
+                  {t('offer.accept')}
                 </Button>
                 <Button
                   variant='outlined'
@@ -302,7 +304,7 @@ function OffersPageContent() {
                   }
                   startIcon={<CancelIcon />}
                 >
-                  Decline
+                  {t('offer.decline')}
                 </Button>
               </>
             )}
@@ -361,7 +363,7 @@ function OffersPageContent() {
                             }
                             disabled={loading}
                           >
-                            Complete Trip & Deliver
+                            {t('delivery.completeTripAndDeliver')}
                           </Button>
                           <Button
                             variant='outlined'
@@ -377,7 +379,7 @@ function OffersPageContent() {
                             }
                             disabled={loading}
                           >
-                            Mark This Item Only
+                            {t('delivery.markThisItemOnly')}
                           </Button>
                         </>
                       )}
@@ -400,7 +402,7 @@ function OffersPageContent() {
                             })
                           }
                         >
-                          Rate Traveler
+                          {t('rating.rateTraveler')}
                         </Button>
                       )}
 
@@ -414,7 +416,7 @@ function OffersPageContent() {
                           router.push('/chats');
                         }}
                       >
-                        Go to Chat
+                        {t('chat.goToChat')}
                       </Button>
                     </>
                   );
@@ -439,7 +441,7 @@ function OffersPageContent() {
         {/* Header */}
         <Box sx={{ mb: 4 }}>
           <Typography variant='h4' fontWeight={700} gutterBottom>
-            My Offers
+            {t('offer.myOffers')}
           </Typography>
           <Typography variant='body1' color='text.secondary'>
             Manage offers you've sent and received
@@ -456,7 +458,7 @@ function OffersPageContent() {
             <Tab
               label={
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <span>Received</span>
+                  <span>{t('offer.received')}</span>
                   {receivedOffers.filter((o) => o.status === 'pending').length >
                     0 && (
                     <Chip
@@ -472,7 +474,7 @@ function OffersPageContent() {
               }
               value='received'
             />
-            <Tab label='Sent' value='sent' />
+            <Tab label={t('offer.sent')} value='sent' />
           </Tabs>
         </Paper>
 
@@ -490,19 +492,19 @@ function OffersPageContent() {
               sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
             />
             <Typography variant='h6' color='text.secondary' gutterBottom>
-              No offers {activeTab === 'received' ? 'received' : 'sent'} yet
+              {activeTab === 'received' ? t('offer.noReceivedOffers') : t('offer.noSentOffers')}
             </Typography>
             <Typography variant='body2' color='text.disabled' sx={{ mb: 3 }}>
               {activeTab === 'received'
                 ? 'Offers from senders will appear here'
-                : 'Send an offer to a traveler from the search page'}
+                : t('offer.noSentOffersDesc')}
             </Typography>
             {activeTab === 'sent' && (
               <Button
                 variant='contained'
                 onClick={() => router.push('/search')}
               >
-                Browse Trips
+                {t('search.browseTrips')}
               </Button>
             )}
           </Paper>
@@ -543,7 +545,7 @@ function OffersPageContent() {
             }
             disabled={loading}
           >
-            Cancel
+            {t('common.cancel')}
           </Button>
           <Button
             onClick={() => {
@@ -561,10 +563,10 @@ function OffersPageContent() {
             startIcon={loading ? <CircularProgress size={16} /> : undefined}
           >
             {loading
-              ? 'Processing...'
+              ? t('admin.processing')
               : confirmDialog.action === 'accept'
-                ? 'Accept'
-                : 'Decline'}
+                ? t('offer.accept')
+                : t('offer.decline')}
           </Button>
         </DialogActions>
       </Dialog>

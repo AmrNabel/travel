@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import { Trip } from '@/types/trip';
 import { useUser } from '@/hooks/useUser';
+import { useLanguage } from '@/contexts/LanguageContext';
 import FlightIcon from '@mui/icons-material/Flight';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LuggageIcon from '@mui/icons-material/Luggage';
@@ -42,6 +43,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
   contactLoading,
 }) => {
   const theme = useTheme();
+  const { t } = useLanguage();
   const { user: traveler, loading: userLoading } = useUser(trip.userId);
 
   return (
@@ -76,7 +78,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
             boxShadow: theme.shadows[4],
           }}
         >
-          Match
+          {t('myActivity.matched')}
         </Box>
       )}
       <CardContent sx={{ p: 3 }}>
@@ -103,11 +105,11 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                   {userLoading ? (
                     <CircularProgress size={16} />
                   ) : (
-                    traveler?.name || 'Traveler'
+                    traveler?.name || t('trip.traveler')
                   )}
                 </Typography>
                 <Typography variant='caption' color='text.secondary'>
-                  Verified Traveler
+                  {t('profile.verified')} {t('trip.traveler')}
                 </Typography>
               </Box>
             </Box>
@@ -126,9 +128,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 <Typography variant='body1' fontWeight={700}>
                   {trip.fromCity || 'NYC'}
                 </Typography>
-                <Typography variant='caption' color='text.secondary'>
-                  New York
-                </Typography>
+                
               </Box>
               <Box
                 sx={{
@@ -146,9 +146,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 <Typography variant='body1' fontWeight={700}>
                   {trip.toCity || 'LON'}
                 </Typography>
-                <Typography variant='caption' color='text.secondary'>
-                  London
-                </Typography>
+              
               </Box>
             </Box>
           </Grid>
@@ -200,7 +198,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
               {/* Send Offer Button */}
               {showSendOffer && !isOwnTrip && (
                 <Button variant='gradient' size='small' onClick={onSendOffer}>
-                  Send Offer
+                  {t('action.sendOffer')}
                 </Button>
               )}
 
@@ -218,10 +216,10 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 }
               >
                 {contactLoading
-                  ? 'Connecting...'
+                  ? t('chat.connecting')
                   : isOwnTrip
-                    ? 'Your Trip'
-                    : 'Message'}
+                    ? t('card.yourTrip')
+                    : t('card.message')}
               </Button>
             </Box>
           </Grid>

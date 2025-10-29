@@ -24,6 +24,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { UserRole } from '@/types/user';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -44,6 +45,7 @@ export const SignupForm: React.FC = () => {
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   const { signUp } = useAuth();
+  const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
 
@@ -60,17 +62,17 @@ export const SignupForm: React.FC = () => {
 
     // Validation
     if (!agreedToTerms) {
-      setError('Please agree to the Terms of Service and Privacy Policy');
+      setError(t('home.footer.terms'));
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('validation.passwordsDoNotMatch'));
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError(t('validation.passwordTooShort'));
       return;
     }
 
@@ -87,7 +89,7 @@ export const SignupForm: React.FC = () => {
       router.push('/');
     } catch (err: unknown) {
       const error = err as { message?: string };
-      setError(error.message || 'Failed to create account');
+      setError(error.message || t('auth.emailAlreadyExists'));
     } finally {
       setLoading(false);
     }
@@ -123,10 +125,10 @@ export const SignupForm: React.FC = () => {
           sx={{ fontSize: 48, color: 'primary.main', mb: 1 }}
         />
         <Typography variant='h4' component='h1' gutterBottom fontWeight={800}>
-          Welcome aboard! 🚀
+          {t('home.hero.title')} 🚀
         </Typography>
         <Typography variant='body1' color='text.secondary'>
-          Join our community of travelers and senders.
+          {t('home.hero.subtitle')}
         </Typography>
       </Box>
 
@@ -156,8 +158,8 @@ export const SignupForm: React.FC = () => {
             },
           }}
         >
-          <ToggleButton value='signup'>Sign Up</ToggleButton>
-          <ToggleButton value='login'>Log In</ToggleButton>
+          <ToggleButton value='signup'>{t('auth.signup')}</ToggleButton>
+          <ToggleButton value='login'>{t('auth.login')}</ToggleButton>
         </ToggleButtonGroup>
       </Box>
 
@@ -176,7 +178,7 @@ export const SignupForm: React.FC = () => {
             },
           }}
         >
-          Continue with Google
+          {t('auth.signUpWith')} Google
         </Button>
         <Button
           variant='outlined'
@@ -191,14 +193,14 @@ export const SignupForm: React.FC = () => {
             },
           }}
         >
-          Continue with Facebook
+          {t('auth.signUpWith')} Facebook
         </Button>
       </Box>
 
       {/* Divider */}
       <Divider sx={{ my: 3 }}>
         <Typography variant='body2' color='text.secondary' fontWeight={600}>
-          OR
+          {t('common.or')}
         </Typography>
       </Divider>
 
@@ -212,19 +214,18 @@ export const SignupForm: React.FC = () => {
       {/* Signup Form */}
       <Box component='form' onSubmit={handleSubmit}>
         <TextField
-          label='Full Name'
+          label={t('auth.name')}
           name='name'
           value={formData.name}
           onChange={handleChange}
           fullWidth
           required
           margin='normal'
-          placeholder='Jane Doe 👋'
           sx={{ mb: 2 }}
         />
 
         <TextField
-          label='Email Address'
+          label={t('auth.email')}
           name='email'
           type='email'
           value={formData.email}
@@ -232,7 +233,6 @@ export const SignupForm: React.FC = () => {
           fullWidth
           required
           margin='normal'
-          placeholder='your@email.com ✉️'
           sx={{ mb: 2 }}
         />
 
@@ -245,12 +245,11 @@ export const SignupForm: React.FC = () => {
           fullWidth
           required
           margin='normal'
-          placeholder='01159253977'
           sx={{ mb: 2 }}
         />
 
         <TextField
-          label='Password'
+          label={t('auth.password')}
           name='password'
           type='password'
           value={formData.password}
@@ -258,13 +257,12 @@ export const SignupForm: React.FC = () => {
           fullWidth
           required
           margin='normal'
-          placeholder='•••••••• 🔒'
-          helperText='At least 6 characters'
+          helperText={t('auth.weakPassword')}
           sx={{ mb: 2 }}
         />
 
         <TextField
-          label='Confirm Password'
+          label={t('auth.confirmPassword')}
           name='confirmPassword'
           type='password'
           value={formData.confirmPassword}
@@ -272,7 +270,6 @@ export const SignupForm: React.FC = () => {
           fullWidth
           required
           margin='normal'
-          placeholder='•••••••• 🔒'
           sx={{ mb: 2 }}
         />
 
@@ -284,14 +281,14 @@ export const SignupForm: React.FC = () => {
             <FormControlLabel
               value='traveler'
               control={<Radio />}
-              label='Deliver items as a traveler'
+              label={t('home.hero.travelerButton')}
             />
             <FormControlLabel
               value='sender'
               control={<Radio />}
-              label='Send items with travelers'
+              label={t('home.hero.senderButton')}
             />
-            <FormControlLabel value='both' control={<Radio />} label='Both' />
+            <FormControlLabel value='both' control={<Radio />} label={t('profile.both')} />
           </RadioGroup>
         </FormControl>
 
@@ -313,7 +310,7 @@ export const SignupForm: React.FC = () => {
                 '&:hover': { textDecoration: 'underline' },
               }}
             >
-              Terms of Service
+              {t('home.footer.terms')}
             </MuiLink>{' '}
             &{' '}
             <MuiLink
@@ -325,7 +322,7 @@ export const SignupForm: React.FC = () => {
                 '&:hover': { textDecoration: 'underline' },
               }}
             >
-              Privacy Policy
+              {t('home.footer.privacy')}
             </MuiLink>
             .
           </Typography>
@@ -339,13 +336,13 @@ export const SignupForm: React.FC = () => {
           size='large'
           sx={{ py: 1.5, mb: 2 }}
         >
-          {loading ? 'Creating Account...' : 'Create My Account'}
+          {loading ? `${t('common.loading')}...` : t('auth.signup')}
         </Button>
 
         {/* Links */}
         <Box sx={{ textAlign: 'center', mt: 3 }}>
           <Typography variant='body2' color='text.secondary'>
-            Already have an account?{' '}
+            {t('auth.alreadyHaveAccount')}{' '}
             <Link href='/login' passHref legacyBehavior>
               <MuiLink
                 sx={{
@@ -355,7 +352,7 @@ export const SignupForm: React.FC = () => {
                   '&:hover': { textDecoration: 'underline' },
                 }}
               >
-                Log In
+                {t('auth.login')}
               </MuiLink>
             </Link>
           </Typography>

@@ -5,10 +5,12 @@ import { ChatWindow } from '@/components/chat/ChatWindow';
 import { NavBar } from '@/components/common/NavBar';
 import { Container, Box, IconButton, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/contexts/LanguageContext';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function ChatPage({ params }: { params: { chatId: string } }) {
   const router = useRouter();
+  const { t } = useLanguage();
 
   return (
     <AuthGuard>
@@ -20,7 +22,7 @@ export default function ChatPage({ params }: { params: { chatId: string } }) {
               <ArrowBackIcon />
             </IconButton>
             <Typography variant='h5' fontWeight={700}>
-              Conversation
+              {t('chat.chat')}
             </Typography>
           </Box>
           <ChatWindow chatId={params.chatId} />

@@ -6,6 +6,7 @@ import { Box, TextField, Button, Typography, Alert, Grid } from '@mui/material';
 import { CreateRequestInput } from '@/types/request';
 import { useRequests } from '@/hooks/useRequests';
 import { useNotification } from '@/contexts/NotificationContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const RequestForm: React.FC = () => {
   const [formData, setFormData] = useState<CreateRequestInput>({
@@ -22,6 +23,7 @@ export const RequestForm: React.FC = () => {
   const { createRequest } = useRequests();
   const router = useRouter();
   const { showNotification } = useNotification();
+  const { t } = useLanguage();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -38,11 +40,11 @@ export const RequestForm: React.FC = () => {
 
     try {
       await createRequest(formData);
-      showNotification('Request created successfully!', 'success');
+      showNotification(t('request.createSuccess'), 'success');
       router.push('/my-trips');
     } catch (err: unknown) {
       const error = err as { message?: string };
-      const errorMsg = error.message || 'Failed to create request';
+      const errorMsg = error.message || t('error.creatingRequest');
       setError(errorMsg);
       showNotification(errorMsg, 'error');
     } finally {
@@ -57,7 +59,7 @@ export const RequestForm: React.FC = () => {
       sx={{ maxWidth: 600, mx: 'auto', mt: 4 }}
     >
       <Typography variant='h4' component='h1' gutterBottom>
-        Request Item Delivery
+        {t('request.requestDelivery')}
       </Typography>
 
       {error && (
@@ -69,7 +71,7 @@ export const RequestForm: React.FC = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
-            label='From City'
+            label={t('request.fromCity')}
             name='fromCity'
             value={formData.fromCity}
             onChange={handleChange}
@@ -80,7 +82,7 @@ export const RequestForm: React.FC = () => {
 
         <Grid item xs={12} sm={6}>
           <TextField
-            label='To City'
+            label={t('request.toCity')}
             name='toCity'
             value={formData.toCity}
             onChange={handleChange}
@@ -91,30 +93,31 @@ export const RequestForm: React.FC = () => {
 
         <Grid item xs={12} sm={6}>
           <TextField
-            label='Item Type'
+            label={t('request.itemType')}
             name='itemType'
             value={formData.itemType}
             onChange={handleChange}
             fullWidth
             required
-            helperText='e.g., Documents, Electronics'
+            helperText={t('form.itemTypePlaceholder')}
           />
         </Grid>
 
         <Grid item xs={12} sm={6}>
           <TextField
-            label='Weight (e.g., 2kg)'
+            label={t('request.weight')}
             name='weight'
             value={formData.weight}
             onChange={handleChange}
             fullWidth
             required
+            helperText={t('form.weightPlaceholder')}
           />
         </Grid>
 
         <Grid item xs={12}>
           <TextField
-            label='Offer Price'
+            label={t('request.offerPrice')}
             name='offerPrice'
             type='number'
             value={formData.offerPrice}
@@ -127,13 +130,14 @@ export const RequestForm: React.FC = () => {
 
         <Grid item xs={12}>
           <TextField
-            label='Description (Optional)'
+            label={t('request.description')}
             name='description'
             value={formData.description}
             onChange={handleChange}
             fullWidth
             multiline
             rows={3}
+            helperText={t('form.descriptionPlaceholder')}
           />
         </Grid>
       </Grid>
@@ -145,7 +149,7 @@ export const RequestForm: React.FC = () => {
         disabled={loading}
         sx={{ mt: 3 }}
       >
-        {loading ? 'Creating Request...' : 'Submit Request'}
+        {loading ? `${t('common.loading')}...` : t('common.submit')}
       </Button>
     </Box>
   );

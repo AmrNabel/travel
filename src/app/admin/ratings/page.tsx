@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { NavBar } from '@/components/common/NavBar';
+import { useLanguage } from '@/contexts/LanguageContext';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import PersonIcon from '@mui/icons-material/Person';
 import GroupIcon from '@mui/icons-material/Group';
@@ -23,6 +24,7 @@ import {
 } from '@/utils/recalculateRatings';
 
 export default function RatingsAdminPage() {
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [userId, setUserId] = useState('');
   const [result, setResult] = useState<{
@@ -34,7 +36,7 @@ export default function RatingsAdminPage() {
     if (!userId.trim()) {
       setResult({
         type: 'error',
-        message: 'Please enter a user ID',
+        message: t('admin.enterUserIdPrompt'),
       });
       return;
     }
@@ -46,13 +48,13 @@ export default function RatingsAdminPage() {
       const stats = await recalculateUserRatings(userId.trim());
       setResult({
         type: 'success',
-        message: `✅ Successfully updated! Rating: ${stats.rating.toFixed(1)}, Total: ${stats.totalRatings}`,
+        message: t('admin.recalculateSuccess', { rating: stats.rating.toFixed(1), total: stats.totalRatings }),
       });
       setUserId('');
     } catch (error: any) {
       setResult({
         type: 'error',
-        message: `❌ Error: ${error.message}`,
+        message: t('admin.recalculateError', { message: error.message }),
       });
     } finally {
       setLoading(false);
@@ -62,7 +64,7 @@ export default function RatingsAdminPage() {
   const handleRecalculateAll = async () => {
     if (
       !confirm(
-        'This will recalculate ratings for ALL users. This may take a while. Continue?'
+        t('admin.confirmRecalculateAll')
       )
     ) {
       return;
@@ -75,12 +77,12 @@ export default function RatingsAdminPage() {
       const stats = await recalculateAllUserRatings();
       setResult({
         type: 'success',
-        message: `✅ Recalculation complete! Updated: ${stats.updated}, Errors: ${stats.errors}`,
+        message: t('admin.recalculateAllSuccess', { updated: stats.updated, errors: stats.errors }),
       });
     } catch (error: any) {
       setResult({
         type: 'error',
-        message: `❌ Error: ${error.message}`,
+        message: t('admin.recalculateError', { message: error.message }),
       });
     } finally {
       setLoading(false);
@@ -95,10 +97,10 @@ export default function RatingsAdminPage() {
           <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
             <Box sx={{ mb: 4 }}>
               <Typography variant='h4' fontWeight={700} gutterBottom>
-                ⚙️ Rating Statistics Admin
+                ⚙️ {t('admin.ratingStats')}
               </Typography>
               <Typography variant='body2' color='text.secondary'>
-                Manually recalculate user rating statistics
+                {t('admin.ratingStatsDesc')}
               </Typography>
             </Box>
 
@@ -116,17 +118,17 @@ export default function RatingsAdminPage() {
             <Box sx={{ mb: 4 }}>
               <Typography variant='h6' fontWeight={600} gutterBottom>
                 <PersonIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-                Recalculate Single User
+                {t('admin.recalculateSingle')}
               </Typography>
               <Typography variant='body2' color='text.secondary' sx={{ mb: 2 }}>
-                Enter a user ID to recalculate their rating statistics
+                {t('admin.singleUserDesc')}
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
                 <TextField
-                  label='User ID'
+                  label={t('admin.userId')}
                   value={userId}
                   onChange={(e) => setUserId(e.target.value)}
-                  placeholder='Enter user ID'
+                  placeholder={t('admin.enterUserId')}
                   fullWidth
                   size='small'
                   disabled={loading}
@@ -144,7 +146,7 @@ export default function RatingsAdminPage() {
                   disabled={loading}
                   sx={{ minWidth: 150 }}
                 >
-                  {loading ? 'Processing...' : 'Recalculate'}
+                  {loading ? t('admin.processing') : t('admin.recalculate')}
                 </Button>
               </Box>
             </Box>
@@ -155,15 +157,13 @@ export default function RatingsAdminPage() {
             <Box>
               <Typography variant='h6' fontWeight={600} gutterBottom>
                 <GroupIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-                Recalculate All Users
+                {t('admin.recalculateAll')}
               </Typography>
               <Typography variant='body2' color='text.secondary' sx={{ mb: 2 }}>
-                Recalculate rating statistics for all users in the system. This
-                may take a while.
+                {t('admin.allUsersDesc')}
               </Typography>
               <Alert severity='warning' sx={{ mb: 2 }}>
-                <strong>Warning:</strong> This will process all users and may
-                take several minutes depending on the number of users.
+                <strong>{t('admin.warningTitle')}</strong> {t('admin.warningMessage')}
               </Alert>
               <Button
                 variant='contained'
@@ -179,7 +179,7 @@ export default function RatingsAdminPage() {
                 disabled={loading}
                 size='large'
               >
-                {loading ? 'Processing All Users...' : 'Recalculate All Users'}
+                {loading ? t('admin.processingAll') : t('admin.recalculateAll')}
               </Button>
             </Box>
 
@@ -188,27 +188,14 @@ export default function RatingsAdminPage() {
             {/* Instructions */}
             <Box sx={{ bgcolor: 'action.hover', p: 3, borderRadius: 2 }}>
               <Typography variant='subtitle2' fontWeight={600} gutterBottom>
-                📋 How to Use:
+                {t('admin.howToUse')}
               </Typography>
               <Typography variant='body2' component='div' sx={{ pl: 2 }}>
                 <ul style={{ margin: 0 }}>
-                  <li>
-                    <strong>Single User:</strong> Enter a user ID and click
-                    "Recalculate" to update their stats
-                  </li>
-                  <li>
-                    <strong>All Users:</strong> Click "Recalculate All Users" to
-                    update everyone's stats
-                  </li>
-                  <li>
-                    <strong>When to Use:</strong> Run this when rating stats
-                    appear incorrect or after data migration
-                  </li>
-                  <li>
-                    <strong>Weekly Maintenance:</strong> You can run
-                    "Recalculate All Users" once a week to ensure data
-                    consistency
-                  </li>
+                  <li>{t('admin.howToUseSingle')}</li>
+                  <li>{t('admin.howToUseAll')}</li>
+                  <li>{t('admin.whenToUse')}</li>
+                  <li>{t('admin.weeklyMaintenance')}</li>
                 </ul>
               </Typography>
             </Box>
@@ -216,9 +203,7 @@ export default function RatingsAdminPage() {
             {/* Quick Access Info */}
             <Box sx={{ mt: 3, p: 2, bgcolor: 'primary.50', borderRadius: 2 }}>
               <Typography variant='caption' color='text.secondary'>
-                <strong>💡 Tip:</strong> To find a user ID, go to their profile
-                page and check the URL. The ID is the last part: /profile/
-                <strong>USER_ID</strong>
+                {t('admin.tip')}
               </Typography>
             </Box>
           </Paper>

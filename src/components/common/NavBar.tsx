@@ -25,6 +25,7 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -36,9 +37,11 @@ import LuggageIcon from '@mui/icons-material/Luggage';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { NotificationBell } from '@/components/notifications/NotificationBell';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const NavBar = () => {
   const { user, signOut } = useAuth();
+  const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -78,19 +81,23 @@ export const NavBar = () => {
                 variant='h6'
                 sx={{ fontWeight: 700, color: 'text.primary' }}
               >
-                CarryOn
+                {t('common.appName')}
               </Typography>
             </Box>
           </Link>
           {isMobile ? (
-            <IconButton
-              onClick={() => setMobileMenuOpen(true)}
-              sx={{ color: 'text.primary' }}
-            >
-              <MenuIcon />
-            </IconButton>
+            <>
+              <LanguageSwitcher />
+              <IconButton
+                onClick={() => setMobileMenuOpen(true)}
+                sx={{ color: 'text.primary' }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </>
           ) : (
-            <Box sx={{ display: 'flex', gap: 2 }}>
+            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+              <LanguageSwitcher />
               <Link href='/login' passHref legacyBehavior>
                 <Button
                   variant='outlined'
@@ -99,7 +106,7 @@ export const NavBar = () => {
                     px: 3,
                   }}
                 >
-                  Login
+                  {t('nav.login')}
                 </Button>
               </Link>
               <Link href='/signup' passHref legacyBehavior>
@@ -110,7 +117,7 @@ export const NavBar = () => {
                     px: 3,
                   }}
                 >
-                  Sign Up
+                  {t('nav.signup')}
                 </Button>
               </Link>
             </Box>
@@ -122,36 +129,26 @@ export const NavBar = () => {
           open={mobileMenuOpen}
           onClose={() => setMobileMenuOpen(false)}
         >
-          <List sx={{ width: 250, pt: 3 }}>
-            <ListItem>
-              <Link
-                href='/login'
-                style={{ width: '100%', textDecoration: 'none' }}
-              >
-                <Button
-                  variant='outlined'
-                  fullWidth
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Login
-                </Button>
-              </Link>
+          <Box sx={{ width: 280, pt: 2 }}>
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/login' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('nav.login')} />
+              </ListItemButton>
             </ListItem>
-            <ListItem>
-              <Link
-                href='/signup'
-                style={{ width: '100%', textDecoration: 'none' }}
-              >
-                <Button
-                  variant='gradient'
-                  fullWidth
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Sign Up
-                </Button>
-              </Link>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/signup' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <AddIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('nav.signup')} />
+              </ListItemButton>
             </ListItem>
           </List>
+          </Box>
         </Drawer>
       </AppBar>
     );
@@ -159,144 +156,161 @@ export const NavBar = () => {
 
   // Authenticated navbar
   return (
-    <>
-      <AppBar position='sticky' elevation={0}>
-        <Toolbar sx={{ py: 1 }}>
-          <Link
-            href='/'
-            style={{ textDecoration: 'none', flexGrow: isMobile ? 1 : 0 }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
-              <Typography
-                variant='h6'
-                sx={{ fontWeight: 700, color: 'text.primary' }}
-              >
-                CarryOn
-              </Typography>
-            </Box>
-          </Link>
-
-          {!isMobile && (
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1,
-                ml: 4,
-                flexGrow: 1,
-              }}
+    <AppBar position='sticky' elevation={0}>
+      <Toolbar sx={{ py: 1 }}>
+        <Link href='/' style={{ textDecoration: 'none', flexGrow: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
+            <Typography
+              variant='h6'
+              sx={{ fontWeight: 700, color: 'text.primary' }}
             >
-              <Link href='/search' passHref legacyBehavior>
-                <Button
-                  color='inherit'
-                  startIcon={<SearchIcon />}
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': { color: 'primary.main' },
-                  }}
-                >
-                  Search
-                </Button>
-              </Link>
-              <Link href='/my-trips' passHref legacyBehavior>
-                <Button
-                  color='inherit'
-                  startIcon={<DashboardIcon />}
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': { color: 'primary.main' },
-                  }}
-                >
-                  My Trips
-                </Button>
-              </Link>
-              <Link href='/offers' passHref legacyBehavior>
-                <Button
-                  color='inherit'
-                  startIcon={<LocalOfferIcon />}
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': { color: 'primary.main' },
-                  }}
-                >
-                  Offers
-                </Button>
-              </Link>
-              <Link href='/chats' passHref legacyBehavior>
-                <Button
-                  color='inherit'
-                  startIcon={
-                    <Badge badgeContent={0} color='error'>
-                      <ChatIcon />
-                    </Badge>
-                  }
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': { color: 'primary.main' },
-                  }}
-                >
-                  Messages
-                </Button>
-              </Link>
-            </Box>
-          )}
-
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 2,
-              alignItems: 'center',
-              ml: isMobile ? 0 : 'auto',
-            }}
-          >
-            {isMobile ? (
-              <>
-                <IconButton
-                  color='inherit'
-                  onClick={() => setMobileMenuOpen(true)}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </>
-            ) : (
-              <>
-                <Link href='/add-trip' passHref legacyBehavior>
-                  <Button
-                    variant='gradient'
-                    startIcon={<AddIcon />}
-                    sx={{ borderRadius: '9999px' }}
-                  >
-                    Post Trip
-                  </Button>
-                </Link>
-                <Link href='/send-item' passHref legacyBehavior>
-                  <Button
-                    variant='orange'
-                    startIcon={<LuggageIcon />}
-                    sx={{ borderRadius: '9999px' }}
-                  >
-                    Send Item
-                  </Button>
-                </Link>
-              </>
-            )}
-            {!isMobile && <NotificationBell />}
-            <Avatar
-              sx={{
-                width: 40,
-                height: 40,
-                cursor: 'pointer',
-                border: 2,
-                borderColor: 'primary.main',
-              }}
-              onClick={handleUserMenuOpen}
-            >
-              {user.name.charAt(0).toUpperCase()}
-            </Avatar>
+              {t('common.appName')}
+            </Typography>
           </Box>
-        </Toolbar>
-      </AppBar>
+        </Link>
+
+        {isMobile ? (
+          <>
+            <NotificationBell />
+            <LanguageSwitcher />
+            <IconButton
+              onClick={() => setMobileMenuOpen(true)}
+              sx={{ color: 'text.primary' }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </>
+        ) : (
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+            <Link href='/search' passHref legacyBehavior>
+              <Button
+                color='inherit'
+                startIcon={<SearchIcon />}
+                sx={{
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {t('nav.search')}
+              </Button>
+            </Link>
+            <Link href='/my-trips' passHref legacyBehavior>
+              <Button
+                color='inherit'
+                startIcon={<DashboardIcon />}
+                sx={{
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {t('nav.myTrips')}
+              </Button>
+            </Link>
+            <Link href='/offers' passHref legacyBehavior>
+              <Button
+                color='inherit'
+                startIcon={<LocalOfferIcon />}
+                sx={{
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {t('nav.offers')}
+              </Button>
+            </Link>
+            <Link href='/chats' passHref legacyBehavior>
+              <Button
+                color='inherit'
+                startIcon={<ChatIcon />}
+                sx={{
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {t('nav.messages')}
+              </Button>
+            </Link>
+            <Link href='/add-trip' passHref legacyBehavior>
+              <Button
+                variant='gradient'
+                startIcon={<FlightTakeoffIcon />}
+                sx={{
+                  borderRadius: '9999px',
+                  px: 3,
+                }}
+              >
+                {t('nav.postTrip')}
+              </Button>
+            </Link>
+            <Link href='/send-item' passHref legacyBehavior>
+              <Button
+                variant='orange'
+                startIcon={<LuggageIcon />}
+                sx={{
+                  borderRadius: '9999px',
+                  px: 3,
+                }}
+              >
+                {t('nav.sendItem')}
+              </Button>
+            </Link>
+
+            <NotificationBell />
+            <LanguageSwitcher />
+
+            <IconButton onClick={handleUserMenuOpen} sx={{ ml: 1 }}>
+              <Avatar
+                sx={{
+                  width: 40,
+                  height: 40,
+                  bgcolor: 'primary.main',
+                  fontSize: '1rem',
+                }}
+              >
+                {user.name.charAt(0).toUpperCase()}
+              </Avatar>
+            </IconButton>
+            <Menu
+              anchorEl={userMenuAnchor}
+              open={Boolean(userMenuAnchor)}
+              onClose={handleUserMenuClose}
+              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+              PaperProps={{
+                sx: { mt: 1.5, minWidth: 200 },
+              }}
+            >
+              <Box sx={{ px: 2, py: 1.5, borderBottom: 1, borderColor: 'divider' }}>
+                <Typography variant='subtitle2' fontWeight={600}>
+                  {user.name}
+                </Typography>
+                <Typography variant='caption' color='text.secondary'>
+                  {user.email}
+                </Typography>
+              </Box>
+              <MenuItem
+                component={Link}
+                href={`/profile/${user.id}`}
+                onClick={handleUserMenuClose}
+                sx={{ py: 1.5, gap: 2 }}
+              >
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <PersonIcon fontSize='small' />
+                </ListItemIcon>
+                <ListItemText>{t('nav.profile')}</ListItemText>
+              </MenuItem>
+              <Divider />
+              <MenuItem onClick={handleSignOut} sx={{ py: 1.5, color: 'error.main', gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <LogoutIcon fontSize='small' color='error' />
+                </ListItemIcon>
+                <ListItemText>{t('nav.logout')}</ListItemText>
+              </MenuItem>
+            </Menu>
+          </Box>
+        )}
+      </Toolbar>
 
       {/* Mobile Menu Drawer */}
       <Drawer
@@ -304,147 +318,109 @@ export const NavBar = () => {
         open={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
       >
-        <List sx={{ width: 280, pt: 3 }}>
-          <ListItem>
-            <Box sx={{ px: 2, py: 1 }}>
-              <Typography variant='subtitle2' color='text.secondary'>
-                Menu
-              </Typography>
+        <Box sx={{ width: 280, pt: 2 }}>
+          <Box sx={{ px: 3, py: 2, borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+              <Avatar
+                sx={{
+                  width: 48,
+                  height: 48,
+                  bgcolor: 'primary.main',
+                  fontSize: '1.25rem',
+                }}
+              >
+                {user.name.charAt(0).toUpperCase()}
+              </Avatar>
+              <Box>
+                <Typography variant='subtitle1' fontWeight={600}>
+                  {user.name}
+                </Typography>
+                <Typography variant='caption' color='text.secondary'>
+                  {user.email}
+                </Typography>
+              </Box>
             </Box>
-          </ListItem>
-          <Divider sx={{ my: 1 }} />
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href='/search'
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
-              <ListItemText primary='Search' />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href='/my-trips'
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary='My Trips' />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href='/offers'
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <ListItemIcon>
-                <LocalOfferIcon />
-              </ListItemIcon>
-              <ListItemText primary='Offers' />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href='/chats'
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <ListItemIcon>
-                <Badge badgeContent={0} color='error'>
-                  <ChatIcon />
-                </Badge>
-              </ListItemIcon>
-              <ListItemText primary='Messages' />
-            </ListItemButton>
-          </ListItem>
-          <Divider sx={{ my: 1 }} />
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href='/add-trip'
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText primary='Post a Trip' />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href='/send-item'
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <ListItemIcon>
-                <LuggageIcon />
-              </ListItemIcon>
-              <ListItemText primary='Send an Item' />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Drawer>
+          </Box>
 
-      {/* User Menu */}
-      <Menu
-        anchorEl={userMenuAnchor}
-        open={Boolean(userMenuAnchor)}
-        onClose={handleUserMenuClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-        PaperProps={{
-          sx: {
-            mt: 1,
-            minWidth: 200,
-            borderRadius: 2,
-          },
-        }}
-      >
-        <Box sx={{ px: 2, py: 1.5 }}>
-          <Typography variant='subtitle1' fontWeight={600}>
-            {user.name}
-          </Typography>
-          <Typography variant='body2' color='text.secondary'>
-            {user.email}
-          </Typography>
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/search' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <SearchIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('nav.search')} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/my-trips' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('nav.myTrips')} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/offers' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <LocalOfferIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('nav.offers')} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/chats' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <ChatIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('nav.messages')} />
+              </ListItemButton>
+            </ListItem>
+            <Divider sx={{ my: 1 }} />
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/add-trip' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <FlightTakeoffIcon color='primary' />
+                </ListItemIcon>
+                <ListItemText 
+                  primary={t('nav.postTrip')}
+                  primaryTypographyProps={{ color: 'primary.main', fontWeight: 600 }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href='/send-item' sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <LuggageIcon color='secondary' />
+                </ListItemIcon>
+                <ListItemText 
+                  primary={t('nav.sendItem')}
+                  primaryTypographyProps={{ color: 'secondary.main', fontWeight: 600 }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <Divider sx={{ my: 1 }} />
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href={`/profile/${user.id}`} sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('nav.profile')} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleSignOut} sx={{ gap: 2 }}>
+                <ListItemIcon sx={{ minWidth: 'auto' }}>
+                  <LogoutIcon color='error' />
+                </ListItemIcon>
+                <ListItemText 
+                  primary={t('nav.logout')} 
+                  primaryTypographyProps={{ color: 'error.main' }}
+                />
+              </ListItemButton>
+            </ListItem>
+          </List>
         </Box>
-        <Divider />
-        <MenuItem
-          onClick={() => {
-            router.push(`/profile/${user.id}`);
-            handleUserMenuClose();
-          }}
-        >
-          <ListItemIcon>
-            <PersonIcon fontSize='small' />
-          </ListItemIcon>
-          My Profile
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            router.push('/my-trips');
-            handleUserMenuClose();
-          }}
-        >
-          <ListItemIcon>
-            <DashboardIcon fontSize='small' />
-          </ListItemIcon>
-          My Trips & Requests
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleSignOut}>
-          <ListItemIcon>
-            <LogoutIcon fontSize='small' />
-          </ListItemIcon>
-          Sign Out
-        </MenuItem>
-      </Menu>
-    </>
+      </Drawer>
+    </AppBar>
   );
 };

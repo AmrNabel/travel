@@ -11,18 +11,15 @@ import {
   Grid,
   Paper,
   Container,
-  AppBar,
-  Toolbar,
-  Avatar,
   InputAdornment,
-  ToggleButton,
-  ToggleButtonGroup,
   alpha,
   useTheme,
 } from '@mui/material';
 import { CreateTripInput } from '@/types/trip';
 import { useTrips } from '@/hooks/useTrips';
 import { useNotification } from '@/contexts/NotificationContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { NavBar } from '@/components/common/NavBar';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -47,6 +44,7 @@ export const TripForm: React.FC = () => {
   >('Small');
 
   const { createTrip } = useTrips();
+  const { t } = useLanguage();
   const router = useRouter();
   const { showNotification } = useNotification();
   const theme = useTheme();
@@ -66,11 +64,11 @@ export const TripForm: React.FC = () => {
 
     try {
       await createTrip({ ...formData, capacity: selectedSize });
-      showNotification('Trip created successfully!', 'success');
+      showNotification(t('trip.createSuccess'), 'success');
       router.push('/my-trips');
     } catch (err: unknown) {
       const error = err as { message?: string };
-      const errorMsg = error.message || 'Failed to create trip';
+      const errorMsg = error.message || t('error.creatingTrip');
       setError(errorMsg);
       showNotification(errorMsg, 'error');
     } finally {
@@ -80,74 +78,7 @@ export const TripForm: React.FC = () => {
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Header */}
-      <AppBar position='sticky' elevation={0}>
-        <Toolbar sx={{ py: 1 }}>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1.5,
-              flexGrow: 1,
-            }}
-          >
-            <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
-            <Typography
-              variant='h6'
-              component='div'
-              sx={{ fontWeight: 700, color: 'text.primary' }}
-            >
-              CarryOn
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-            <Button
-              color='inherit'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              Find Items
-            </Button>
-            <Button
-              color='inherit'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              My Trips
-            </Button>
-            <Button
-              color='inherit'
-              sx={{ color: 'primary.main', fontWeight: 600 }}
-            >
-              Add Trip
-            </Button>
-            <Button
-              color='inherit'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              Messages
-            </Button>
-          </Box>
-          <Avatar
-            sx={{
-              width: 40,
-              height: 40,
-              ml: 2,
-              cursor: 'pointer',
-              border: 2,
-              borderColor: 'divider',
-            }}
-            src='https://i.pravatar.cc/150?img=1'
-          />
-        </Toolbar>
-      </AppBar>
+      
 
       {/* Main Content */}
       <Container maxWidth='md' sx={{ flexGrow: 1, py: { xs: 4, md: 8 } }}>
@@ -159,7 +90,7 @@ export const TripForm: React.FC = () => {
           fontWeight={900}
           sx={{ mb: 6, fontSize: { xs: '2rem', md: '2.5rem' } }}
         >
-          Share Your Travel Route
+          {t('trip.postTrip')}
         </Typography>
 
         <Paper
@@ -186,14 +117,14 @@ export const TripForm: React.FC = () => {
                 fontWeight={700}
                 sx={{ mb: 3 }}
               >
-                Where are you going?
+                {t('trip.fromCity')} & {t('trip.toCity')}
               </Typography>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <TextField
-                    label='From'
+                    label={t('trip.fromCity')}
                     name='fromCity'
-                    placeholder='Origin City'
+                    placeholder={t('form.fromCityPlaceholder')}
                     value={formData.fromCity}
                     onChange={handleChange}
                     fullWidth
@@ -210,9 +141,9 @@ export const TripForm: React.FC = () => {
 
                 <Grid item xs={12} md={6}>
                   <TextField
-                    label='To'
+                    label={t('trip.toCity')}
                     name='toCity'
-                    placeholder='Destination City'
+                    placeholder={t('form.toCityPlaceholder')}
                     value={formData.toCity}
                     onChange={handleChange}
                     fullWidth
@@ -237,15 +168,14 @@ export const TripForm: React.FC = () => {
                 fontWeight={700}
                 sx={{ mb: 3 }}
               >
-                When are you traveling?
+                {t('form.dateLabel')}
               </Typography>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <TextField
-                    label='Arrival Date'
+                    label={t('trip.date')}
                     name='date'
                     type='date'
-                    placeholder='Select date'
                     value={formData.date.toISOString().split('T')[0]}
                     onChange={(e) =>
                       setFormData((prev) => ({
@@ -276,12 +206,12 @@ export const TripForm: React.FC = () => {
                 fontWeight={700}
                 sx={{ mb: 3 }}
               >
-                What&apos;s your capacity and price?
+                {t('trip.capacity')} & {t('trip.pricePerKg')}
               </Typography>
               <Grid container spacing={3} alignItems='flex-end'>
                 <Grid item xs={12} md={6}>
                   <Typography variant='body1' fontWeight={600} sx={{ mb: 2 }}>
-                    Available Space
+                    {t('form.capacityLabel')}
                   </Typography>
                   <Grid container spacing={2}>
                     <Grid item xs={4}>
@@ -318,7 +248,7 @@ export const TripForm: React.FC = () => {
                           }}
                         />
                         <Typography variant='body2' fontWeight={600}>
-                          Small
+                          {t('search.small')}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -357,7 +287,7 @@ export const TripForm: React.FC = () => {
                           }}
                         />
                         <Typography variant='body2' fontWeight={600}>
-                          Medium
+                          {t('search.medium')}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -396,7 +326,7 @@ export const TripForm: React.FC = () => {
                           }}
                         />
                         <Typography variant='body2' fontWeight={600}>
-                          Large
+                          {t('search.large')}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -405,10 +335,10 @@ export const TripForm: React.FC = () => {
 
                 <Grid item xs={12} md={6}>
                   <TextField
-                    label='Your Price'
+                    label={t('form.pricePerKgLabel')}
                     name='pricePerKg'
                     type='number'
-                    placeholder='0.00'
+                    placeholder={t('form.pricePerKgPlaceholder')}
                     value={formData.pricePerKg}
                     onChange={handleChange}
                     fullWidth
@@ -447,14 +377,14 @@ export const TripForm: React.FC = () => {
             {/* Description (Optional) */}
             <Box sx={{ mb: 4 }}>
               <TextField
-                label='Additional Notes (Optional)'
+                label={`${t('trip.description')} (${t('form.optional')})`}
                 name='description'
                 value={formData.description}
                 onChange={handleChange}
                 fullWidth
                 multiline
                 rows={3}
-                placeholder='Any additional information about your trip...'
+                placeholder={t('form.descriptionPlaceholder')}
               />
             </Box>
 
@@ -468,7 +398,7 @@ export const TripForm: React.FC = () => {
                 startIcon={<FlightTakeoffIcon />}
                 sx={{ px: 6 }}
               >
-                {loading ? 'Posting...' : 'Post a Trip ✈️'}
+                {loading ? `${t('common.loading')}...` : t('nav.postTrip')}
               </Button>
             </Box>
           </Box>
@@ -492,8 +422,7 @@ export const TripForm: React.FC = () => {
           color='text.secondary'
           sx={{ fontStyle: 'italic' }}
         >
-          &quot;The world is a book and those who do not travel read only one
-          page.&quot; - Saint Augustine
+          &quot;{t('home.footer.quote')}&quot; - {t('home.footer.author')}
         </Typography>
       </Box>
     </Box>
