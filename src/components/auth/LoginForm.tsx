@@ -120,7 +120,7 @@ export const LoginForm: React.FC = () => {
       </Box>
 
       {/* Social Login Buttons */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
+      {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
         <Button
           variant='outlined'
           fullWidth
@@ -151,14 +151,14 @@ export const LoginForm: React.FC = () => {
         >
           {t('auth.signInWith')} Facebook
         </Button>
-      </Box>
+      </Box> */}
 
       {/* Divider */}
-      <Divider sx={{ my: 3 }}>
+      {/* <Divider sx={{ my: 3 }}>
         <Typography variant='body2' color='text.secondary' fontWeight={600}>
           {t('common.or')}
         </Typography>
-      </Divider>
+      </Divider> */}
 
       {/* Error Alert */}
       {error && (

@@ -4,9 +4,19 @@ import { poppins } from '@/theme/theme';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Firebase Travel - Connect Your Journey. Deliver a Smile.',
+  title: {
+    default: 'CarryOn — Connect Your Journey. Deliver a Smile.',
+    template: '%s | CarryOn',
+  },
   description:
-    "Turn your travel into a rewarding delivery route. Your journey helps someone's day!",
+    "CarryOn lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+  applicationName: 'CarryOn',
+  themeColor: '#1976d2',
 };
 
 export default function RootLayout({

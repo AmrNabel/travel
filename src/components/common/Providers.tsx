@@ -7,6 +7,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import { NotificationProvider } from '@/contexts/NotificationContext';
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
 import { lightTheme } from '@/theme/theme';
+import { SEOUpdater } from '@/components/common/SEOUpdater';
 
 function ThemeWrapper({ children }: { children: React.ReactNode }) {
   const { direction } = useLanguage();
@@ -23,6 +24,7 @@ function ThemeWrapper({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <SEOUpdater />
       {children}
     </ThemeProvider>
   );

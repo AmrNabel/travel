@@ -1,6 +1,7 @@
 {
   "common": {
     "appName": "CarryOn",
+    "seoDescription": "CarryOn lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.",
     "loading": "Loading...",
     "error": "Error",
     "success": "Success",
