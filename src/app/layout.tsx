@@ -5,8 +5,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'CarryOn — Connect Your Journey. Deliver a Smile.',
-    template: '%s | CarryOn',
+    default: 'Mosafer — Connect Your Journey. Deliver a Smile.',
+    template: '%s | Mosafer',
   },
   description:
     "CarryOn lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
-  applicationName: 'CarryOn',
+  applicationName: 'Mosafer',
   themeColor: '#1976d2',
 };
 

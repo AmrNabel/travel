@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "CarryOn",
+    "appName": "Mosafer",
     "seoDescription": "CarryOn lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.",
     "loading": "Loading...",
     "error": "Error",
@@ -100,7 +100,7 @@
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
       "contact": "Contact Us",
-      "copyright": "© 2024 CarryOn. All rights reserved."
+    "copyright": "© 2024 Mosafer. All rights reserved."
     }
   },
 
