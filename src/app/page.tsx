@@ -175,13 +175,14 @@ export default function HomePage() {
                     display: 'flex',
                     gap: 2,
                     flexDirection: { xs: 'column', sm: 'row' },
+                    width: '100%',
                   }}
                 >
                   <Link href='/signup' passHref legacyBehavior>
                     <Button
                       variant='gradient'
                       size='large'
-                      sx={{ flex: { xs: 1, sm: 0 } }}
+                      sx={{ flex: { xs: 1, sm: 1 } }}
                     >
                       {t('home.hero.travelerButton')}
                     </Button>
@@ -190,7 +191,7 @@ export default function HomePage() {
                     <Button
                       variant='orange'
                       size='large'
-                      sx={{ flex: { xs: 1, sm: 0 } }}
+                      sx={{ flex: { xs: 1, sm: 1 } }}
                     >
                       {t('home.hero.senderButton')}
                     </Button>
