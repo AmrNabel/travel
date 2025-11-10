@@ -31,31 +31,53 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState<Language>('ar-EG');
-  const [direction, setDirection] = useState<Direction>('ltr');
+  const [direction, setDirection] = useState<Direction>('rtl');
 
   useEffect(() => {
-    // Get initial language from i18n
-    const currentLang = (i18n.language || 'en') as Language;
-    setLanguage(currentLang);
-    setDirection(currentLang === 'ar-EG' ? 'rtl' : 'ltr');
+    const normalizeLanguage = (lng: string | null | undefined): Language =>
+      lng === 'ar-EG' || lng === 'ar' ? 'ar-EG' : 'en';
 
-    // Update HTML dir and lang attributes
-    document.documentElement.dir = currentLang === 'ar-EG' ? 'rtl' : 'ltr';
-    document.documentElement.lang = currentLang === 'ar-EG' ? 'ar' : 'en';
-  }, [i18n.language]);
+    const applyLanguage = (lang: Language) => {
+      setLanguage(lang);
+      const newDir = lang === 'ar-EG' ? 'rtl' : 'ltr';
+      setDirection(newDir);
+
+      document.documentElement.dir = newDir;
+      document.documentElement.lang = lang === 'ar-EG' ? 'ar' : 'en';
+    };
+
+    const handleLanguageChange = (lng: string) => {
+      applyLanguage(normalizeLanguage(lng));
+    };
+
+    const storedLangRaw =
+      typeof window !== 'undefined' ? localStorage.getItem('i18nextLng') : null;
+    const storedLang =
+      storedLangRaw === null ? null : normalizeLanguage(storedLangRaw);
+    const initialLang: Language = storedLang ?? 'ar-EG';
+
+    applyLanguage(initialLang);
+
+    if (!storedLang && typeof window !== 'undefined') {
+      localStorage.setItem('i18nextLng', initialLang);
+    }
+
+    if (i18n.language !== initialLang) {
+      i18n.changeLanguage(initialLang);
+    }
+
+    i18n.on('languageChanged', handleLanguageChange);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
 
   const changeLanguage = async (lang: Language) => {
     await i18n.changeLanguage(lang);
-    setLanguage(lang);
-    const newDir = lang === 'ar-EG' ? 'rtl' : 'ltr';
-    setDirection(newDir);
-
-    // Update HTML attributes
-    document.documentElement.dir = newDir;
-    document.documentElement.lang = lang === 'ar-EG' ? 'ar' : 'en';
-
-    // Store preference
-    localStorage.setItem('i18nextLng', lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('i18nextLng', lang);
+    }
   };
 
   return (

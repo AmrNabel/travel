@@ -23,12 +23,12 @@ i18n
   // init i18next
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'ar-EG',
     supportedLngs: ['en', 'ar-EG'],
     debug: process.env.NODE_ENV === 'development',
-    
+
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      order: ['localStorage', 'htmlTag', 'navigator'],
       caches: ['localStorage'],
       lookupLocalStorage: 'i18nextLng',
     },
@@ -43,4 +43,3 @@ i18n
   });
 
 export default i18n;
-

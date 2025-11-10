@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s | Mosafer',
   },
   description:
-    "CarryOn lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.",
+    'CarryOn lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang='ar' dir='rtl'>
       <body className={poppins.className}>
         <Providers>
           <AppShell>{children}</AppShell>
