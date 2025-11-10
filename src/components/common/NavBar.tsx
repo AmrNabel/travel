@@ -74,8 +74,8 @@ export const NavBar = () => {
     return (
       <AppBar position='sticky' elevation={0}>
         <Toolbar sx={{ py: 1 }}>
-          <Link href='/' style={{ textDecoration: 'none', flexGrow: 1,  }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5,  }}>
+          <Link href='/' style={{ textDecoration: 'none', flexGrow: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
               <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
               <Typography
                 variant='h6'
@@ -130,24 +130,24 @@ export const NavBar = () => {
           onClose={() => setMobileMenuOpen(false)}
         >
           <Box sx={{ width: 280, pt: 2 }}>
-          <List>
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href='/login' sx={{ gap: 2 }}>
-                <ListItemIcon sx={{ minWidth: 'auto' }}>
-                  <PersonIcon />
-                </ListItemIcon>
-                <ListItemText primary={t('nav.login')} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href='/signup' sx={{ gap: 2 }}>
-                <ListItemIcon sx={{ minWidth: 'auto' }}>
-                  <AddIcon />
-                </ListItemIcon>
-                <ListItemText primary={t('nav.signup')} />
-              </ListItemButton>
-            </ListItem>
-          </List>
+            <List>
+              <ListItem disablePadding>
+                <ListItemButton component={Link} href='/login' sx={{ gap: 2 }}>
+                  <ListItemIcon sx={{ minWidth: 'auto' }}>
+                    <PersonIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={t('nav.login')} />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton component={Link} href='/signup' sx={{ gap: 2 }}>
+                  <ListItemIcon sx={{ minWidth: 'auto' }}>
+                    <AddIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={t('nav.signup')} />
+                </ListItemButton>
+              </ListItem>
+            </List>
           </Box>
         </Drawer>
       </AppBar>
@@ -158,7 +158,7 @@ export const NavBar = () => {
   return (
     <AppBar position='sticky' elevation={0}>
       <Toolbar sx={{ py: 1 }}>
-        <Link href='/' style={{ ,  }}>
+        <Link href='/' style={{ textDecoration: 'none', flexGrow: 1 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
             <Typography
@@ -188,6 +188,8 @@ export const NavBar = () => {
                 color='inherit'
                 startIcon={<SearchIcon />}
                 sx={{
+                  direction: 'row',
+                  gap: 0.5,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
@@ -200,6 +202,8 @@ export const NavBar = () => {
                 color='inherit'
                 startIcon={<DashboardIcon />}
                 sx={{
+                  direction: 'row',
+                  gap: 0.5,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
@@ -212,6 +216,8 @@ export const NavBar = () => {
                 color='inherit'
                 startIcon={<LocalOfferIcon />}
                 sx={{
+                  direction: 'row',
+                  gap: 0.5,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
@@ -224,6 +230,8 @@ export const NavBar = () => {
                 color='inherit'
                 startIcon={<ChatIcon />}
                 sx={{
+                  direction: 'row',
+                  gap: 0.5,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
@@ -236,6 +244,8 @@ export const NavBar = () => {
                 variant='gradient'
                 startIcon={<FlightTakeoffIcon />}
                 sx={{
+                  direction: 'row',
+                  gap: 0.5,
                   borderRadius: '9999px',
                   px: 3,
                 }}
@@ -248,6 +258,8 @@ export const NavBar = () => {
                 variant='orange'
                 startIcon={<LuggageIcon />}
                 sx={{
+                  direction: 'row',
+                  gap: 0.5,
                   borderRadius: '9999px',
                   px: 3,
                 }}
@@ -281,7 +293,9 @@ export const NavBar = () => {
                 sx: { mt: 1.5, minWidth: 200 },
               }}
             >
-              <Box sx={{ px: 2, py: 1.5, borderBottom: 1, borderColor: 'divider' }}>
+              <Box
+                sx={{ px: 2, py: 1.5, borderBottom: 1, borderColor: 'divider' }}
+              >
                 <Typography variant='subtitle2' fontWeight={600}>
                   {user.name}
                 </Typography>
@@ -301,7 +315,10 @@ export const NavBar = () => {
                 <ListItemText>{t('nav.profile')}</ListItemText>
               </MenuItem>
               <Divider />
-              <MenuItem onClick={handleSignOut} sx={{ py: 1.5, color: 'error.main', gap: 2 }}>
+              <MenuItem
+                onClick={handleSignOut}
+                sx={{ py: 1.5, color: 'error.main', gap: 2 }}
+              >
                 <ListItemIcon sx={{ minWidth: 'auto' }}>
                   <LogoutIcon fontSize='small' color='error' />
                 </ListItemIcon>
@@ -381,26 +398,40 @@ export const NavBar = () => {
                 <ListItemIcon sx={{ minWidth: 'auto' }}>
                   <FlightTakeoffIcon color='primary' />
                 </ListItemIcon>
-                <ListItemText 
+                <ListItemText
                   primary={t('nav.postTrip')}
-                  primaryTypographyProps={{ color: 'primary.main', fontWeight: 600 }}
+                  primaryTypographyProps={{
+                    color: 'primary.main',
+                    fontWeight: 600,
+                  }}
                 />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component={Link} href='/send-item' sx={{ gap: 2 }}>
+              <ListItemButton
+                component={Link}
+                href='/send-item'
+                sx={{ gap: 2 }}
+              >
                 <ListItemIcon sx={{ minWidth: 'auto' }}>
                   <LuggageIcon color='secondary' />
                 </ListItemIcon>
-                <ListItemText 
+                <ListItemText
                   primary={t('nav.sendItem')}
-                  primaryTypographyProps={{ color: 'secondary.main', fontWeight: 600 }}
+                  primaryTypographyProps={{
+                    color: 'secondary.main',
+                    fontWeight: 600,
+                  }}
                 />
               </ListItemButton>
             </ListItem>
             <Divider sx={{ my: 1 }} />
             <ListItem disablePadding>
-              <ListItemButton component={Link} href={`/profile/${user.id}`} sx={{ gap: 2 }}>
+              <ListItemButton
+                component={Link}
+                href={`/profile/${user.id}`}
+                sx={{ gap: 2 }}
+              >
                 <ListItemIcon sx={{ minWidth: 'auto' }}>
                   <PersonIcon />
                 </ListItemIcon>
@@ -412,8 +443,8 @@ export const NavBar = () => {
                 <ListItemIcon sx={{ minWidth: 'auto' }}>
                   <LogoutIcon color='error' />
                 </ListItemIcon>
-                <ListItemText 
-                  primary={t('nav.logout')} 
+                <ListItemText
+                  primary={t('nav.logout')}
                   primaryTypographyProps={{ color: 'error.main' }}
                 />
               </ListItemButton>

@@ -57,7 +57,7 @@ export const TripForm: React.FC = () => {
     toCity: '',
     date: new Date(),
     capacity: 'Small',
-    pricePerKg: 0,
+    pricePerKg: 50,
     description: '',
     trainNumber: '',
     departureTime: '',
@@ -194,7 +194,8 @@ export const TripForm: React.FC = () => {
         setTrainData(null);
         setTrainError(
           t('error.loadingTrain', {
-            defaultValue: 'Unable to load train schedule. Please verify the number.',
+            defaultValue:
+              'Unable to load train schedule. Please verify the number.',
           })
         );
       } finally {
@@ -239,9 +240,7 @@ export const TripForm: React.FC = () => {
           station.stationName?.en,
           station.stationName?.ar,
         ].filter(Boolean) as string[];
-        return possibleNames.some(
-          (name) => normalize(name) === normalizedCity
-        );
+        return possibleNames.some((name) => normalize(name) === normalizedCity);
       });
     };
 
@@ -372,8 +371,6 @@ export const TripForm: React.FC = () => {
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      
-
       {/* Main Content */}
       <Container maxWidth='md' sx={{ flexGrow: 1, py: { xs: 4, md: 8 } }}>
         <Typography
@@ -806,7 +803,7 @@ export const TripForm: React.FC = () => {
                     onChange={handleChange}
                     fullWidth
                     required
-                    inputProps={{ min: 0, step: 0.01 }}
+                    inputProps={{ min: 50, step: 10 }}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position='start'>
@@ -858,8 +855,10 @@ export const TripForm: React.FC = () => {
                 variant='orange'
                 size='large'
                 disabled={loading}
-                startIcon={<FlightTakeoffIcon />}
-                sx={{ px: 6 }}
+                startIcon={
+                  <FlightTakeoffIcon sx={{ transform: 'scaleY(2p1)' }} />
+                }
+                sx={{ px: 6, direction: 'row', gap: 0.5 }}
               >
                 {loading ? `${t('common.loading')}...` : t('nav.postTrip')}
               </Button>
