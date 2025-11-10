@@ -125,7 +125,10 @@
     "noTrips": "مافيش رحلات",
     "noTripsDesc": "جرب تعدل الفلاتر بتاعتك",
     "tripDetails": "تفاصيل الرحلة",
-    "traveler": "المسافر"
+    "traveler": "المسافر",
+    "trainDetails": "تفاصيل القطار",
+    "trainNumber": "رقم القطار",
+    "departureTime": "موعد المغادرة"
   },
 
   "request": {
@@ -333,7 +336,7 @@
     "required": "مطلوب",
     "optional": "اختياري",
     "fromCityPlaceholder": "القاهرة، مصر",
-    "toCityPlaceholder": "دبي، الإمارات",
+    "toCityPlaceholder": "اسوان",
     "itemTypePlaceholder": "إلكترونيات، مستندات، إلخ.",
     "weightPlaceholder": "مثلاً ٢ كيلو",
     "descriptionPlaceholder": "أي تفاصيل إضافية...",
@@ -341,8 +344,11 @@
     "dateLabel": "تاريخ السفر",
     "capacityLabel": "المساحة المتاحة",
     "capacityPlaceholder": "مثلاً ٥ كيلو",
-    "pricePerKgLabel": "السعر بالكيلو (دولار)",
-    "pricePerKgPlaceholder": "مثلاً ١٠"
+    "pricePerKgLabel": "السعر بالكيلو (جنيه مصري)",
+    "pricePerKgPlaceholder": "مثلاً ١٠",
+    "trainNumberPlaceholder": "مثلاً ١٩٠٢",
+    "departureTimePlaceholder": "ساعة:دقيقة",
+    "noStations": "مافيش محطات"
   },
 
   "error": {
@@ -360,7 +366,9 @@
     "creatingRequest": "فشل إنشاء الطلب",
     "sendingOffer": "فشل إرسال العرض",
     "acceptingOffer": "فشل قبول العرض",
-    "decliningOffer": "فشل رفض العرض"
+    "decliningOffer": "فشل رفض العرض",
+    "loadingStations": "مش قادرين نحمّل قائمة المحطات.",
+    "loadingTrain": "مش قادرين نحمّل بيانات القطار. اتأكد من الرقم."
   },
 
   "validation": {
@@ -376,7 +384,9 @@
     "capacityRequired": "المساحة مطلوبة",
     "priceRequired": "السعر مطلوب",
     "itemTypeRequired": "نوع الحاجة مطلوب",
-    "weightRequired": "الوزن مطلوب"
+    "weightRequired": "الوزن مطلوب",
+    "trainMissingStation": "القطار {{train}} ما بيقفش في محطة {{station}}.",
+    "trainOrderInvalid": "القطار {{train}} ما بيمشيش من {{from}} لـ {{to}} بالترتيب ده."
   },
 
   "action": {

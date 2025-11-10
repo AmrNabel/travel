@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Box,
@@ -14,12 +14,13 @@ import {
   InputAdornment,
   alpha,
   useTheme,
+  Autocomplete,
+  CircularProgress,
 } from '@mui/material';
 import { CreateTripInput } from '@/types/trip';
 import { useTrips } from '@/hooks/useTrips';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { NavBar } from '@/components/common/NavBar';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -27,6 +28,28 @@ import LuggageIcon from '@mui/icons-material/Luggage';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import TrainIcon from '@mui/icons-material/Train';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
+type TrainStation = {
+  stationId: number | string;
+  stationName: {
+    en?: string;
+    ar?: string;
+  };
+  arrivalTime: string | null;
+  departureTime: string | null;
+};
+
+type TrainSchedule = {
+  startTime?: string;
+  stations: TrainStation[];
+};
+
+type TrainData = {
+  trainNumber?: string;
+  schedule?: TrainSchedule;
+};
 
 export const TripForm: React.FC = () => {
   const [formData, setFormData] = useState<CreateTripInput>({
@@ -36,20 +59,33 @@ export const TripForm: React.FC = () => {
     capacity: 'Small',
     pricePerKg: 0,
     description: '',
+    trainNumber: '',
+    departureTime: '',
   });
   const [error, setError] = useState('');
+  const [stationNames, setStationNames] = useState<string[]>([]);
+  const [stationsLoading, setStationsLoading] = useState(false);
+  const [stationsError, setStationsError] = useState('');
+  const [trainData, setTrainData] = useState<TrainData | null>(null);
+  const [trainLoading, setTrainLoading] = useState(false);
+  const [trainError, setTrainError] = useState('');
+  const [trainValidationError, setTrainValidationError] = useState('');
   const [loading, setLoading] = useState(false);
   const [selectedSize, setSelectedSize] = useState<
     'Small' | 'Medium' | 'Large'
   >('Small');
+  const lastAutoDepartureRef = useRef<string>('');
+  const previousFromCityRef = useRef<string>('');
 
   const { createTrip } = useTrips();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const router = useRouter();
   const { showNotification } = useNotification();
   const theme = useTheme();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -57,13 +93,271 @@ export const TripForm: React.FC = () => {
     }));
   };
 
+  useEffect(() => {
+    let isActive = true;
+    const controller = new AbortController();
+    const loadStations = async () => {
+      setStationsLoading(true);
+      setStationsError('');
+      try {
+        const filePath =
+          language === 'ar-EG' ? '/stations-ar.json' : '/stations-en.json';
+        const response = await fetch(filePath, { signal: controller.signal });
+        if (!response.ok) {
+          throw new Error(`Failed to load stations: ${response.status}`);
+        }
+        const data = await response.json();
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid stations format.');
+        }
+        if (!isActive) return;
+        setStationNames(data);
+      } catch (err) {
+        if (!isActive || controller.signal.aborted) {
+          return;
+        }
+        console.error(err);
+        setStationsError(
+          t('error.loadingStations', {
+            defaultValue: 'Unable to load station list.',
+          })
+        );
+        setStationNames([]);
+      } finally {
+        if (isActive) {
+          setStationsLoading(false);
+        }
+      }
+    };
+
+    loadStations();
+
+    return () => {
+      isActive = false;
+      controller.abort();
+    };
+  }, [language, t]);
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      fromCity: '',
+      toCity: '',
+      departureTime: '',
+    }));
+    setTrainValidationError('');
+    setTrainError('');
+    lastAutoDepartureRef.current = '';
+    previousFromCityRef.current = '';
+  }, [language]);
+
+  useEffect(() => {
+    const rawTrainNumber = formData.trainNumber?.trim() ?? '';
+    if (!rawTrainNumber) {
+      setTrainData(null);
+      setTrainError('');
+      setTrainValidationError('');
+      setTrainLoading(false);
+      return;
+    }
+
+    let isActive = true;
+    const controller = new AbortController();
+    const loadTrain = async () => {
+      setTrainLoading(true);
+      setTrainError('');
+      try {
+        const normalized = rawTrainNumber.replace(/\s+/g, '');
+        const filePath = `/trains/train-${normalized}.json`;
+        const response = await fetch(filePath, { signal: controller.signal });
+        if (!response.ok) {
+          throw new Error(`Failed to load train ${normalized}`);
+        }
+        const data = await response.json();
+        if (!isActive) return;
+        const stations = data?.schedule?.stations;
+        if (!stations || !Array.isArray(stations) || stations.length === 0) {
+          throw new Error(`Train ${normalized} has no station data.`);
+        }
+        setTrainData({
+          trainNumber: data.trainNumber ?? normalized,
+          schedule: {
+            startTime: data?.schedule?.startTime,
+            stations,
+          },
+        });
+      } catch (err) {
+        if (!isActive || controller.signal.aborted) {
+          return;
+        }
+        console.error(err);
+        setTrainData(null);
+        setTrainError(
+          t('error.loadingTrain', {
+            defaultValue: 'Unable to load train schedule. Please verify the number.',
+          })
+        );
+      } finally {
+        if (isActive) {
+          setTrainLoading(false);
+        }
+      }
+    };
+
+    loadTrain();
+
+    return () => {
+      isActive = false;
+      controller.abort();
+    };
+  }, [formData.trainNumber, t]);
+
+  useEffect(() => {
+    if (!formData.trainNumber?.trim()) {
+      setTrainValidationError('');
+      return;
+    }
+
+    const stations = trainData?.schedule?.stations ?? [];
+    if (!trainData || stations.length === 0) {
+      if (trainError) {
+        setTrainValidationError(trainError);
+      }
+      return;
+    }
+
+    const langKey = language === 'ar-EG' ? 'ar' : 'en';
+    const normalize = (value?: string | null) =>
+      (value ?? '').trim().toLowerCase();
+
+    const findStation = (city: string | undefined) => {
+      if (!city) return null;
+      const normalizedCity = normalize(city);
+      return stations.find((station) => {
+        const possibleNames = [
+          station.stationName?.[langKey],
+          station.stationName?.en,
+          station.stationName?.ar,
+        ].filter(Boolean) as string[];
+        return possibleNames.some(
+          (name) => normalize(name) === normalizedCity
+        );
+      });
+    };
+
+    const currentFromCity = formData.fromCity ?? '';
+    const fromCityChanged = previousFromCityRef.current !== currentFromCity;
+    const fromStop = findStation(formData.fromCity);
+    const toStop = findStation(formData.toCity);
+
+    if (formData.fromCity && !fromStop) {
+      setTrainValidationError(
+        t('validation.trainMissingStation', {
+          defaultValue:
+            'Selected train does not stop at the chosen departure station.',
+          station: formData.fromCity,
+          train: formData.trainNumber,
+        })
+      );
+      previousFromCityRef.current = currentFromCity;
+      return;
+    }
+
+    if (formData.toCity && !toStop) {
+      setTrainValidationError(
+        t('validation.trainMissingStation', {
+          defaultValue:
+            'Selected train does not stop at the chosen arrival station.',
+          station: formData.toCity,
+          train: formData.trainNumber,
+        })
+      );
+      previousFromCityRef.current = currentFromCity;
+      return;
+    }
+
+    if (fromStop && toStop) {
+      const fromIndex = stations.indexOf(fromStop);
+      const toIndex = stations.indexOf(toStop);
+
+      if (fromIndex === -1 || toIndex === -1 || fromIndex >= toIndex) {
+        setTrainValidationError(
+          t('validation.trainOrderInvalid', {
+            defaultValue:
+              'Selected train does not travel from the chosen departure station to the arrival station in this order.',
+            from: formData.fromCity,
+            to: formData.toCity,
+            train: formData.trainNumber,
+          })
+        );
+        previousFromCityRef.current = currentFromCity;
+        return;
+      }
+
+      const preferredDeparture =
+        fromStop.departureTime ??
+        fromStop.arrivalTime ??
+        trainData.schedule?.startTime ??
+        '';
+
+      if (preferredDeparture) {
+        const shouldAutoUpdate =
+          fromCityChanged ||
+          formData.departureTime === '' ||
+          formData.departureTime === lastAutoDepartureRef.current;
+
+        if (shouldAutoUpdate && formData.departureTime !== preferredDeparture) {
+          setFormData((prev) => ({
+            ...prev,
+            departureTime: preferredDeparture,
+          }));
+        }
+
+        lastAutoDepartureRef.current = preferredDeparture;
+      } else {
+        lastAutoDepartureRef.current = '';
+      }
+    }
+
+    setTrainValidationError('');
+    previousFromCityRef.current = currentFromCity;
+  }, [
+    formData.departureTime,
+    formData.fromCity,
+    formData.toCity,
+    formData.trainNumber,
+    language,
+    t,
+    trainData,
+    trainError,
+  ]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
+    if (trainError) {
+      setError(trainError);
+      setLoading(false);
+      return;
+    }
+
+    if (trainValidationError) {
+      setError(trainValidationError);
+      setLoading(false);
+      return;
+    }
+
     try {
-      await createTrip({ ...formData, capacity: selectedSize });
+      const payload: CreateTripInput = {
+        ...formData,
+        trainNumber: formData.trainNumber?.trim(),
+        departureTime: formData.departureTime?.trim(),
+        capacity: selectedSize,
+      };
+
+      await createTrip(payload);
       showNotification(t('trip.createSuccess'), 'success');
       router.push('/my-trips');
     } catch (err: unknown) {
@@ -119,39 +413,208 @@ export const TripForm: React.FC = () => {
               >
                 {t('trip.fromCity')} & {t('trip.toCity')}
               </Typography>
+              {stationsError && (
+                <Alert severity='error' sx={{ mb: 2, borderRadius: 2 }}>
+                  {stationsError}
+                </Alert>
+              )}
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
-                  <TextField
-                    label={t('trip.fromCity')}
-                    name='fromCity'
-                    placeholder={t('form.fromCityPlaceholder')}
-                    value={formData.fromCity}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position='start'>
-                          <FlightTakeoffIcon sx={{ color: 'text.secondary' }} />
-                        </InputAdornment>
-                      ),
-                    }}
+                  <Autocomplete
+                    options={stationNames}
+                    value={formData.fromCity || null}
+                    onChange={(_, value) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        fromCity: value ?? '',
+                      }))
+                    }
+                    loading={stationsLoading}
+                    autoHighlight
+                    disablePortal
+                    loadingText={t('common.loading', {
+                      defaultValue: 'Loading...',
+                    })}
+                    noOptionsText={
+                      stationsLoading
+                        ? t('common.loading', { defaultValue: 'Loading...' })
+                        : t('form.noStations', {
+                            defaultValue: 'No stations found',
+                          })
+                    }
+                    disabled={stationsLoading}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label={t('trip.fromCity')}
+                        placeholder={t('form.fromCityPlaceholder')}
+                        required
+                        InputProps={{
+                          ...params.InputProps,
+                          startAdornment: (
+                            <>
+                              <InputAdornment position='start'>
+                                <FlightTakeoffIcon
+                                  sx={{ color: 'text.secondary' }}
+                                />
+                              </InputAdornment>
+                              {params.InputProps.startAdornment}
+                            </>
+                          ),
+                          endAdornment: (
+                            <>
+                              {stationsLoading && (
+                                <CircularProgress
+                                  color='inherit'
+                                  size={18}
+                                  sx={{ mr: 1 }}
+                                />
+                              )}
+                              {params.InputProps.endAdornment}
+                            </>
+                          ),
+                        }}
+                      />
+                    )}
                   />
                 </Grid>
 
                 <Grid item xs={12} md={6}>
+                  <Autocomplete
+                    options={stationNames}
+                    value={formData.toCity || null}
+                    onChange={(_, value) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        toCity: value ?? '',
+                      }))
+                    }
+                    loading={stationsLoading}
+                    autoHighlight
+                    disablePortal
+                    loadingText={t('common.loading', {
+                      defaultValue: 'Loading...',
+                    })}
+                    noOptionsText={
+                      stationsLoading
+                        ? t('common.loading', { defaultValue: 'Loading...' })
+                        : t('form.noStations', {
+                            defaultValue: 'No stations found',
+                          })
+                    }
+                    disabled={stationsLoading}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label={t('trip.toCity')}
+                        placeholder={t('form.toCityPlaceholder')}
+                        required
+                        InputProps={{
+                          ...params.InputProps,
+                          startAdornment: (
+                            <>
+                              <InputAdornment position='start'>
+                                <FlightLandIcon
+                                  sx={{ color: 'text.secondary' }}
+                                />
+                              </InputAdornment>
+                              {params.InputProps.startAdornment}
+                            </>
+                          ),
+                          endAdornment: (
+                            <>
+                              {stationsLoading && (
+                                <CircularProgress
+                                  color='inherit'
+                                  size={18}
+                                  sx={{ mr: 1 }}
+                                />
+                              )}
+                              {params.InputProps.endAdornment}
+                            </>
+                          ),
+                        }}
+                      />
+                    )}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+
+            {/* Train Details */}
+            <Box sx={{ mb: 5 }}>
+              <Typography
+                variant='h5'
+                gutterBottom
+                fontWeight={700}
+                sx={{ mb: 3 }}
+              >
+                {t('trip.trainDetails', { defaultValue: 'Train Details' })}
+              </Typography>
+              {trainError && (
+                <Alert severity='error' sx={{ mb: 2, borderRadius: 2 }}>
+                  {trainError}
+                </Alert>
+              )}
+              {trainValidationError && !trainError && (
+                <Alert severity='warning' sx={{ mb: 2, borderRadius: 2 }}>
+                  {trainValidationError}
+                </Alert>
+              )}
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
                   <TextField
-                    label={t('trip.toCity')}
-                    name='toCity'
-                    placeholder={t('form.toCityPlaceholder')}
-                    value={formData.toCity}
+                    label={t('trip.trainNumber', {
+                      defaultValue: 'Train Number',
+                    })}
+                    name='trainNumber'
+                    placeholder={t('form.trainNumberPlaceholder', {
+                      defaultValue: 'e.g., 1902',
+                    })}
+                    value={formData.trainNumber ?? ''}
                     onChange={handleChange}
                     fullWidth
                     required
+                    autoComplete='off'
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position='start'>
-                          <FlightLandIcon sx={{ color: 'text.secondary' }} />
+                          <TrainIcon sx={{ color: 'text.secondary' }} />
+                        </InputAdornment>
+                      ),
+                      endAdornment: (
+                        <>
+                          {trainLoading && (
+                            <CircularProgress
+                              color='inherit'
+                              size={18}
+                              sx={{ mr: 1 }}
+                            />
+                          )}
+                        </>
+                      ),
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label={t('trip.departureTime', {
+                      defaultValue: 'Departure Time',
+                    })}
+                    name='departureTime'
+                    type='time'
+                    placeholder={t('form.departureTimePlaceholder', {
+                      defaultValue: 'HH:MM',
+                    })}
+                    value={formData.departureTime ?? ''}
+                    onChange={handleChange}
+                    fullWidth
+                    required
+                    InputLabelProps={{ shrink: true }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position='start'>
+                          <AccessTimeIcon sx={{ color: 'text.secondary' }} />
                         </InputAdornment>
                       ),
                     }}
@@ -357,7 +820,7 @@ export const TripForm: React.FC = () => {
                             color='text.secondary'
                             fontWeight={600}
                           >
-                            USD
+                            EGP
                           </Typography>
                         </InputAdornment>
                       ),

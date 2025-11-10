@@ -9,6 +9,8 @@ export interface Trip {
   capacity: string; // e.g., "10kg"
   pricePerKg: number;
   description?: string;
+  trainNumber?: string;
+  departureTime?: string;
   status: TripStatus;
   createdAt: Date;
   updatedAt: Date;
@@ -21,4 +23,6 @@ export interface CreateTripInput {
   capacity: string;
   pricePerKg: number;
   description?: string;
+  trainNumber?: string;
+  departureTime?: string;
 }

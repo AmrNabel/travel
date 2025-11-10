@@ -125,7 +125,10 @@
     "noTrips": "No trips found",
     "noTripsDesc": "Try adjusting your search filters",
     "tripDetails": "Trip Details",
-    "traveler": "Traveler"
+    "traveler": "Traveler",
+    "trainDetails": "Train Details",
+    "trainNumber": "Train Number",
+    "departureTime": "Departure Time"
   },
 
   "request": {
@@ -332,8 +335,8 @@
   "form": {
     "required": "Required",
     "optional": "Optional",
-    "fromCityPlaceholder": "New York, USA",
-    "toCityPlaceholder": "London, UK",
+    "fromCityPlaceholder": "Cairo",
+    "toCityPlaceholder": "Aswan",
     "itemTypePlaceholder": "Electronics, Documents, etc.",
     "weightPlaceholder": "e.g., 2kg",
     "descriptionPlaceholder": "Any additional details...",
@@ -341,8 +344,11 @@
     "dateLabel": "Travel Date",
     "capacityLabel": "Available Space",
     "capacityPlaceholder": "e.g., 5kg",
-    "pricePerKgLabel": "Price per KG (USD)",
-    "pricePerKgPlaceholder": "e.g., 10"
+    "pricePerKgLabel": "Price per KG (EGP)",
+    "pricePerKgPlaceholder": "e.g., 10",
+    "trainNumberPlaceholder": "e.g., 1902",
+    "departureTimePlaceholder": "HH:MM",
+    "noStations": "No stations found"
   },
 
   "error": {
@@ -360,7 +366,9 @@
     "creatingRequest": "Failed to create request",
     "sendingOffer": "Failed to send offer",
     "acceptingOffer": "Failed to accept offer",
-    "decliningOffer": "Failed to decline offer"
+    "decliningOffer": "Failed to decline offer",
+    "loadingStations": "Unable to load station list.",
+    "loadingTrain": "Unable to load train schedule. Please verify the number."
   },
 
   "validation": {
@@ -376,7 +384,9 @@
     "capacityRequired": "Capacity is required",
     "priceRequired": "Price is required",
     "itemTypeRequired": "Item type is required",
-    "weightRequired": "Weight is required"
+    "weightRequired": "Weight is required",
+    "trainMissingStation": "Train {{train}} does not stop at {{station}}.",
+    "trainOrderInvalid": "Train {{train}} does not travel from {{from}} to {{to}} in that order."
   },
 
   "action": {

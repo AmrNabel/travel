@@ -208,26 +208,7 @@ function MyTripsContent() {
         >
           {t('myActivity.title')}
         </Typography>
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-          <Link href='/add-trip' passHref legacyBehavior>
-            <Button
-              variant='gradient'
-              startIcon={<AddIcon />}
-              sx={{ borderRadius: '9999px' }}
-            >
-              {t('trip.postTrip')}
-            </Button>
-          </Link>
-          <Link href='/send-item' passHref legacyBehavior>
-            <Button
-              variant='orange'
-              startIcon={<AddIcon />}
-              sx={{ borderRadius: '9999px' }}
-            >
-              {t('request.sendItem')}
-            </Button>
-          </Link>
-        </Box>
+        
       </Box>
 
       <Paper
