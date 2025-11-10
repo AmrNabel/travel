@@ -30,7 +30,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { t, i18n } = useTranslation();
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('ar-EG');
   const [direction, setDirection] = useState<Direction>('ltr');
 
   useEffect(() => {
@@ -66,4 +66,3 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
     </LanguageContext.Provider>
   );
 };
-
