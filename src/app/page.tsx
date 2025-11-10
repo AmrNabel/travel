@@ -293,7 +293,7 @@ export default function HomePage() {
           {t('home.loggedIn.welcome', { name: user.name })}
         </Typography>
 
-        <Grid container spacing={3}>
+        <Grid container sx={{ gap: 3 }}>
           <Grid item xs={12} sm={6} md={4}>
             <Link href='/add-trip' passHref legacyBehavior>
               <Paper
