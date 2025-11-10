@@ -67,6 +67,9 @@ export const RequestForm: React.FC = () => {
           {error}
         </Alert>
       )}
+      <Alert severity='info' sx={{ mb: 2 }}>
+        {t('request.offerPrerequisite')}
+      </Alert>
 
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>

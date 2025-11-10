@@ -29,6 +29,7 @@ interface TripCardWithUserProps {
   index: number;
   isMatch: boolean;
   showSendOffer: boolean;
+  showSendOfferHint?: boolean;
   onSendOffer: () => void;
   onMessage: () => void;
   isOwnTrip: boolean;
@@ -40,6 +41,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
   index,
   isMatch,
   showSendOffer,
+  showSendOfferHint = false,
   onSendOffer,
   onMessage,
   isOwnTrip,
@@ -235,10 +237,33 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
               }}
             >
               {/* Send Offer Button */}
-              {showSendOffer && !isOwnTrip && (
-                <Button variant='gradient' size='small' onClick={onSendOffer}>
-                  {t('action.sendOffer')}
-                </Button>
+              {!isOwnTrip && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'stretch',
+                    minWidth: { xs: 'auto', sm: 140 },
+                  }}
+                >
+                  <Button
+                    variant='gradient'
+                    size='small'
+                    onClick={onSendOffer}
+                    disabled={!showSendOffer}
+                  >
+                    {t('action.sendOffer')}
+                  </Button>
+                  {!showSendOffer && showSendOfferHint && (
+                    <Typography
+                      variant='caption'
+                      color='text.secondary'
+                      sx={{ mt: 0.5 }}
+                    >
+                      {t('offer.needRequestHint')}
+                    </Typography>
+                  )}
+                </Box>
               )}
 
               {/* Contact Button */}

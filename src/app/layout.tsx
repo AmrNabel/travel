@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s | Mosafer',
   },
   description:
-    'CarryOn lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.',
+    'Mosafer lets travelers earn by delivering items along their route, and helps senders deliver faster and cheaper via trusted travelers.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',

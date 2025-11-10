@@ -102,7 +102,7 @@
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
       "contact": "Contact Us",
-    "copyright": "© 2024 Mosafer. All rights reserved."
+      "copyright": "© 2024 Mosafer. All rights reserved."
     }
   },
 
@@ -156,6 +156,7 @@
     "noRequests": "No requests found",
     "noRequestsDesc": "Try adjusting your search filters",
     "requestDetails": "Request Details",
+    "offerPrerequisite": "Completing this request unlocks the ability to send offers to travelers.",
     "sender": "Sender"
   },
 
@@ -207,10 +208,14 @@
     },
     "noReceivedOffers": "No received offers yet",
     "noSentOffers": "No sent offers yet",
-    "noSentOffersDesc": "You haven't sent any offers yet. Find a trip and send one!",
+    "noSentOffersDesc": "Create a delivery request, then find a trip and send your first offer!",
     "offerFrom": "Offer from",
     "offerTo": "Offer to",
     "createRequestFirst": "Please create a delivery request first to send offers",
+    "createRequestBannerTitle": "Create a delivery request to send offers",
+    "createRequestBannerBody": "Add the item you want to send so travelers can review it before accepting your offer.",
+    "createRequestCTA": "Create request",
+    "needRequestHint": "Add your delivery request to enable offers with this traveler.",
     "alreadyHaveOffer": "You already have a pending offer for this trip"
   },
 
@@ -522,4 +527,3 @@
     }
   }
 }
-

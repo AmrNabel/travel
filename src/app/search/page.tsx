@@ -17,8 +17,11 @@ import {
   ToggleButtonGroup,
   Slider,
   CircularProgress,
+  Alert,
+  AlertTitle,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import NextLink from 'next/link';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
 import { useChat } from '@/hooks/useChat';
@@ -159,7 +162,11 @@ export default function SearchPage() {
 
     const fromCity = normalize(searchParams.fromCity);
     const station = stations.find((s: any) => {
-      const stationName = s.stationName?.[langKey] ?? s.stationName?.en ?? s.stationName?.ar ?? '';
+      const stationName =
+        s.stationName?.[langKey] ??
+        s.stationName?.en ??
+        s.stationName?.ar ??
+        '';
       return normalize(stationName) === fromCity;
     });
 
@@ -218,6 +225,9 @@ export default function SearchPage() {
   const { requests: myRequests } = useRequests(
     user ? { userId: user.id } : undefined
   );
+  const hasActiveRequests = user
+    ? myRequests.some((r) => r.status === 'pending')
+    : false;
   const { createChat } = useChat();
   const { createOffer } = useOffers();
 
@@ -291,10 +301,7 @@ export default function SearchPage() {
     const activeRequests = myRequests.filter((r) => r.status === 'pending');
 
     if (activeRequests.length === 0) {
-      showNotification(
-        t('offer.createRequestFirst'),
-        'warning'
-      );
+      showNotification(t('offer.createRequestFirst'), 'warning');
       router.push('/send-item');
       return;
     }
@@ -415,7 +422,8 @@ export default function SearchPage() {
                       })
                     : filters.trainNumber && !searchParams.fromCity
                       ? t('search.selectStationFirst', {
-                          defaultValue: 'Select a departure station to see time',
+                          defaultValue:
+                            'Select a departure station to see time',
                         })
                       : ''
             }
@@ -483,9 +491,11 @@ export default function SearchPage() {
 
         <Box>
           <Typography variant='body2' fontWeight={600} sx={{ mb: 2 }}>
-            {t('search.itemSize')} ({t('search.sizeRange', {
+            {t('search.itemSize')} (
+            {t('search.sizeRange', {
               defaultValue: 'Range',
-            })})
+            })}
+            )
           </Typography>
           <Slider
             value={filters.sizeRange}
@@ -580,9 +590,13 @@ export default function SearchPage() {
                     {t('search.title')}
                   </Typography>
                   <Typography variant='body1' color='text.secondary'>
-                    {t('search.found', { 
-                      count: activeTab === 'trips' ? trips.length : requests.length,
-                      type: activeTab === 'trips' ? t('myActivity.myTrips').toLowerCase() : t('myActivity.myRequests').toLowerCase()
+                    {t('search.found', {
+                      count:
+                        activeTab === 'trips' ? trips.length : requests.length,
+                      type:
+                        activeTab === 'trips'
+                          ? t('myActivity.myTrips').toLowerCase()
+                          : t('myActivity.myRequests').toLowerCase(),
                     })}
                   </Typography>
                 </Box>
@@ -611,13 +625,38 @@ export default function SearchPage() {
                     },
                   }}
                 >
-                  <ToggleButton value='trips'>{t('search.browseTrips')}</ToggleButton>
-                  <ToggleButton value='requests'>{t('search.browseRequests')}</ToggleButton>
+                  <ToggleButton value='trips'>
+                    {t('search.browseTrips')}
+                  </ToggleButton>
+                  <ToggleButton value='requests'>
+                    {t('search.browseRequests')}
+                  </ToggleButton>
                 </ToggleButtonGroup>
               </Box>
 
               {activeTab === 'trips' && (
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  {activeTab === 'trips' && user && !hasActiveRequests && (
+                    <Alert
+                      severity='info'
+                      variant='outlined'
+                      action={
+                        <Button
+                          component={NextLink}
+                          href='/send-item'
+                          size='small'
+                          variant='contained'
+                        >
+                          {t('offer.createRequestCTA')}
+                        </Button>
+                      }
+                    >
+                      <AlertTitle>
+                        {t('offer.createRequestBannerTitle')}
+                      </AlertTitle>
+                      {t('offer.createRequestBannerBody')}
+                    </Alert>
+                  )}
                   {tripsLoading ? (
                     <Typography>{t('common.loading')}...</Typography>
                   ) : trips.length === 0 ? (
@@ -642,10 +681,8 @@ export default function SearchPage() {
                         trip={trip}
                         index={index}
                         isMatch={index === 0}
-                        showSendOffer={
-                          myRequests.filter((r) => r.status === 'pending')
-                            .length > 0
-                        }
+                        showSendOffer={hasActiveRequests}
+                        showSendOfferHint={!!user && !hasActiveRequests}
                         onSendOffer={() => handleSendOffer(trip)}
                         onMessage={() =>
                           handleContactTrip(trip.id, trip.userId)
