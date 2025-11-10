@@ -21,7 +21,6 @@ import {
   MenuItem,
 } from '@mui/material';
 import { AuthGuard } from '@/components/auth/AuthGuard';
-import { NavBar } from '@/components/common/NavBar';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTrips } from '@/hooks/useTrips';
@@ -359,7 +358,6 @@ export default function MyTripsPage() {
   return (
     <AuthGuard>
       <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        <NavBar />
         <Container maxWidth='lg' sx={{ py: 4 }}>
           <MyTripsContent />
         </Container>

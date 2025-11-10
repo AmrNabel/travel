@@ -13,7 +13,6 @@ import {
   Divider,
 } from '@mui/material';
 import { AuthGuard } from '@/components/auth/AuthGuard';
-import { NavBar } from '@/components/common/NavBar';
 import { useLanguage } from '@/contexts/LanguageContext';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import PersonIcon from '@mui/icons-material/Person';
@@ -92,7 +91,6 @@ export default function RatingsAdminPage() {
   return (
     <AuthGuard>
       <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        <NavBar />
         <Container maxWidth='md' sx={{ py: 4 }}>
           <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
             <Box sx={{ mb: 4 }}>

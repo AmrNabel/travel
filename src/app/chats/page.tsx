@@ -20,7 +20,6 @@ import {
   useTheme,
 } from '@mui/material';
 import { AuthGuard } from '@/components/auth/AuthGuard';
-import { NavBar } from '@/components/common/NavBar';
 import { useChat } from '@/hooks/useChat';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -226,7 +225,6 @@ export default function ChatsPage() {
   return (
     <AuthGuard>
       <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        <NavBar />
         <Container maxWidth='lg' sx={{ py: 4 }}>
           <ChatsPageContent />
         </Container>

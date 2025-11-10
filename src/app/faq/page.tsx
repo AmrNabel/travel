@@ -11,7 +11,6 @@ import {
   useTheme,
   alpha,
 } from '@mui/material';
-import { NavBar } from '@/components/common/NavBar';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
@@ -38,7 +37,6 @@ export default function FAQPage() {
         background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.05)} 0%, ${alpha(theme.palette.secondary.main, 0.05)} 100%)`,
       }}
     >
-      <NavBar />
       <Container maxWidth='lg' sx={{ py: 6, flex: 1 }}>
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <QuestionAnswerIcon

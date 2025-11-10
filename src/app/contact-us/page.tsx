@@ -16,7 +16,6 @@ import {
   Alert,
   CircularProgress,
 } from '@mui/material';
-import { NavBar } from '@/components/common/NavBar';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useNotification } from '@/contexts/NotificationContext';
 import EmailIcon from '@mui/icons-material/Email';
@@ -116,7 +115,6 @@ export default function ContactUsPage() {
         background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.05)} 0%, ${alpha(theme.palette.secondary.main, 0.05)} 100%)`,
       }}
     >
-      <NavBar />
       <Container maxWidth='lg' sx={{ py: 6, flex: 1 }}>
         {/* Header */}
         <Box sx={{ textAlign: 'center', mb: 6 }}>

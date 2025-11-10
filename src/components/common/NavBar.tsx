@@ -74,8 +74,8 @@ export const NavBar = () => {
     return (
       <AppBar position='sticky' elevation={0}>
         <Toolbar sx={{ py: 1 }}>
-          <Link href='/' style={{ textDecoration: 'none', flexGrow: 1 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Link href='/' style={{ textDecoration: 'none', flexGrow: 1,  }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5,  }}>
               <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
               <Typography
                 variant='h6'
@@ -158,7 +158,7 @@ export const NavBar = () => {
   return (
     <AppBar position='sticky' elevation={0}>
       <Toolbar sx={{ py: 1 }}>
-        <Link href='/' style={{ textDecoration: 'none', flexGrow: 1 }}>
+        <Link href='/' style={{ ,  }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
             <Typography

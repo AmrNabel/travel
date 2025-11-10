@@ -33,7 +33,6 @@ import { useUser } from '@/hooks/useUser';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { NavBar } from '@/components/common/NavBar';
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { RatingDialog } from '@/components/ratings/RatingDialog';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
@@ -435,8 +434,6 @@ function OffersPageContent() {
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <NavBar />
-
       <Container maxWidth='lg' sx={{ py: 4 }}>
         {/* Header */}
         <Box sx={{ mb: 4 }}>

@@ -867,27 +867,6 @@ export const TripForm: React.FC = () => {
           </Box>
         </Paper>
       </Container>
-
-      {/* Footer */}
-      <Box
-        component='footer'
-        sx={{
-          py: 4,
-          textAlign: 'center',
-          borderTop: 1,
-          borderColor: 'divider',
-          bgcolor: 'background.paper',
-          mt: 'auto',
-        }}
-      >
-        <Typography
-          variant='body2'
-          color='text.secondary'
-          sx={{ fontStyle: 'italic' }}
-        >
-          &quot;{t('home.footer.quote')}&quot; - {t('home.footer.author')}
-        </Typography>
-      </Box>
     </Box>
   );
 };

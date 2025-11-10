@@ -19,7 +19,6 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
 import { useChat } from '@/hooks/useChat';
@@ -28,7 +27,6 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { RequestCard } from '@/components/requests/RequestCard';
-import { NavBar } from '@/components/common/NavBar';
 import { OfferModal } from '@/components/offers/OfferModal';
 import { Trip } from '@/types/trip';
 import { DeliveryRequest } from '@/types/request';
@@ -539,7 +537,6 @@ export default function SearchPage() {
       }}
     >
       {/* Header */}
-      <NavBar />
 
       {/* Mobile Filter Drawer */}
       <Drawer
@@ -697,84 +694,6 @@ export default function SearchPage() {
           </Grid>
         </Grid>
       </Container>
-
-      {/* Footer */}
-      <Box
-        component='footer'
-        sx={{
-          py: 4,
-          textAlign: 'center',
-          borderTop: 1,
-          borderColor: 'divider',
-          bgcolor: 'background.paper',
-          mt: 'auto',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 2,
-            mb: 2,
-          }}
-        >
-          <FlightTakeoffIcon sx={{ color: 'primary.main' }} />
-          <Typography variant='body1' fontWeight={600}>
-            {t('common.appName')}
-          </Typography>
-        </Box>
-        <Typography
-          variant='body2'
-          color='text.secondary'
-          sx={{ fontStyle: 'italic' }}
-        >
-          &quot;{t('home.footer.quote')}&quot;
-        </Typography>
-        <Box
-          sx={{
-            mt: 2,
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 3,
-            flexWrap: 'wrap',
-          }}
-        >
-          <Link href='/about-us' passHref legacyBehavior>
-            <Button
-              size='small'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              {t('nav.aboutUs')}
-            </Button>
-          </Link>
-          <Link href='/faq' passHref legacyBehavior>
-            <Button
-              size='small'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              {t('nav.faq')}
-            </Button>
-          </Link>
-          <Link href='/contact-us' passHref legacyBehavior>
-            <Button
-              size='small'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              {t('home.footer.contact')}
-            </Button>
-          </Link>
-        </Box>
-      </Box>
 
       {/* Offer Modal */}
       {selectedTripForOffer && selectedRequestForOffer && (

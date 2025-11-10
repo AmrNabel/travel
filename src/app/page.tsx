@@ -7,36 +7,22 @@ import {
   Box,
   Paper,
   Grid,
-  AppBar,
-  Toolbar,
   CircularProgress,
   alpha,
   useTheme,
-  useMediaQuery,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
 } from '@mui/material';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { NavBar } from '@/components/common/NavBar';
 import Link from 'next/link';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import NatureIcon from '@mui/icons-material/Nature';
-import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from 'react';
 
 export default function HomePage() {
   const { user, loading } = useAuth();
   const { t } = useLanguage();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   if (loading) {
     return (
@@ -57,90 +43,14 @@ export default function HomePage() {
   if (!user) {
     return (
       <Box
-        sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+        sx={{
+          minHeight: '100vh',
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.05)} 0%, ${alpha(theme.palette.secondary.main, 0.05)} 100%)`,
+        }}
       >
-        {/* Header */}
-        <AppBar position='static' elevation={0}>
-          <Toolbar sx={{ py: 1 }}>
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1.5,
-                flexGrow: 1,
-              }}
-            >
-              <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
-              <Typography
-                variant='h6'
-                component='div'
-                sx={{ fontWeight: 700, color: 'text.primary' }}
-              >
-                {t('common.appName')}
-              </Typography>
-            </Box>
-            {isMobile ? (
-              <IconButton
-                onClick={() => setMobileMenuOpen(true)}
-                sx={{ color: 'text.primary' }}
-              >
-                <MenuIcon />
-              </IconButton>
-            ) : (
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                <Button
-                  color='inherit'
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': { color: 'primary.main' },
-                  }}
-                >
-                  {t('nav.howItWorks')}
-                </Button>
-                <Button
-                  color='inherit'
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': { color: 'primary.main' },
-                  }}
-                >
-                  {t('nav.aboutUs')}
-                </Button>
-                <Link href='/login' passHref legacyBehavior>
-                  <Button variant='contained' sx={{ ml: 2 }}>
-                    {t('nav.login')} / {t('nav.signup')}
-                  </Button>
-                </Link>
-              </Box>
-            )}
-          </Toolbar>
-        </AppBar>
-
-        {/* Mobile Menu Drawer */}
-        <Drawer
-          anchor='right'
-          open={mobileMenuOpen}
-          onClose={() => setMobileMenuOpen(false)}
-        >
-          <List sx={{ width: 250 }}>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary={t('nav.howItWorks')} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary={t('nav.aboutUs')} />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton component={Link} href='/login'>
-                <ListItemText primary={`${t('nav.login')} / ${t('nav.signup')}`} />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </Drawer>
-
         {/* Hero Section */}
         <Container maxWidth='lg' sx={{ flexGrow: 1, py: { xs: 6, md: 12 } }}>
           <Grid container spacing={{ xs: 4, md: 8 }} alignItems='center'>
@@ -355,78 +265,6 @@ export default function HomePage() {
             </Grid>
           </Box>
         </Container>
-
-        {/* Footer */}
-        <Box
-          component='footer'
-          sx={{
-            py: 8,
-            textAlign: 'center',
-            borderTop: 1,
-            borderColor: 'divider',
-            bgcolor: 'background.paper',
-          }}
-        >
-          <Typography
-            variant='body1'
-            color='text.secondary'
-            sx={{ fontStyle: 'italic', mb: 1 }}
-          >
-            &quot;{t('home.footer.quote')}&quot;
-          </Typography>
-          <Typography variant='body2' color='text.disabled'>
-            - {t('home.footer.author')}
-          </Typography>
-          <Box
-            sx={{
-              mt: 4,
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 4,
-              flexWrap: 'wrap',
-            }}
-          >
-            <Link href='/about-us' passHref legacyBehavior>
-              <Button
-                color='inherit'
-                size='small'
-                sx={{
-                  color: 'text.secondary',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                {t('nav.aboutUs')}
-              </Button>
-            </Link>
-            <Link href='/faq' passHref legacyBehavior>
-              <Button
-                color='inherit'
-                size='small'
-                sx={{
-                  color: 'text.secondary',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                {t('nav.faq')}
-              </Button>
-            </Link>
-            <Link href='/contact-us' passHref legacyBehavior>
-              <Button
-                color='inherit'
-                size='small'
-                sx={{
-                  color: 'text.secondary',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                {t('home.footer.contact')}
-              </Button>
-            </Link>
-          </Box>
-          <Typography variant='body2' color='text.disabled' sx={{ mt: 2 }}>
-            {t('home.footer.copyright')}
-          </Typography>
-        </Box>
       </Box>
     );
   }
@@ -435,14 +273,12 @@ export default function HomePage() {
     <Box
       sx={{
         minHeight: '100vh',
+        flex: 1,
         display: 'flex',
         flexDirection: 'column',
         bgcolor: 'background.default',
       }}
     >
-      {/* Header for Logged In Users */}
-      <NavBar />
-
       <Container maxWidth='lg' sx={{ flexGrow: 1, py: 8 }}>
         <Typography
           variant='h2'

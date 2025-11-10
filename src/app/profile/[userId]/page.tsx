@@ -19,7 +19,6 @@ import {
   useTheme,
 } from '@mui/material';
 import { AuthGuard } from '@/components/auth/AuthGuard';
-import { NavBar } from '@/components/common/NavBar';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRatings } from '@/hooks/useRatings';
 import { useNotification } from '@/contexts/NotificationContext';
@@ -399,7 +398,6 @@ export default function ProfilePage({ params }: ProfilePageProps) {
   return (
     <AuthGuard>
       <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        <NavBar />
         <Container maxWidth='lg' sx={{ py: 4 }}>
           <ProfileContent userId={params.userId} />
         </Container>
