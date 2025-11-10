@@ -47,7 +47,10 @@ export default function RatingsAdminPage() {
       const stats = await recalculateUserRatings(userId.trim());
       setResult({
         type: 'success',
-        message: t('admin.recalculateSuccess', { rating: stats.rating.toFixed(1), total: stats.totalRatings }),
+        message: t('admin.recalculateSuccess', {
+          rating: stats.rating.toFixed(1),
+          total: stats.totalRatings,
+        }),
       });
       setUserId('');
     } catch (error: any) {
@@ -61,11 +64,7 @@ export default function RatingsAdminPage() {
   };
 
   const handleRecalculateAll = async () => {
-    if (
-      !confirm(
-        t('admin.confirmRecalculateAll')
-      )
-    ) {
+    if (!confirm(t('admin.confirmRecalculateAll'))) {
       return;
     }
 
@@ -76,7 +75,10 @@ export default function RatingsAdminPage() {
       const stats = await recalculateAllUserRatings();
       setResult({
         type: 'success',
-        message: t('admin.recalculateAllSuccess', { updated: stats.updated, errors: stats.errors }),
+        message: t('admin.recalculateAllSuccess', {
+          updated: stats.updated,
+          errors: stats.errors,
+        }),
       });
     } catch (error: any) {
       setResult({
@@ -133,17 +135,20 @@ export default function RatingsAdminPage() {
                 />
                 <Button
                   variant='contained'
-                  startIcon={
-                    loading ? (
-                      <CircularProgress size={16} color='inherit' />
-                    ) : (
-                      <RefreshIcon />
-                    )
-                  }
                   onClick={handleRecalculateUser}
                   disabled={loading}
-                  sx={{ minWidth: 150 }}
+                  sx={{
+                    minWidth: 150,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                  }}
                 >
+                  {loading ? (
+                    <CircularProgress size={16} color='inherit' />
+                  ) : (
+                    <RefreshIcon fontSize='small' />
+                  )}
                   {loading ? t('admin.processing') : t('admin.recalculate')}
                 </Button>
               </Box>
@@ -161,22 +166,22 @@ export default function RatingsAdminPage() {
                 {t('admin.allUsersDesc')}
               </Typography>
               <Alert severity='warning' sx={{ mb: 2 }}>
-                <strong>{t('admin.warningTitle')}</strong> {t('admin.warningMessage')}
+                <strong>{t('admin.warningTitle')}</strong>{' '}
+                {t('admin.warningMessage')}
               </Alert>
               <Button
                 variant='contained'
                 color='primary'
-                startIcon={
-                  loading ? (
-                    <CircularProgress size={16} color='inherit' />
-                  ) : (
-                    <RefreshIcon />
-                  )
-                }
                 onClick={handleRecalculateAll}
                 disabled={loading}
                 size='large'
+                sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}
               >
+                {loading ? (
+                  <CircularProgress size={16} color='inherit' />
+                ) : (
+                  <RefreshIcon fontSize='small' />
+                )}
                 {loading ? t('admin.processingAll') : t('admin.recalculateAll')}
               </Button>
             </Box>

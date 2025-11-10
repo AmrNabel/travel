@@ -186,84 +186,90 @@ export const NavBar = () => {
             <Link href='/search' passHref legacyBehavior>
               <Button
                 color='inherit'
-                startIcon={<SearchIcon />}
                 sx={{
-                  direction: 'row',
-                  gap: 0.5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
               >
+                <SearchIcon fontSize='small' />
                 {t('nav.search')}
               </Button>
             </Link>
             <Link href='/my-trips' passHref legacyBehavior>
               <Button
                 color='inherit'
-                startIcon={<DashboardIcon />}
                 sx={{
-                  direction: 'row',
-                  gap: 0.5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
               >
+                <DashboardIcon fontSize='small' />
                 {t('nav.myTrips')}
               </Button>
             </Link>
             <Link href='/offers' passHref legacyBehavior>
               <Button
                 color='inherit'
-                startIcon={<LocalOfferIcon />}
                 sx={{
-                  direction: 'row',
-                  gap: 0.5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
               >
+                <LocalOfferIcon fontSize='small' />
                 {t('nav.offers')}
               </Button>
             </Link>
             <Link href='/chats' passHref legacyBehavior>
               <Button
                 color='inherit'
-                startIcon={<ChatIcon />}
                 sx={{
-                  direction: 'row',
-                  gap: 0.5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
                   color: 'text.secondary',
                   '&:hover': { color: 'primary.main' },
                 }}
               >
+                <ChatIcon fontSize='small' />
                 {t('nav.messages')}
               </Button>
             </Link>
             <Link href='/add-trip' passHref legacyBehavior>
               <Button
                 variant='gradient'
-                startIcon={<FlightTakeoffIcon />}
                 sx={{
-                  direction: 'row',
-                  gap: 0.5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
                   borderRadius: '9999px',
                   px: 3,
                 }}
               >
+                <FlightTakeoffIcon fontSize='small' />
                 {t('nav.postTrip')}
               </Button>
             </Link>
             <Link href='/send-item' passHref legacyBehavior>
               <Button
                 variant='orange'
-                startIcon={<LuggageIcon />}
                 sx={{
-                  direction: 'row',
-                  gap: 0.5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
                   borderRadius: '9999px',
                   px: 3,
                 }}
               >
+                <LuggageIcon fontSize='small' />
                 {t('nav.sendItem')}
               </Button>
             </Link>

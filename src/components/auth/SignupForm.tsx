@@ -168,31 +168,37 @@ export const SignupForm: React.FC = () => {
         <Button
           variant='outlined'
           fullWidth
-          startIcon={<GoogleIcon />}
           sx={{
             py: 1.5,
             borderWidth: 2,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
             '&:hover': {
               borderWidth: 2,
               bgcolor: alpha(theme.palette.primary.main, 0.04),
             },
           }}
         >
+          <GoogleIcon fontSize='small' />
           {t('auth.signUpWith')} Google
         </Button>
         <Button
           variant='outlined'
           fullWidth
-          startIcon={<FacebookIcon />}
           sx={{
             py: 1.5,
             borderWidth: 2,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
             '&:hover': {
               borderWidth: 2,
               bgcolor: alpha(theme.palette.primary.main, 0.04),
             },
           }}
         >
+          <FacebookIcon fontSize='small' />
           {t('auth.signUpWith')} Facebook
         </Button>
       </Box> */}
@@ -288,7 +294,11 @@ export const SignupForm: React.FC = () => {
               control={<Radio />}
               label={t('home.hero.senderButton')}
             />
-            <FormControlLabel value='both' control={<Radio />} label={t('profile.both')} />
+            <FormControlLabel
+              value='both'
+              control={<Radio />}
+              label={t('profile.both')}
+            />
           </RadioGroup>
         </FormControl>
 

@@ -122,7 +122,8 @@ function MyTripsContent() {
             <strong>{t('card.capacity')}:</strong> {trip.capacity}
           </Typography>
           <Typography variant='body2'>
-            <strong>{t('card.price')}:</strong> ${trip.pricePerKg}{t('card.perKg')}
+            <strong>{t('card.price')}:</strong> ${trip.pricePerKg}
+            {t('card.perKg')}
           </Typography>
           {trip.description && (
             <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
@@ -207,7 +208,6 @@ function MyTripsContent() {
         >
           {t('myActivity.title')}
         </Typography>
-        
       </Box>
 
       <Paper
@@ -268,7 +268,15 @@ function MyTripsContent() {
                   {t('trip.noTripsDesc')}
                 </Typography>
                 <Link href='/add-trip' passHref legacyBehavior>
-                  <Button variant='gradient' startIcon={<AddIcon />}>
+                  <Button
+                    variant='gradient'
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1,
+                    }}
+                  >
+                    <AddIcon fontSize='small' />
                     {t('trip.postTrip')}
                   </Button>
                 </Link>
@@ -318,7 +326,15 @@ function MyTripsContent() {
                   {t('request.noRequestsDesc')}
                 </Typography>
                 <Link href='/send-item' passHref legacyBehavior>
-                  <Button variant='orange' startIcon={<AddIcon />}>
+                  <Button
+                    variant='orange'
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1,
+                    }}
+                  >
+                    <AddIcon fontSize='small' />
                     {t('request.sendItem')}
                   </Button>
                 </Link>

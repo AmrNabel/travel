@@ -124,31 +124,37 @@ export const LoginForm: React.FC = () => {
         <Button
           variant='outlined'
           fullWidth
-          startIcon={<GoogleIcon />}
           sx={{
             py: 1.5,
             borderWidth: 2,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
             '&:hover': {
               borderWidth: 2,
               bgcolor: alpha(theme.palette.primary.main, 0.04),
             },
           }}
         >
+          <GoogleIcon fontSize='small' />
           {t('auth.signInWith')} Google
         </Button>
         <Button
           variant='outlined'
           fullWidth
-          startIcon={<FacebookIcon />}
           sx={{
             py: 1.5,
             borderWidth: 2,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
             '&:hover': {
               borderWidth: 2,
               bgcolor: alpha(theme.palette.primary.main, 0.04),
             },
           }}
         >
+          <FacebookIcon fontSize='small' />
           {t('auth.signInWith')} Facebook
         </Button>
       </Box> */}

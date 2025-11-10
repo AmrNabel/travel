@@ -101,7 +101,10 @@ function ProfileContent({ userId }: { userId: string }) {
     try {
       const stats = await recalculateUserRatings(userId);
       showNotification(
-        t('profile.statsUpdated', { rating: stats.rating.toFixed(1), count: stats.totalRatings }),
+        t('profile.statsUpdated', {
+          rating: stats.rating.toFixed(1),
+          count: stats.totalRatings,
+        }),
         'success'
       );
       // Reload the profile to show updated stats
@@ -209,27 +212,41 @@ function ProfileContent({ userId }: { userId: string }) {
               {!isOwnProfile && (
                 <Button
                   variant='gradient'
-                  startIcon={<ChatIcon />}
                   onClick={handleContact}
                   disabled={contactLoading}
-                  sx={{ borderRadius: '9999px' }}
+                  sx={{
+                    borderRadius: '9999px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1.5,
+                  }}
                 >
-                  {contactLoading ? t('profile.startingChat') : t('profile.sendMessage')}
+                  {contactLoading ? (
+                    <CircularProgress size={16} color='inherit' />
+                  ) : (
+                    <ChatIcon fontSize='small' />
+                  )}
+                  {contactLoading
+                    ? t('profile.startingChat')
+                    : t('profile.sendMessage')}
                 </Button>
               )}
               <Button
                 variant='outlined'
-                startIcon={
-                  refreshing ? (
-                    <CircularProgress size={16} color='inherit' />
-                  ) : (
-                    <RefreshIcon />
-                  )
-                }
                 onClick={handleRefreshStats}
                 disabled={refreshing}
-                sx={{ borderRadius: '9999px' }}
+                sx={{
+                  borderRadius: '9999px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1.5,
+                }}
               >
+                {refreshing ? (
+                  <CircularProgress size={16} color='inherit' />
+                ) : (
+                  <RefreshIcon fontSize='small' />
+                )}
                 {refreshing ? t('profile.updating') : t('profile.refreshStats')}
               </Button>
             </Box>

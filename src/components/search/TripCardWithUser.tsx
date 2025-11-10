@@ -22,6 +22,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LuggageIcon from '@mui/icons-material/Luggage';
 import TrainIcon from '@mui/icons-material/Train';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ChatIcon from '@mui/icons-material/Chat';
 
 interface TripCardWithUserProps {
   trip: Trip;
@@ -130,7 +131,6 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 <Typography variant='body1' fontWeight={700}>
                   {trip.fromCity || 'NYC'}
                 </Typography>
-                
               </Box>
               <Box
                 sx={{
@@ -148,7 +148,6 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 <Typography variant='body1' fontWeight={700}>
                   {trip.toCity || 'LON'}
                 </Typography>
-              
               </Box>
             </Box>
           </Grid>
@@ -249,12 +248,18 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 fullWidth
                 onClick={onMessage}
                 disabled={contactLoading || isOwnTrip}
-                startIcon={
-                  contactLoading && (
-                    <CircularProgress size={16} color='inherit' />
-                  )
-                }
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  justifyContent: 'center',
+                }}
               >
+                {contactLoading ? (
+                  <CircularProgress size={16} color='inherit' />
+                ) : (
+                  <ChatIcon fontSize='small' />
+                )}
                 {contactLoading
                   ? t('chat.connecting')
                   : isOwnTrip

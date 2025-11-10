@@ -855,11 +855,18 @@ export const TripForm: React.FC = () => {
                 variant='orange'
                 size='large'
                 disabled={loading}
-                startIcon={
-                  <FlightTakeoffIcon sx={{ transform: 'scaleY(2p1)' }} />
-                }
-                sx={{ px: 6, direction: 'row', gap: 0.5 }}
+                sx={{
+                  px: 6,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1.5,
+                }}
               >
+                {loading ? (
+                  <CircularProgress size={20} color='inherit' />
+                ) : (
+                  <FlightTakeoffIcon />
+                )}
                 {loading ? `${t('common.loading')}...` : t('nav.postTrip')}
               </Button>
             </Box>

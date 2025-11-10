@@ -147,9 +147,18 @@ export const RatingDialog: React.FC<RatingDialogProps> = ({
           onClick={handleSubmit}
           variant='contained'
           disabled={loading || score === 0}
-          startIcon={loading && <CircularProgress size={16} />}
-          sx={{ minWidth: 120 }}
+          sx={{
+            minWidth: 120,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+          }}
         >
+          {loading ? (
+            <CircularProgress size={16} color='inherit' />
+          ) : (
+            <StarIcon fontSize='small' />
+          )}
           {loading ? 'Submitting...' : 'Submit Rating'}
         </Button>
       </DialogActions>

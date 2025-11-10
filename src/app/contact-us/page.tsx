@@ -38,7 +38,9 @@ export default function ContactUsPage() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -169,7 +171,9 @@ export default function ContactUsPage() {
                     }}
                   >
                     <CardContent>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <Box
+                        sx={{ display: 'flex', alignItems: 'center', gap: 2 }}
+                      >
                         <IconComponent
                           sx={{
                             fontSize: 30,
@@ -200,7 +204,9 @@ export default function ContactUsPage() {
                 background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.1)} 0%, ${alpha(theme.palette.primary.main, 0.05)} 100%)`,
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+              <Box
+                sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}
+              >
                 <AccessTimeIcon
                   sx={{
                     fontSize: 30,
@@ -226,7 +232,11 @@ export default function ContactUsPage() {
                 borderRadius: 3,
               }}
             >
-              <Typography variant='h5' gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
+              <Typography
+                variant='h5'
+                gutterBottom
+                sx={{ fontWeight: 600, mb: 3 }}
+              >
                 {t('contactUs.form.title')}
               </Typography>
 
@@ -297,14 +307,23 @@ export default function ContactUsPage() {
                       variant='contained'
                       size='large'
                       disabled={loading}
-                      startIcon={loading ? <CircularProgress size={20} /> : <SendIcon />}
                       sx={{
                         px: 4,
                         py: 1.5,
                         borderRadius: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1.5,
                       }}
                     >
-                      {loading ? t('contactUs.form.sending') : t('contactUs.form.send')}
+                      {loading ? (
+                        <CircularProgress size={20} color='inherit' />
+                      ) : (
+                        <SendIcon />
+                      )}
+                      {loading
+                        ? t('contactUs.form.sending')
+                        : t('contactUs.form.send')}
                     </Button>
                   </Grid>
                 </Grid>
@@ -316,4 +335,3 @@ export default function ContactUsPage() {
     </Box>
   );
 }
-

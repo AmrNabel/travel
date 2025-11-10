@@ -221,6 +221,9 @@ function OffersPageContent() {
               }
               color={getStatusColor(offer.status) as any}
               size='small'
+              sx={{
+                px: 2,
+              }}
             />
           </Box>
 
@@ -285,8 +288,14 @@ function OffersPageContent() {
                       offerId: offer.id,
                     })
                   }
-                  startIcon={<CheckCircleIcon />}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    justifyContent: 'center',
+                  }}
                 >
+                  <CheckCircleIcon fontSize='small' />
                   {t('offer.accept')}
                 </Button>
                 <Button
@@ -301,8 +310,14 @@ function OffersPageContent() {
                       offerId: offer.id,
                     })
                   }
-                  startIcon={<CancelIcon />}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    justifyContent: 'center',
+                  }}
                 >
+                  <CancelIcon fontSize='small' />
                   {t('offer.decline')}
                 </Button>
               </>
@@ -321,16 +336,15 @@ function OffersPageContent() {
                   return (
                     <>
                       {/* Delivery Status Chip */}
-                      {request && (
-                        <Box sx={{ width: '100%', mb: 1 }}>
+                      {/* {request && (
+                        <Box sx={{ width: '100%', mb: 1, display: 'flex' }}>
                           <Chip
-                            icon={<LocalShippingIcon />}
                             label={
                               isDelivered
                                 ? '✅ Delivered'
                                 : isInTransit
                                   ? '🚚 In Transit'
-                                  : '📦 Matched'
+                                  : 'Matched'
                             }
                             color={
                               isDelivered
@@ -342,7 +356,7 @@ function OffersPageContent() {
                             sx={{ width: '100%' }}
                           />
                         </Box>
-                      )}
+                      )} */}
 
                       {/* Complete Trip & Deliver Button (for traveler/receiver) */}
                       {isReceived && request && !isDelivered && (
@@ -352,7 +366,6 @@ function OffersPageContent() {
                             color='success'
                             size='small'
                             fullWidth
-                            startIcon={<FlagIcon />}
                             onClick={() =>
                               handleCompleteTripAndRate(
                                 offer.tripId,
@@ -361,7 +374,14 @@ function OffersPageContent() {
                               )
                             }
                             disabled={loading}
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                              justifyContent: 'center',
+                            }}
                           >
+                            <FlagIcon fontSize='small' />
                             {t('delivery.completeTripAndDeliver')}
                           </Button>
                           <Button
@@ -369,7 +389,6 @@ function OffersPageContent() {
                             color='success'
                             size='small'
                             fullWidth
-                            startIcon={<CheckCircleIcon />}
                             onClick={() =>
                               handleMarkAsDelivered(
                                 offer.requestId,
@@ -377,7 +396,14 @@ function OffersPageContent() {
                               )
                             }
                             disabled={loading}
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                              justifyContent: 'center',
+                            }}
                           >
+                            <CheckCircleIcon fontSize='small' />
                             {t('delivery.markThisItemOnly')}
                           </Button>
                         </>
@@ -390,7 +416,6 @@ function OffersPageContent() {
                           color='primary'
                           size='small'
                           fullWidth
-                          startIcon={<StarIcon />}
                           onClick={() =>
                             setRatingDialog({
                               open: true,
@@ -400,7 +425,14 @@ function OffersPageContent() {
                               type: 'traveler',
                             })
                           }
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 1,
+                            justifyContent: 'center',
+                          }}
                         >
+                          <StarIcon fontSize='small' />
                           {t('rating.rateTraveler')}
                         </Button>
                       )}
@@ -410,11 +442,17 @@ function OffersPageContent() {
                         variant='contained'
                         size='small'
                         fullWidth
-                        startIcon={<ChatIcon />}
                         onClick={() => {
                           router.push('/chats');
                         }}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1,
+                          justifyContent: 'center',
+                        }}
                       >
+                        <ChatIcon fontSize='small' />
                         {t('chat.goToChat')}
                       </Button>
                     </>
@@ -489,7 +527,9 @@ function OffersPageContent() {
               sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
             />
             <Typography variant='h6' color='text.secondary' gutterBottom>
-              {activeTab === 'received' ? t('offer.noReceivedOffers') : t('offer.noSentOffers')}
+              {activeTab === 'received'
+                ? t('offer.noReceivedOffers')
+                : t('offer.noSentOffers')}
             </Typography>
             <Typography variant='body2' color='text.disabled' sx={{ mb: 3 }}>
               {activeTab === 'received'
@@ -557,8 +597,15 @@ function OffersPageContent() {
             variant='contained'
             color={confirmDialog.action === 'accept' ? 'success' : 'error'}
             disabled={loading}
-            startIcon={loading ? <CircularProgress size={16} /> : undefined}
+            sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}
           >
+            {loading ? (
+              <CircularProgress size={16} color='inherit' />
+            ) : confirmDialog.action === 'accept' ? (
+              <CheckCircleIcon fontSize='small' />
+            ) : (
+              <CancelIcon fontSize='small' />
+            )}
             {loading
               ? t('admin.processing')
               : confirmDialog.action === 'accept'
