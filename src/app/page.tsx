@@ -386,36 +386,42 @@ export default function HomePage() {
               flexWrap: 'wrap',
             }}
           >
-            <Button
-              color='inherit'
-              size='small'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              {t('home.footer.terms')}
-            </Button>
-            <Button
-              color='inherit'
-              size='small'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              {t('home.footer.privacy')}
-            </Button>
-            <Button
-              color='inherit'
-              size='small'
-              sx={{
-                color: 'text.secondary',
-                '&:hover': { color: 'primary.main' },
-              }}
-            >
-              {t('home.footer.contact')}
-            </Button>
+            <Link href='/about-us' passHref legacyBehavior>
+              <Button
+                color='inherit'
+                size='small'
+                sx={{
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {t('nav.aboutUs')}
+              </Button>
+            </Link>
+            <Link href='/faq' passHref legacyBehavior>
+              <Button
+                color='inherit'
+                size='small'
+                sx={{
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {t('nav.faq')}
+              </Button>
+            </Link>
+            <Link href='/contact-us' passHref legacyBehavior>
+              <Button
+                color='inherit'
+                size='small'
+                sx={{
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                {t('home.footer.contact')}
+              </Button>
+            </Link>
           </Box>
           <Typography variant='body2' color='text.disabled' sx={{ mt: 2 }}>
             {t('home.footer.copyright')}

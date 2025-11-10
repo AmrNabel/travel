@@ -19,6 +19,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
 import { useChat } from '@/hooks/useChat';
@@ -739,33 +740,39 @@ export default function SearchPage() {
             flexWrap: 'wrap',
           }}
         >
-          <Button
-            size='small'
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main' },
-            }}
-          >
-            {t('nav.aboutUs')}
-          </Button>
-          <Button
-            size='small'
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main' },
-            }}
-          >
-            FAQ
-          </Button>
-          <Button
-            size='small'
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main' },
-            }}
-          >
-            {t('home.footer.contact')}
-          </Button>
+          <Link href='/about-us' passHref legacyBehavior>
+            <Button
+              size='small'
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' },
+              }}
+            >
+              {t('nav.aboutUs')}
+            </Button>
+          </Link>
+          <Link href='/faq' passHref legacyBehavior>
+            <Button
+              size='small'
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' },
+              }}
+            >
+              {t('nav.faq')}
+            </Button>
+          </Link>
+          <Link href='/contact-us' passHref legacyBehavior>
+            <Button
+              size='small'
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main' },
+              }}
+            >
+              {t('home.footer.contact')}
+            </Button>
+          </Link>
         </Box>
       </Box>
 

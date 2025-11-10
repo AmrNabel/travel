@@ -36,7 +36,9 @@
     "logout": "Logout",
     "profile": "Profile",
     "howItWorks": "How it Works",
-    "aboutUs": "About Us"
+    "aboutUs": "About Us",
+    "faq": "FAQ",
+    "contactUs": "Contact Us"
   },
 
   "auth": {
@@ -406,6 +408,118 @@
     "editRequest": "Edit Request",
     "deleteRequest": "Delete Request",
     "rateNow": "Rate Now"
+  },
+
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about Mosafer",
+    "q1": {
+      "question": "How does Mosafer work?",
+      "answer": "Mosafer connects travelers with extra luggage space to people who need to send items. Travelers can post their trips and earn money by delivering items, while senders can find reliable travelers going their way."
+    },
+    "q2": {
+      "question": "Is it safe to send items with travelers?",
+      "answer": "Yes! We have a rating and review system where users can rate each other after transactions. This helps build trust in our community. We recommend checking traveler profiles and ratings before sending items."
+    },
+    "q3": {
+      "question": "How much does it cost?",
+      "answer": "The cost varies based on the item weight and the traveler's pricing. Travelers set their price per kilogram, and you can negotiate through our messaging system. It's typically much cheaper than traditional courier services."
+    },
+    "q4": {
+      "question": "What items can I send?",
+      "answer": "You can send most items, but please avoid prohibited items like dangerous goods, illegal substances, or perishable food. Always communicate with the traveler about what you're sending to ensure they're comfortable carrying it."
+    },
+    "q5": {
+      "question": "How do I track my delivery?",
+      "answer": "You can communicate directly with the traveler through our in-app messaging system. They can update you on the delivery status, and you'll receive notifications when the item is marked as delivered."
+    },
+    "q6": {
+      "question": "What if something goes wrong?",
+      "answer": "If there's an issue with your delivery, please contact us immediately through our support system. We have a dispute resolution process and will work to resolve any problems."
+    }
+  },
+
+  "aboutUs": {
+    "title": "About Mosafer",
+    "subtitle": "Connecting journeys, delivering smiles",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Mosafer aims to create a community-powered delivery network that benefits both travelers and senders. We believe in making travel more rewarding while providing affordable and fast delivery options."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become the leading peer-to-peer delivery platform in Egypt, connecting communities and making travel more meaningful and profitable for everyone."
+    },
+    "values": {
+      "title": "Our Values",
+      "trust": {
+        "title": "Trust",
+        "description": "We build trust through our rating system and community verification."
+      },
+      "community": {
+        "title": "Community",
+        "description": "We're powered by our community of travelers and senders working together."
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "We promote eco-friendly delivery by utilizing existing travel routes."
+      },
+      "accessibility": {
+        "title": "Accessibility",
+        "description": "We make delivery services accessible and affordable for everyone."
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "step1": {
+        "title": "For Travelers",
+        "description": "Post your trip details, set your price per kilogram, and earn money by delivering items along your route."
+      },
+      "step2": {
+        "title": "For Senders",
+        "description": "Create a delivery request, browse available trips, and send offers to travelers going your way."
+      },
+      "step3": {
+        "title": "Connect & Deliver",
+        "description": "Communicate through our messaging system, agree on terms, and complete the delivery with our tracking system."
+      }
+    }
+  },
+
+  "contactUs": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you",
+    "description": "Have a question, suggestion, or need help? Reach out to us through any of the following methods:",
+    "email": {
+      "title": "Email",
+      "label": "Email Address",
+      "value": "amr.nabel3993@gmail.com"
+    },
+    "phone": {
+      "title": "Phone",
+      "label": "Phone Number",
+      "value": "+201159263972"
+    },
+    "address": {
+      "title": "Address",
+      "label": "Office Address",
+      "value": "Cairo, Egypt"
+    },
+    "form": {
+      "title": "Send us a Message",
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "error": "Failed to send message. Please try again."
+    },
+    "hours": {
+      "title": "Support Hours",
+      "description": "Our support team is available Monday to Friday, 9 AM to 5 PM EET"
+    }
   }
 }
 
