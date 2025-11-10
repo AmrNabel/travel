@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   Box,
@@ -15,6 +15,8 @@ import {
   Drawer,
   ToggleButton,
   ToggleButtonGroup,
+  Slider,
+  CircularProgress,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useTrips } from '@/hooks/useTrips';
@@ -35,6 +37,14 @@ import FlightLandIcon from '@mui/icons-material/FlightLand';
 import FlightIcon from '@mui/icons-material/Flight';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LuggageIcon from '@mui/icons-material/Luggage';
+import TrainIcon from '@mui/icons-material/Train';
+
+// Capacity mapping for size range filtering
+const CAPACITY_MAP: Record<string, number> = {
+  Small: 1,
+  Medium: 3,
+  Large: 5,
+};
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useState({
@@ -51,16 +61,160 @@ export default function SearchPage() {
   const [selectedRequestForOffer, setSelectedRequestForOffer] =
     useState<DeliveryRequest | null>(null);
 
+  // Filter state
+  const [filters, setFilters] = useState({
+    trainNumber: '',
+    dateStart: '',
+    dateEnd: '',
+    sizeRange: [0, 5] as [number, number],
+  });
+
+  // Applied filters (used for actual filtering)
+  const [appliedFilters, setAppliedFilters] = useState({
+    trainNumber: '',
+    dateStart: '',
+    dateEnd: '',
+    sizeRange: [0, 5] as [number, number],
+  });
+
+  // Train data for showing departure time
+  const [trainData, setTrainData] = useState<any>(null);
+  const [trainLoading, setTrainLoading] = useState(false);
+  const [trainDepartureTime, setTrainDepartureTime] = useState<string>('');
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const router = useRouter();
 
   const { user } = useAuth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { showNotification } = useNotification();
 
-  const { trips, loading: tripsLoading } = useTrips(searchParams);
+  // Fetch train data when train number is entered
+  useEffect(() => {
+    if (!filters.trainNumber?.trim()) {
+      setTrainData(null);
+      setTrainDepartureTime('');
+      return;
+    }
+
+    let isActive = true;
+    const controller = new AbortController();
+
+    const loadTrain = async () => {
+      setTrainLoading(true);
+      setTrainData(null);
+      setTrainDepartureTime('');
+
+      try {
+        const trainNum = filters.trainNumber.trim();
+        const response = await fetch(`/trains/train-${trainNum}.json`, {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error('Train not found');
+        }
+
+        const data = await response.json();
+        if (isActive) {
+          setTrainData(data);
+        }
+      } catch (error: any) {
+        if (error.name !== 'AbortError' && isActive) {
+          console.error('Error loading train data:', error);
+          setTrainData(null);
+          setTrainDepartureTime('');
+        }
+      } finally {
+        if (isActive) {
+          setTrainLoading(false);
+        }
+      }
+    };
+
+    loadTrain();
+
+    return () => {
+      isActive = false;
+      controller.abort();
+    };
+  }, [filters.trainNumber]);
+
+  // Find departure time based on selected station
+  useEffect(() => {
+    if (!trainData || !searchParams.fromCity?.trim()) {
+      setTrainDepartureTime('');
+      return;
+    }
+
+    const stations = trainData?.schedule?.stations ?? [];
+    if (stations.length === 0) {
+      setTrainDepartureTime('');
+      return;
+    }
+
+    const langKey = language === 'ar-EG' ? 'ar' : 'en';
+    const normalize = (value?: string | null) =>
+      (value ?? '').trim().toLowerCase();
+
+    const fromCity = normalize(searchParams.fromCity);
+    const station = stations.find((s: any) => {
+      const stationName = s.stationName?.[langKey] ?? s.stationName?.en ?? s.stationName?.ar ?? '';
+      return normalize(stationName) === fromCity;
+    });
+
+    if (station) {
+      const departureTime = station.departureTime ?? station.arrivalTime ?? '';
+      setTrainDepartureTime(departureTime);
+    } else {
+      setTrainDepartureTime('');
+    }
+  }, [trainData, searchParams.fromCity, language]);
+
+  const { trips: allTrips, loading: tripsLoading } = useTrips(searchParams);
   const { requests, loading: requestsLoading } = useRequests(searchParams);
+
+  // Filter trips based on applied filters
+  const trips = allTrips.filter((trip) => {
+    // Train number filter
+    if (
+      appliedFilters.trainNumber &&
+      trip.trainNumber?.toLowerCase() !==
+        appliedFilters.trainNumber.toLowerCase()
+    ) {
+      return false;
+    }
+
+    // Date range filter
+    if (appliedFilters.dateStart || appliedFilters.dateEnd) {
+      const tripDate = new Date(trip.date);
+      tripDate.setHours(0, 0, 0, 0);
+
+      if (appliedFilters.dateStart) {
+        const startDate = new Date(appliedFilters.dateStart);
+        startDate.setHours(0, 0, 0, 0);
+        if (tripDate < startDate) return false;
+      }
+
+      if (appliedFilters.dateEnd) {
+        const endDate = new Date(appliedFilters.dateEnd);
+        endDate.setHours(23, 59, 59, 999);
+        if (tripDate > endDate) return false;
+      }
+    }
+
+    // Size range filter
+    const tripCapacity = CAPACITY_MAP[trip.capacity] ?? 0;
+    if (
+      tripCapacity < appliedFilters.sizeRange[0] ||
+      tripCapacity > appliedFilters.sizeRange[1]
+    ) {
+      return false;
+    }
+
+    return true;
+  });
   // Get user's own requests for sending offers
   const { requests: myRequests } = useRequests(
     user ? { userId: user.id } : undefined
@@ -163,6 +317,24 @@ export default function SearchPage() {
     }
   };
 
+  const handleApplyFilters = () => {
+    setAppliedFilters({ ...filters });
+    if (isMobile) {
+      setMobileFilterOpen(false);
+    }
+  };
+
+  const handleResetFilters = () => {
+    const resetFilters = {
+      trainNumber: '',
+      dateStart: '',
+      dateEnd: '',
+      sizeRange: [0, 5] as [number, number],
+    };
+    setFilters(resetFilters);
+    setAppliedFilters(resetFilters);
+  };
+
   const FilterSidebar = (
     <Paper
       elevation={2}
@@ -219,46 +391,137 @@ export default function SearchPage() {
           }}
         />
 
-        <TextField
-          label={t('form.dateLabel')}
-          placeholder={t('search.selectDates')}
-          fullWidth
-          size='small'
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position='start'>
-                <CalendarMonthIcon
-                  sx={{ color: 'text.secondary', fontSize: 20 }}
-                />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <Box>
+          <TextField
+            label={t('trip.trainNumber', { defaultValue: 'Train Number' })}
+            placeholder={t('form.trainNumberPlaceholder', {
+              defaultValue: 'e.g., 1902',
+            })}
+            value={filters.trainNumber}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, trainNumber: e.target.value }))
+            }
+            fullWidth
+            size='small'
+            helperText={
+              trainLoading
+                ? t('common.loading', { defaultValue: 'Loading...' })
+                : trainDepartureTime
+                  ? `${t('trip.departureTime', {
+                      defaultValue: 'Departure Time',
+                    })}: ${trainDepartureTime}`
+                  : filters.trainNumber && searchParams.fromCity
+                    ? t('search.trainStationNotFound', {
+                        defaultValue: 'Train does not stop at this station',
+                      })
+                    : filters.trainNumber && !searchParams.fromCity
+                      ? t('search.selectStationFirst', {
+                          defaultValue: 'Select a departure station to see time',
+                        })
+                      : ''
+            }
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position='start'>
+                  <TrainIcon sx={{ color: 'text.secondary', fontSize: 20 }} />
+                </InputAdornment>
+              ),
+              endAdornment: trainLoading ? (
+                <InputAdornment position='end'>
+                  <CircularProgress size={16} />
+                </InputAdornment>
+              ) : undefined,
+            }}
+          />
+        </Box>
 
         <Box>
           <Typography variant='body2' fontWeight={600} sx={{ mb: 1 }}>
-            {t('search.itemSize')}
+            {t('form.dateLabel')}
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-            {[t('search.small'), t('search.medium'), t('search.large')].map(
-              (size) => (
-                <Box key={size} sx={{ display: 'flex', alignItems: 'center' }}>
-                  <input
-                    type='checkbox'
-                    style={{ marginRight: 8 }}
-                    defaultChecked={size === t('search.small')}
+          <TextField
+            label={t('search.dateStart', { defaultValue: 'Start Date' })}
+            type='date'
+            value={filters.dateStart}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, dateStart: e.target.value }))
+            }
+            fullWidth
+            size='small'
+            InputLabelProps={{ shrink: true }}
+            sx={{ mb: 1 }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position='start'>
+                  <CalendarMonthIcon
+                    sx={{ color: 'text.secondary', fontSize: 20 }}
                   />
-                  <Typography variant='body2'>{size}</Typography>
-                </Box>
-              )
-            )}
-          </Box>
+                </InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            label={t('search.dateEnd', { defaultValue: 'End Date' })}
+            type='date'
+            value={filters.dateEnd}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, dateEnd: e.target.value }))
+            }
+            fullWidth
+            size='small'
+            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position='start'>
+                  <CalendarMonthIcon
+                    sx={{ color: 'text.secondary', fontSize: 20 }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
         </Box>
 
-        <Button variant='gradient' fullWidth sx={{ mt: 2 }}>
+        <Box>
+          <Typography variant='body2' fontWeight={600} sx={{ mb: 2 }}>
+            {t('search.itemSize')} ({t('search.sizeRange', {
+              defaultValue: 'Range',
+            })})
+          </Typography>
+          <Slider
+            value={filters.sizeRange}
+            onChange={(_, newValue) =>
+              setFilters((prev) => ({
+                ...prev,
+                sizeRange: newValue as [number, number],
+              }))
+            }
+            valueLabelDisplay='auto'
+            min={0}
+            max={5}
+            step={1}
+            marks={[
+              { value: 0, label: '0kg' },
+              { value: 1, label: t('search.small').split('(')[0].trim() },
+              { value: 3, label: t('search.medium').split('(')[0].trim() },
+              { value: 5, label: t('search.large').split('(')[0].trim() },
+            ]}
+            sx={{ mb: 1 }}
+          />
+          <Typography variant='caption' color='text.secondary'>
+            {filters.sizeRange[0]}kg - {filters.sizeRange[1]}kg
+          </Typography>
+        </Box>
+
+        <Button
+          variant='gradient'
+          fullWidth
+          sx={{ mt: 2 }}
+          onClick={handleApplyFilters}
+        >
           {t('search.applyFilters')}
         </Button>
-        <Button variant='outlined' fullWidth>
+        <Button variant='outlined' fullWidth onClick={handleResetFilters}>
           {t('search.reset')}
         </Button>
       </Box>

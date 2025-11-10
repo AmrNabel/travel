@@ -166,14 +166,19 @@
     "from": "من",
     "to": "إلى",
     "selectDates": "اختار التواريخ",
+    "dateStart": "تاريخ البداية",
+    "dateEnd": "تاريخ النهاية",
     "itemSize": "حجم الحاجة",
+    "sizeRange": "المدى",
     "small": "صغير (لحد ١ كيلو)",
     "medium": "متوسط (١-٥ كيلو)",
     "large": "كبير (أكتر من ٥ كيلو)",
     "applyFilters": "طبق الفلاتر",
     "reset": "إعادة تعيين",
     "noResults": "مافيش نتايج",
-    "tryAdjusting": "جرب تعدل الفلاتر بتاعتك"
+    "tryAdjusting": "جرب تعدل الفلاتر بتاعتك",
+    "trainStationNotFound": "القطار مش بيوقف في المحطة دي",
+    "selectStationFirst": "اختار محطة الانطلاق الأول عشان تشوف الوقت"
   },
 
   "offer": {

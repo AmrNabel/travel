@@ -166,14 +166,19 @@
     "from": "From",
     "to": "To",
     "selectDates": "Select dates",
+    "dateStart": "Start Date",
+    "dateEnd": "End Date",
     "itemSize": "Item Size",
+    "sizeRange": "Range",
     "small": "Small (Up to 1kg)",
     "medium": "Medium (1-5kg)",
     "large": "Large (5kg+)",
     "applyFilters": "Apply Filters",
     "reset": "Reset",
     "noResults": "No results found",
-    "tryAdjusting": "Try adjusting your search filters"
+    "tryAdjusting": "Try adjusting your search filters",
+    "trainStationNotFound": "Train does not stop at this station",
+    "selectStationFirst": "Select a departure station to see time"
   },
 
   "offer": {
