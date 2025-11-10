@@ -20,6 +20,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import FlightIcon from '@mui/icons-material/Flight';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LuggageIcon from '@mui/icons-material/Luggage';
+import TrainIcon from '@mui/icons-material/Train';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 interface TripCardWithUserProps {
   trip: Trip;
@@ -150,6 +152,44 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
               </Box>
             </Box>
           </Grid>
+
+          {(trip.trainNumber || trip.departureTime) && (
+            <Grid item xs={12} sm='auto'>
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: 1,
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  alignItems: { xs: 'flex-start', sm: 'center' },
+                }}
+              >
+                {trip.trainNumber && (
+                  <Chip
+                    icon={<TrainIcon sx={{ fontSize: 18 }} />}
+                    label={`${t('trip.trainNumber')}: ${trip.trainNumber}`}
+                    size='small'
+                    sx={{
+                      bgcolor: alpha(theme.palette.secondary.main, 0.12),
+                      color: theme.palette.secondary.main,
+                      fontWeight: 600,
+                    }}
+                  />
+                )}
+                {trip.departureTime && (
+                  <Chip
+                    icon={<AccessTimeIcon sx={{ fontSize: 18 }} />}
+                    label={`${t('trip.departureTime')}: ${trip.departureTime}`}
+                    size='small'
+                    sx={{
+                      bgcolor: alpha(theme.palette.secondary.main, 0.08),
+                      color: theme.palette.text.primary,
+                      fontWeight: 600,
+                    }}
+                  />
+                )}
+              </Box>
+            </Grid>
+          )}
 
           <Grid item xs={12} sm='auto'>
             <Box
