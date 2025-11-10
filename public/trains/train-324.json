@@ -1,0 +1,144 @@
+{
+  "trainNumber": "324",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "489",
+      "name": {
+        "en": "Shibin Qanatir",
+        "ar": "شبين القناطر"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:10",
+    "endTime": "08:15",
+    "stations": [
+      {
+        "stationId": 489,
+        "stationName": {
+          "en": "Shibin Qanatir",
+          "ar": "شبين القناطر"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:10"
+      },
+      {
+        "stationId": 490,
+        "stationName": {
+          "en": "Kafr Shebeen",
+          "ar": "كفر شبين"
+        },
+        "arrivalTime": "07:14",
+        "departureTime": "07:15"
+      },
+      {
+        "stationId": 491,
+        "stationName": {
+          "en": "Tahanub",
+          "ar": "طحانوب"
+        },
+        "arrivalTime": "07:19",
+        "departureTime": "07:20"
+      },
+      {
+        "stationId": 492,
+        "stationName": {
+          "en": "Kafr Taha",
+          "ar": "كفر طحا"
+        },
+        "arrivalTime": "07:23",
+        "departureTime": "07:24"
+      },
+      {
+        "stationId": 493,
+        "stationName": {
+          "en": "Zahawiyin",
+          "ar": "الزهوين"
+        },
+        "arrivalTime": "07:27",
+        "departureTime": "07:28"
+      },
+      {
+        "stationId": 494,
+        "stationName": {
+          "en": "Nawa",
+          "ar": "نوى"
+        },
+        "arrivalTime": "07:33",
+        "departureTime": "07:34"
+      },
+      {
+        "stationId": 495,
+        "stationName": {
+          "en": "Kafr Ramadah",
+          "ar": "كفر رمادة"
+        },
+        "arrivalTime": "07:39",
+        "departureTime": "07:40"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "07:46",
+        "departureTime": "07:47"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "07:59",
+        "departureTime": "08:00"
+      },
+      {
+        "stationId": 39,
+        "stationName": {
+          "en": "Zawya Hamraa",
+          "ar": "الزاوية الحمراء"
+        },
+        "arrivalTime": "08:08",
+        "departureTime": "08:09"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "08:15",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 11
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "03/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

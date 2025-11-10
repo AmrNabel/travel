@@ -1,0 +1,333 @@
+{
+  "trainNumber": "983",
+  "trainType": {
+    "id": 2,
+    "name": {
+      "en": "VIP",
+      "ar": "خاص"
+    },
+    "description": {
+      "en": "Luxury VIP trains with premium services and exceptional comfort",
+      "ar": "قطارات خاصة فاخرة بخدمات مميزة وراحة استثنائية"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "21",
+      "name": {
+        "en": "Aswan",
+        "ar": "اسوان"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:30",
+    "endTime": "21:40",
+    "stations": [
+      {
+        "stationId": 21,
+        "stationName": {
+          "en": "Aswan",
+          "ar": "اسوان"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:30"
+      },
+      {
+        "stationId": 217,
+        "stationName": {
+          "en": "Daraw",
+          "ar": "دراو"
+        },
+        "arrivalTime": "08:04",
+        "departureTime": "08:05"
+      },
+      {
+        "stationId": 215,
+        "stationName": {
+          "en": "Kom Ombo",
+          "ar": "كوم امبو"
+        },
+        "arrivalTime": "08:16",
+        "departureTime": "08:17"
+      },
+      {
+        "stationId": 212,
+        "stationName": {
+          "en": "Kalabsha",
+          "ar": "كلابشة"
+        },
+        "arrivalTime": "08:33",
+        "departureTime": "08:34"
+      },
+      {
+        "stationId": 202,
+        "stationName": {
+          "en": "Edfu",
+          "ar": "ادفو"
+        },
+        "arrivalTime": "09:09",
+        "departureTime": "09:10"
+      },
+      {
+        "stationId": 191,
+        "stationName": {
+          "en": "Esna",
+          "ar": "اسنا"
+        },
+        "arrivalTime": "09:52",
+        "departureTime": "09:53"
+      },
+      {
+        "stationId": 184,
+        "stationName": {
+          "en": "Armant",
+          "ar": "ارمنت"
+        },
+        "arrivalTime": "10:19",
+        "departureTime": "10:20"
+      },
+      {
+        "stationId": 20,
+        "stationName": {
+          "en": "Luxor",
+          "ar": "الاقصر"
+        },
+        "arrivalTime": "10:45",
+        "departureTime": "10:55"
+      },
+      {
+        "stationId": 172,
+        "stationName": {
+          "en": "Qus",
+          "ar": "قوص"
+        },
+        "arrivalTime": "11:24",
+        "departureTime": "11:25"
+      },
+      {
+        "stationId": 170,
+        "stationName": {
+          "en": "Qift",
+          "ar": "قفط"
+        },
+        "arrivalTime": "11:37",
+        "departureTime": "11:38"
+      },
+      {
+        "stationId": 19,
+        "stationName": {
+          "en": "Qena",
+          "ar": "قنا"
+        },
+        "arrivalTime": "11:59",
+        "departureTime": "12:00"
+      },
+      {
+        "stationId": 159,
+        "stationName": {
+          "en": "Dishna",
+          "ar": "دشنا"
+        },
+        "arrivalTime": "12:26",
+        "departureTime": "12:27"
+      },
+      {
+        "stationId": 154,
+        "stationName": {
+          "en": "Nagaa Hammadi",
+          "ar": "نجع حمادي"
+        },
+        "arrivalTime": "12:54",
+        "departureTime": "12:55"
+      },
+      {
+        "stationId": 152,
+        "stationName": {
+          "en": "Farshut",
+          "ar": "فرشوط"
+        },
+        "arrivalTime": "13:08",
+        "departureTime": "13:09"
+      },
+      {
+        "stationId": 150,
+        "stationName": {
+          "en": "Abo Tesht",
+          "ar": "ابو تشت"
+        },
+        "arrivalTime": "13:19",
+        "departureTime": "13:20"
+      },
+      {
+        "stationId": 146,
+        "stationName": {
+          "en": "Balyana",
+          "ar": "البلينا"
+        },
+        "arrivalTime": "13:39",
+        "departureTime": "13:40"
+      },
+      {
+        "stationId": 142,
+        "stationName": {
+          "en": "Girga",
+          "ar": "جرجا"
+        },
+        "arrivalTime": "13:57",
+        "departureTime": "13:58"
+      },
+      {
+        "stationId": 138,
+        "stationName": {
+          "en": "Monshaa",
+          "ar": "المنشأة"
+        },
+        "arrivalTime": "14:14",
+        "departureTime": "14:15"
+      },
+      {
+        "stationId": 18,
+        "stationName": {
+          "en": "Sohag",
+          "ar": "سوهاج"
+        },
+        "arrivalTime": "14:30",
+        "departureTime": "14:40"
+      },
+      {
+        "stationId": 132,
+        "stationName": {
+          "en": "Maragha",
+          "ar": "المراغة"
+        },
+        "arrivalTime": "14:59",
+        "departureTime": "15:00"
+      },
+      {
+        "stationId": 129,
+        "stationName": {
+          "en": "Tahta",
+          "ar": "طهطا"
+        },
+        "arrivalTime": "15:14",
+        "departureTime": "15:15"
+      },
+      {
+        "stationId": 125,
+        "stationName": {
+          "en": "Tima",
+          "ar": "طما"
+        },
+        "arrivalTime": "15:32",
+        "departureTime": "15:33"
+      },
+      {
+        "stationId": 123,
+        "stationName": {
+          "en": "Sidfa",
+          "ar": "صدفا"
+        },
+        "arrivalTime": "15:43",
+        "departureTime": "15:44"
+      },
+      {
+        "stationId": 121,
+        "stationName": {
+          "en": "Abo Tij",
+          "ar": "ابو تيج"
+        },
+        "arrivalTime": "15:57",
+        "departureTime": "15:58"
+      },
+      {
+        "stationId": 17,
+        "stationName": {
+          "en": "Asyut",
+          "ar": "اسيوط"
+        },
+        "arrivalTime": "16:20",
+        "departureTime": "16:30"
+      },
+      {
+        "stationId": 101,
+        "stationName": {
+          "en": "Mallawi",
+          "ar": "ملوي"
+        },
+        "arrivalTime": "17:35",
+        "departureTime": "17:36"
+      },
+      {
+        "stationId": 16,
+        "stationName": {
+          "en": "Minya",
+          "ar": "المنيا"
+        },
+        "arrivalTime": "18:24",
+        "departureTime": "18:25"
+      },
+      {
+        "stationId": 15,
+        "stationName": {
+          "en": "Beni Suef",
+          "ar": "بني سويف"
+        },
+        "arrivalTime": "19:48",
+        "departureTime": "19:49"
+      },
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": "20:18",
+        "departureTime": "20:19"
+      },
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": "21:19",
+        "departureTime": "21:20"
+      },
+      {
+        "stationId": 12,
+        "stationName": {
+          "en": "Upper Egypt",
+          "ar": "صعيد مصر"
+        },
+        "arrivalTime": "21:31",
+        "departureTime": "21:32"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "21:40",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 32
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "28/10/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

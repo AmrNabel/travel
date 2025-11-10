@@ -1,0 +1,234 @@
+{
+  "trainNumber": "106",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "9",
+      "name": {
+        "en": "Suez",
+        "ar": "السويس"
+      }
+    },
+    "to": {
+      "stationId": "7",
+      "name": {
+        "en": "Ismailia",
+        "ar": "الاسماعيلية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "11:00",
+    "endTime": "13:19",
+    "stations": [
+      {
+        "stationId": 9,
+        "stationName": {
+          "en": "Suez",
+          "ar": "السويس"
+        },
+        "arrivalTime": null,
+        "departureTime": "11:00"
+      },
+      {
+        "stationId": 461,
+        "stationName": {
+          "en": "Amer",
+          "ar": "عامر"
+        },
+        "arrivalTime": "11:08",
+        "departureTime": "11:09"
+      },
+      {
+        "stationId": 460,
+        "stationName": {
+          "en": "Ganayen",
+          "ar": "الجناين"
+        },
+        "arrivalTime": "11:14",
+        "departureTime": "11:15"
+      },
+      {
+        "stationId": 459,
+        "stationName": {
+          "en": "Shaloofh",
+          "ar": "شلوفة"
+        },
+        "arrivalTime": "11:23",
+        "departureTime": "11:24"
+      },
+      {
+        "stationId": 458,
+        "stationName": {
+          "en": "64 km",
+          "ar": "كيلو 64"
+        },
+        "arrivalTime": "11:30",
+        "departureTime": "11:31"
+      },
+      {
+        "stationId": 457,
+        "stationName": {
+          "en": "Abo halab",
+          "ar": "ابو حلب"
+        },
+        "arrivalTime": "11:38",
+        "departureTime": "11:39"
+      },
+      {
+        "stationId": 456,
+        "stationName": {
+          "en": "Jenefh",
+          "ar": "جنيفة"
+        },
+        "arrivalTime": "11:48",
+        "departureTime": "11:49"
+      },
+      {
+        "stationId": 455,
+        "stationName": {
+          "en": "kasfareet",
+          "ar": "كسفريت"
+        },
+        "arrivalTime": "11:56",
+        "departureTime": "11:57"
+      },
+      {
+        "stationId": 454,
+        "stationName": {
+          "en": "Fanara",
+          "ar": "فنارة"
+        },
+        "arrivalTime": "12:05",
+        "departureTime": "12:06"
+      },
+      {
+        "stationId": 453,
+        "stationName": {
+          "en": "Kemt Fayed",
+          "ar": "قمة فايد"
+        },
+        "arrivalTime": "12:11",
+        "departureTime": "12:12"
+      },
+      {
+        "stationId": 452,
+        "stationName": {
+          "en": "Fayed N",
+          "ar": "فايد ج"
+        },
+        "arrivalTime": "12:16",
+        "departureTime": "12:17"
+      },
+      {
+        "stationId": 451,
+        "stationName": {
+          "en": "Fayed",
+          "ar": "فايد"
+        },
+        "arrivalTime": "12:20",
+        "departureTime": "12:21"
+      },
+      {
+        "stationId": 450,
+        "stationName": {
+          "en": "Saidia",
+          "ar": "السعيدية"
+        },
+        "arrivalTime": "12:28",
+        "departureTime": "12:29"
+      },
+      {
+        "stationId": 449,
+        "stationName": {
+          "en": "Abo Sultan",
+          "ar": "ابو سلطان"
+        },
+        "arrivalTime": "12:35",
+        "departureTime": "12:36"
+      },
+      {
+        "stationId": 448,
+        "stationName": {
+          "en": "10th of Ramadan",
+          "ar": "10 رمضان"
+        },
+        "arrivalTime": "12:41",
+        "departureTime": "12:42"
+      },
+      {
+        "stationId": 447,
+        "stationName": {
+          "en": "Serapeum",
+          "ar": "سرابيوم"
+        },
+        "arrivalTime": "12:47",
+        "departureTime": "12:48"
+      },
+      {
+        "stationId": 446,
+        "stationName": {
+          "en": "Ain Ghoseen",
+          "ar": "عين غصين"
+        },
+        "arrivalTime": "12:53",
+        "departureTime": "12:54"
+      },
+      {
+        "stationId": 445,
+        "stationName": {
+          "en": "Ad Dabiyyah",
+          "ar": "الضبعية"
+        },
+        "arrivalTime": "12:59",
+        "departureTime": "13:00"
+      },
+      {
+        "stationId": 430,
+        "stationName": {
+          "en": "Nafesha",
+          "ar": "نفيشة"
+        },
+        "arrivalTime": "13:09",
+        "departureTime": "13:10"
+      },
+      {
+        "stationId": 431,
+        "stationName": {
+          "en": "Galaa Camp",
+          "ar": "معسكر الجلاء"
+        },
+        "arrivalTime": "13:14",
+        "departureTime": "13:15"
+      },
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": "13:19",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 21
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "04/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

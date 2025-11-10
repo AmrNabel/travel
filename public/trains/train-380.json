@@ -1,0 +1,441 @@
+{
+  "trainNumber": "380",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "10",
+      "name": {
+        "en": "Mansoura",
+        "ar": "المنصورة"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "09:00",
+    "endTime": "13:35",
+    "stations": [
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": null,
+        "departureTime": "09:00"
+      },
+      {
+        "stationId": 527,
+        "stationName": {
+          "en": "Sandub",
+          "ar": "سندوب"
+        },
+        "arrivalTime": "09:06",
+        "departureTime": "09:07"
+      },
+      {
+        "stationId": 526,
+        "stationName": {
+          "en": "Shawah",
+          "ar": "شاوة"
+        },
+        "arrivalTime": "09:11",
+        "departureTime": "09:12"
+      },
+      {
+        "stationId": 525,
+        "stationName": {
+          "en": "Baqliyyah",
+          "ar": "البقلية"
+        },
+        "arrivalTime": "09:18",
+        "departureTime": "09:19"
+      },
+      {
+        "stationId": 524,
+        "stationName": {
+          "en": "Zurayqi",
+          "ar": "الزريقي"
+        },
+        "arrivalTime": "09:22",
+        "departureTime": "09:23"
+      },
+      {
+        "stationId": 523,
+        "stationName": {
+          "en": "Shobra Qubala",
+          "ar": "شبرا قبالة"
+        },
+        "arrivalTime": "09:28",
+        "departureTime": "09:29"
+      },
+      {
+        "stationId": 522,
+        "stationName": {
+          "en": "Senbellawein",
+          "ar": "السنبلاوين"
+        },
+        "arrivalTime": "09:35",
+        "departureTime": "09:36"
+      },
+      {
+        "stationId": 521,
+        "stationName": {
+          "en": "Taranis Arab",
+          "ar": "طرانيس العرب"
+        },
+        "arrivalTime": "09:42",
+        "departureTime": "09:43"
+      },
+      {
+        "stationId": 520,
+        "stationName": {
+          "en": "Barqin",
+          "ar": "برقين"
+        },
+        "arrivalTime": "09:47",
+        "departureTime": "09:48"
+      },
+      {
+        "stationId": 519,
+        "stationName": {
+          "en": "Hikal Basha",
+          "ar": "هيكل باشا"
+        },
+        "arrivalTime": "09:53",
+        "departureTime": "09:54"
+      },
+      {
+        "stationId": 518,
+        "stationName": {
+          "en": "Abo Shuquq",
+          "ar": "ابو الشقوق"
+        },
+        "arrivalTime": "09:57",
+        "departureTime": "09:58"
+      },
+      {
+        "stationId": 517,
+        "stationName": {
+          "en": "Badawy",
+          "ar": "بدوي"
+        },
+        "arrivalTime": "10:01",
+        "departureTime": "10:02"
+      },
+      {
+        "stationId": 516,
+        "stationName": {
+          "en": "Kafr Saqr",
+          "ar": "كفر صقر"
+        },
+        "arrivalTime": "10:07",
+        "departureTime": "10:08"
+      },
+      {
+        "stationId": 515,
+        "stationName": {
+          "en": "Bouha",
+          "ar": "البوها"
+        },
+        "arrivalTime": "10:10",
+        "departureTime": "10:11"
+      },
+      {
+        "stationId": 514,
+        "stationName": {
+          "en": "Nazlet Khayal",
+          "ar": "نزلة الخيال"
+        },
+        "arrivalTime": "10:15",
+        "departureTime": "10:16"
+      },
+      {
+        "stationId": 513,
+        "stationName": {
+          "en": "Abo Kibir",
+          "ar": "ابو كبير"
+        },
+        "arrivalTime": "10:23",
+        "departureTime": "10:24"
+      },
+      {
+        "stationId": 512,
+        "stationName": {
+          "en": "Abo Yassin",
+          "ar": "ابو ياسين"
+        },
+        "arrivalTime": "10:29",
+        "departureTime": "10:30"
+      },
+      {
+        "stationId": 511,
+        "stationName": {
+          "en": "Shirshimah",
+          "ar": "شرشيمة"
+        },
+        "arrivalTime": "10:33",
+        "departureTime": "10:34"
+      },
+      {
+        "stationId": 510,
+        "stationName": {
+          "en": "Hihya",
+          "ar": "هيها"
+        },
+        "arrivalTime": "10:39",
+        "departureTime": "10:40"
+      },
+      {
+        "stationId": 509,
+        "stationName": {
+          "en": "Adawyh",
+          "ar": "العداوية"
+        },
+        "arrivalTime": "10:46",
+        "departureTime": "10:47"
+      },
+      {
+        "stationId": 508,
+        "stationName": {
+          "en": "Kafr Msalamya",
+          "ar": "كفر المسلمية"
+        },
+        "arrivalTime": "10:49",
+        "departureTime": "10:50"
+      },
+      {
+        "stationId": 507,
+        "stationName": {
+          "en": "Harayah Raznah",
+          "ar": "هرية رزنة"
+        },
+        "arrivalTime": "10:54",
+        "departureTime": "10:55"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "11:09",
+        "departureTime": "11:10"
+      },
+      {
+        "stationId": 479,
+        "stationName": {
+          "en": "Asluji",
+          "ar": "العصلوجي"
+        },
+        "arrivalTime": "11:12",
+        "departureTime": "11:13"
+      },
+      {
+        "stationId": 480,
+        "stationName": {
+          "en": "Bardein",
+          "ar": "بردين"
+        },
+        "arrivalTime": "11:20",
+        "departureTime": "11:21"
+      },
+      {
+        "stationId": 481,
+        "stationName": {
+          "en": "Awlad Seif",
+          "ar": "اولاد سيف"
+        },
+        "arrivalTime": "11:27",
+        "departureTime": "11:28"
+      },
+      {
+        "stationId": 482,
+        "stationName": {
+          "en": "Belbes",
+          "ar": "بلبيس"
+        },
+        "arrivalTime": "11:35",
+        "departureTime": "11:36"
+      },
+      {
+        "stationId": 483,
+        "stationName": {
+          "en": "Tall Rozan",
+          "ar": "تل روزن"
+        },
+        "arrivalTime": "11:42",
+        "departureTime": "11:43"
+      },
+      {
+        "stationId": 484,
+        "stationName": {
+          "en": "Bir Imarah",
+          "ar": "بير عمارة"
+        },
+        "arrivalTime": "11:47",
+        "departureTime": "11:48"
+      },
+      {
+        "stationId": 485,
+        "stationName": {
+          "en": "Inshas",
+          "ar": "انشاص"
+        },
+        "arrivalTime": "11:54",
+        "departureTime": "11:55"
+      },
+      {
+        "stationId": 486,
+        "stationName": {
+          "en": "Salamant",
+          "ar": "سلمنت"
+        },
+        "arrivalTime": "12:00",
+        "departureTime": "12:01"
+      },
+      {
+        "stationId": 487,
+        "stationName": {
+          "en": "Mashtul",
+          "ar": "مشتول"
+        },
+        "arrivalTime": "12:07",
+        "departureTime": "12:08"
+      },
+      {
+        "stationId": 488,
+        "stationName": {
+          "en": "Monshaat Kiram",
+          "ar": "منشأة الكرام"
+        },
+        "arrivalTime": "12:13",
+        "departureTime": "12:14"
+      },
+      {
+        "stationId": 489,
+        "stationName": {
+          "en": "Shibin Qanatir",
+          "ar": "شبين القناطر"
+        },
+        "arrivalTime": "12:20",
+        "departureTime": "12:21"
+      },
+      {
+        "stationId": 490,
+        "stationName": {
+          "en": "Kafr Shebeen",
+          "ar": "كفر شبين"
+        },
+        "arrivalTime": "12:29",
+        "departureTime": "12:30"
+      },
+      {
+        "stationId": 491,
+        "stationName": {
+          "en": "Tahanub",
+          "ar": "طحانوب"
+        },
+        "arrivalTime": "12:38",
+        "departureTime": "12:39"
+      },
+      {
+        "stationId": 492,
+        "stationName": {
+          "en": "Kafr Taha",
+          "ar": "كفر طحا"
+        },
+        "arrivalTime": "12:42",
+        "departureTime": "12:43"
+      },
+      {
+        "stationId": 493,
+        "stationName": {
+          "en": "Zahawiyin",
+          "ar": "الزهوين"
+        },
+        "arrivalTime": "12:46",
+        "departureTime": "12:47"
+      },
+      {
+        "stationId": 494,
+        "stationName": {
+          "en": "Nawa",
+          "ar": "نوى"
+        },
+        "arrivalTime": "12:52",
+        "departureTime": "12:53"
+      },
+      {
+        "stationId": 495,
+        "stationName": {
+          "en": "Kafr Ramadah",
+          "ar": "كفر رمادة"
+        },
+        "arrivalTime": "12:58",
+        "departureTime": "12:59"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "13:05",
+        "departureTime": "13:06"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "13:19",
+        "departureTime": "13:20"
+      },
+      {
+        "stationId": 39,
+        "stationName": {
+          "en": "Zawya Hamraa",
+          "ar": "الزاوية الحمراء"
+        },
+        "arrivalTime": "13:28",
+        "departureTime": "13:29"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "13:35",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 44
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "29/08/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

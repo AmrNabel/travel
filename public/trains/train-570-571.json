@@ -1,0 +1,234 @@
+{
+  "trainNumber": "570-571",
+  "trainType": {
+    "id": 3,
+    "name": {
+      "en": "AC Russian",
+      "ar": "مكيف روسي"
+    },
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "8",
+      "name": {
+        "en": "Port Said",
+        "ar": "بورسعيد"
+      }
+    },
+    "to": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:25",
+    "endTime": "13:35",
+    "stations": [
+      {
+        "stationId": 8,
+        "stationName": {
+          "en": "Port Said",
+          "ar": "بورسعيد"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:25"
+      },
+      {
+        "stationId": 435,
+        "stationName": {
+          "en": "Qantara Gharb",
+          "ar": "القنطرة غرب"
+        },
+        "arrivalTime": "08:07",
+        "departureTime": "08:08"
+      },
+      {
+        "stationId": 432,
+        "stationName": {
+          "en": "Sheikh Zayed",
+          "ar": "الشيخ زايد"
+        },
+        "arrivalTime": "08:32",
+        "departureTime": "08:33"
+      },
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": "08:42",
+        "departureTime": "08:43"
+      },
+      {
+        "stationId": 428,
+        "stationName": {
+          "en": "Abo Swer",
+          "ar": "ابو صوير"
+        },
+        "arrivalTime": "08:59",
+        "departureTime": "09:00"
+      },
+      {
+        "stationId": 424,
+        "stationName": {
+          "en": "Qassasin",
+          "ar": "القصاصين"
+        },
+        "arrivalTime": "09:15",
+        "departureTime": "09:16"
+      },
+      {
+        "stationId": 422,
+        "stationName": {
+          "en": "Tal Kabeer",
+          "ar": "التل الكبير"
+        },
+        "arrivalTime": "09:31",
+        "departureTime": "09:32"
+      },
+      {
+        "stationId": 421,
+        "stationName": {
+          "en": "Mahjar Abo Hammad",
+          "ar": "محجر ابو حماد"
+        },
+        "arrivalTime": "09:38",
+        "departureTime": "09:39"
+      },
+      {
+        "stationId": 420,
+        "stationName": {
+          "en": "Abo Hammad",
+          "ar": "ابو حماد"
+        },
+        "arrivalTime": "09:45",
+        "departureTime": "09:46"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "10:09",
+        "departureTime": "10:10"
+      },
+      {
+        "stationId": 407,
+        "stationName": {
+          "en": "Zagazig University",
+          "ar": "جامعة الزقازيق"
+        },
+        "arrivalTime": "10:11",
+        "departureTime": "10:12"
+      },
+      {
+        "stationId": 399,
+        "stationName": {
+          "en": "Tafhna Ashraf",
+          "ar": "تفهنا الاشراف"
+        },
+        "arrivalTime": "10:40",
+        "departureTime": "10:41"
+      },
+      {
+        "stationId": 395,
+        "stationName": {
+          "en": "Mit Ghamer",
+          "ar": "ميت غمر"
+        },
+        "arrivalTime": "10:56",
+        "departureTime": "10:57"
+      },
+      {
+        "stationId": 394,
+        "stationName": {
+          "en": "Zefta",
+          "ar": "زفتى"
+        },
+        "arrivalTime": "11:03",
+        "departureTime": "11:04"
+      },
+      {
+        "stationId": 389,
+        "stationName": {
+          "en": "Santa",
+          "ar": "السنطة"
+        },
+        "arrivalTime": "11:19",
+        "departureTime": "11:20"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "11:30",
+        "departureTime": "11:40"
+      },
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": "11:57",
+        "departureTime": "11:58"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "12:18",
+        "departureTime": "12:19"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "12:42",
+        "departureTime": "12:43"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "13:25",
+        "departureTime": "13:28"
+      },
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": "13:35",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 21
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo/?fbid=838905971606102&set=pcb.838906038272762",
+    "lastUpdate": "31/12/2024"
+  },
+  "notes": {
+    "en": "third-class car specific for army persons attached",
+    "ar": "ملحق به عربة روسي خاصه بأفرد الجيش"
+  }
+}

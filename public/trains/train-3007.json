@@ -1,0 +1,207 @@
+{
+  "trainNumber": "3007",
+  "trainType": {
+    "id": 3,
+    "name": {
+      "en": "AC Russian",
+      "ar": "مكيف روسي"
+    },
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "21",
+      "name": {
+        "en": "Aswan",
+        "ar": "اسوان"
+      }
+    },
+    "to": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "10:00",
+    "endTime": "01:40",
+    "stations": [
+      {
+        "stationId": 21,
+        "stationName": {
+          "en": "Aswan",
+          "ar": "اسوان"
+        },
+        "arrivalTime": null,
+        "departureTime": "10:00"
+      },
+      {
+        "stationId": 215,
+        "stationName": {
+          "en": "Kom Ombo",
+          "ar": "كوم امبو"
+        },
+        "arrivalTime": "10:41",
+        "departureTime": "10:42"
+      },
+      {
+        "stationId": 202,
+        "stationName": {
+          "en": "Edfu",
+          "ar": "ادفو"
+        },
+        "arrivalTime": "11:30",
+        "departureTime": "11:31"
+      },
+      {
+        "stationId": 20,
+        "stationName": {
+          "en": "Luxor",
+          "ar": "الاقصر"
+        },
+        "arrivalTime": "13:05",
+        "departureTime": "13:05"
+      },
+      {
+        "stationId": 19,
+        "stationName": {
+          "en": "Qena",
+          "ar": "قنا"
+        },
+        "arrivalTime": "13:59",
+        "departureTime": "14:00"
+      },
+      {
+        "stationId": 154,
+        "stationName": {
+          "en": "Nagaa Hammadi",
+          "ar": "نجع حمادي"
+        },
+        "arrivalTime": "14:49",
+        "departureTime": "14:50"
+      },
+      {
+        "stationId": 18,
+        "stationName": {
+          "en": "Sohag",
+          "ar": "سوهاج"
+        },
+        "arrivalTime": "16:04",
+        "departureTime": "16:05"
+      },
+      {
+        "stationId": 17,
+        "stationName": {
+          "en": "Asyut",
+          "ar": "اسيوط"
+        },
+        "arrivalTime": "17:24",
+        "departureTime": "17:25"
+      },
+      {
+        "stationId": 101,
+        "stationName": {
+          "en": "Mallawi",
+          "ar": "ملوي"
+        },
+        "arrivalTime": "18:30",
+        "departureTime": "18:31"
+      },
+      {
+        "stationId": 16,
+        "stationName": {
+          "en": "Minya",
+          "ar": "المنيا"
+        },
+        "arrivalTime": "19:14",
+        "departureTime": "19:15"
+      },
+      {
+        "stationId": 80,
+        "stationName": {
+          "en": "Maghagha",
+          "ar": "مغاغة"
+        },
+        "arrivalTime": "20:00",
+        "departureTime": "20:01"
+      },
+      {
+        "stationId": 15,
+        "stationName": {
+          "en": "Beni Suef",
+          "ar": "بني سويف"
+        },
+        "arrivalTime": "20:42",
+        "departureTime": "20:43"
+      },
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": "22:00",
+        "departureTime": "22:05"
+      },
+      {
+        "stationId": 12,
+        "stationName": {
+          "en": "Upper Egypt",
+          "ar": "صعيد مصر"
+        },
+        "arrivalTime": "22:14",
+        "departureTime": "22:17"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "22:30",
+        "departureTime": "23:00"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "00:07",
+        "departureTime": "00:12"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "01:28",
+        "departureTime": "01:33"
+      },
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": "01:40",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "01/11/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

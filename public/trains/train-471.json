@@ -1,0 +1,180 @@
+{
+  "trainNumber": "471",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "322",
+      "name": {
+        "en": "Qleen",
+        "ar": "قلين"
+      }
+    },
+    "to": {
+      "stationId": "3",
+      "name": {
+        "en": "Damanhour",
+        "ar": "دمنهور"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "19:25",
+    "endTime": "20:39",
+    "stations": [
+      {
+        "stationId": 322,
+        "stationName": {
+          "en": "Qleen",
+          "ar": "قلين"
+        },
+        "arrivalTime": null,
+        "departureTime": "19:25"
+      },
+      {
+        "stationId": 321,
+        "stationName": {
+          "en": "Bekatush",
+          "ar": "البكاتوش"
+        },
+        "arrivalTime": "19:30",
+        "departureTime": "19:31"
+      },
+      {
+        "stationId": 320,
+        "stationName": {
+          "en": "Kafr Gazayer",
+          "ar": "كفر الجزاير"
+        },
+        "arrivalTime": "19:36",
+        "departureTime": "19:37"
+      },
+      {
+        "stationId": 319,
+        "stationName": {
+          "en": "Shbas",
+          "ar": "شباس"
+        },
+        "arrivalTime": "19:42",
+        "departureTime": "19:43"
+      },
+      {
+        "stationId": 318,
+        "stationName": {
+          "en": "Madinah",
+          "ar": "المدينة"
+        },
+        "arrivalTime": "19:48",
+        "departureTime": "19:49"
+      },
+      {
+        "stationId": 317,
+        "stationName": {
+          "en": "Gmagmun",
+          "ar": "جماجمون"
+        },
+        "arrivalTime": "19:53",
+        "departureTime": "19:54"
+      },
+      {
+        "stationId": 316,
+        "stationName": {
+          "en": "Desouk",
+          "ar": "دسوق"
+        },
+        "arrivalTime": "20:00",
+        "departureTime": "20:01"
+      },
+      {
+        "stationId": 315,
+        "stationName": {
+          "en": "Rahmaniah",
+          "ar": "الرحمانية"
+        },
+        "arrivalTime": "20:05",
+        "departureTime": "20:06"
+      },
+      {
+        "stationId": 314,
+        "stationName": {
+          "en": "Fath",
+          "ar": "الفتح"
+        },
+        "arrivalTime": "20:10",
+        "departureTime": "20:11"
+      },
+      {
+        "stationId": 313,
+        "stationName": {
+          "en": "Khazan",
+          "ar": "الخزان"
+        },
+        "arrivalTime": "20:15",
+        "departureTime": "20:16"
+      },
+      {
+        "stationId": 312,
+        "stationName": {
+          "en": "Hwariah",
+          "ar": "الهوارية"
+        },
+        "arrivalTime": "20:19",
+        "departureTime": "20:20"
+      },
+      {
+        "stationId": 311,
+        "stationName": {
+          "en": "Sanhur",
+          "ar": "سنهور"
+        },
+        "arrivalTime": "20:23",
+        "departureTime": "20:24"
+      },
+      {
+        "stationId": 310,
+        "stationName": {
+          "en": "Nefrah",
+          "ar": "نفرة"
+        },
+        "arrivalTime": "20:28",
+        "departureTime": "20:29"
+      },
+      {
+        "stationId": 309,
+        "stationName": {
+          "en": "Kafr Beni Helal",
+          "ar": "كفر بني هلال"
+        },
+        "arrivalTime": "20:33",
+        "departureTime": "20:34"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "20:39",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 15
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "10/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

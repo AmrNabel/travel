@@ -1,0 +1,243 @@
+{
+  "trainNumber": "588-589",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "8",
+      "name": {
+        "en": "Port Said",
+        "ar": "بورسعيد"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "04:20",
+    "endTime": "11:09",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "04:20"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "04:25",
+        "departureTime": "04:30"
+      },
+      {
+        "stationId": 24,
+        "stationName": {
+          "en": "Kafr Dawar",
+          "ar": "كفر الدوار"
+        },
+        "arrivalTime": "05:02",
+        "departureTime": "05:03"
+      },
+      {
+        "stationId": 25,
+        "stationName": {
+          "en": "Abo Homos",
+          "ar": "ابو حمص"
+        },
+        "arrivalTime": "05:19",
+        "departureTime": "05:20"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "05:36",
+        "departureTime": "05:37"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "05:57",
+        "departureTime": "05:58"
+      },
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": "06:17",
+        "departureTime": "06:18"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "06:35",
+        "departureTime": "06:45"
+      },
+      {
+        "stationId": 389,
+        "stationName": {
+          "en": "Santa",
+          "ar": "السنطة"
+        },
+        "arrivalTime": "07:09",
+        "departureTime": "07:10"
+      },
+      {
+        "stationId": 394,
+        "stationName": {
+          "en": "Zefta",
+          "ar": "زفتى"
+        },
+        "arrivalTime": "07:30",
+        "departureTime": "07:31"
+      },
+      {
+        "stationId": 395,
+        "stationName": {
+          "en": "Mit Ghamer",
+          "ar": "ميت غمر"
+        },
+        "arrivalTime": "07:36",
+        "departureTime": "07:37"
+      },
+      {
+        "stationId": 399,
+        "stationName": {
+          "en": "Tafhna Ashraf",
+          "ar": "تفهنا الاشراف"
+        },
+        "arrivalTime": "07:51",
+        "departureTime": "07:52"
+      },
+      {
+        "stationId": 407,
+        "stationName": {
+          "en": "Zagazig University",
+          "ar": "جامعة الزقازيق"
+        },
+        "arrivalTime": "08:14",
+        "departureTime": "08:15"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "08:24",
+        "departureTime": "08:25"
+      },
+      {
+        "stationId": 420,
+        "stationName": {
+          "en": "Abo Hammad",
+          "ar": "ابو حماد"
+        },
+        "arrivalTime": "08:46",
+        "departureTime": "08:47"
+      },
+      {
+        "stationId": 422,
+        "stationName": {
+          "en": "Tal Kabeer",
+          "ar": "التل الكبير"
+        },
+        "arrivalTime": "08:59",
+        "departureTime": "09:00"
+      },
+      {
+        "stationId": 424,
+        "stationName": {
+          "en": "Qassasin",
+          "ar": "القصاصين"
+        },
+        "arrivalTime": "09:15",
+        "departureTime": "09:16"
+      },
+      {
+        "stationId": 428,
+        "stationName": {
+          "en": "Abo Swer",
+          "ar": "ابو صوير"
+        },
+        "arrivalTime": "09:33",
+        "departureTime": "09:34"
+      },
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": "09:56",
+        "departureTime": "09:57"
+      },
+      {
+        "stationId": 432,
+        "stationName": {
+          "en": "Sheikh Zayed",
+          "ar": "الشيخ زايد"
+        },
+        "arrivalTime": "10:03",
+        "departureTime": "10:04"
+      },
+      {
+        "stationId": 435,
+        "stationName": {
+          "en": "Qantara Gharb",
+          "ar": "القنطرة غرب"
+        },
+        "arrivalTime": "10:32",
+        "departureTime": "10:33"
+      },
+      {
+        "stationId": 8,
+        "stationName": {
+          "en": "Port Said",
+          "ar": "بورسعيد"
+        },
+        "arrivalTime": "11:09",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 22
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838905831606116&set=pcb.838906038272762 ### https://www.facebook.com/photo?fbid=827278979435468&set=pcb.827279566102076",
+    "lastUpdate": "12/02/2025"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

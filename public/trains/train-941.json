@@ -1,0 +1,216 @@
+{
+  "trainNumber": "941",
+  "trainType": {
+    "id": 5,
+    "name": {
+      "en": "Mix",
+      "ar": "مختلط"
+    },
+    "description": {
+      "en": "Mixed trains combining multiple service levels in one journey",
+      "ar": "قطارات مختلطة تجمع بين عدة مستويات من الخدمة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "11",
+      "name": {
+        "en": "Damietta",
+        "ar": "دمياط"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:15",
+    "endTime": "10:15",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:15"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "05:29",
+        "departureTime": "05:30"
+      },
+      {
+        "stationId": 35,
+        "stationName": {
+          "en": "Qaha",
+          "ar": "قها"
+        },
+        "arrivalTime": "05:46",
+        "departureTime": "05:47"
+      },
+      {
+        "stationId": 34,
+        "stationName": {
+          "en": "Toukh",
+          "ar": "طوخ"
+        },
+        "arrivalTime": "05:55",
+        "departureTime": "05:56"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "06:09",
+        "departureTime": "06:10"
+      },
+      {
+        "stationId": 409,
+        "stationName": {
+          "en": "Shiblanjah",
+          "ar": "شبلنجة"
+        },
+        "arrivalTime": "06:19",
+        "departureTime": "06:20"
+      },
+      {
+        "stationId": 410,
+        "stationName": {
+          "en": "Aziziyyah",
+          "ar": "العزيزية"
+        },
+        "arrivalTime": "06:25",
+        "departureTime": "06:26"
+      },
+      {
+        "stationId": 413,
+        "stationName": {
+          "en": "Menyet Qamh",
+          "ar": "منية القمح"
+        },
+        "arrivalTime": "06:37",
+        "departureTime": "06:38"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "07:05",
+        "departureTime": "07:06"
+      },
+      {
+        "stationId": 510,
+        "stationName": {
+          "en": "Hihya",
+          "ar": "هيها"
+        },
+        "arrivalTime": "07:19",
+        "departureTime": "07:20"
+      },
+      {
+        "stationId": 513,
+        "stationName": {
+          "en": "Abo Kibir",
+          "ar": "ابو كبير"
+        },
+        "arrivalTime": "07:31",
+        "departureTime": "07:32"
+      },
+      {
+        "stationId": 516,
+        "stationName": {
+          "en": "Kafr Saqr",
+          "ar": "كفر صقر"
+        },
+        "arrivalTime": "07:43",
+        "departureTime": "07:44"
+      },
+      {
+        "stationId": 520,
+        "stationName": {
+          "en": "Barqin",
+          "ar": "برقين"
+        },
+        "arrivalTime": "08:02",
+        "departureTime": "08:03"
+      },
+      {
+        "stationId": 522,
+        "stationName": {
+          "en": "Senbellawein",
+          "ar": "السنبلاوين"
+        },
+        "arrivalTime": "08:14",
+        "departureTime": "08:15"
+      },
+      {
+        "stationId": 527,
+        "stationName": {
+          "en": "Sandub",
+          "ar": "سندوب"
+        },
+        "arrivalTime": "08:33",
+        "departureTime": "08:34"
+      },
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": "08:40",
+        "departureTime": "08:55"
+      },
+      {
+        "stationId": 594,
+        "stationName": {
+          "en": "Shirbin",
+          "ar": "شربين"
+        },
+        "arrivalTime": "09:26",
+        "departureTime": "09:27"
+      },
+      {
+        "stationId": 601,
+        "stationName": {
+          "en": "Kafr Saad",
+          "ar": "كفر سعد"
+        },
+        "arrivalTime": "09:59",
+        "departureTime": "10:00"
+      },
+      {
+        "stationId": 11,
+        "stationName": {
+          "en": "Damietta",
+          "ar": "دمياط"
+        },
+        "arrivalTime": "10:15",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 19
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838907831605916&set=pcb.838907984939234 ### https://www.facebook.com/photo?fbid=838905861606113&set=pcb.838906038272762",
+    "lastUpdate": "16/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

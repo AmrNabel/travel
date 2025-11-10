@@ -1,0 +1,207 @@
+{
+  "trainNumber": "300",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "231",
+      "name": {
+        "en": "Moharam Beek",
+        "ar": "محرم بك"
+      }
+    },
+    "to": {
+      "stationId": "22",
+      "name": {
+        "en": "Marsa Matruh",
+        "ar": "مرسى مطروح"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:15",
+    "endTime": "12:34",
+    "stations": [
+      {
+        "stationId": 231,
+        "stationName": {
+          "en": "Moharam Beek",
+          "ar": "محرم بك"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:15"
+      },
+      {
+        "stationId": 237,
+        "stationName": {
+          "en": "Abd Qader",
+          "ar": "عبد القادر"
+        },
+        "arrivalTime": "07:45",
+        "departureTime": "07:46"
+      },
+      {
+        "stationId": 238,
+        "stationName": {
+          "en": "Amreyah",
+          "ar": "العامرية"
+        },
+        "arrivalTime": "07:51",
+        "departureTime": "07:52"
+      },
+      {
+        "stationId": 239,
+        "stationName": {
+          "en": "Ekeingy Maryout",
+          "ar": "ايكنجي مريوط"
+        },
+        "arrivalTime": "07:58",
+        "departureTime": "07:59"
+      },
+      {
+        "stationId": 240,
+        "stationName": {
+          "en": "Maryout",
+          "ar": "مريوط"
+        },
+        "arrivalTime": "08:06",
+        "departureTime": "08:07"
+      },
+      {
+        "stationId": 241,
+        "stationName": {
+          "en": "Burj Arab Airport",
+          "ar": "مطار برج العرب"
+        },
+        "arrivalTime": "08:14",
+        "departureTime": "08:15"
+      },
+      {
+        "stationId": 242,
+        "stationName": {
+          "en": "Baheeg",
+          "ar": "بهيج"
+        },
+        "arrivalTime": "08:24",
+        "departureTime": "08:25"
+      },
+      {
+        "stationId": 245,
+        "stationName": {
+          "en": "Burj Arab O",
+          "ar": "برج العرب"
+        },
+        "arrivalTime": "08:32",
+        "departureTime": "08:33"
+      },
+      {
+        "stationId": 247,
+        "stationName": {
+          "en": "Hammam",
+          "ar": "الحمام"
+        },
+        "arrivalTime": "08:52",
+        "departureTime": "08:53"
+      },
+      {
+        "stationId": 248,
+        "stationName": {
+          "en": "Rowaysat",
+          "ar": "الرويسات"
+        },
+        "arrivalTime": "09:01",
+        "departureTime": "09:02"
+      },
+      {
+        "stationId": 251,
+        "stationName": {
+          "en": "Alamein",
+          "ar": "العلمين"
+        },
+        "arrivalTime": "09:43",
+        "departureTime": "09:44"
+      },
+      {
+        "stationId": 253,
+        "stationName": {
+          "en": "Sidi Abd Rahman",
+          "ar": "سيدي عبد الرحمن"
+        },
+        "arrivalTime": "10:12",
+        "departureTime": "10:13"
+      },
+      {
+        "stationId": 255,
+        "stationName": {
+          "en": "Dabaa",
+          "ar": "الضبعة"
+        },
+        "arrivalTime": "10:35",
+        "departureTime": "10:36"
+      },
+      {
+        "stationId": 257,
+        "stationName": {
+          "en": "Galal",
+          "ar": "جلال"
+        },
+        "arrivalTime": "10:58",
+        "departureTime": "10:59"
+      },
+      {
+        "stationId": 259,
+        "stationName": {
+          "en": "Fokah",
+          "ar": "فوكة"
+        },
+        "arrivalTime": "11:23",
+        "departureTime": "11:24"
+      },
+      {
+        "stationId": 260,
+        "stationName": {
+          "en": "Ras Hekmah",
+          "ar": "راس الحكمة"
+        },
+        "arrivalTime": "11:40",
+        "departureTime": "11:41"
+      },
+      {
+        "stationId": 262,
+        "stationName": {
+          "en": "Sidi Henash",
+          "ar": "سيدي حنيش"
+        },
+        "arrivalTime": "11:59",
+        "departureTime": "12:00"
+      },
+      {
+        "stationId": 22,
+        "stationName": {
+          "en": "Marsa Matruh",
+          "ar": "مرسى مطروح"
+        },
+        "arrivalTime": "12:34",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "29/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

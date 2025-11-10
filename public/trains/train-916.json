@@ -1,0 +1,72 @@
+{
+  "trainNumber": "916",
+  "trainType": {
+    "id": 2,
+    "name": {
+      "en": "VIP",
+      "ar": "خاص"
+    },
+    "description": {
+      "en": "Luxury VIP trains with premium services and exceptional comfort",
+      "ar": "قطارات خاصة فاخرة بخدمات مميزة وراحة استثنائية"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:00",
+    "endTime": "17:30",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:00"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "15:10",
+        "departureTime": "15:15"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "17:30",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 3
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "20/08/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "trainNumber": "921",
+  "trainType": {
+    "id": 2,
+    "name": {
+      "en": "VIP",
+      "ar": "خاص"
+    },
+    "description": {
+      "en": "Luxury VIP trains with premium services and exceptional comfort",
+      "ar": "قطارات خاصة فاخرة بخدمات مميزة وراحة استثنائية"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "18:00",
+    "endTime": "20:35",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "18:00"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "19:02",
+        "departureTime": "19:05"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "20:25",
+        "departureTime": "20:28"
+      },
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": "20:35",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 4
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "24/05/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

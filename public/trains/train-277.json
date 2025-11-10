@@ -1,0 +1,198 @@
+{
+  "trainNumber": "277",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "6",
+      "name": {
+        "en": "Zagazig",
+        "ar": "الزقازيق"
+      }
+    },
+    "to": {
+      "stationId": "7",
+      "name": {
+        "en": "Ismailia",
+        "ar": "الاسماعيلية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "14:10",
+    "endTime": "16:05",
+    "stations": [
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": null,
+        "departureTime": "14:10"
+      },
+      {
+        "stationId": 417,
+        "stationName": {
+          "en": "Shabanat",
+          "ar": "الشبانات"
+        },
+        "arrivalTime": "14:19",
+        "departureTime": "14:20"
+      },
+      {
+        "stationId": 418,
+        "stationName": {
+          "en": "Saft Hinnah",
+          "ar": "صفط الحنة"
+        },
+        "arrivalTime": "14:25",
+        "departureTime": "14:26"
+      },
+      {
+        "stationId": 419,
+        "stationName": {
+          "en": "Sawah",
+          "ar": "الصوة"
+        },
+        "arrivalTime": "14:31",
+        "departureTime": "14:32"
+      },
+      {
+        "stationId": 420,
+        "stationName": {
+          "en": "Abo Hammad",
+          "ar": "ابو حماد"
+        },
+        "arrivalTime": "14:38",
+        "departureTime": "14:39"
+      },
+      {
+        "stationId": 421,
+        "stationName": {
+          "en": "Mahjar Abo Hammad",
+          "ar": "محجر ابو حماد"
+        },
+        "arrivalTime": "14:45",
+        "departureTime": "14:46"
+      },
+      {
+        "stationId": 422,
+        "stationName": {
+          "en": "Tal Kabeer",
+          "ar": "التل الكبير"
+        },
+        "arrivalTime": "14:53",
+        "departureTime": "14:54"
+      },
+      {
+        "stationId": 423,
+        "stationName": {
+          "en": "Baalwh",
+          "ar": "البعالوة "
+        },
+        "arrivalTime": "15:02",
+        "departureTime": "15:03"
+      },
+      {
+        "stationId": 424,
+        "stationName": {
+          "en": "Qassasin",
+          "ar": "القصاصين"
+        },
+        "arrivalTime": "15:12",
+        "departureTime": "15:13"
+      },
+      {
+        "stationId": 425,
+        "stationName": {
+          "en": "Mahsmh",
+          "ar": "المحسمة"
+        },
+        "arrivalTime": "15:22",
+        "departureTime": "15:23"
+      },
+      {
+        "stationId": 426,
+        "stationName": {
+          "en": "mohamed Baghdady",
+          "ar": "محمد البغدادي"
+        },
+        "arrivalTime": "15:27",
+        "departureTime": "15:28"
+      },
+      {
+        "stationId": 427,
+        "stationName": {
+          "en": "Abo Gresh",
+          "ar": "ابو جريش"
+        },
+        "arrivalTime": "15:33",
+        "departureTime": "15:34"
+      },
+      {
+        "stationId": 428,
+        "stationName": {
+          "en": "Abo Swer",
+          "ar": "ابو صوير"
+        },
+        "arrivalTime": "15:38",
+        "departureTime": "15:39"
+      },
+      {
+        "stationId": 429,
+        "stationName": {
+          "en": "Wasfih",
+          "ar": "الواصفية"
+        },
+        "arrivalTime": "15:45",
+        "departureTime": "15:46"
+      },
+      {
+        "stationId": 430,
+        "stationName": {
+          "en": "Nafesha",
+          "ar": "نفيشة"
+        },
+        "arrivalTime": "15:53",
+        "departureTime": "15:54"
+      },
+      {
+        "stationId": 431,
+        "stationName": {
+          "en": "Galaa Camp",
+          "ar": "معسكر الجلاء"
+        },
+        "arrivalTime": "15:59",
+        "departureTime": "16:00"
+      },
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": "16:05",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 17
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "04/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

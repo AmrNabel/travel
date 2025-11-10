@@ -1,0 +1,207 @@
+{
+  "trainNumber": "593",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "9",
+      "name": {
+        "en": "Suez",
+        "ar": "السويس"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:00",
+    "endTime": "10:00",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:00"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "05:15",
+        "departureTime": "05:16"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "05:48",
+        "departureTime": "05:49"
+      },
+      {
+        "stationId": 409,
+        "stationName": {
+          "en": "Shiblanjah",
+          "ar": "شبلنجة"
+        },
+        "arrivalTime": "05:58",
+        "departureTime": "05:59"
+      },
+      {
+        "stationId": 411,
+        "stationName": {
+          "en": "Kom Halin",
+          "ar": "كوم حلين"
+        },
+        "arrivalTime": "06:05",
+        "departureTime": "06:06"
+      },
+      {
+        "stationId": 413,
+        "stationName": {
+          "en": "Menyet Qamh",
+          "ar": "منية القمح"
+        },
+        "arrivalTime": "06:15",
+        "departureTime": "06:16"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "06:35",
+        "departureTime": "06:45"
+      },
+      {
+        "stationId": 420,
+        "stationName": {
+          "en": "Abo Hammad",
+          "ar": "ابو حماد"
+        },
+        "arrivalTime": "07:06",
+        "departureTime": "07:07"
+      },
+      {
+        "stationId": 421,
+        "stationName": {
+          "en": "Mahjar Abo Hammad",
+          "ar": "محجر ابو حماد"
+        },
+        "arrivalTime": "07:13",
+        "departureTime": "07:14"
+      },
+      {
+        "stationId": 422,
+        "stationName": {
+          "en": "Tal Kabeer",
+          "ar": "التل الكبير"
+        },
+        "arrivalTime": "07:23",
+        "departureTime": "07:24"
+      },
+      {
+        "stationId": 424,
+        "stationName": {
+          "en": "Qassasin",
+          "ar": "القصاصين"
+        },
+        "arrivalTime": "07:35",
+        "departureTime": "07:36"
+      },
+      {
+        "stationId": 428,
+        "stationName": {
+          "en": "Abo Swer",
+          "ar": "ابو صوير"
+        },
+        "arrivalTime": "07:53",
+        "departureTime": "07:54"
+      },
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": "08:10",
+        "departureTime": "08:20"
+      },
+      {
+        "stationId": 447,
+        "stationName": {
+          "en": "Serapeum",
+          "ar": "سرابيوم"
+        },
+        "arrivalTime": "08:40",
+        "departureTime": "08:41"
+      },
+      {
+        "stationId": 449,
+        "stationName": {
+          "en": "Abo Sultan",
+          "ar": "ابو سلطان"
+        },
+        "arrivalTime": "08:51",
+        "departureTime": "08:52"
+      },
+      {
+        "stationId": 451,
+        "stationName": {
+          "en": "Fayed",
+          "ar": "فايد"
+        },
+        "arrivalTime": "09:02",
+        "departureTime": "09:03"
+      },
+      {
+        "stationId": 456,
+        "stationName": {
+          "en": "Jenefh",
+          "ar": "جنيفة"
+        },
+        "arrivalTime": "09:23",
+        "departureTime": "09:24"
+      },
+      {
+        "stationId": 9,
+        "stationName": {
+          "en": "Suez",
+          "ar": "السويس"
+        },
+        "arrivalTime": "10:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838905861606113&set=pcb.838906038272762",
+    "lastUpdate": "08/11/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

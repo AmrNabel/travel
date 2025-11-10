@@ -1,0 +1,126 @@
+{
+  "trainNumber": "145",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "14",
+      "name": {
+        "en": "Faiyum",
+        "ar": "الفيوم"
+      }
+    },
+    "to": {
+      "stationId": "62",
+      "name": {
+        "en": "Wasta",
+        "ar": "الواسطى"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "20:10",
+    "endTime": "09:10",
+    "stations": [
+      {
+        "stationId": 14,
+        "stationName": {
+          "en": "Faiyum",
+          "ar": "الفيوم"
+        },
+        "arrivalTime": null,
+        "departureTime": "20:10"
+      },
+      {
+        "stationId": 657,
+        "stationName": {
+          "en": "Amereyat Fayoum",
+          "ar": "عامرية الفيوم"
+        },
+        "arrivalTime": "20:15",
+        "departureTime": "20:16"
+      },
+      {
+        "stationId": 656,
+        "stationName": {
+          "en": "Edwah",
+          "ar": "العدوة"
+        },
+        "arrivalTime": "20:20",
+        "departureTime": "20:21"
+      },
+      {
+        "stationId": 655,
+        "stationName": {
+          "en": "Sila",
+          "ar": "سيلا"
+        },
+        "arrivalTime": "20:28",
+        "departureTime": "20:29"
+      },
+      {
+        "stationId": 654,
+        "stationName": {
+          "en": "Nasiriyah",
+          "ar": "الناصرية"
+        },
+        "arrivalTime": "20:34",
+        "departureTime": "20:35"
+      },
+      {
+        "stationId": 653,
+        "stationName": {
+          "en": "Rous",
+          "ar": "الروس"
+        },
+        "arrivalTime": "20:41",
+        "departureTime": "20:42"
+      },
+      {
+        "stationId": 652,
+        "stationName": {
+          "en": "werash",
+          "ar": "الورش"
+        },
+        "arrivalTime": "20:46",
+        "departureTime": "20:47"
+      },
+      {
+        "stationId": 651,
+        "stationName": {
+          "en": "Kom Abo Rady",
+          "ar": "كوم أبو راضي"
+        },
+        "arrivalTime": "08:59",
+        "departureTime": "09:00"
+      },
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": "09:10",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 9
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "17/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "trainNumber": "808",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "10",
+      "name": {
+        "en": "Mansoura",
+        "ar": "المنصورة"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "03:40",
+    "endTime": "06:45",
+    "stations": [
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": null,
+        "departureTime": "03:40"
+      },
+      {
+        "stationId": 584,
+        "stationName": {
+          "en": "Talkha",
+          "ar": "طلخا"
+        },
+        "arrivalTime": "03:46",
+        "departureTime": "03:47"
+      },
+      {
+        "stationId": 582,
+        "stationName": {
+          "en": "Mit Assas",
+          "ar": "ميت عساس"
+        },
+        "arrivalTime": "03:56",
+        "departureTime": "03:57"
+      },
+      {
+        "stationId": 580,
+        "stationName": {
+          "en": "Samannoud",
+          "ar": "سمنود"
+        },
+        "arrivalTime": "04:07",
+        "departureTime": "04:08"
+      },
+      {
+        "stationId": 576,
+        "stationName": {
+          "en": "Mahalla Kubra",
+          "ar": "المحلة الكبرى"
+        },
+        "arrivalTime": "04:19",
+        "departureTime": "04:20"
+      },
+      {
+        "stationId": 572,
+        "stationName": {
+          "en": "Mahallat Rouh",
+          "ar": "محلة روح"
+        },
+        "arrivalTime": "04:35",
+        "departureTime": "04:36"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "04:50",
+        "departureTime": "05:00"
+      },
+      {
+        "stationId": 30,
+        "stationName": {
+          "en": "Berket Saba",
+          "ar": "بركة السبع"
+        },
+        "arrivalTime": "05:18",
+        "departureTime": "05:19"
+      },
+      {
+        "stationId": 31,
+        "stationName": {
+          "en": "Quesna",
+          "ar": "قويسنا"
+        },
+        "arrivalTime": "05:31",
+        "departureTime": "05:32"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "05:47",
+        "departureTime": "05:48"
+      },
+      {
+        "stationId": 34,
+        "stationName": {
+          "en": "Toukh",
+          "ar": "طوخ"
+        },
+        "arrivalTime": "06:01",
+        "departureTime": "06:02"
+      },
+      {
+        "stationId": 35,
+        "stationName": {
+          "en": "Qaha",
+          "ar": "قها"
+        },
+        "arrivalTime": "06:12",
+        "departureTime": "06:13"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "06:31",
+        "departureTime": "06:32"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "06:45",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 14
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838907874939245&set=pcb.838907984939234",
+    "lastUpdate": "06/10/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

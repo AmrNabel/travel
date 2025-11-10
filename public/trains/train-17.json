@@ -1,0 +1,99 @@
+{
+  "trainNumber": "17",
+  "trainType": {
+    "id": 3,
+    "name": {
+      "en": "AC Russian",
+      "ar": "مكيف روسي"
+    },
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "21:20",
+    "endTime": "00:20",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "21:20"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "22:00",
+        "departureTime": "22:01"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "22:23",
+        "departureTime": "22:28"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "23:25",
+        "departureTime": "23:26"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "00:10",
+        "departureTime": "00:13"
+      },
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": "00:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 6
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "31/12/2024"
+  },
+  "notes": {
+    "en": "Operates daily, excluding Fridays and holidays",
+    "ar": "لا يعمل أيام الجمع والأجازات الرسمية"
+  }
+}

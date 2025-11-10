@@ -1,0 +1,279 @@
+{
+  "trainNumber": "118",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "17:10",
+    "endTime": "22:20",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "17:10"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "17:17",
+        "departureTime": "17:22"
+      },
+      {
+        "stationId": 24,
+        "stationName": {
+          "en": "Kafr Dawar",
+          "ar": "كفر الدوار"
+        },
+        "arrivalTime": "17:44",
+        "departureTime": "17:45"
+      },
+      {
+        "stationId": 25,
+        "stationName": {
+          "en": "Abo Homos",
+          "ar": "ابو حمص"
+        },
+        "arrivalTime": "18:00",
+        "departureTime": "18:01"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "18:18",
+        "departureTime": "18:19"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "18:38",
+        "departureTime": "18:39"
+      },
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": "18:57",
+        "departureTime": "18:58"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "19:25",
+        "departureTime": "19:30"
+      },
+      {
+        "stationId": 606,
+        "stationName": {
+          "en": "Tala",
+          "ar": "تلا"
+        },
+        "arrivalTime": "19:42",
+        "departureTime": "19:43"
+      },
+      {
+        "stationId": 608,
+        "stationName": {
+          "en": "Batanun",
+          "ar": "البتانون"
+        },
+        "arrivalTime": "19:53",
+        "departureTime": "19:55"
+      },
+      {
+        "stationId": 611,
+        "stationName": {
+          "en": "Shebeen Kom N",
+          "ar": "شبين الكوم ج"
+        },
+        "arrivalTime": "20:04",
+        "departureTime": "20:05"
+      },
+      {
+        "stationId": 612,
+        "stationName": {
+          "en": "Shebeen Kom O",
+          "ar": "شبين الكوم ق"
+        },
+        "arrivalTime": "20:08",
+        "departureTime": "20:11"
+      },
+      {
+        "stationId": 613,
+        "stationName": {
+          "en": "Shanawan",
+          "ar": "شنوان"
+        },
+        "arrivalTime": "20:17",
+        "departureTime": "20:18"
+      },
+      {
+        "stationId": 614,
+        "stationName": {
+          "en": "Hamoul",
+          "ar": "الحامول"
+        },
+        "arrivalTime": "20:22",
+        "departureTime": "20:23"
+      },
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": "20:31",
+        "departureTime": "20:32"
+      },
+      {
+        "stationId": 621,
+        "stationName": {
+          "en": "Samadun",
+          "ar": "سمادون"
+        },
+        "arrivalTime": "20:50",
+        "departureTime": "20:51"
+      },
+      {
+        "stationId": 622,
+        "stationName": {
+          "en": "Ashmun",
+          "ar": "اشمون"
+        },
+        "arrivalTime": "20:55",
+        "departureTime": "20:56"
+      },
+      {
+        "stationId": 624,
+        "stationName": {
+          "en": "Hilwasi",
+          "ar": "الحلواصي"
+        },
+        "arrivalTime": "21:07",
+        "departureTime": "21:08"
+      },
+      {
+        "stationId": 625,
+        "stationName": {
+          "en": "Hilwasi B",
+          "ar": "الحلواصي البلد"
+        },
+        "arrivalTime": "21:11",
+        "departureTime": "21:12"
+      },
+      {
+        "stationId": 626,
+        "stationName": {
+          "en": "Shatanof",
+          "ar": "شطانوف"
+        },
+        "arrivalTime": "21:15",
+        "departureTime": "21:16"
+      },
+      {
+        "stationId": 628,
+        "stationName": {
+          "en": "Derwah",
+          "ar": "دروة"
+        },
+        "arrivalTime": "21:21",
+        "departureTime": "21:22"
+      },
+      {
+        "stationId": 629,
+        "stationName": {
+          "en": "Qanatir N",
+          "ar": "القناطر ج"
+        },
+        "arrivalTime": "21:32",
+        "departureTime": "21:33"
+      },
+      {
+        "stationId": 631,
+        "stationName": {
+          "en": "Qalyoub B",
+          "ar": "قليوب البلد"
+        },
+        "arrivalTime": "21:41",
+        "departureTime": "21:42"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "21:51",
+        "departureTime": "21:52"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "22:01",
+        "departureTime": "22:05"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "22:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 26
+  },
+  "status": {
+    "working": "tanta-minuf-cairo (5)",
+    "lastUpdate": "17/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

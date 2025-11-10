@@ -1,0 +1,72 @@
+{
+  "trainNumber": "917",
+  "trainType": {
+    "id": 2,
+    "name": {
+      "en": "VIP",
+      "ar": "خاص"
+    },
+    "description": {
+      "en": "Luxury VIP trains with premium services and exceptional comfort",
+      "ar": "قطارات خاصة فاخرة بخدمات مميزة وراحة استثنائية"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:00",
+    "endTime": "17:30",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:00"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "17:20",
+        "departureTime": "17:23"
+      },
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": "17:30",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 3
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "17/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

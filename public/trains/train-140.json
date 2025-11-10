@@ -1,0 +1,126 @@
+{
+  "trainNumber": "140",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "62",
+      "name": {
+        "en": "Wasta",
+        "ar": "الواسطى"
+      }
+    },
+    "to": {
+      "stationId": "14",
+      "name": {
+        "en": "Faiyum",
+        "ar": "الفيوم"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:20",
+    "endTime": "08:25",
+    "stations": [
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:20"
+      },
+      {
+        "stationId": 651,
+        "stationName": {
+          "en": "Kom Abo Rady",
+          "ar": "كوم أبو راضي"
+        },
+        "arrivalTime": "07:28",
+        "departureTime": "07:29"
+      },
+      {
+        "stationId": 652,
+        "stationName": {
+          "en": "werash",
+          "ar": "الورش"
+        },
+        "arrivalTime": "07:34",
+        "departureTime": "07:35"
+      },
+      {
+        "stationId": 653,
+        "stationName": {
+          "en": "Rous",
+          "ar": "الروس"
+        },
+        "arrivalTime": "07:39",
+        "departureTime": "07:40"
+      },
+      {
+        "stationId": 654,
+        "stationName": {
+          "en": "Nasiriyah",
+          "ar": "الناصرية"
+        },
+        "arrivalTime": "07:47",
+        "departureTime": "07:48"
+      },
+      {
+        "stationId": 655,
+        "stationName": {
+          "en": "Sila",
+          "ar": "سيلا"
+        },
+        "arrivalTime": "07:54",
+        "departureTime": "07:55"
+      },
+      {
+        "stationId": 656,
+        "stationName": {
+          "en": "Edwah",
+          "ar": "العدوة"
+        },
+        "arrivalTime": "08:05",
+        "departureTime": "08:06"
+      },
+      {
+        "stationId": 657,
+        "stationName": {
+          "en": "Amereyat Fayoum",
+          "ar": "عامرية الفيوم"
+        },
+        "arrivalTime": "08:11",
+        "departureTime": "08:12"
+      },
+      {
+        "stationId": 14,
+        "stationName": {
+          "en": "Faiyum",
+          "ar": "الفيوم"
+        },
+        "arrivalTime": "08:25",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 9
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "18/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

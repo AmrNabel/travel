@@ -1,0 +1,162 @@
+{
+  "trainNumber": "994",
+  "trainType": {
+    "id": 5,
+    "name": {
+      "en": "Mix",
+      "ar": "مختلط"
+    },
+    "description": {
+      "en": "Mixed trains combining multiple service levels in one journey",
+      "ar": "قطارات مختلطة تجمع بين عدة مستويات من الخدمة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "11",
+      "name": {
+        "en": "Damietta",
+        "ar": "دمياط"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "16:10",
+    "endTime": "08:25",
+    "stations": [
+      {
+        "stationId": 11,
+        "stationName": {
+          "en": "Damietta",
+          "ar": "دمياط"
+        },
+        "arrivalTime": null,
+        "departureTime": "16:10"
+      },
+      {
+        "stationId": 601,
+        "stationName": {
+          "en": "Kafr Saad",
+          "ar": "كفر سعد"
+        },
+        "arrivalTime": "16:29",
+        "departureTime": "16:30"
+      },
+      {
+        "stationId": 594,
+        "stationName": {
+          "en": "Shirbin",
+          "ar": "شربين"
+        },
+        "arrivalTime": "16:59",
+        "departureTime": "17:00"
+      },
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": "17:44",
+        "departureTime": "17:45"
+      },
+      {
+        "stationId": 584,
+        "stationName": {
+          "en": "Talkha",
+          "ar": "طلخا"
+        },
+        "arrivalTime": "17:51",
+        "departureTime": "17:52"
+      },
+      {
+        "stationId": 580,
+        "stationName": {
+          "en": "Samannoud",
+          "ar": "سمنود"
+        },
+        "arrivalTime": "18:09",
+        "departureTime": "18:10"
+      },
+      {
+        "stationId": 576,
+        "stationName": {
+          "en": "Mahalla Kubra",
+          "ar": "المحلة الكبرى"
+        },
+        "arrivalTime": "18:22",
+        "departureTime": "18:23"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "18:50",
+        "departureTime": "19:00"
+      },
+      {
+        "stationId": 30,
+        "stationName": {
+          "en": "Berket Saba",
+          "ar": "بركة السبع"
+        },
+        "arrivalTime": "19:17",
+        "departureTime": "19:18"
+      },
+      {
+        "stationId": 31,
+        "stationName": {
+          "en": "Quesna",
+          "ar": "قويسنا"
+        },
+        "arrivalTime": "19:29",
+        "departureTime": "19:30"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "19:44",
+        "departureTime": "19:45"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "20:12",
+        "departureTime": "20:13"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "08:25",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 13
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838907944939238&set=pcb.838907984939234",
+    "lastUpdate": "16/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

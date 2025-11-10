@@ -1,0 +1,189 @@
+{
+  "trainNumber": "835",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "395",
+      "name": {
+        "en": "Mit Ghamer",
+        "ar": "ميت غمر"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "16:45",
+    "endTime": "18:40",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "16:45"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "16:59",
+        "departureTime": "17:00"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "17:30",
+        "departureTime": "17:31"
+      },
+      {
+        "stationId": 650,
+        "stationName": {
+          "en": "Warwarah",
+          "ar": "ورورة"
+        },
+        "arrivalTime": "17:39",
+        "departureTime": "17:40"
+      },
+      {
+        "stationId": 649,
+        "stationName": {
+          "en": "Damallu",
+          "ar": "دملو"
+        },
+        "arrivalTime": "17:45",
+        "departureTime": "17:46"
+      },
+      {
+        "stationId": 648,
+        "stationName": {
+          "en": "Mit Hufiyyin",
+          "ar": "ميت الحوفيين"
+        },
+        "arrivalTime": "17:50",
+        "departureTime": "17:51"
+      },
+      {
+        "stationId": 647,
+        "stationName": {
+          "en": "Mit Barh",
+          "ar": "ميت بره"
+        },
+        "arrivalTime": "17:57",
+        "departureTime": "17:58"
+      },
+      {
+        "stationId": 646,
+        "stationName": {
+          "en": "Baqsa",
+          "ar": "بقسا"
+        },
+        "arrivalTime": "18:00",
+        "departureTime": "18:01"
+      },
+      {
+        "stationId": 645,
+        "stationName": {
+          "en": "Shobra Bukhum",
+          "ar": "شبرا بخوم"
+        },
+        "arrivalTime": "18:04",
+        "departureTime": "18:05"
+      },
+      {
+        "stationId": 644,
+        "stationName": {
+          "en": "Tafahna Azab",
+          "ar": "تفهنا العزب"
+        },
+        "arrivalTime": "18:10",
+        "departureTime": "18:11"
+      },
+      {
+        "stationId": 643,
+        "stationName": {
+          "en": "Mit Harun",
+          "ar": "ميت الحارون"
+        },
+        "arrivalTime": "18:15",
+        "departureTime": "18:16"
+      },
+      {
+        "stationId": 642,
+        "stationName": {
+          "en": "Saad Zaghloul",
+          "ar": "سعد زغلول"
+        },
+        "arrivalTime": "18:19",
+        "departureTime": "18:20"
+      },
+      {
+        "stationId": 641,
+        "stationName": {
+          "en": "Ismail Sedky",
+          "ar": "اسماعيل صدقي"
+        },
+        "arrivalTime": "18:24",
+        "departureTime": "18:25"
+      },
+      {
+        "stationId": 640,
+        "stationName": {
+          "en": "Mansour Basha",
+          "ar": "منصور باشا"
+        },
+        "arrivalTime": "18:28",
+        "departureTime": "18:29"
+      },
+      {
+        "stationId": 394,
+        "stationName": {
+          "en": "Zefta",
+          "ar": "زفتى"
+        },
+        "arrivalTime": "18:33",
+        "departureTime": "18:34"
+      },
+      {
+        "stationId": 395,
+        "stationName": {
+          "en": "Mit Ghamer",
+          "ar": "ميت غمر"
+        },
+        "arrivalTime": "18:40",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 16
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "24/05/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "trainNumber": "733",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "154",
+      "name": {
+        "en": "Nagaa Hammadi",
+        "ar": "نجع حمادي"
+      }
+    },
+    "to": {
+      "stationId": "18",
+      "name": {
+        "en": "Sohag",
+        "ar": "سوهاج"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "06:10",
+    "endTime": "08:20",
+    "stations": [
+      {
+        "stationId": 154,
+        "stationName": {
+          "en": "Nagaa Hammadi",
+          "ar": "نجع حمادي"
+        },
+        "arrivalTime": null,
+        "departureTime": "06:10"
+      },
+      {
+        "stationId": 153,
+        "stationName": {
+          "en": "Bahjurah",
+          "ar": "بهجورة"
+        },
+        "arrivalTime": "06:17",
+        "departureTime": "06:18"
+      },
+      {
+        "stationId": 152,
+        "stationName": {
+          "en": "Farshut",
+          "ar": "فرشوط"
+        },
+        "arrivalTime": "06:24",
+        "departureTime": "06:25"
+      },
+      {
+        "stationId": 151,
+        "stationName": {
+          "en": "Rufaa",
+          "ar": "رفاعة"
+        },
+        "arrivalTime": "06:31",
+        "departureTime": "06:32"
+      },
+      {
+        "stationId": 150,
+        "stationName": {
+          "en": "Abo Tesht",
+          "ar": "ابو تشت"
+        },
+        "arrivalTime": "06:37",
+        "departureTime": "06:38"
+      },
+      {
+        "stationId": 149,
+        "stationName": {
+          "en": "Samhud",
+          "ar": "سمهود"
+        },
+        "arrivalTime": "06:44",
+        "departureTime": "06:45"
+      },
+      {
+        "stationId": 148,
+        "stationName": {
+          "en": "Abo Shousha",
+          "ar": "ابو شوشة"
+        },
+        "arrivalTime": "06:52",
+        "departureTime": "06:53"
+      },
+      {
+        "stationId": 147,
+        "stationName": {
+          "en": "Beni Hamil",
+          "ar": "بني حميل"
+        },
+        "arrivalTime": "06:58",
+        "departureTime": "06:59"
+      },
+      {
+        "stationId": 146,
+        "stationName": {
+          "en": "Balyana",
+          "ar": "البلينا"
+        },
+        "arrivalTime": "07:06",
+        "departureTime": "07:07"
+      },
+      {
+        "stationId": 145,
+        "stationName": {
+          "en": "Sahel Q",
+          "ar": "الساحل ق"
+        },
+        "arrivalTime": "07:11",
+        "departureTime": "07:12"
+      },
+      {
+        "stationId": 144,
+        "stationName": {
+          "en": "Bardis",
+          "ar": "برديس"
+        },
+        "arrivalTime": "07:17",
+        "departureTime": "07:18"
+      },
+      {
+        "stationId": 143,
+        "stationName": {
+          "en": "Mzata west",
+          "ar": "مزاتا غرب"
+        },
+        "arrivalTime": "07:24",
+        "departureTime": "07:25"
+      },
+      {
+        "stationId": 142,
+        "stationName": {
+          "en": "Girga",
+          "ar": "جرجا"
+        },
+        "arrivalTime": "07:31",
+        "departureTime": "07:32"
+      },
+      {
+        "stationId": 141,
+        "stationName": {
+          "en": "Bindar",
+          "ar": "البندار"
+        },
+        "arrivalTime": "07:38",
+        "departureTime": "07:39"
+      },
+      {
+        "stationId": 140,
+        "stationName": {
+          "en": "Usayrat",
+          "ar": "العسيرات"
+        },
+        "arrivalTime": "07:44",
+        "departureTime": "07:45"
+      },
+      {
+        "stationId": 139,
+        "stationName": {
+          "en": "Ahaywah",
+          "ar": "الأحايوه"
+        },
+        "arrivalTime": "07:51",
+        "departureTime": "07:52"
+      },
+      {
+        "stationId": 138,
+        "stationName": {
+          "en": "Monshaa",
+          "ar": "المنشأة"
+        },
+        "arrivalTime": "07:57",
+        "departureTime": "07:58"
+      },
+      {
+        "stationId": 137,
+        "stationName": {
+          "en": "Isawiyyah",
+          "ar": "العيساوية"
+        },
+        "arrivalTime": "08:03",
+        "departureTime": "08:04"
+      },
+      {
+        "stationId": 136,
+        "stationName": {
+          "en": "Balasfurah",
+          "ar": "بلصفورة"
+        },
+        "arrivalTime": "08:10",
+        "departureTime": "08:11"
+      },
+      {
+        "stationId": 18,
+        "stationName": {
+          "en": "Sohag",
+          "ar": "سوهاج"
+        },
+        "arrivalTime": "08:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 20
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "07/12/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "trainNumber": "964",
+  "trainType": {
+    "id": 3,
+    "name": {
+      "en": "AC Russian",
+      "ar": "مكيف روسي"
+    },
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "11",
+      "name": {
+        "en": "Damietta",
+        "ar": "دمياط"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "06:00",
+    "endTime": "10:15",
+    "stations": [
+      {
+        "stationId": 11,
+        "stationName": {
+          "en": "Damietta",
+          "ar": "دمياط"
+        },
+        "arrivalTime": null,
+        "departureTime": "06:00"
+      },
+      {
+        "stationId": 601,
+        "stationName": {
+          "en": "Kafr Saad",
+          "ar": "كفر سعد"
+        },
+        "arrivalTime": "06:16",
+        "departureTime": "06:17"
+      },
+      {
+        "stationId": 597,
+        "stationName": {
+          "en": "Ras Khaleej",
+          "ar": "راس الخليج"
+        },
+        "arrivalTime": "06:35",
+        "departureTime": "06:36"
+      },
+      {
+        "stationId": 594,
+        "stationName": {
+          "en": "Shirbin",
+          "ar": "شربين"
+        },
+        "arrivalTime": "06:54",
+        "departureTime": "06:55"
+      },
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": "07:25",
+        "departureTime": "07:35"
+      },
+      {
+        "stationId": 584,
+        "stationName": {
+          "en": "Talkha",
+          "ar": "طلخا"
+        },
+        "arrivalTime": "07:39",
+        "departureTime": "07:40"
+      },
+      {
+        "stationId": 580,
+        "stationName": {
+          "en": "Samannoud",
+          "ar": "سمنود"
+        },
+        "arrivalTime": "07:55",
+        "departureTime": "07:56"
+      },
+      {
+        "stationId": 576,
+        "stationName": {
+          "en": "Mahalla Kubra",
+          "ar": "المحلة الكبرى"
+        },
+        "arrivalTime": "08:09",
+        "departureTime": "08:10"
+      },
+      {
+        "stationId": 572,
+        "stationName": {
+          "en": "Mahallat Rouh",
+          "ar": "محلة روح"
+        },
+        "arrivalTime": "08:24",
+        "departureTime": "08:25"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "08:40",
+        "departureTime": "08:55"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "09:29",
+        "departureTime": "09:30"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "10:01",
+        "departureTime": "10:02"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "10:15",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 13
+  },
+  "status": {
+    "working": "906-964-158-14-17-952-889-163-809.jpg",
+    "lastUpdate": "26/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "trainNumber": "1029",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "230",
+      "name": {
+        "en": "The High Dam",
+        "ar": "السد العالي"
+      }
+    },
+    "to": {
+      "stationId": "21",
+      "name": {
+        "en": "Aswan",
+        "ar": "اسوان"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "16:30",
+    "endTime": "17:00",
+    "stations": [
+      {
+        "stationId": 230,
+        "stationName": {
+          "en": "The High Dam",
+          "ar": "السد العالي"
+        },
+        "arrivalTime": null,
+        "departureTime": "16:30"
+      },
+      {
+        "stationId": 229,
+        "stationName": {
+          "en": "Sadaka",
+          "ar": "الصداقة"
+        },
+        "arrivalTime": "16:32",
+        "departureTime": "16:33"
+      },
+      {
+        "stationId": 228,
+        "stationName": {
+          "en": "Kima",
+          "ar": "كيما"
+        },
+        "arrivalTime": "16:37",
+        "departureTime": "16:38"
+      },
+      {
+        "stationId": 227,
+        "stationName": {
+          "en": "Sheikh Haroun",
+          "ar": "الشيخ هارون"
+        },
+        "arrivalTime": "16:42",
+        "departureTime": "16:43"
+      },
+      {
+        "stationId": 21,
+        "stationName": {
+          "en": "Aswan",
+          "ar": "اسوان"
+        },
+        "arrivalTime": "17:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 5
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "27/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

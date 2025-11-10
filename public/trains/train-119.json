@@ -1,0 +1,270 @@
+{
+  "trainNumber": "119",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:00",
+    "endTime": "09:45",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:00"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "05:14",
+        "departureTime": "05:15"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "05:25",
+        "departureTime": "05:26"
+      },
+      {
+        "stationId": 631,
+        "stationName": {
+          "en": "Qalyoub B",
+          "ar": "قليوب البلد"
+        },
+        "arrivalTime": "05:29",
+        "departureTime": "05:30"
+      },
+      {
+        "stationId": 629,
+        "stationName": {
+          "en": "Qanatir N",
+          "ar": "القناطر ج"
+        },
+        "arrivalTime": "05:39",
+        "departureTime": "05:40"
+      },
+      {
+        "stationId": 628,
+        "stationName": {
+          "en": "Derwah",
+          "ar": "دروة"
+        },
+        "arrivalTime": "05:50",
+        "departureTime": "05:51"
+      },
+      {
+        "stationId": 626,
+        "stationName": {
+          "en": "Shatanof",
+          "ar": "شطانوف"
+        },
+        "arrivalTime": "05:56",
+        "departureTime": "05:57"
+      },
+      {
+        "stationId": 625,
+        "stationName": {
+          "en": "Hilwasi B",
+          "ar": "الحلواصي البلد"
+        },
+        "arrivalTime": "06:00",
+        "departureTime": "06:01"
+      },
+      {
+        "stationId": 624,
+        "stationName": {
+          "en": "Hilwasi",
+          "ar": "الحلواصي"
+        },
+        "arrivalTime": "06:08",
+        "departureTime": "06:09"
+      },
+      {
+        "stationId": 622,
+        "stationName": {
+          "en": "Ashmun",
+          "ar": "اشمون"
+        },
+        "arrivalTime": "06:16",
+        "departureTime": "06:18"
+      },
+      {
+        "stationId": 621,
+        "stationName": {
+          "en": "Samadun",
+          "ar": "سمادون"
+        },
+        "arrivalTime": "06:24",
+        "departureTime": "06:25"
+      },
+      {
+        "stationId": 619,
+        "stationName": {
+          "en": "Ramlat Injib",
+          "ar": "رملة الأنجب"
+        },
+        "arrivalTime": "06:31",
+        "departureTime": "06:32"
+      },
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": "06:47",
+        "departureTime": "06:48"
+      },
+      {
+        "stationId": 614,
+        "stationName": {
+          "en": "Hamoul",
+          "ar": "الحامول"
+        },
+        "arrivalTime": "06:53",
+        "departureTime": "06:54"
+      },
+      {
+        "stationId": 613,
+        "stationName": {
+          "en": "Shanawan",
+          "ar": "شنوان"
+        },
+        "arrivalTime": "06:58",
+        "departureTime": "07:00"
+      },
+      {
+        "stationId": 612,
+        "stationName": {
+          "en": "Shebeen Kom O",
+          "ar": "شبين الكوم ق"
+        },
+        "arrivalTime": "07:06",
+        "departureTime": "07:07"
+      },
+      {
+        "stationId": 611,
+        "stationName": {
+          "en": "Shebeen Kom N",
+          "ar": "شبين الكوم ج"
+        },
+        "arrivalTime": "07:10",
+        "departureTime": "07:11"
+      },
+      {
+        "stationId": 608,
+        "stationName": {
+          "en": "Batanun",
+          "ar": "البتانون"
+        },
+        "arrivalTime": "07:20",
+        "departureTime": "07:21"
+      },
+      {
+        "stationId": 606,
+        "stationName": {
+          "en": "Tala",
+          "ar": "تلا"
+        },
+        "arrivalTime": "07:31",
+        "departureTime": "07:32"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "07:45",
+        "departureTime": "07:50"
+      },
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": "08:07",
+        "departureTime": "08:08"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "08:26",
+        "departureTime": "08:27"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "08:51",
+        "departureTime": "08:52"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "09:33",
+        "departureTime": "09:38"
+      },
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": "09:45",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 25
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo/?fbid=827279546102078&set=pcb.827279566102076",
+    "lastUpdate": "17/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

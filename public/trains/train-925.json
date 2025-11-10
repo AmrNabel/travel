@@ -1,0 +1,90 @@
+{
+  "trainNumber": "925",
+  "trainType": {
+    "id": 1,
+    "name": {
+      "en": "AC",
+      "ar": "مكيف"
+    },
+    "description": {
+      "en": "Air-conditioned trains providing comfortable journeys at all times",
+      "ar": "قطارات مكيفة توفر رحلة مريحة في جميع الأوقات"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "18:45",
+    "endTime": "20:10",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "18:45"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "19:26",
+        "departureTime": "19:27"
+      },
+      {
+        "stationId": 31,
+        "stationName": {
+          "en": "Quesna",
+          "ar": "قويسنا"
+        },
+        "arrivalTime": "19:39",
+        "departureTime": "19:40"
+      },
+      {
+        "stationId": 30,
+        "stationName": {
+          "en": "Berket Saba",
+          "ar": "بركة السبع"
+        },
+        "arrivalTime": "19:51",
+        "departureTime": "19:52"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "20:10",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 5
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "04/03/2025"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

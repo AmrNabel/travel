@@ -1,0 +1,207 @@
+{
+  "trainNumber": "847",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "615",
+      "name": {
+        "en": "Minuf",
+        "ar": "منوف"
+      }
+    },
+    "to": {
+      "stationId": "28",
+      "name": {
+        "en": "Kafr Zayat",
+        "ar": "كفر الزيات"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "08:00",
+    "endTime": "09:30",
+    "stations": [
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": null,
+        "departureTime": "08:00"
+      },
+      {
+        "stationId": 673,
+        "stationName": {
+          "en": "Sengerg",
+          "ar": "سنجرج"
+        },
+        "arrivalTime": "08:07",
+        "departureTime": "08:08"
+      },
+      {
+        "stationId": 672,
+        "stationName": {
+          "en": "Monshaat Sultan",
+          "ar": "منشأة سلطان"
+        },
+        "arrivalTime": "08:11",
+        "departureTime": "08:12"
+      },
+      {
+        "stationId": 671,
+        "stationName": {
+          "en": "Iraqiyyah",
+          "ar": "العراقية"
+        },
+        "arrivalTime": "08:15",
+        "departureTime": "08:16"
+      },
+      {
+        "stationId": 670,
+        "stationName": {
+          "en": "Ashma",
+          "ar": "عشما"
+        },
+        "arrivalTime": "08:19",
+        "departureTime": "08:20"
+      },
+      {
+        "stationId": 669,
+        "stationName": {
+          "en": "Shohada",
+          "ar": "الشهداء"
+        },
+        "arrivalTime": "08:23",
+        "departureTime": "08:24"
+      },
+      {
+        "stationId": 668,
+        "stationName": {
+          "en": "Dinshaway",
+          "ar": "دنشواى"
+        },
+        "arrivalTime": "08:30",
+        "departureTime": "08:31"
+      },
+      {
+        "stationId": 667,
+        "stationName": {
+          "en": "Zawiyat Baqli",
+          "ar": "زاوية البقلى"
+        },
+        "arrivalTime": "08:39",
+        "departureTime": "08:40"
+      },
+      {
+        "stationId": 666,
+        "stationName": {
+          "en": "Beshtami",
+          "ar": "بشتامي"
+        },
+        "arrivalTime": "08:43",
+        "departureTime": "08:44"
+      },
+      {
+        "stationId": 665,
+        "stationName": {
+          "en": "Amrus",
+          "ar": "عمروس"
+        },
+        "arrivalTime": "08:48",
+        "departureTime": "08:49"
+      },
+      {
+        "stationId": 664,
+        "stationName": {
+          "en": "Kom Mazin",
+          "ar": "كوم مازن"
+        },
+        "arrivalTime": "08:52",
+        "departureTime": "08:53"
+      },
+      {
+        "stationId": 663,
+        "stationName": {
+          "en": "Tunub",
+          "ar": "طنوب"
+        },
+        "arrivalTime": "08:56",
+        "departureTime": "08:57"
+      },
+      {
+        "stationId": 662,
+        "stationName": {
+          "en": "Izbat Hutaym",
+          "ar": "عزبة الحطيم"
+        },
+        "arrivalTime": "09:01",
+        "departureTime": "09:02"
+      },
+      {
+        "stationId": 661,
+        "stationName": {
+          "en": "Mishlah",
+          "ar": "مشلة"
+        },
+        "arrivalTime": "09:09",
+        "departureTime": "09:10"
+      },
+      {
+        "stationId": 660,
+        "stationName": {
+          "en": "Kafr Mishlah",
+          "ar": "كفر مشلة"
+        },
+        "arrivalTime": "09:13",
+        "departureTime": "09:14"
+      },
+      {
+        "stationId": 659,
+        "stationName": {
+          "en": "Qasr Nasr Din",
+          "ar": "قصر نصر الدين"
+        },
+        "arrivalTime": "09:19",
+        "departureTime": "09:20"
+      },
+      {
+        "stationId": 658,
+        "stationName": {
+          "en": "Daljamun",
+          "ar": "الدلجمون"
+        },
+        "arrivalTime": "09:23",
+        "departureTime": "09:24"
+      },
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": "09:30",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "28/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

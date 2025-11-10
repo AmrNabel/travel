@@ -1,0 +1,288 @@
+{
+  "trainNumber": "466",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "3",
+      "name": {
+        "en": "Damanhour",
+        "ar": "دمنهور"
+      }
+    },
+    "to": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:45",
+    "endTime": "19:05",
+    "stations": [
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:45"
+      },
+      {
+        "stationId": 309,
+        "stationName": {
+          "en": "Kafr Beni Helal",
+          "ar": "كفر بني هلال"
+        },
+        "arrivalTime": "15:51",
+        "departureTime": "15:52"
+      },
+      {
+        "stationId": 310,
+        "stationName": {
+          "en": "Nefrah",
+          "ar": "نفرة"
+        },
+        "arrivalTime": "15:56",
+        "departureTime": "15:57"
+      },
+      {
+        "stationId": 311,
+        "stationName": {
+          "en": "Sanhur",
+          "ar": "سنهور"
+        },
+        "arrivalTime": "16:01",
+        "departureTime": "16:02"
+      },
+      {
+        "stationId": 312,
+        "stationName": {
+          "en": "Hwariah",
+          "ar": "الهوارية"
+        },
+        "arrivalTime": "16:05",
+        "departureTime": "16:06"
+      },
+      {
+        "stationId": 313,
+        "stationName": {
+          "en": "Khazan",
+          "ar": "الخزان"
+        },
+        "arrivalTime": "16:09",
+        "departureTime": "16:10"
+      },
+      {
+        "stationId": 314,
+        "stationName": {
+          "en": "Fath",
+          "ar": "الفتح"
+        },
+        "arrivalTime": "16:14",
+        "departureTime": "16:15"
+      },
+      {
+        "stationId": 315,
+        "stationName": {
+          "en": "Rahmaniah",
+          "ar": "الرحمانية"
+        },
+        "arrivalTime": "16:19",
+        "departureTime": "16:20"
+      },
+      {
+        "stationId": 316,
+        "stationName": {
+          "en": "Desouk",
+          "ar": "دسوق"
+        },
+        "arrivalTime": "16:22",
+        "departureTime": "16:27"
+      },
+      {
+        "stationId": 317,
+        "stationName": {
+          "en": "Gmagmun",
+          "ar": "جماجمون"
+        },
+        "arrivalTime": "16:33",
+        "departureTime": "16:34"
+      },
+      {
+        "stationId": 318,
+        "stationName": {
+          "en": "Madinah",
+          "ar": "المدينة"
+        },
+        "arrivalTime": "16:39",
+        "departureTime": "16:40"
+      },
+      {
+        "stationId": 319,
+        "stationName": {
+          "en": "Shbas",
+          "ar": "شباس"
+        },
+        "arrivalTime": "16:46",
+        "departureTime": "17:00"
+      },
+      {
+        "stationId": 320,
+        "stationName": {
+          "en": "Kafr Gazayer",
+          "ar": "كفر الجزاير"
+        },
+        "arrivalTime": "17:04",
+        "departureTime": "17:05"
+      },
+      {
+        "stationId": 321,
+        "stationName": {
+          "en": "Bekatush",
+          "ar": "البكاتوش"
+        },
+        "arrivalTime": "17:09",
+        "departureTime": "17:10"
+      },
+      {
+        "stationId": 322,
+        "stationName": {
+          "en": "Qleen",
+          "ar": "قلين"
+        },
+        "arrivalTime": "17:15",
+        "departureTime": "17:20"
+      },
+      {
+        "stationId": 323,
+        "stationName": {
+          "en": "Qleen B",
+          "ar": "قلين البلد"
+        },
+        "arrivalTime": "17:33",
+        "departureTime": "17:34"
+      },
+      {
+        "stationId": 324,
+        "stationName": {
+          "en": "Ezbet Godah",
+          "ar": "عزبة جودة"
+        },
+        "arrivalTime": "17:37",
+        "departureTime": "17:38"
+      },
+      {
+        "stationId": 325,
+        "stationName": {
+          "en": "Shin",
+          "ar": "الشين"
+        },
+        "arrivalTime": "17:51",
+        "departureTime": "17:52"
+      },
+      {
+        "stationId": 326,
+        "stationName": {
+          "en": "Hwin",
+          "ar": "حوين"
+        },
+        "arrivalTime": "17:57",
+        "departureTime": "17:58"
+      },
+      {
+        "stationId": 327,
+        "stationName": {
+          "en": "Qotur",
+          "ar": "قطور"
+        },
+        "arrivalTime": "18:04",
+        "departureTime": "18:05"
+      },
+      {
+        "stationId": 328,
+        "stationName": {
+          "en": "Ibrahimiah",
+          "ar": "الابراهيمية"
+        },
+        "arrivalTime": "18:11",
+        "departureTime": "18:12"
+      },
+      {
+        "stationId": 329,
+        "stationName": {
+          "en": "Ebshway",
+          "ar": "ابشواي"
+        },
+        "arrivalTime": "18:18",
+        "departureTime": "18:19"
+      },
+      {
+        "stationId": 330,
+        "stationName": {
+          "en": "Segin",
+          "ar": "سجين"
+        },
+        "arrivalTime": "18:25",
+        "departureTime": "18:26"
+      },
+      {
+        "stationId": 572,
+        "stationName": {
+          "en": "Mahallat Rouh",
+          "ar": "محلة روح"
+        },
+        "arrivalTime": "18:43",
+        "departureTime": "18:44"
+      },
+      {
+        "stationId": 571,
+        "stationName": {
+          "en": "Shebshir Hessah",
+          "ar": "شبشير الحصة"
+        },
+        "arrivalTime": "18:48",
+        "departureTime": "18:49"
+      },
+      {
+        "stationId": 570,
+        "stationName": {
+          "en": "Ragdiah",
+          "ar": "الرجدية"
+        },
+        "arrivalTime": "18:56",
+        "departureTime": "18:57"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "19:05",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 27
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "31/12/2024"
+  },
+  "notes": {
+    "en": "Operates daily, excluding Fridays and holidays",
+    "ar": "لا يعمل أيام الجمع والأجازات الرسمية"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "trainNumber": "337",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    },
+    "to": {
+      "stationId": "389",
+      "name": {
+        "en": "Santa",
+        "ar": "السنطة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:20",
+    "endTime": "05:39",
+    "stations": [
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:20"
+      },
+      {
+        "stationId": 387,
+        "stationName": {
+          "en": "Mit Hebeish Q",
+          "ar": "ميت حبيش ق"
+        },
+        "arrivalTime": "05:27",
+        "departureTime": "05:28"
+      },
+      {
+        "stationId": 388,
+        "stationName": {
+          "en": "Shobraqas",
+          "ar": "شبراقاص"
+        },
+        "arrivalTime": "05:33",
+        "departureTime": "05:34"
+      },
+      {
+        "stationId": 389,
+        "stationName": {
+          "en": "Santa",
+          "ar": "السنطة"
+        },
+        "arrivalTime": "05:39",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 4
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "12/01/2025"
+  },
+  "notes": {
+    "en": "Operates daily, excluding Fridays and holidays",
+    "ar": "لا يعمل أيام الجمع والأجازات الرسمية"
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "trainNumber": "663",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "386",
+      "name": {
+        "en": "Bashtil",
+        "ar": "بشتيل المحطة"
+      }
+    },
+    "to": {
+      "stationId": "26",
+      "name": {
+        "en": "Itay Barud",
+        "ar": "ايتاي البارود"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "03:40",
+    "endTime": "06:35",
+    "stations": [
+      {
+        "stationId": 386,
+        "stationName": {
+          "en": "Bashtil",
+          "ar": "بشتيل المحطة"
+        },
+        "arrivalTime": null,
+        "departureTime": "03:40"
+      },
+      {
+        "stationId": 385,
+        "stationName": {
+          "en": "Bashtil B",
+          "ar": "بشتيل البلد"
+        },
+        "arrivalTime": "03:43",
+        "departureTime": "03:44"
+      },
+      {
+        "stationId": 383,
+        "stationName": {
+          "en": "Ossim",
+          "ar": "اوسيم"
+        },
+        "arrivalTime": "03:51",
+        "departureTime": "03:52"
+      },
+      {
+        "stationId": 380,
+        "stationName": {
+          "en": "Manashi",
+          "ar": "المناشي"
+        },
+        "arrivalTime": "04:02",
+        "departureTime": "04:03"
+      },
+      {
+        "stationId": 378,
+        "stationName": {
+          "en": "Niklah",
+          "ar": "نكلا"
+        },
+        "arrivalTime": "04:08",
+        "departureTime": "04:09"
+      },
+      {
+        "stationId": 377,
+        "stationName": {
+          "en": "Birqash",
+          "ar": "برقاش"
+        },
+        "arrivalTime": "04:11",
+        "departureTime": "04:12"
+      },
+      {
+        "stationId": 372,
+        "stationName": {
+          "en": "Werdan",
+          "ar": "وردان"
+        },
+        "arrivalTime": "04:32",
+        "departureTime": "04:33"
+      },
+      {
+        "stationId": 371,
+        "stationName": {
+          "en": "Beni Salamah",
+          "ar": "بني سلامة"
+        },
+        "arrivalTime": "04:38",
+        "departureTime": "04:39"
+      },
+      {
+        "stationId": 370,
+        "stationName": {
+          "en": "Khatatbah",
+          "ar": "الخطاطبة"
+        },
+        "arrivalTime": "04:45",
+        "departureTime": "04:46"
+      },
+      {
+        "stationId": 369,
+        "stationName": {
+          "en": "Akhmas",
+          "ar": "الاخماس"
+        },
+        "arrivalTime": "04:51",
+        "departureTime": "04:52"
+      },
+      {
+        "stationId": 368,
+        "stationName": {
+          "en": "Tarranah",
+          "ar": "الطرانة"
+        },
+        "arrivalTime": "04:57",
+        "departureTime": "04:58"
+      },
+      {
+        "stationId": 367,
+        "stationName": {
+          "en": "Kafr Dawoud",
+          "ar": "كفر داود"
+        },
+        "arrivalTime": "05:04",
+        "departureTime": "05:05"
+      },
+      {
+        "stationId": 366,
+        "stationName": {
+          "en": "Birijat",
+          "ar": "البريجات"
+        },
+        "arrivalTime": "05:14",
+        "departureTime": "05:15"
+      },
+      {
+        "stationId": 365,
+        "stationName": {
+          "en": "Modiriyat Tahrir",
+          "ar": "مديرية التحرير"
+        },
+        "arrivalTime": "05:20",
+        "departureTime": "05:21"
+      },
+      {
+        "stationId": 364,
+        "stationName": {
+          "en": "Abo Khawi",
+          "ar": "ابو الخاوي"
+        },
+        "arrivalTime": "05:35",
+        "departureTime": "05:36"
+      },
+      {
+        "stationId": 363,
+        "stationName": {
+          "en": "Tairyyah",
+          "ar": "الطيرية"
+        },
+        "arrivalTime": "05:39",
+        "departureTime": "05:40"
+      },
+      {
+        "stationId": 362,
+        "stationName": {
+          "en": "Tairyyah B",
+          "ar": "الطيرية البلد"
+        },
+        "arrivalTime": "05:43",
+        "departureTime": "05:44"
+      },
+      {
+        "stationId": 361,
+        "stationName": {
+          "en": "Ethaad",
+          "ar": "الاتحاد"
+        },
+        "arrivalTime": "05:47",
+        "departureTime": "05:48"
+      },
+      {
+        "stationId": 360,
+        "stationName": {
+          "en": "Monshaat Abo Rayyah",
+          "ar": "منشاة ابو رية"
+        },
+        "arrivalTime": "05:52",
+        "departureTime": "05:53"
+      },
+      {
+        "stationId": 359,
+        "stationName": {
+          "en": "Waqid",
+          "ar": "واقد"
+        },
+        "arrivalTime": "06:00",
+        "departureTime": "06:01"
+      },
+      {
+        "stationId": 358,
+        "stationName": {
+          "en": "Kafr Bulin",
+          "ar": "كفر بولين"
+        },
+        "arrivalTime": "06:06",
+        "departureTime": "06:07"
+      },
+      {
+        "stationId": 357,
+        "stationName": {
+          "en": "Kom Hamada",
+          "ar": "كوم حمادة"
+        },
+        "arrivalTime": "06:11",
+        "departureTime": "06:12"
+      },
+      {
+        "stationId": 356,
+        "stationName": {
+          "en": "Naqidi",
+          "ar": "النقيدي"
+        },
+        "arrivalTime": "06:17",
+        "departureTime": "06:18"
+      },
+      {
+        "stationId": 355,
+        "stationName": {
+          "en": "Saft Inab",
+          "ar": "صفط العنب"
+        },
+        "arrivalTime": "06:22",
+        "departureTime": "06:23"
+      },
+      {
+        "stationId": 354,
+        "stationName": {
+          "en": "Qilishan",
+          "ar": "قليشان"
+        },
+        "arrivalTime": "06:26",
+        "departureTime": "06:27"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "06:35",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 26
+  },
+  "status": {
+    "working": "27",
+    "lastUpdate": "16/12/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "trainNumber": "3018",
+  "trainType": {
+    "id": 3,
+    "name": {
+      "en": "AC Russian",
+      "ar": "مكيف روسي"
+    },
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "10",
+      "name": {
+        "en": "Mansoura",
+        "ar": "المنصورة"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:00",
+    "endTime": "07:30",
+    "stations": [
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:00"
+      },
+      {
+        "stationId": 584,
+        "stationName": {
+          "en": "Talkha",
+          "ar": "طلخا"
+        },
+        "arrivalTime": "05:06",
+        "departureTime": "05:07"
+      },
+      {
+        "stationId": 580,
+        "stationName": {
+          "en": "Samannoud",
+          "ar": "سمنود"
+        },
+        "arrivalTime": "05:25",
+        "departureTime": "05:26"
+      },
+      {
+        "stationId": 576,
+        "stationName": {
+          "en": "Mahalla Kubra",
+          "ar": "المحلة الكبرى"
+        },
+        "arrivalTime": "05:38",
+        "departureTime": "05:39"
+      },
+      {
+        "stationId": 30,
+        "stationName": {
+          "en": "Berket Saba",
+          "ar": "بركة السبع"
+        },
+        "arrivalTime": "06:23",
+        "departureTime": "06:24"
+      },
+      {
+        "stationId": 31,
+        "stationName": {
+          "en": "Quesna",
+          "ar": "قويسنا"
+        },
+        "arrivalTime": "06:36",
+        "departureTime": "06:37"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "06:53",
+        "departureTime": "06:54"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "07:30",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 8
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838907874939245&set=pcb.838907984939234",
+    "lastUpdate": "16/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

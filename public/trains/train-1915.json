@@ -1,0 +1,99 @@
+{
+  "trainNumber": "1915",
+  "trainType": {
+    "id": 5,
+    "name": {
+      "en": "Mix",
+      "ar": "مختلط"
+    },
+    "description": {
+      "en": "Mixed trains combining multiple service levels in one journey",
+      "ar": "قطارات مختلطة تجمع بين عدة مستويات من الخدمة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "10",
+      "name": {
+        "en": "Mansoura",
+        "ar": "المنصورة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:20",
+    "endTime": "17:40",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:20"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "16:00",
+        "departureTime": "16:01"
+      },
+      {
+        "stationId": 576,
+        "stationName": {
+          "en": "Mahalla Kubra",
+          "ar": "المحلة الكبرى"
+        },
+        "arrivalTime": "17:07",
+        "departureTime": "17:08"
+      },
+      {
+        "stationId": 580,
+        "stationName": {
+          "en": "Samannoud",
+          "ar": "سمنود"
+        },
+        "arrivalTime": "17:18",
+        "departureTime": "17:19"
+      },
+      {
+        "stationId": 584,
+        "stationName": {
+          "en": "Talkha",
+          "ar": "طلخا"
+        },
+        "arrivalTime": "17:34",
+        "departureTime": "17:35"
+      },
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": "17:40",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 6
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838907731605926&set=pcb.838907984939234",
+    "lastUpdate": "04/03/2025"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

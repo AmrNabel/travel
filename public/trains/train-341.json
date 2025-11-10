@@ -1,0 +1,207 @@
+{
+  "trainNumber": "341",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "10",
+      "name": {
+        "en": "Mansoura",
+        "ar": "المنصورة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "14:10",
+    "endTime": "18:00",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "14:10"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "14:24",
+        "departureTime": "14:25"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "14:35",
+        "departureTime": "14:36"
+      },
+      {
+        "stationId": 489,
+        "stationName": {
+          "en": "Shibin Qanatir",
+          "ar": "شبين القناطر"
+        },
+        "arrivalTime": "14:59",
+        "departureTime": "15:00"
+      },
+      {
+        "stationId": 487,
+        "stationName": {
+          "en": "Mashtul",
+          "ar": "مشتول"
+        },
+        "arrivalTime": "15:10",
+        "departureTime": "15:11"
+      },
+      {
+        "stationId": 485,
+        "stationName": {
+          "en": "Inshas",
+          "ar": "انشاص"
+        },
+        "arrivalTime": "15:19",
+        "departureTime": "15:20"
+      },
+      {
+        "stationId": 482,
+        "stationName": {
+          "en": "Belbes",
+          "ar": "بلبيس"
+        },
+        "arrivalTime": "15:34",
+        "departureTime": "15:35"
+      },
+      {
+        "stationId": 480,
+        "stationName": {
+          "en": "Bardein",
+          "ar": "بردين"
+        },
+        "arrivalTime": "15:47",
+        "departureTime": "15:48"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "16:21",
+        "departureTime": "16:22"
+      },
+      {
+        "stationId": 510,
+        "stationName": {
+          "en": "Hihya",
+          "ar": "هيها"
+        },
+        "arrivalTime": "16:35",
+        "departureTime": "16:36"
+      },
+      {
+        "stationId": 513,
+        "stationName": {
+          "en": "Abo Kibir",
+          "ar": "ابو كبير"
+        },
+        "arrivalTime": "16:48",
+        "departureTime": "16:49"
+      },
+      {
+        "stationId": 516,
+        "stationName": {
+          "en": "Kafr Saqr",
+          "ar": "كفر صقر"
+        },
+        "arrivalTime": "16:59",
+        "departureTime": "17:00"
+      },
+      {
+        "stationId": 518,
+        "stationName": {
+          "en": "Abo Shuquq",
+          "ar": "ابو الشقوق"
+        },
+        "arrivalTime": "17:09",
+        "departureTime": "17:10"
+      },
+      {
+        "stationId": 520,
+        "stationName": {
+          "en": "Barqin",
+          "ar": "برقين"
+        },
+        "arrivalTime": "17:20",
+        "departureTime": "17:21"
+      },
+      {
+        "stationId": 522,
+        "stationName": {
+          "en": "Senbellawein",
+          "ar": "السنبلاوين"
+        },
+        "arrivalTime": "17:30",
+        "departureTime": "17:31"
+      },
+      {
+        "stationId": 525,
+        "stationName": {
+          "en": "Baqliyyah",
+          "ar": "البقلية"
+        },
+        "arrivalTime": "17:42",
+        "departureTime": "17:43"
+      },
+      {
+        "stationId": 527,
+        "stationName": {
+          "en": "Sandub",
+          "ar": "سندوب"
+        },
+        "arrivalTime": "17:53",
+        "departureTime": "17:54"
+      },
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": "18:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "30/08/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

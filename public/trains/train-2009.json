@@ -1,0 +1,162 @@
+{
+  "trainNumber": "2009",
+  "trainType": {
+    "id": 1,
+    "name": {
+      "en": "AC",
+      "ar": "مكيف"
+    },
+    "description": {
+      "en": "Air-conditioned trains providing comfortable journeys at all times",
+      "ar": "قطارات مكيفة توفر رحلة مريحة في جميع الأوقات"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "21",
+      "name": {
+        "en": "Aswan",
+        "ar": "اسوان"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "18:10",
+    "endTime": "06:40",
+    "stations": [
+      {
+        "stationId": 21,
+        "stationName": {
+          "en": "Aswan",
+          "ar": "اسوان"
+        },
+        "arrivalTime": null,
+        "departureTime": "18:10"
+      },
+      {
+        "stationId": 215,
+        "stationName": {
+          "en": "Kom Ombo",
+          "ar": "كوم امبو"
+        },
+        "arrivalTime": "18:52",
+        "departureTime": "18:53"
+      },
+      {
+        "stationId": 212,
+        "stationName": {
+          "en": "Kalabsha",
+          "ar": "كلابشة"
+        },
+        "arrivalTime": "19:10",
+        "departureTime": "19:11"
+      },
+      {
+        "stationId": 202,
+        "stationName": {
+          "en": "Edfu",
+          "ar": "ادفو"
+        },
+        "arrivalTime": "19:46",
+        "departureTime": "19:47"
+      },
+      {
+        "stationId": 20,
+        "stationName": {
+          "en": "Luxor",
+          "ar": "الاقصر"
+        },
+        "arrivalTime": "21:10",
+        "departureTime": "21:20"
+      },
+      {
+        "stationId": 19,
+        "stationName": {
+          "en": "Qena",
+          "ar": "قنا"
+        },
+        "arrivalTime": "22:14",
+        "departureTime": "22:15"
+      },
+      {
+        "stationId": 154,
+        "stationName": {
+          "en": "Nagaa Hammadi",
+          "ar": "نجع حمادي"
+        },
+        "arrivalTime": "23:09",
+        "departureTime": "23:10"
+      },
+      {
+        "stationId": 142,
+        "stationName": {
+          "en": "Girga",
+          "ar": "جرجا"
+        },
+        "arrivalTime": "23:53",
+        "departureTime": "23:54"
+      },
+      {
+        "stationId": 18,
+        "stationName": {
+          "en": "Sohag",
+          "ar": "سوهاج"
+        },
+        "arrivalTime": "00:25",
+        "departureTime": "00:35"
+      },
+      {
+        "stationId": 17,
+        "stationName": {
+          "en": "Asyut",
+          "ar": "اسيوط"
+        },
+        "arrivalTime": "01:55",
+        "departureTime": "02:00"
+      },
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": "06:14",
+        "departureTime": "06:15"
+      },
+      {
+        "stationId": 12,
+        "stationName": {
+          "en": "Upper Egypt",
+          "ar": "صعيد مصر"
+        },
+        "arrivalTime": "06:26",
+        "departureTime": "06:27"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "06:40",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 13
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "28/10/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

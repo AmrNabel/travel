@@ -1,0 +1,153 @@
+{
+  "trainNumber": "959",
+  "trainType": {
+    "id": 3,
+    "name": {
+      "en": "AC Russian",
+      "ar": "مكيف روسي"
+    },
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "7",
+      "name": {
+        "en": "Ismailia",
+        "ar": "الاسماعيلية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "19:50",
+    "endTime": "22:50",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "19:50"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "20:08",
+        "departureTime": "20:09"
+      },
+      {
+        "stationId": 35,
+        "stationName": {
+          "en": "Qaha",
+          "ar": "قها"
+        },
+        "arrivalTime": "20:21",
+        "departureTime": "20:22"
+      },
+      {
+        "stationId": 34,
+        "stationName": {
+          "en": "Toukh",
+          "ar": "طوخ"
+        },
+        "arrivalTime": "20:30",
+        "departureTime": "20:31"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "20:46",
+        "departureTime": "20:47"
+      },
+      {
+        "stationId": 413,
+        "stationName": {
+          "en": "Menyet Qamh",
+          "ar": "منية القمح"
+        },
+        "arrivalTime": "21:04",
+        "departureTime": "21:05"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "21:28",
+        "departureTime": "21:29"
+      },
+      {
+        "stationId": 420,
+        "stationName": {
+          "en": "Abo Hammad",
+          "ar": "ابو حماد"
+        },
+        "arrivalTime": "21:49",
+        "departureTime": "21:50"
+      },
+      {
+        "stationId": 422,
+        "stationName": {
+          "en": "Tal Kabeer",
+          "ar": "التل الكبير"
+        },
+        "arrivalTime": "22:01",
+        "departureTime": "22:02"
+      },
+      {
+        "stationId": 424,
+        "stationName": {
+          "en": "Qassasin",
+          "ar": "القصاصين"
+        },
+        "arrivalTime": "22:16",
+        "departureTime": "22:17"
+      },
+      {
+        "stationId": 428,
+        "stationName": {
+          "en": "Abo Swer",
+          "ar": "ابو صوير"
+        },
+        "arrivalTime": "22:33",
+        "departureTime": "22:34"
+      },
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": "22:50",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 12
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo/?fbid=838905798272786&set=pcb.838906038272762",
+    "lastUpdate": "16/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

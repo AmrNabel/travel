@@ -1,0 +1,207 @@
+{
+  "trainNumber": "860",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "28",
+      "name": {
+        "en": "Kafr Zayat",
+        "ar": "كفر الزيات"
+      }
+    },
+    "to": {
+      "stationId": "615",
+      "name": {
+        "en": "Minuf",
+        "ar": "منوف"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "21:40",
+    "endTime": "23:10",
+    "stations": [
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": null,
+        "departureTime": "21:40"
+      },
+      {
+        "stationId": 658,
+        "stationName": {
+          "en": "Daljamun",
+          "ar": "الدلجمون"
+        },
+        "arrivalTime": "21:44",
+        "departureTime": "21:45"
+      },
+      {
+        "stationId": 659,
+        "stationName": {
+          "en": "Qasr Nasr Din",
+          "ar": "قصر نصر الدين"
+        },
+        "arrivalTime": "21:48",
+        "departureTime": "21:49"
+      },
+      {
+        "stationId": 660,
+        "stationName": {
+          "en": "Kafr Mishlah",
+          "ar": "كفر مشلة"
+        },
+        "arrivalTime": "21:54",
+        "departureTime": "21:55"
+      },
+      {
+        "stationId": 661,
+        "stationName": {
+          "en": "Mishlah",
+          "ar": "مشلة"
+        },
+        "arrivalTime": "21:58",
+        "departureTime": "21:59"
+      },
+      {
+        "stationId": 662,
+        "stationName": {
+          "en": "Izbat Hutaym",
+          "ar": "عزبة الحطيم"
+        },
+        "arrivalTime": "22:03",
+        "departureTime": "22:04"
+      },
+      {
+        "stationId": 663,
+        "stationName": {
+          "en": "Tunub",
+          "ar": "طنوب"
+        },
+        "arrivalTime": "22:09",
+        "departureTime": "22:10"
+      },
+      {
+        "stationId": 664,
+        "stationName": {
+          "en": "Kom Mazin",
+          "ar": "كوم مازن"
+        },
+        "arrivalTime": "22:13",
+        "departureTime": "22:14"
+      },
+      {
+        "stationId": 665,
+        "stationName": {
+          "en": "Amrus",
+          "ar": "عمروس"
+        },
+        "arrivalTime": "22:17",
+        "departureTime": "22:18"
+      },
+      {
+        "stationId": 666,
+        "stationName": {
+          "en": "Beshtami",
+          "ar": "بشتامي"
+        },
+        "arrivalTime": "22:22",
+        "departureTime": "22:23"
+      },
+      {
+        "stationId": 667,
+        "stationName": {
+          "en": "Zawiyat Baqli",
+          "ar": "زاوية البقلى"
+        },
+        "arrivalTime": "22:26",
+        "departureTime": "22:27"
+      },
+      {
+        "stationId": 668,
+        "stationName": {
+          "en": "Dinshaway",
+          "ar": "دنشواى"
+        },
+        "arrivalTime": "22:35",
+        "departureTime": "22:36"
+      },
+      {
+        "stationId": 669,
+        "stationName": {
+          "en": "Shohada",
+          "ar": "الشهداء"
+        },
+        "arrivalTime": "22:43",
+        "departureTime": "22:44"
+      },
+      {
+        "stationId": 670,
+        "stationName": {
+          "en": "Ashma",
+          "ar": "عشما"
+        },
+        "arrivalTime": "22:48",
+        "departureTime": "22:49"
+      },
+      {
+        "stationId": 671,
+        "stationName": {
+          "en": "Iraqiyyah",
+          "ar": "العراقية"
+        },
+        "arrivalTime": "22:52",
+        "departureTime": "22:53"
+      },
+      {
+        "stationId": 672,
+        "stationName": {
+          "en": "Monshaat Sultan",
+          "ar": "منشأة سلطان"
+        },
+        "arrivalTime": "22:58",
+        "departureTime": "22:59"
+      },
+      {
+        "stationId": 673,
+        "stationName": {
+          "en": "Sengerg",
+          "ar": "سنجرج"
+        },
+        "arrivalTime": "23:03",
+        "departureTime": "23:04"
+      },
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": "23:10",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "28/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "trainNumber": "944",
+  "trainType": {
+    "id": 5,
+    "name": {
+      "en": "Mix",
+      "ar": "مختلط"
+    },
+    "description": {
+      "en": "Mixed trains combining multiple service levels in one journey",
+      "ar": "قطارات مختلطة تجمع بين عدة مستويات من الخدمة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "6",
+      "name": {
+        "en": "Zagazig",
+        "ar": "الزقازيق"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:40",
+    "endTime": "07:20",
+    "stations": [
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:40"
+      },
+      {
+        "stationId": 416,
+        "stationName": {
+          "en": "AZ Zanklun",
+          "ar": "الزنكلون"
+        },
+        "arrivalTime": "05:50",
+        "departureTime": "05:51"
+      },
+      {
+        "stationId": 413,
+        "stationName": {
+          "en": "Menyet Qamh",
+          "ar": "منية القمح"
+        },
+        "arrivalTime": "06:05",
+        "departureTime": "06:06"
+      },
+      {
+        "stationId": 410,
+        "stationName": {
+          "en": "Aziziyyah",
+          "ar": "العزيزية"
+        },
+        "arrivalTime": "06:15",
+        "departureTime": "06:16"
+      },
+      {
+        "stationId": 409,
+        "stationName": {
+          "en": "Shiblanjah",
+          "ar": "شبلنجة"
+        },
+        "arrivalTime": "06:21",
+        "departureTime": "06:22"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "06:35",
+        "departureTime": "06:36"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "07:06",
+        "departureTime": "07:07"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "07:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 8
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo/?fbid=838905971606102&set=pcb.838906038272762",
+    "lastUpdate": "16/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "trainNumber": "32",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "18:20",
+    "endTime": "22:35",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "18:20"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "18:29",
+        "departureTime": "18:32"
+      },
+      {
+        "stationId": 24,
+        "stationName": {
+          "en": "Kafr Dawar",
+          "ar": "كفر الدوار"
+        },
+        "arrivalTime": "18:53",
+        "departureTime": "18:54"
+      },
+      {
+        "stationId": 25,
+        "stationName": {
+          "en": "Abo Homos",
+          "ar": "ابو حمص"
+        },
+        "arrivalTime": "19:09",
+        "departureTime": "19:10"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "19:27",
+        "departureTime": "19:28"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "20:12",
+        "departureTime": "20:13"
+      },
+      {
+        "stationId": 27,
+        "stationName": {
+          "en": "Tawfiqiah",
+          "ar": "التوفيقية"
+        },
+        "arrivalTime": "20:24",
+        "departureTime": "20:25"
+      },
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": "20:35",
+        "departureTime": "20:36"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "20:50",
+        "departureTime": "20:55"
+      },
+      {
+        "stationId": 30,
+        "stationName": {
+          "en": "Berket Saba",
+          "ar": "بركة السبع"
+        },
+        "arrivalTime": "21:12",
+        "departureTime": "21:13"
+      },
+      {
+        "stationId": 31,
+        "stationName": {
+          "en": "Quesna",
+          "ar": "قويسنا"
+        },
+        "arrivalTime": "21:29",
+        "departureTime": "21:30"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "21:54",
+        "departureTime": "21:55"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "22:35",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 13
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo/?fbid=827279292768770&set=pcb.827279566102076",
+    "lastUpdate": "17/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

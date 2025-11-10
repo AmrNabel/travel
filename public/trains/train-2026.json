@@ -1,0 +1,72 @@
+{
+  "trainNumber": "2026",
+  "trainType": {
+    "id": 0,
+    "name": {
+      "en": "Talgo",
+      "ar": "تالجو"
+    },
+    "description": {
+      "en": "Modern high-speed Talgo trains with advanced comfort features",
+      "ar": "قطارات تالجو الحديثة عالية السرعة مع وسائل راحة متقدمة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "18:50",
+    "endTime": "21:20",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "18:50"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "19:00",
+        "departureTime": "19:05"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "21:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 3
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "19/04/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

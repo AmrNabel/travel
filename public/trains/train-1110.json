@@ -1,0 +1,99 @@
+{
+  "trainNumber": "1110",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "14",
+      "name": {
+        "en": "Faiyum",
+        "ar": "الفيوم"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:45",
+    "endTime": "18:05",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:45"
+      },
+      {
+        "stationId": 12,
+        "stationName": {
+          "en": "Upper Egypt",
+          "ar": "صعيد مصر"
+        },
+        "arrivalTime": "15:58",
+        "departureTime": "15:59"
+      },
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": "16:09",
+        "departureTime": "16:10"
+      },
+      {
+        "stationId": 55,
+        "stationName": {
+          "en": "Ayat",
+          "ar": "العياط"
+        },
+        "arrivalTime": "16:47",
+        "departureTime": "16:48"
+      },
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": "17:19",
+        "departureTime": "17:20"
+      },
+      {
+        "stationId": 14,
+        "stationName": {
+          "en": "Faiyum",
+          "ar": "الفيوم"
+        },
+        "arrivalTime": "18:05",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 6
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "08/11/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

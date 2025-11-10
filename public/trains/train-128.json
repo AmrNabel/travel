@@ -1,0 +1,117 @@
+{
+  "trainNumber": "128",
+  "trainType": {
+    "id": 4,
+    "name": {
+      "en": "Russian",
+      "ar": "روسي"
+    },
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "20:45",
+    "endTime": "22:45",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "20:45"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "20:53",
+        "departureTime": "20:58"
+      },
+      {
+        "stationId": 24,
+        "stationName": {
+          "en": "Kafr Dawar",
+          "ar": "كفر الدوار"
+        },
+        "arrivalTime": "21:19",
+        "departureTime": "21:20"
+      },
+      {
+        "stationId": 25,
+        "stationName": {
+          "en": "Abo Homos",
+          "ar": "ابو حمص"
+        },
+        "arrivalTime": "21:35",
+        "departureTime": "21:36"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "21:53",
+        "departureTime": "21:54"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "22:13",
+        "departureTime": "22:14"
+      },
+      {
+        "stationId": 28,
+        "stationName": {
+          "en": "Kafr Zayat",
+          "ar": "كفر الزيات"
+        },
+        "arrivalTime": "22:32",
+        "departureTime": "22:33"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "22:45",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 8
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "06/10/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

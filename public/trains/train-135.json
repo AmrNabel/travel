@@ -1,0 +1,90 @@
+{
+  "trainNumber": "135",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "62",
+      "name": {
+        "en": "Wasta",
+        "ar": "الواسطى"
+      }
+    },
+    "to": {
+      "stationId": "13",
+      "name": {
+        "en": "Giza",
+        "ar": "الجيزة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "04:35",
+    "endTime": "05:55",
+    "stations": [
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": null,
+        "departureTime": "04:35"
+      },
+      {
+        "stationId": 55,
+        "stationName": {
+          "en": "Ayat",
+          "ar": "العياط"
+        },
+        "arrivalTime": "05:00",
+        "departureTime": "05:01"
+      },
+      {
+        "stationId": 48,
+        "stationName": {
+          "en": "Badrshein",
+          "ar": "البدرشين"
+        },
+        "arrivalTime": "05:23",
+        "departureTime": "05:24"
+      },
+      {
+        "stationId": 47,
+        "stationName": {
+          "en": "Hawamdeyya",
+          "ar": "الحوامدية"
+        },
+        "arrivalTime": "05:31",
+        "departureTime": "05:32"
+      },
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": "05:55",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 5
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "07/12/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "trainNumber": "123",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "20:00",
+    "endTime": "23:10",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "20:00"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "20:16",
+        "departureTime": "20:17"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "20:29",
+        "departureTime": "20:30"
+      },
+      {
+        "stationId": 631,
+        "stationName": {
+          "en": "Qalyoub B",
+          "ar": "قليوب البلد"
+        },
+        "arrivalTime": "20:33",
+        "departureTime": "20:34"
+      },
+      {
+        "stationId": 629,
+        "stationName": {
+          "en": "Qanatir N",
+          "ar": "القناطر ج"
+        },
+        "arrivalTime": "20:44",
+        "departureTime": "20:45"
+      },
+      {
+        "stationId": 628,
+        "stationName": {
+          "en": "Derwah",
+          "ar": "دروة"
+        },
+        "arrivalTime": "20:54",
+        "departureTime": "20:55"
+      },
+      {
+        "stationId": 626,
+        "stationName": {
+          "en": "Shatanof",
+          "ar": "شطانوف"
+        },
+        "arrivalTime": "21:00",
+        "departureTime": "21:01"
+      },
+      {
+        "stationId": 624,
+        "stationName": {
+          "en": "Hilwasi",
+          "ar": "الحلواصي"
+        },
+        "arrivalTime": "21:09",
+        "departureTime": "21:10"
+      },
+      {
+        "stationId": 622,
+        "stationName": {
+          "en": "Ashmun",
+          "ar": "اشمون"
+        },
+        "arrivalTime": "21:20",
+        "departureTime": "21:21"
+      },
+      {
+        "stationId": 621,
+        "stationName": {
+          "en": "Samadun",
+          "ar": "سمادون"
+        },
+        "arrivalTime": "21:26",
+        "departureTime": "21:27"
+      },
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": "21:51",
+        "departureTime": "21:52"
+      },
+      {
+        "stationId": 614,
+        "stationName": {
+          "en": "Hamoul",
+          "ar": "الحامول"
+        },
+        "arrivalTime": "21:58",
+        "departureTime": "22:05"
+      },
+      {
+        "stationId": 613,
+        "stationName": {
+          "en": "Shanawan",
+          "ar": "شنوان"
+        },
+        "arrivalTime": "22:11",
+        "departureTime": "22:12"
+      },
+      {
+        "stationId": 612,
+        "stationName": {
+          "en": "Shebeen Kom O",
+          "ar": "شبين الكوم ق"
+        },
+        "arrivalTime": "22:19",
+        "departureTime": "22:22"
+      },
+      {
+        "stationId": 611,
+        "stationName": {
+          "en": "Shebeen Kom N",
+          "ar": "شبين الكوم ج"
+        },
+        "arrivalTime": "22:25",
+        "departureTime": "22:28"
+      },
+      {
+        "stationId": 608,
+        "stationName": {
+          "en": "Batanun",
+          "ar": "البتانون"
+        },
+        "arrivalTime": "22:37",
+        "departureTime": "22:44"
+      },
+      {
+        "stationId": 606,
+        "stationName": {
+          "en": "Tala",
+          "ar": "تلا"
+        },
+        "arrivalTime": "22:54",
+        "departureTime": "22:55"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "23:10",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": "tanta-minuf-cairo (4) - شلقان حسب التشغيل اليومي",
+    "lastUpdate": "26/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

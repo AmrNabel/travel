@@ -1,0 +1,153 @@
+{
+  "trainNumber": "804",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "338",
+      "name": {
+        "en": "Kafr Sheikh",
+        "ar": "كفر الشيخ"
+      }
+    },
+    "to": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "19:00",
+    "endTime": "20:30",
+    "stations": [
+      {
+        "stationId": 338,
+        "stationName": {
+          "en": "Kafr Sheikh",
+          "ar": "كفر الشيخ"
+        },
+        "arrivalTime": null,
+        "departureTime": "19:00"
+      },
+      {
+        "stationId": 337,
+        "stationName": {
+          "en": "Sakha",
+          "ar": "سخا"
+        },
+        "arrivalTime": "19:04",
+        "departureTime": "19:05"
+      },
+      {
+        "stationId": 335,
+        "stationName": {
+          "en": "Mahallat Mousa",
+          "ar": "محلة موسى"
+        },
+        "arrivalTime": "19:11",
+        "departureTime": "19:12"
+      },
+      {
+        "stationId": 332,
+        "stationName": {
+          "en": "Nashart",
+          "ar": "نشرت"
+        },
+        "arrivalTime": "19:21",
+        "departureTime": "19:22"
+      },
+      {
+        "stationId": 322,
+        "stationName": {
+          "en": "Qleen",
+          "ar": "قلين"
+        },
+        "arrivalTime": "19:29",
+        "departureTime": "19:30"
+      },
+      {
+        "stationId": 323,
+        "stationName": {
+          "en": "Qleen B",
+          "ar": "قلين البلد"
+        },
+        "arrivalTime": "19:32",
+        "departureTime": "19:33"
+      },
+      {
+        "stationId": 325,
+        "stationName": {
+          "en": "Shin",
+          "ar": "الشين"
+        },
+        "arrivalTime": "19:39",
+        "departureTime": "19:40"
+      },
+      {
+        "stationId": 327,
+        "stationName": {
+          "en": "Qotur",
+          "ar": "قطور"
+        },
+        "arrivalTime": "19:49",
+        "departureTime": "19:50"
+      },
+      {
+        "stationId": 329,
+        "stationName": {
+          "en": "Ebshway",
+          "ar": "ابشواي"
+        },
+        "arrivalTime": "19:59",
+        "departureTime": "20:00"
+      },
+      {
+        "stationId": 330,
+        "stationName": {
+          "en": "Segin",
+          "ar": "سجين"
+        },
+        "arrivalTime": "20:05",
+        "departureTime": "20:06"
+      },
+      {
+        "stationId": 572,
+        "stationName": {
+          "en": "Mahallat Rouh",
+          "ar": "محلة روح"
+        },
+        "arrivalTime": "20:14",
+        "departureTime": "20:15"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "20:30",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 12
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "12/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

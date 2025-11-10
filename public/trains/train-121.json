@@ -1,0 +1,324 @@
+{
+  "trainNumber": "121",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "14:30",
+    "endTime": "17:45",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "14:30"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "14:44",
+        "departureTime": "14:45"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "14:55",
+        "departureTime": "14:56"
+      },
+      {
+        "stationId": 631,
+        "stationName": {
+          "en": "Qalyoub B",
+          "ar": "قليوب البلد"
+        },
+        "arrivalTime": "14:59",
+        "departureTime": "15:00"
+      },
+      {
+        "stationId": 630,
+        "stationName": {
+          "en": "Shalaqan",
+          "ar": "شلقان"
+        },
+        "arrivalTime": "15:04",
+        "departureTime": "15:05"
+      },
+      {
+        "stationId": 629,
+        "stationName": {
+          "en": "Qanatir N",
+          "ar": "القناطر ج"
+        },
+        "arrivalTime": "15:10",
+        "departureTime": "15:11"
+      },
+      {
+        "stationId": 628,
+        "stationName": {
+          "en": "Derwah",
+          "ar": "دروة"
+        },
+        "arrivalTime": "15:20",
+        "departureTime": "15:21"
+      },
+      {
+        "stationId": 627,
+        "stationName": {
+          "en": "Kafr Sarawah",
+          "ar": "كفر صراوة"
+        },
+        "arrivalTime": "15:24",
+        "departureTime": "15:25"
+      },
+      {
+        "stationId": 626,
+        "stationName": {
+          "en": "Shatanof",
+          "ar": "شطانوف"
+        },
+        "arrivalTime": "15:28",
+        "departureTime": "15:29"
+      },
+      {
+        "stationId": 625,
+        "stationName": {
+          "en": "Hilwasi B",
+          "ar": "الحلواصي البلد"
+        },
+        "arrivalTime": "15:32",
+        "departureTime": "15:33"
+      },
+      {
+        "stationId": 624,
+        "stationName": {
+          "en": "Hilwasi",
+          "ar": "الحلواصي"
+        },
+        "arrivalTime": "15:36",
+        "departureTime": "15:41"
+      },
+      {
+        "stationId": 623,
+        "stationName": {
+          "en": "Mahallat Subk",
+          "ar": "محلة سبك"
+        },
+        "arrivalTime": "15:45",
+        "departureTime": "15:46"
+      },
+      {
+        "stationId": 622,
+        "stationName": {
+          "en": "Ashmun",
+          "ar": "اشمون"
+        },
+        "arrivalTime": "15:52",
+        "departureTime": "15:53"
+      },
+      {
+        "stationId": 621,
+        "stationName": {
+          "en": "Samadun",
+          "ar": "سمادون"
+        },
+        "arrivalTime": "15:58",
+        "departureTime": "15:59"
+      },
+      {
+        "stationId": 620,
+        "stationName": {
+          "en": "Badr Mosque",
+          "ar": "جامع بدر"
+        },
+        "arrivalTime": "16:04",
+        "departureTime": "16:05"
+      },
+      {
+        "stationId": 619,
+        "stationName": {
+          "en": "Ramlat Injib",
+          "ar": "رملة الأنجب"
+        },
+        "arrivalTime": "16:10",
+        "departureTime": "16:11"
+      },
+      {
+        "stationId": 618,
+        "stationName": {
+          "en": "Shama",
+          "ar": "شما"
+        },
+        "arrivalTime": "16:15",
+        "departureTime": "16:16"
+      },
+      {
+        "stationId": 617,
+        "stationName": {
+          "en": "Kamshush",
+          "ar": "كمشوش"
+        },
+        "arrivalTime": "16:20",
+        "departureTime": "16:21"
+      },
+      {
+        "stationId": 616,
+        "stationName": {
+          "en": "Kafr Sanabisah",
+          "ar": "كفر السنابسة"
+        },
+        "arrivalTime": "16:25",
+        "departureTime": "16:26"
+      },
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": "16:30",
+        "departureTime": "16:31"
+      },
+      {
+        "stationId": 614,
+        "stationName": {
+          "en": "Hamoul",
+          "ar": "الحامول"
+        },
+        "arrivalTime": "16:36",
+        "departureTime": "16:37"
+      },
+      {
+        "stationId": 613,
+        "stationName": {
+          "en": "Shanawan",
+          "ar": "شنوان"
+        },
+        "arrivalTime": "16:41",
+        "departureTime": "16:42"
+      },
+      {
+        "stationId": 612,
+        "stationName": {
+          "en": "Shebeen Kom O",
+          "ar": "شبين الكوم ق"
+        },
+        "arrivalTime": "16:55",
+        "departureTime": "16:56"
+      },
+      {
+        "stationId": 611,
+        "stationName": {
+          "en": "Shebeen Kom N",
+          "ar": "شبين الكوم ج"
+        },
+        "arrivalTime": "16:59",
+        "departureTime": "17:00"
+      },
+      {
+        "stationId": 610,
+        "stationName": {
+          "en": "Tanbadi",
+          "ar": "طنبدي"
+        },
+        "arrivalTime": "17:04",
+        "departureTime": "17:05"
+      },
+      {
+        "stationId": 609,
+        "stationName": {
+          "en": "Kafr Batanun",
+          "ar": "كفر البتانون"
+        },
+        "arrivalTime": "17:08",
+        "departureTime": "17:09"
+      },
+      {
+        "stationId": 608,
+        "stationName": {
+          "en": "Batanun",
+          "ar": "البتانون"
+        },
+        "arrivalTime": "17:11",
+        "departureTime": "17:12"
+      },
+      {
+        "stationId": 607,
+        "stationName": {
+          "en": "Kafr Tabluha",
+          "ar": "كفر طبلوها"
+        },
+        "arrivalTime": "17:17",
+        "departureTime": "17:18"
+      },
+      {
+        "stationId": 606,
+        "stationName": {
+          "en": "Tala",
+          "ar": "تلا"
+        },
+        "arrivalTime": "17:28",
+        "departureTime": "17:29"
+      },
+      {
+        "stationId": 605,
+        "stationName": {
+          "en": "Kafr Selim",
+          "ar": "كفر سليم"
+        },
+        "arrivalTime": "17:37",
+        "departureTime": "17:38"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "17:45",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 31
+  },
+  "status": {
+    "working": "https://drive.google.com/drive/u/0/folders/1sO7DsJMfSRFf9_oVFTqS4bVBpHub_daj | https://www.facebook.com/photo?fbid=756933299803370&set=pcb.756933336470033",
+    "lastUpdate": "24/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

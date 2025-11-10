@@ -1,0 +1,144 @@
+{
+  "trainNumber": "999",
+  "trainType": {
+    "id": 1,
+    "name": {
+      "en": "AC",
+      "ar": "مكيف"
+    },
+    "description": {
+      "en": "Air-conditioned trains providing comfortable journeys at all times",
+      "ar": "قطارات مكيفة توفر رحلة مريحة في جميع الأوقات"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "18",
+      "name": {
+        "en": "Sohag",
+        "ar": "سوهاج"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "22:15",
+    "endTime": "05:25",
+    "stations": [
+      {
+        "stationId": 18,
+        "stationName": {
+          "en": "Sohag",
+          "ar": "سوهاج"
+        },
+        "arrivalTime": null,
+        "departureTime": "22:15"
+      },
+      {
+        "stationId": 129,
+        "stationName": {
+          "en": "Tahta",
+          "ar": "طهطا"
+        },
+        "arrivalTime": "22:44",
+        "departureTime": "22:46"
+      },
+      {
+        "stationId": 125,
+        "stationName": {
+          "en": "Tima",
+          "ar": "طما"
+        },
+        "arrivalTime": "23:01",
+        "departureTime": "23:03"
+      },
+      {
+        "stationId": 17,
+        "stationName": {
+          "en": "Asyut",
+          "ar": "اسيوط"
+        },
+        "arrivalTime": "23:40",
+        "departureTime": "23:45"
+      },
+      {
+        "stationId": 101,
+        "stationName": {
+          "en": "Mallawi",
+          "ar": "ملوي"
+        },
+        "arrivalTime": "00:54",
+        "departureTime": "00:55"
+      },
+      {
+        "stationId": 16,
+        "stationName": {
+          "en": "Minya",
+          "ar": "المنيا"
+        },
+        "arrivalTime": "01:40",
+        "departureTime": "01:45"
+      },
+      {
+        "stationId": 80,
+        "stationName": {
+          "en": "Maghagha",
+          "ar": "مغاغة"
+        },
+        "arrivalTime": "02:33",
+        "departureTime": "02:45"
+      },
+      {
+        "stationId": 15,
+        "stationName": {
+          "en": "Beni Suef",
+          "ar": "بني سويف"
+        },
+        "arrivalTime": "03:28",
+        "departureTime": "03:32"
+      },
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": "04:55",
+        "departureTime": "05:00"
+      },
+      {
+        "stationId": 12,
+        "stationName": {
+          "en": "Upper Egypt",
+          "ar": "صعيد مصر"
+        },
+        "arrivalTime": "05:09",
+        "departureTime": "05:12"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "05:25",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 11
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo/?fbid=934354158727949&set=pcb.934352835394748",
+    "lastUpdate": "29/10/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

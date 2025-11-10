@@ -1,0 +1,153 @@
+{
+  "trainNumber": "564",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    },
+    "to": {
+      "stationId": "615",
+      "name": {
+        "en": "Minuf",
+        "ar": "منوف"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "22:10",
+    "endTime": "23:30",
+    "stations": [
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": null,
+        "departureTime": "22:10"
+      },
+      {
+        "stationId": 605,
+        "stationName": {
+          "en": "Kafr Selim",
+          "ar": "كفر سليم"
+        },
+        "arrivalTime": "22:17",
+        "departureTime": "22:18"
+      },
+      {
+        "stationId": 606,
+        "stationName": {
+          "en": "Tala",
+          "ar": "تلا"
+        },
+        "arrivalTime": "22:29",
+        "departureTime": "22:30"
+      },
+      {
+        "stationId": 607,
+        "stationName": {
+          "en": "Kafr Tabluha",
+          "ar": "كفر طبلوها"
+        },
+        "arrivalTime": "22:36",
+        "departureTime": "22:37"
+      },
+      {
+        "stationId": 608,
+        "stationName": {
+          "en": "Batanun",
+          "ar": "البتانون"
+        },
+        "arrivalTime": "22:41",
+        "departureTime": "22:42"
+      },
+      {
+        "stationId": 609,
+        "stationName": {
+          "en": "Kafr Batanun",
+          "ar": "كفر البتانون"
+        },
+        "arrivalTime": "22:45",
+        "departureTime": "22:46"
+      },
+      {
+        "stationId": 610,
+        "stationName": {
+          "en": "Tanbadi",
+          "ar": "طنبدي"
+        },
+        "arrivalTime": "22:49",
+        "departureTime": "22:50"
+      },
+      {
+        "stationId": 611,
+        "stationName": {
+          "en": "Shebeen Kom N",
+          "ar": "شبين الكوم ج"
+        },
+        "arrivalTime": "22:56",
+        "departureTime": "22:57"
+      },
+      {
+        "stationId": 612,
+        "stationName": {
+          "en": "Shebeen Kom O",
+          "ar": "شبين الكوم ق"
+        },
+        "arrivalTime": "23:00",
+        "departureTime": "23:01"
+      },
+      {
+        "stationId": 613,
+        "stationName": {
+          "en": "Shanawan",
+          "ar": "شنوان"
+        },
+        "arrivalTime": "23:08",
+        "departureTime": "23:09"
+      },
+      {
+        "stationId": 614,
+        "stationName": {
+          "en": "Hamoul",
+          "ar": "الحامول"
+        },
+        "arrivalTime": "23:14",
+        "departureTime": "23:15"
+      },
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": "23:30",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 12
+  },
+  "status": {
+    "working": "tanta-minuf-cairo (5)",
+    "lastUpdate": "26/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

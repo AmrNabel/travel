@@ -1,0 +1,207 @@
+{
+  "trainNumber": "685",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "386",
+      "name": {
+        "en": "Bashtil",
+        "ar": "بشتيل المحطة"
+      }
+    },
+    "to": {
+      "stationId": "26",
+      "name": {
+        "en": "Itay Barud",
+        "ar": "ايتاي البارود"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "16:00",
+    "endTime": "18:20",
+    "stations": [
+      {
+        "stationId": 386,
+        "stationName": {
+          "en": "Bashtil",
+          "ar": "بشتيل المحطة"
+        },
+        "arrivalTime": null,
+        "departureTime": "16:00"
+      },
+      {
+        "stationId": 385,
+        "stationName": {
+          "en": "Bashtil B",
+          "ar": "بشتيل البلد"
+        },
+        "arrivalTime": "16:03",
+        "departureTime": "16:04"
+      },
+      {
+        "stationId": 383,
+        "stationName": {
+          "en": "Ossim",
+          "ar": "اوسيم"
+        },
+        "arrivalTime": "16:12",
+        "departureTime": "16:13"
+      },
+      {
+        "stationId": 382,
+        "stationName": {
+          "en": "Bartas",
+          "ar": "برطس"
+        },
+        "arrivalTime": "16:17",
+        "departureTime": "16:18"
+      },
+      {
+        "stationId": 381,
+        "stationName": {
+          "en": "Gelatmah",
+          "ar": "الجلاتمة"
+        },
+        "arrivalTime": "16:22",
+        "departureTime": "16:23"
+      },
+      {
+        "stationId": 380,
+        "stationName": {
+          "en": "Manashi",
+          "ar": "المناشي"
+        },
+        "arrivalTime": "16:26",
+        "departureTime": "16:27"
+      },
+      {
+        "stationId": 378,
+        "stationName": {
+          "en": "Niklah",
+          "ar": "نكلا"
+        },
+        "arrivalTime": "16:32",
+        "departureTime": "16:33"
+      },
+      {
+        "stationId": 377,
+        "stationName": {
+          "en": "Birqash",
+          "ar": "برقاش"
+        },
+        "arrivalTime": "16:36",
+        "departureTime": "16:37"
+      },
+      {
+        "stationId": 373,
+        "stationName": {
+          "en": "Abo Ghaleb",
+          "ar": "ابو غالب"
+        },
+        "arrivalTime": "16:53",
+        "departureTime": "16:54"
+      },
+      {
+        "stationId": 372,
+        "stationName": {
+          "en": "Werdan",
+          "ar": "وردان"
+        },
+        "arrivalTime": "16:58",
+        "departureTime": "16:59"
+      },
+      {
+        "stationId": 370,
+        "stationName": {
+          "en": "Khatatbah",
+          "ar": "الخطاطبة"
+        },
+        "arrivalTime": "17:09",
+        "departureTime": "17:10"
+      },
+      {
+        "stationId": 367,
+        "stationName": {
+          "en": "Kafr Dawoud",
+          "ar": "كفر داود"
+        },
+        "arrivalTime": "17:21",
+        "departureTime": "17:22"
+      },
+      {
+        "stationId": 366,
+        "stationName": {
+          "en": "Birijat",
+          "ar": "البريجات"
+        },
+        "arrivalTime": "17:26",
+        "departureTime": "17:27"
+      },
+      {
+        "stationId": 365,
+        "stationName": {
+          "en": "Modiriyat Tahrir",
+          "ar": "مديرية التحرير"
+        },
+        "arrivalTime": "17:32",
+        "departureTime": "17:33"
+      },
+      {
+        "stationId": 362,
+        "stationName": {
+          "en": "Tairyyah B",
+          "ar": "الطيرية البلد"
+        },
+        "arrivalTime": "17:44",
+        "departureTime": "17:45"
+      },
+      {
+        "stationId": 359,
+        "stationName": {
+          "en": "Waqid",
+          "ar": "واقد"
+        },
+        "arrivalTime": "17:53",
+        "departureTime": "17:54"
+      },
+      {
+        "stationId": 357,
+        "stationName": {
+          "en": "Kom Hamada",
+          "ar": "كوم حمادة"
+        },
+        "arrivalTime": "18:05",
+        "departureTime": "18:06"
+      },
+      {
+        "stationId": 26,
+        "stationName": {
+          "en": "Itay Barud",
+          "ar": "ايتاي البارود"
+        },
+        "arrivalTime": "18:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "17/12/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

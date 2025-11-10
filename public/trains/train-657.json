@@ -1,0 +1,63 @@
+{
+  "trainNumber": "657",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "245",
+      "name": {
+        "en": "Burj Arab O",
+        "ar": "برج العرب"
+      }
+    },
+    "to": {
+      "stationId": "231",
+      "name": {
+        "en": "Moharam Beek",
+        "ar": "محرم بك"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "17:51",
+    "endTime": "19:10",
+    "stations": [
+      {
+        "stationId": 245,
+        "stationName": {
+          "en": "Burj Arab O",
+          "ar": "برج العرب"
+        },
+        "arrivalTime": null,
+        "departureTime": "17:51"
+      },
+      {
+        "stationId": 231,
+        "stationName": {
+          "en": "Moharam Beek",
+          "ar": "محرم بك"
+        },
+        "arrivalTime": "19:10",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 2
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "17/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

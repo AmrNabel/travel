@@ -1,0 +1,135 @@
+{
+  "trainNumber": "285",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "7",
+      "name": {
+        "en": "Ismailia",
+        "ar": "الاسماعيلية"
+      }
+    },
+    "to": {
+      "stationId": "8",
+      "name": {
+        "en": "Port Said",
+        "ar": "بورسعيد"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:35",
+    "endTime": "07:10",
+    "stations": [
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:35"
+      },
+      {
+        "stationId": 432,
+        "stationName": {
+          "en": "Sheikh Zayed",
+          "ar": "الشيخ زايد"
+        },
+        "arrivalTime": "05:40",
+        "departureTime": "05:41"
+      },
+      {
+        "stationId": 433,
+        "stationName": {
+          "en": "Ferdan",
+          "ar": "الفردان"
+        },
+        "arrivalTime": "05:51",
+        "departureTime": "05:52"
+      },
+      {
+        "stationId": 434,
+        "stationName": {
+          "en": "Balah",
+          "ar": "البلاح"
+        },
+        "arrivalTime": "06:02",
+        "departureTime": "06:03"
+      },
+      {
+        "stationId": 435,
+        "stationName": {
+          "en": "Qantara Gharb",
+          "ar": "القنطرة غرب"
+        },
+        "arrivalTime": "06:19",
+        "departureTime": "06:20"
+      },
+      {
+        "stationId": 437,
+        "stationName": {
+          "en": "Tenh",
+          "ar": "التينة"
+        },
+        "arrivalTime": "06:30",
+        "departureTime": "06:31"
+      },
+      {
+        "stationId": 436,
+        "stationName": {
+          "en": "Cap",
+          "ar": "الكاب"
+        },
+        "arrivalTime": "06:41",
+        "departureTime": "06:42"
+      },
+      {
+        "stationId": 437,
+        "stationName": {
+          "en": "Tenh",
+          "ar": "التينة"
+        },
+        "arrivalTime": "06:53",
+        "departureTime": "06:54"
+      },
+      {
+        "stationId": 438,
+        "stationName": {
+          "en": "Ras Esh",
+          "ar": "راس العش"
+        },
+        "arrivalTime": "07:03",
+        "departureTime": "07:04"
+      },
+      {
+        "stationId": 8,
+        "stationName": {
+          "en": "Port Said",
+          "ar": "بورسعيد"
+        },
+        "arrivalTime": "07:10",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 10
+  },
+  "status": {
+    "working": "https://www.facebook.com/photo?fbid=838905861606113&set=pcb.838906038272762",
+    "lastUpdate": "16/06/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

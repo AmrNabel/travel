@@ -1,0 +1,198 @@
+{
+  "trainNumber": "178",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "564",
+      "name": {
+        "en": "Salheya",
+        "ar": "الصالحية"
+      }
+    },
+    "to": {
+      "stationId": "6",
+      "name": {
+        "en": "Zagazig",
+        "ar": "الزقازيق"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "11:40",
+    "endTime": "13:10",
+    "stations": [
+      {
+        "stationId": 564,
+        "stationName": {
+          "en": "Salheya",
+          "ar": "الصالحية"
+        },
+        "arrivalTime": null,
+        "departureTime": "11:40"
+      },
+      {
+        "stationId": 563,
+        "stationName": {
+          "en": "Kabaysha",
+          "ar": "الكابيشة"
+        },
+        "arrivalTime": "11:42",
+        "departureTime": "11:43"
+      },
+      {
+        "stationId": 562,
+        "stationName": {
+          "en": "Azzazi",
+          "ar": "العزازي"
+        },
+        "arrivalTime": "11:47",
+        "departureTime": "11:48"
+      },
+      {
+        "stationId": 561,
+        "stationName": {
+          "en": "Abaza",
+          "ar": "اباظة"
+        },
+        "arrivalTime": "11:52",
+        "departureTime": "11:53"
+      },
+      {
+        "stationId": 560,
+        "stationName": {
+          "en": "Drakh",
+          "ar": "الدراكة"
+        },
+        "arrivalTime": "11:55",
+        "departureTime": "11:56"
+      },
+      {
+        "stationId": 559,
+        "stationName": {
+          "en": "Akyad",
+          "ar": "اكياد"
+        },
+        "arrivalTime": "11:59",
+        "departureTime": "12:00"
+      },
+      {
+        "stationId": 558,
+        "stationName": {
+          "en": "Kafr Haj Omar",
+          "ar": "كفر الحاج عمر"
+        },
+        "arrivalTime": "12:06",
+        "departureTime": "12:07"
+      },
+      {
+        "stationId": 557,
+        "stationName": {
+          "en": "Geheinah",
+          "ar": "جهينة"
+        },
+        "arrivalTime": "12:11",
+        "departureTime": "12:12"
+      },
+      {
+        "stationId": 556,
+        "stationName": {
+          "en": "Faqus",
+          "ar": "فاقوس"
+        },
+        "arrivalTime": "12:17",
+        "departureTime": "12:18"
+      },
+      {
+        "stationId": 555,
+        "stationName": {
+          "en": "Bayrum",
+          "ar": "البيروم"
+        },
+        "arrivalTime": "12:22",
+        "departureTime": "12:23"
+      },
+      {
+        "stationId": 554,
+        "stationName": {
+          "en": "Fadadnah",
+          "ar": "الفدادنة"
+        },
+        "arrivalTime": "12:26",
+        "departureTime": "12:27"
+      },
+      {
+        "stationId": 553,
+        "stationName": {
+          "en": "Khalafallah",
+          "ar": "خلف الله"
+        },
+        "arrivalTime": "12:29",
+        "departureTime": "12:30"
+      },
+      {
+        "stationId": 552,
+        "stationName": {
+          "en": "Ghaba",
+          "ar": "الغابة"
+        },
+        "arrivalTime": "12:33",
+        "departureTime": "12:34"
+      },
+      {
+        "stationId": 513,
+        "stationName": {
+          "en": "Abo Kibir",
+          "ar": "ابو كبير"
+        },
+        "arrivalTime": "12:42",
+        "departureTime": "12:43"
+      },
+      {
+        "stationId": 511,
+        "stationName": {
+          "en": "Shirshimah",
+          "ar": "شرشيمة"
+        },
+        "arrivalTime": "12:50",
+        "departureTime": "12:51"
+      },
+      {
+        "stationId": 510,
+        "stationName": {
+          "en": "Hihya",
+          "ar": "هيها"
+        },
+        "arrivalTime": "12:56",
+        "departureTime": "12:57"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "13:10",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 17
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "07/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

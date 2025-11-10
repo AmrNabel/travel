@@ -1,0 +1,243 @@
+{
+  "trainNumber": "68",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "11",
+      "name": {
+        "en": "Damietta",
+        "ar": "دمياط"
+      }
+    },
+    "to": {
+      "stationId": "10",
+      "name": {
+        "en": "Mansoura",
+        "ar": "المنصورة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:10",
+    "endTime": "17:05",
+    "stations": [
+      {
+        "stationId": 11,
+        "stationName": {
+          "en": "Damietta",
+          "ar": "دمياط"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:10"
+      },
+      {
+        "stationId": 604,
+        "stationName": {
+          "en": "Basatin Kafr Battikh",
+          "ar": "بساتين كفر البطيخ"
+        },
+        "arrivalTime": "15:15",
+        "departureTime": "15:16"
+      },
+      {
+        "stationId": 603,
+        "stationName": {
+          "en": "Kafr Battikh",
+          "ar": "كفر البطيخ"
+        },
+        "arrivalTime": "15:20",
+        "departureTime": "15:21"
+      },
+      {
+        "stationId": 602,
+        "stationName": {
+          "en": "Tawfiqiah B",
+          "ar": "التوفيقية البلد"
+        },
+        "arrivalTime": "15:28",
+        "departureTime": "15:29"
+      },
+      {
+        "stationId": 601,
+        "stationName": {
+          "en": "Kafr Saad",
+          "ar": "كفر سعد"
+        },
+        "arrivalTime": "15:23",
+        "departureTime": "15:24"
+      },
+      {
+        "stationId": 600,
+        "stationName": {
+          "en": "Kafr Saad B",
+          "ar": "كفر سعد البلد"
+        },
+        "arrivalTime": "15:41",
+        "departureTime": "15:42"
+      },
+      {
+        "stationId": 599,
+        "stationName": {
+          "en": "Swalem",
+          "ar": "السوالم"
+        },
+        "arrivalTime": "15:45",
+        "departureTime": "15:46"
+      },
+      {
+        "stationId": 598,
+        "stationName": {
+          "en": "Gamasa",
+          "ar": "جمصة"
+        },
+        "arrivalTime": "15:51",
+        "departureTime": "15:52"
+      },
+      {
+        "stationId": 597,
+        "stationName": {
+          "en": "Ras Khaleej",
+          "ar": "راس الخليج"
+        },
+        "arrivalTime": "15:54",
+        "departureTime": "15:55"
+      },
+      {
+        "stationId": 596,
+        "stationName": {
+          "en": "Sabreyah",
+          "ar": "الصبرية"
+        },
+        "arrivalTime": "16:01",
+        "departureTime": "16:02"
+      },
+      {
+        "stationId": 595,
+        "stationName": {
+          "en": "Saadwa",
+          "ar": "السعادوه"
+        },
+        "arrivalTime": "16:07",
+        "departureTime": "16:08"
+      },
+      {
+        "stationId": 594,
+        "stationName": {
+          "en": "Shirbin",
+          "ar": "شربين"
+        },
+        "arrivalTime": "16:14",
+        "departureTime": "16:15"
+      },
+      {
+        "stationId": 593,
+        "stationName": {
+          "en": "Kafr Dabbusi",
+          "ar": "كفر الدبوسي"
+        },
+        "arrivalTime": "16:20",
+        "departureTime": "16:21"
+      },
+      {
+        "stationId": 592,
+        "stationName": {
+          "en": "Kafr Hatabah",
+          "ar": "كفر الحطبه"
+        },
+        "arrivalTime": "16:24",
+        "departureTime": "16:25"
+      },
+      {
+        "stationId": 591,
+        "stationName": {
+          "en": "Hag Khaleel",
+          "ar": "الحاج خليل"
+        },
+        "arrivalTime": "16:27",
+        "departureTime": "16:28"
+      },
+      {
+        "stationId": 590,
+        "stationName": {
+          "en": "Batrah",
+          "ar": "بطره"
+        },
+        "arrivalTime": "16:32",
+        "departureTime": "16:33"
+      },
+      {
+        "stationId": 589,
+        "stationName": {
+          "en": "Daysat",
+          "ar": "ديسط"
+        },
+        "arrivalTime": "16:36",
+        "departureTime": "16:37"
+      },
+      {
+        "stationId": 588,
+        "stationName": {
+          "en": "Tawilah",
+          "ar": "الطويلة"
+        },
+        "arrivalTime": "16:47",
+        "departureTime": "16:48"
+      },
+      {
+        "stationId": 587,
+        "stationName": {
+          "en": "Shirinqash",
+          "ar": "شرنقاش"
+        },
+        "arrivalTime": "16:52",
+        "departureTime": "16:53"
+      },
+      {
+        "stationId": 586,
+        "stationName": {
+          "en": "Mit Antar",
+          "ar": "ميت عنتر"
+        },
+        "arrivalTime": "16:56",
+        "departureTime": "16:57"
+      },
+      {
+        "stationId": 585,
+        "stationName": {
+          "en": "Semad Talkha",
+          "ar": "سماد طلخا"
+        },
+        "arrivalTime": "17:01",
+        "departureTime": "17:02"
+      },
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": "17:05",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 22
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "31/08/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

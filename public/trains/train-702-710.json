@@ -1,0 +1,396 @@
+{
+  "trainNumber": "702-710",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "62",
+      "name": {
+        "en": "Wasta",
+        "ar": "الواسطى"
+      }
+    },
+    "to": {
+      "stationId": "17",
+      "name": {
+        "en": "Asyut",
+        "ar": "اسيوط"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "05:00",
+    "endTime": "10:45",
+    "stations": [
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": null,
+        "departureTime": "05:00"
+      },
+      {
+        "stationId": 65,
+        "stationName": {
+          "en": "Maymun",
+          "ar": "الميمون"
+        },
+        "arrivalTime": "05:09",
+        "departureTime": "05:10"
+      },
+      {
+        "stationId": 66,
+        "stationName": {
+          "en": "Ashmant",
+          "ar": "اشمنت"
+        },
+        "arrivalTime": "05:16",
+        "departureTime": "05:17"
+      },
+      {
+        "stationId": 68,
+        "stationName": {
+          "en": "Nasser",
+          "ar": "ناصر"
+        },
+        "arrivalTime": "05:25",
+        "departureTime": "05:26"
+      },
+      {
+        "stationId": 15,
+        "stationName": {
+          "en": "Beni Suef",
+          "ar": "بني سويف"
+        },
+        "arrivalTime": "05:37",
+        "departureTime": "05:38"
+      },
+      {
+        "stationId": 73,
+        "stationName": {
+          "en": "Biba",
+          "ar": "ببا"
+        },
+        "arrivalTime": "05:58",
+        "departureTime": "05:59"
+      },
+      {
+        "stationId": 76,
+        "stationName": {
+          "en": "Fashn",
+          "ar": "الفشن"
+        },
+        "arrivalTime": "06:13",
+        "departureTime": "06:14"
+      },
+      {
+        "stationId": 80,
+        "stationName": {
+          "en": "Maghagha",
+          "ar": "مغاغة"
+        },
+        "arrivalTime": "06:30",
+        "departureTime": "06:31"
+      },
+      {
+        "stationId": 83,
+        "stationName": {
+          "en": "Beni Mazar",
+          "ar": "بني مزار"
+        },
+        "arrivalTime": "06:45",
+        "departureTime": "06:46"
+      },
+      {
+        "stationId": 85,
+        "stationName": {
+          "en": "Matay",
+          "ar": "مطاي"
+        },
+        "arrivalTime": "06:56",
+        "departureTime": "06:57"
+      },
+      {
+        "stationId": 87,
+        "stationName": {
+          "en": "Samalut",
+          "ar": "سملوط"
+        },
+        "arrivalTime": "07:09",
+        "departureTime": "07:10"
+      },
+      {
+        "stationId": 92,
+        "stationName": {
+          "en": "Damaris",
+          "ar": "دماريس"
+        },
+        "arrivalTime": "07:27",
+        "departureTime": "07:28"
+      },
+      {
+        "stationId": 16,
+        "stationName": {
+          "en": "Minya",
+          "ar": "المنيا"
+        },
+        "arrivalTime": "07:59",
+        "departureTime": "08:00"
+      },
+      {
+        "stationId": 93,
+        "stationName": {
+          "en": "Textile factory",
+          "ar": "مصنع الغزل"
+        },
+        "arrivalTime": "08:08",
+        "departureTime": "08:09"
+      },
+      {
+        "stationId": 94,
+        "stationName": {
+          "en": "Beni Ahmed",
+          "ar": "بني أحمد"
+        },
+        "arrivalTime": "08:12",
+        "departureTime": "08:13"
+      },
+      {
+        "stationId": 95,
+        "stationName": {
+          "en": "Mansafis",
+          "ar": "منسافيس"
+        },
+        "arrivalTime": "08:18",
+        "departureTime": "08:19"
+      },
+      {
+        "stationId": 96,
+        "stationName": {
+          "en": "Abyuha",
+          "ar": "ابيوها"
+        },
+        "arrivalTime": "08:23",
+        "departureTime": "08:24"
+      },
+      {
+        "stationId": 97,
+        "stationName": {
+          "en": "Abo Qurqas",
+          "ar": "ابو قرقاص"
+        },
+        "arrivalTime": "08:28",
+        "departureTime": "08:29"
+      },
+      {
+        "stationId": 98,
+        "stationName": {
+          "en": "Itlidim",
+          "ar": "اتليدم"
+        },
+        "arrivalTime": "08:34",
+        "departureTime": "08:35"
+      },
+      {
+        "stationId": 99,
+        "stationName": {
+          "en": "Mahras",
+          "ar": "المحرص"
+        },
+        "arrivalTime": "08:40",
+        "departureTime": "08:41"
+      },
+      {
+        "stationId": 100,
+        "stationName": {
+          "en": "Rawda",
+          "ar": "الروضة"
+        },
+        "arrivalTime": "08:50",
+        "departureTime": "08:51"
+      },
+      {
+        "stationId": 101,
+        "stationName": {
+          "en": "Mallawi",
+          "ar": "ملوي"
+        },
+        "arrivalTime": "08:58",
+        "departureTime": "08:59"
+      },
+      {
+        "stationId": 102,
+        "stationName": {
+          "en": "Massarat Malawi",
+          "ar": "معصرة ملوي"
+        },
+        "arrivalTime": "09:05",
+        "departureTime": "09:06"
+      },
+      {
+        "stationId": 103,
+        "stationName": {
+          "en": "Amarna",
+          "ar": "تل العمارنة"
+        },
+        "arrivalTime": "09:10",
+        "departureTime": "09:11"
+      },
+      {
+        "stationId": 104,
+        "stationName": {
+          "en": "Dayr Mawas",
+          "ar": "دير مواس"
+        },
+        "arrivalTime": "09:16",
+        "departureTime": "09:17"
+      },
+      {
+        "stationId": 105,
+        "stationName": {
+          "en": "Jarf",
+          "ar": "الجرف"
+        },
+        "arrivalTime": "09:23",
+        "departureTime": "09:24"
+      },
+      {
+        "stationId": 106,
+        "stationName": {
+          "en": "Dayrout",
+          "ar": "ديروط"
+        },
+        "arrivalTime": "09:29",
+        "departureTime": "09:30"
+      },
+      {
+        "stationId": 107,
+        "stationName": {
+          "en": "Sanabo",
+          "ar": "صنبو"
+        },
+        "arrivalTime": "09:37",
+        "departureTime": "09:38"
+      },
+      {
+        "stationId": 108,
+        "stationName": {
+          "en": "Fazarah",
+          "ar": "فزاره"
+        },
+        "arrivalTime": "09:41",
+        "departureTime": "09:42"
+      },
+      {
+        "stationId": 109,
+        "stationName": {
+          "en": "Qusiyyah",
+          "ar": "القوصية"
+        },
+        "arrivalTime": "09:47",
+        "departureTime": "09:48"
+      },
+      {
+        "stationId": 110,
+        "stationName": {
+          "en": "Beni Qorah",
+          "ar": "بني قره"
+        },
+        "arrivalTime": "09:56",
+        "departureTime": "09:57"
+      },
+      {
+        "stationId": 111,
+        "stationName": {
+          "en": "Beni Shakeir",
+          "ar": "بني شقير"
+        },
+        "arrivalTime": "10:02",
+        "departureTime": "10:03"
+      },
+      {
+        "stationId": 112,
+        "stationName": {
+          "en": "Manfalut",
+          "ar": "منفلوط"
+        },
+        "arrivalTime": "10:08",
+        "departureTime": "10:09"
+      },
+      {
+        "stationId": 113,
+        "stationName": {
+          "en": "Hawatkah",
+          "ar": "الحواتكة"
+        },
+        "arrivalTime": "10:18",
+        "departureTime": "10:19"
+      },
+      {
+        "stationId": 114,
+        "stationName": {
+          "en": "Nagaa Sabee",
+          "ar": "نجع سبع"
+        },
+        "arrivalTime": "10:23",
+        "departureTime": "10:24"
+      },
+      {
+        "stationId": 115,
+        "stationName": {
+          "en": "Beni Hussein",
+          "ar": "بني حسين"
+        },
+        "arrivalTime": "10:27",
+        "departureTime": "10:28"
+      },
+      {
+        "stationId": 116,
+        "stationName": {
+          "en": "Manqabad",
+          "ar": "منقباد"
+        },
+        "arrivalTime": "10:34",
+        "departureTime": "10:35"
+      },
+      {
+        "stationId": 117,
+        "stationName": {
+          "en": "Azhar University",
+          "ar": "جامعة الأزهر"
+        },
+        "arrivalTime": "10:37",
+        "departureTime": "10:38"
+      },
+      {
+        "stationId": 17,
+        "stationName": {
+          "en": "Asyut",
+          "ar": "اسيوط"
+        },
+        "arrivalTime": "10:45",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 39
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "19/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

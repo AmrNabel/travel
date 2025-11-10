@@ -1,0 +1,162 @@
+{
+  "trainNumber": "134",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "13",
+      "name": {
+        "en": "Giza",
+        "ar": "الجيزة"
+      }
+    },
+    "to": {
+      "stationId": "14",
+      "name": {
+        "en": "Faiyum",
+        "ar": "الفيوم"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "00:05",
+    "endTime": "15:00",
+    "stations": [
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": null,
+        "departureTime": "00:05"
+      },
+      {
+        "stationId": 47,
+        "stationName": {
+          "en": "Hawamdeyya",
+          "ar": "الحوامدية"
+        },
+        "arrivalTime": "00:21",
+        "departureTime": "00:22"
+      },
+      {
+        "stationId": 48,
+        "stationName": {
+          "en": "Badrshein",
+          "ar": "البدرشين"
+        },
+        "arrivalTime": "00:28",
+        "departureTime": "00:29"
+      },
+      {
+        "stationId": 55,
+        "stationName": {
+          "en": "Ayat",
+          "ar": "العياط"
+        },
+        "arrivalTime": "12:50",
+        "departureTime": "12:51"
+      },
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": "13:16",
+        "departureTime": "14:00"
+      },
+      {
+        "stationId": 651,
+        "stationName": {
+          "en": "Kom Abo Rady",
+          "ar": "كوم أبو راضي"
+        },
+        "arrivalTime": "14:10",
+        "departureTime": "14:11"
+      },
+      {
+        "stationId": 652,
+        "stationName": {
+          "en": "werash",
+          "ar": "الورش"
+        },
+        "arrivalTime": "14:16",
+        "departureTime": "14:17"
+      },
+      {
+        "stationId": 653,
+        "stationName": {
+          "en": "Rous",
+          "ar": "الروس"
+        },
+        "arrivalTime": "14:21",
+        "departureTime": "14:22"
+      },
+      {
+        "stationId": 654,
+        "stationName": {
+          "en": "Nasiriyah",
+          "ar": "الناصرية"
+        },
+        "arrivalTime": "14:28",
+        "departureTime": "14:29"
+      },
+      {
+        "stationId": 655,
+        "stationName": {
+          "en": "Sila",
+          "ar": "سيلا"
+        },
+        "arrivalTime": "14:34",
+        "departureTime": "14:35"
+      },
+      {
+        "stationId": 656,
+        "stationName": {
+          "en": "Edwah",
+          "ar": "العدوة"
+        },
+        "arrivalTime": "14:45",
+        "departureTime": "14:46"
+      },
+      {
+        "stationId": 657,
+        "stationName": {
+          "en": "Amereyat Fayoum",
+          "ar": "عامرية الفيوم"
+        },
+        "arrivalTime": "14:50",
+        "departureTime": "14:51"
+      },
+      {
+        "stationId": 14,
+        "stationName": {
+          "en": "Faiyum",
+          "ar": "الفيوم"
+        },
+        "arrivalTime": "15:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 13
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "04/03/2025"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "trainNumber": "147",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "14",
+      "name": {
+        "en": "Faiyum",
+        "ar": "الفيوم"
+      }
+    },
+    "to": {
+      "stationId": "13",
+      "name": {
+        "en": "Giza",
+        "ar": "الجيزة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "13:30",
+    "endTime": "16:00",
+    "stations": [
+      {
+        "stationId": 14,
+        "stationName": {
+          "en": "Faiyum",
+          "ar": "الفيوم"
+        },
+        "arrivalTime": null,
+        "departureTime": "13:30"
+      },
+      {
+        "stationId": 657,
+        "stationName": {
+          "en": "Amereyat Fayoum",
+          "ar": "عامرية الفيوم"
+        },
+        "arrivalTime": "13:35",
+        "departureTime": "13:36"
+      },
+      {
+        "stationId": 656,
+        "stationName": {
+          "en": "Edwah",
+          "ar": "العدوة"
+        },
+        "arrivalTime": "13:40",
+        "departureTime": "13:41"
+      },
+      {
+        "stationId": 655,
+        "stationName": {
+          "en": "Sila",
+          "ar": "سيلا"
+        },
+        "arrivalTime": "13:48",
+        "departureTime": "13:49"
+      },
+      {
+        "stationId": 654,
+        "stationName": {
+          "en": "Nasiriyah",
+          "ar": "الناصرية"
+        },
+        "arrivalTime": "13:54",
+        "departureTime": "13:55"
+      },
+      {
+        "stationId": 653,
+        "stationName": {
+          "en": "Rous",
+          "ar": "الروس"
+        },
+        "arrivalTime": "14:01",
+        "departureTime": "14:02"
+      },
+      {
+        "stationId": 652,
+        "stationName": {
+          "en": "werash",
+          "ar": "الورش"
+        },
+        "arrivalTime": "14:06",
+        "departureTime": "14:07"
+      },
+      {
+        "stationId": 651,
+        "stationName": {
+          "en": "Kom Abo Rady",
+          "ar": "كوم أبو راضي"
+        },
+        "arrivalTime": "14:11",
+        "departureTime": "14:12"
+      },
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": "14:20",
+        "departureTime": "14:30"
+      },
+      {
+        "stationId": 60,
+        "stationName": {
+          "en": "Raqqah",
+          "ar": "الرقة"
+        },
+        "arrivalTime": "14:38",
+        "departureTime": "14:39"
+      },
+      {
+        "stationId": 58,
+        "stationName": {
+          "en": "Kafr Ammar",
+          "ar": "كفر عمار"
+        },
+        "arrivalTime": "14:49",
+        "departureTime": "14:50"
+      },
+      {
+        "stationId": 56,
+        "stationName": {
+          "en": "Matanyah",
+          "ar": "المتانية"
+        },
+        "arrivalTime": "14:58",
+        "departureTime": "14:59"
+      },
+      {
+        "stationId": 55,
+        "stationName": {
+          "en": "Ayat",
+          "ar": "العياط"
+        },
+        "arrivalTime": "15:01",
+        "departureTime": "15:02"
+      },
+      {
+        "stationId": 51,
+        "stationName": {
+          "en": "Mazghounah",
+          "ar": "المزغونة"
+        },
+        "arrivalTime": "15:19",
+        "departureTime": "15:20"
+      },
+      {
+        "stationId": 50,
+        "stationName": {
+          "en": "Maraziq",
+          "ar": "المرازيق"
+        },
+        "arrivalTime": "15:29",
+        "departureTime": "15:30"
+      },
+      {
+        "stationId": 48,
+        "stationName": {
+          "en": "Badrshein",
+          "ar": "البدرشين"
+        },
+        "arrivalTime": "15:35",
+        "departureTime": "15:36"
+      },
+      {
+        "stationId": 47,
+        "stationName": {
+          "en": "Hawamdeyya",
+          "ar": "الحوامدية"
+        },
+        "arrivalTime": "15:41",
+        "departureTime": "15:42"
+      },
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": "16:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 18
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "04/03/2025"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "trainNumber": "610",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "615",
+      "name": {
+        "en": "Minuf",
+        "ar": "منوف"
+      }
+    },
+    "to": {
+      "stationId": "5",
+      "name": {
+        "en": "Banha",
+        "ar": "بنها"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "08:25",
+    "endTime": "09:20",
+    "stations": [
+      {
+        "stationId": 615,
+        "stationName": {
+          "en": "Minuf",
+          "ar": "منوف"
+        },
+        "arrivalTime": null,
+        "departureTime": "08:25"
+      },
+      {
+        "stationId": 639,
+        "stationName": {
+          "en": "Sirs Layyanah",
+          "ar": "سرس الليان"
+        },
+        "arrivalTime": "08:30",
+        "departureTime": "08:31"
+      },
+      {
+        "stationId": 638,
+        "stationName": {
+          "en": "Kafr Shobra Zanji",
+          "ar": "كفر شبرا زنجي"
+        },
+        "arrivalTime": "08:37",
+        "departureTime": "08:38"
+      },
+      {
+        "stationId": 637,
+        "stationName": {
+          "en": "Jarawan",
+          "ar": "جروان"
+        },
+        "arrivalTime": "08:41",
+        "departureTime": "08:42"
+      },
+      {
+        "stationId": 636,
+        "stationName": {
+          "en": "Bagour",
+          "ar": "الباجور"
+        },
+        "arrivalTime": "08:50",
+        "departureTime": "08:51"
+      },
+      {
+        "stationId": 635,
+        "stationName": {
+          "en": "Subk Dahhak",
+          "ar": "سبك الضحاك"
+        },
+        "arrivalTime": "08:56",
+        "departureTime": "08:57"
+      },
+      {
+        "stationId": 634,
+        "stationName": {
+          "en": "Mit Wusta",
+          "ar": "ميت الواسطى"
+        },
+        "arrivalTime": "09:02",
+        "departureTime": "09:03"
+      },
+      {
+        "stationId": 633,
+        "stationName": {
+          "en": "Istanha",
+          "ar": "اسطنها"
+        },
+        "arrivalTime": "09:07",
+        "departureTime": "09:08"
+      },
+      {
+        "stationId": 632,
+        "stationName": {
+          "en": "Kafr Bata",
+          "ar": "كفر بطا"
+        },
+        "arrivalTime": "09:00",
+        "departureTime": "09:01"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "09:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 10
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "16/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "trainNumber": "156",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "13",
+      "name": {
+        "en": "Giza",
+        "ar": "الجيزة"
+      }
+    },
+    "to": {
+      "stationId": "62",
+      "name": {
+        "en": "Wasta",
+        "ar": "الواسطى"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "22:10",
+    "endTime": "00:05",
+    "stations": [
+      {
+        "stationId": 13,
+        "stationName": {
+          "en": "Giza",
+          "ar": "الجيزة"
+        },
+        "arrivalTime": null,
+        "departureTime": "22:10"
+      },
+      {
+        "stationId": 47,
+        "stationName": {
+          "en": "Hawamdeyya",
+          "ar": "الحوامدية"
+        },
+        "arrivalTime": "22:27",
+        "departureTime": "22:28"
+      },
+      {
+        "stationId": 48,
+        "stationName": {
+          "en": "Badrshein",
+          "ar": "البدرشين"
+        },
+        "arrivalTime": "22:32",
+        "departureTime": "22:33"
+      },
+      {
+        "stationId": 50,
+        "stationName": {
+          "en": "Maraziq",
+          "ar": "المرازيق"
+        },
+        "arrivalTime": "22:39",
+        "departureTime": "22:40"
+      },
+      {
+        "stationId": 51,
+        "stationName": {
+          "en": "Mazghounah",
+          "ar": "المزغونة"
+        },
+        "arrivalTime": "23:12",
+        "departureTime": "23:13"
+      },
+      {
+        "stationId": 55,
+        "stationName": {
+          "en": "Ayat",
+          "ar": "العياط"
+        },
+        "arrivalTime": "23:27",
+        "departureTime": "23:28"
+      },
+      {
+        "stationId": 56,
+        "stationName": {
+          "en": "Matanyah",
+          "ar": "المتانية"
+        },
+        "arrivalTime": "23:34",
+        "departureTime": "23:35"
+      },
+      {
+        "stationId": 58,
+        "stationName": {
+          "en": "Kafr Ammar",
+          "ar": "كفر عمار"
+        },
+        "arrivalTime": "23:43",
+        "departureTime": "23:44"
+      },
+      {
+        "stationId": 60,
+        "stationName": {
+          "en": "Raqqah",
+          "ar": "الرقة"
+        },
+        "arrivalTime": "23:54",
+        "departureTime": "23:55"
+      },
+      {
+        "stationId": 62,
+        "stationName": {
+          "en": "Wasta",
+          "ar": "الواسطى"
+        },
+        "arrivalTime": "00:05",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 10
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "07/12/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

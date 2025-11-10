@@ -1,0 +1,72 @@
+{
+  "trainNumber": "2022",
+  "trainType": {
+    "id": 0,
+    "name": {
+      "en": "Talgo",
+      "ar": "تالجو"
+    },
+    "description": {
+      "en": "Modern high-speed Talgo trains with advanced comfort features",
+      "ar": "قطارات تالجو الحديثة عالية السرعة مع وسائل راحة متقدمة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:00",
+    "endTime": "09:35",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:00"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "07:15",
+        "departureTime": "07:20"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "09:35",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 3
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "31/12/2024"
+  },
+  "notes": {
+    "en": "Departing 09:00 AM on Fridays and holidays",
+    "ar": "يغادر 09:00ص أيام الجمع والعطلات الرسمية"
+  }
+}

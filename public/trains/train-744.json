@@ -1,0 +1,288 @@
+{
+  "trainNumber": "744",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "154",
+      "name": {
+        "en": "Nagaa Hammadi",
+        "ar": "نجع حمادي"
+      }
+    },
+    "to": {
+      "stationId": "20",
+      "name": {
+        "en": "Luxor",
+        "ar": "الاقصر"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "06:55",
+    "endTime": "10:40",
+    "stations": [
+      {
+        "stationId": 154,
+        "stationName": {
+          "en": "Nagaa Hammadi",
+          "ar": "نجع حمادي"
+        },
+        "arrivalTime": null,
+        "departureTime": "06:55"
+      },
+      {
+        "stationId": 155,
+        "stationName": {
+          "en": "Salmiyyah Q",
+          "ar": "السلمية ق"
+        },
+        "arrivalTime": "07:03",
+        "departureTime": "07:04"
+      },
+      {
+        "stationId": 156,
+        "stationName": {
+          "en": "Rahmaneyah Q",
+          "ar": "الرحمانية ق"
+        },
+        "arrivalTime": "07:07",
+        "departureTime": "07:08"
+      },
+      {
+        "stationId": 157,
+        "stationName": {
+          "en": "Baseineyah",
+          "ar": "الياسينية"
+        },
+        "arrivalTime": "07:15",
+        "departureTime": "07:16"
+      },
+      {
+        "stationId": 158,
+        "stationName": {
+          "en": "Faw",
+          "ar": "فاو"
+        },
+        "arrivalTime": "07:23",
+        "departureTime": "07:24"
+      },
+      {
+        "stationId": 159,
+        "stationName": {
+          "en": "Dishna",
+          "ar": "دشنا"
+        },
+        "arrivalTime": "07:30",
+        "departureTime": "07:31"
+      },
+      {
+        "stationId": 160,
+        "stationName": {
+          "en": "Marashdah",
+          "ar": "المراشدة"
+        },
+        "arrivalTime": "07:35",
+        "departureTime": "07:36"
+      },
+      {
+        "stationId": 161,
+        "stationName": {
+          "en": "Samta Q",
+          "ar": "السمطا"
+        },
+        "arrivalTime": "07:42",
+        "departureTime": "07:43"
+      },
+      {
+        "stationId": 162,
+        "stationName": {
+          "en": "Awlad Amr",
+          "ar": "اولاد عمرو"
+        },
+        "arrivalTime": "08:00",
+        "departureTime": "08:01"
+      },
+      {
+        "stationId": 163,
+        "stationName": {
+          "en": "Qinawiyyah",
+          "ar": "القناوية"
+        },
+        "arrivalTime": "08:07",
+        "departureTime": "08:08"
+      },
+      {
+        "stationId": 164,
+        "stationName": {
+          "en": "Makhadmah",
+          "ar": "المخادمة"
+        },
+        "arrivalTime": "08:12",
+        "departureTime": "08:13"
+      },
+      {
+        "stationId": 165,
+        "stationName": {
+          "en": "Jiziriyyah",
+          "ar": "الجزيرية"
+        },
+        "arrivalTime": "08:18",
+        "departureTime": "08:19"
+      },
+      {
+        "stationId": 19,
+        "stationName": {
+          "en": "Qena",
+          "ar": "قنا"
+        },
+        "arrivalTime": "08:32",
+        "departureTime": "08:33"
+      },
+      {
+        "stationId": 166,
+        "stationName": {
+          "en": "Ashraf Qibliyyah",
+          "ar": "الاشراف ق"
+        },
+        "arrivalTime": "08:40",
+        "departureTime": "08:41"
+      },
+      {
+        "stationId": 167,
+        "stationName": {
+          "en": "Ashraf",
+          "ar": "الاشراف"
+        },
+        "arrivalTime": "08:55",
+        "departureTime": "08:56"
+      },
+      {
+        "stationId": 168,
+        "stationName": {
+          "en": "Abnoud",
+          "ar": "ابنود"
+        },
+        "arrivalTime": "09:01",
+        "departureTime": "09:02"
+      },
+      {
+        "stationId": 169,
+        "stationName": {
+          "en": "Barahmah",
+          "ar": "البراهمة"
+        },
+        "arrivalTime": "09:08",
+        "departureTime": "09:09"
+      },
+      {
+        "stationId": 170,
+        "stationName": {
+          "en": "Qift",
+          "ar": "قفط"
+        },
+        "arrivalTime": "09:13",
+        "departureTime": "09:14"
+      },
+      {
+        "stationId": 171,
+        "stationName": {
+          "en": "Karateyah",
+          "ar": "الكراتية"
+        },
+        "arrivalTime": "09:21",
+        "departureTime": "09:22"
+      },
+      {
+        "stationId": 172,
+        "stationName": {
+          "en": "Qus",
+          "ar": "قوص"
+        },
+        "arrivalTime": "09:30",
+        "departureTime": "09:31"
+      },
+      {
+        "stationId": 173,
+        "stationName": {
+          "en": "Sheikh Amer",
+          "ar": "الشيخ عامر"
+        },
+        "arrivalTime": "09:36",
+        "departureTime": "09:37"
+      },
+      {
+        "stationId": 174,
+        "stationName": {
+          "en": "Shanhoria",
+          "ar": "الشنهورية"
+        },
+        "arrivalTime": "10:07",
+        "departureTime": "10:08"
+      },
+      {
+        "stationId": 175,
+        "stationName": {
+          "en": "Ayshah",
+          "ar": "العيايشة"
+        },
+        "arrivalTime": "10:12",
+        "departureTime": "10:13"
+      },
+      {
+        "stationId": 176,
+        "stationName": {
+          "en": "Khozam",
+          "ar": "خزام"
+        },
+        "arrivalTime": "10:19",
+        "departureTime": "10:20"
+      },
+      {
+        "stationId": 177,
+        "stationName": {
+          "en": "Zayniyyah",
+          "ar": "الزينية"
+        },
+        "arrivalTime": "10:25",
+        "departureTime": "10:26"
+      },
+      {
+        "stationId": 178,
+        "stationName": {
+          "en": "Karnak",
+          "ar": "الكرنك"
+        },
+        "arrivalTime": "10:33",
+        "departureTime": "10:34"
+      },
+      {
+        "stationId": 20,
+        "stationName": {
+          "en": "Luxor",
+          "ar": "الاقصر"
+        },
+        "arrivalTime": "10:40",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 27
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "24/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

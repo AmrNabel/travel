@@ -1,0 +1,90 @@
+{
+  "trainNumber": "513",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "630",
+      "name": {
+        "en": "Shalaqan",
+        "ar": "شلقان"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:50",
+    "endTime": "08:24",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:50"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "08:04",
+        "departureTime": "08:05"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "08:15",
+        "departureTime": "08:16"
+      },
+      {
+        "stationId": 323,
+        "stationName": {
+          "en": "Qleen B",
+          "ar": "قلين البلد"
+        },
+        "arrivalTime": "08:19",
+        "departureTime": "08:20"
+      },
+      {
+        "stationId": 630,
+        "stationName": {
+          "en": "Shalaqan",
+          "ar": "شلقان"
+        },
+        "arrivalTime": "08:24",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 5
+  },
+  "status": {
+    "working": "🔴missing old Qnatier - https://drive.google.com/drive/u/0/folders/1sO7DsJMfSRFf9_oVFTqS4bVBpHub_daj",
+    "lastUpdate": "21/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

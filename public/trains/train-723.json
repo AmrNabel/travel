@@ -1,0 +1,216 @@
+{
+  "trainNumber": "723",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "18",
+      "name": {
+        "en": "Sohag",
+        "ar": "سوهاج"
+      }
+    },
+    "to": {
+      "stationId": "17",
+      "name": {
+        "en": "Asyut",
+        "ar": "اسيوط"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "14:50",
+    "endTime": "16:50",
+    "stations": [
+      {
+        "stationId": 18,
+        "stationName": {
+          "en": "Sohag",
+          "ar": "سوهاج"
+        },
+        "arrivalTime": null,
+        "departureTime": "14:50"
+      },
+      {
+        "stationId": 134,
+        "stationName": {
+          "en": "Jazirat Shandawil",
+          "ar": "جزيرة شندويل"
+        },
+        "arrivalTime": "15:04",
+        "departureTime": "15:05"
+      },
+      {
+        "stationId": 133,
+        "stationName": {
+          "en": "Shandawil B",
+          "ar": "شندويل البلد"
+        },
+        "arrivalTime": "15:10",
+        "departureTime": "15:11"
+      },
+      {
+        "stationId": 132,
+        "stationName": {
+          "en": "Maragha",
+          "ar": "المراغة"
+        },
+        "arrivalTime": "15:15",
+        "departureTime": "15:16"
+      },
+      {
+        "stationId": 131,
+        "stationName": {
+          "en": "Sayh",
+          "ar": "السايح"
+        },
+        "arrivalTime": "15:22",
+        "departureTime": "15:23"
+      },
+      {
+        "stationId": 130,
+        "stationName": {
+          "en": "Sawamaah",
+          "ar": "الصوامعة"
+        },
+        "arrivalTime": "15:27",
+        "departureTime": "15:28"
+      },
+      {
+        "stationId": 129,
+        "stationName": {
+          "en": "Tahta",
+          "ar": "طهطا"
+        },
+        "arrivalTime": "15:33",
+        "departureTime": "15:34"
+      },
+      {
+        "stationId": 128,
+        "stationName": {
+          "en": "Banja",
+          "ar": "بنجا"
+        },
+        "arrivalTime": "15:40",
+        "departureTime": "15:41"
+      },
+      {
+        "stationId": 127,
+        "stationName": {
+          "en": "Shatourah",
+          "ar": "شطورة"
+        },
+        "arrivalTime": "15:44",
+        "departureTime": "15:45"
+      },
+      {
+        "stationId": 126,
+        "stationName": {
+          "en": "Mishta",
+          "ar": "مشطا"
+        },
+        "arrivalTime": "15:49",
+        "departureTime": "15:50"
+      },
+      {
+        "stationId": 125,
+        "stationName": {
+          "en": "Tima",
+          "ar": "طما"
+        },
+        "arrivalTime": "15:55",
+        "departureTime": "15:56"
+      },
+      {
+        "stationId": 124,
+        "stationName": {
+          "en": "Awlad Ilyas",
+          "ar": "اولاد الياس"
+        },
+        "arrivalTime": "16:00",
+        "departureTime": "16:01"
+      },
+      {
+        "stationId": 123,
+        "stationName": {
+          "en": "Sidfa",
+          "ar": "صدفا"
+        },
+        "arrivalTime": "16:05",
+        "departureTime": "16:06"
+      },
+      {
+        "stationId": 122,
+        "stationName": {
+          "en": "Nekhaylah",
+          "ar": "النخيلة"
+        },
+        "arrivalTime": "16:13",
+        "departureTime": "16:14"
+      },
+      {
+        "stationId": 121,
+        "stationName": {
+          "en": "Abo Tij",
+          "ar": "ابو تيج"
+        },
+        "arrivalTime": "16:17",
+        "departureTime": "16:18"
+      },
+      {
+        "stationId": 120,
+        "stationName": {
+          "en": "Baqur",
+          "ar": "باقور"
+        },
+        "arrivalTime": "16:23",
+        "departureTime": "16:24"
+      },
+      {
+        "stationId": 119,
+        "stationName": {
+          "en": "Mutiah",
+          "ar": "المطيعة"
+        },
+        "arrivalTime": "16:29",
+        "departureTime": "16:30"
+      },
+      {
+        "stationId": 118,
+        "stationName": {
+          "en": "Shatb",
+          "ar": "شطب"
+        },
+        "arrivalTime": "16:36",
+        "departureTime": "16:37"
+      },
+      {
+        "stationId": 17,
+        "stationName": {
+          "en": "Asyut",
+          "ar": "اسيوط"
+        },
+        "arrivalTime": "16:50",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 19
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "27/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

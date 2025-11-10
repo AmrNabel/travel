@@ -1,0 +1,243 @@
+{
+  "trainNumber": "239",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    },
+    "to": {
+      "stationId": "6",
+      "name": {
+        "en": "Zagazig",
+        "ar": "الزقازيق"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:25",
+    "endTime": "17:15",
+    "stations": [
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:25"
+      },
+      {
+        "stationId": 387,
+        "stationName": {
+          "en": "Mit Hebeish Q",
+          "ar": "ميت حبيش ق"
+        },
+        "arrivalTime": "15:33",
+        "departureTime": "15:34"
+      },
+      {
+        "stationId": 388,
+        "stationName": {
+          "en": "Shobraqas",
+          "ar": "شبراقاص"
+        },
+        "arrivalTime": "15:40",
+        "departureTime": "15:41"
+      },
+      {
+        "stationId": 389,
+        "stationName": {
+          "en": "Santa",
+          "ar": "السنطة"
+        },
+        "arrivalTime": "15:50",
+        "departureTime": "15:51"
+      },
+      {
+        "stationId": 390,
+        "stationName": {
+          "en": "Major Abd Satar",
+          "ar": "عبد الستار"
+        },
+        "arrivalTime": "15:53",
+        "departureTime": "15:54"
+      },
+      {
+        "stationId": 391,
+        "stationName": {
+          "en": "Monshaah Kubra",
+          "ar": "المنشأة الكبرى"
+        },
+        "arrivalTime": "15:56",
+        "departureTime": "15:57"
+      },
+      {
+        "stationId": 392,
+        "stationName": {
+          "en": "Samlaweyah",
+          "ar": "السملاوية"
+        },
+        "arrivalTime": "16:00",
+        "departureTime": "16:01"
+      },
+      {
+        "stationId": 393,
+        "stationName": {
+          "en": "Nahtay",
+          "ar": "نهطاي"
+        },
+        "arrivalTime": "16:04",
+        "departureTime": "16:05"
+      },
+      {
+        "stationId": 394,
+        "stationName": {
+          "en": "Zefta",
+          "ar": "زفتى"
+        },
+        "arrivalTime": "16:11",
+        "departureTime": "16:12"
+      },
+      {
+        "stationId": 395,
+        "stationName": {
+          "en": "Mit Ghamer",
+          "ar": "ميت غمر"
+        },
+        "arrivalTime": "16:15",
+        "departureTime": "16:16"
+      },
+      {
+        "stationId": 397,
+        "stationName": {
+          "en": "Dandit",
+          "ar": "دنديط"
+        },
+        "arrivalTime": "16:22",
+        "departureTime": "16:23"
+      },
+      {
+        "stationId": 398,
+        "stationName": {
+          "en": "Kafr Wazir",
+          "ar": "كفر الوزير"
+        },
+        "arrivalTime": "16:27",
+        "departureTime": "16:28"
+      },
+      {
+        "stationId": 399,
+        "stationName": {
+          "en": "Tafhna Ashraf",
+          "ar": "تفهنا الاشراف"
+        },
+        "arrivalTime": "16:31",
+        "departureTime": "16:32"
+      },
+      {
+        "stationId": 400,
+        "stationName": {
+          "en": "Mit Qershi",
+          "ar": "ميت القرشي"
+        },
+        "arrivalTime": "16:35",
+        "departureTime": "16:36"
+      },
+      {
+        "stationId": 401,
+        "stationName": {
+          "en": "Mit Abo Orabi",
+          "ar": "ميت ابو العربي"
+        },
+        "arrivalTime": "16:39",
+        "departureTime": "16:40"
+      },
+      {
+        "stationId": 402,
+        "stationName": {
+          "en": "Om Zein",
+          "ar": "ام الزين"
+        },
+        "arrivalTime": "16:44",
+        "departureTime": "16:45"
+      },
+      {
+        "stationId": 403,
+        "stationName": {
+          "en": "Kafr Halaby",
+          "ar": "كفر الحلبي"
+        },
+        "arrivalTime": "16:48",
+        "departureTime": "16:49"
+      },
+      {
+        "stationId": 404,
+        "stationName": {
+          "en": "Naghas",
+          "ar": "النخاس"
+        },
+        "arrivalTime": "16:54",
+        "departureTime": "16:55"
+      },
+      {
+        "stationId": 405,
+        "stationName": {
+          "en": "Kafr Ashraf",
+          "ar": "كفر الاشراف"
+        },
+        "arrivalTime": "16:59",
+        "departureTime": "17:00"
+      },
+      {
+        "stationId": 406,
+        "stationName": {
+          "en": "Shibat Nakariyah",
+          "ar": "شيبة النكارية"
+        },
+        "arrivalTime": "17:04",
+        "departureTime": "17:05"
+      },
+      {
+        "stationId": 407,
+        "stationName": {
+          "en": "Zagazig University",
+          "ar": "جامعة الزقازيق"
+        },
+        "arrivalTime": "17:09",
+        "departureTime": "17:10"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "17:15",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 22
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "05/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

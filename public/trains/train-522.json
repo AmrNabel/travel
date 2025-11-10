@@ -1,0 +1,81 @@
+{
+  "trainNumber": "522",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "389",
+      "name": {
+        "en": "Santa",
+        "ar": "السنطة"
+      }
+    },
+    "to": {
+      "stationId": "4",
+      "name": {
+        "en": "Tanta",
+        "ar": "طنطا"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "00:40",
+    "endTime": "01:00",
+    "stations": [
+      {
+        "stationId": 389,
+        "stationName": {
+          "en": "Santa",
+          "ar": "السنطة"
+        },
+        "arrivalTime": null,
+        "departureTime": "00:40"
+      },
+      {
+        "stationId": 388,
+        "stationName": {
+          "en": "Shobraqas",
+          "ar": "شبراقاص"
+        },
+        "arrivalTime": "00:45",
+        "departureTime": "00:46"
+      },
+      {
+        "stationId": 387,
+        "stationName": {
+          "en": "Mit Hebeish Q",
+          "ar": "ميت حبيش ق"
+        },
+        "arrivalTime": "00:51",
+        "departureTime": "00:52"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "01:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 4
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "12/01/2025"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

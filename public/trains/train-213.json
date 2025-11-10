@@ -1,0 +1,270 @@
+{
+  "trainNumber": "213",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "10",
+      "name": {
+        "en": "Mansoura",
+        "ar": "المنصورة"
+      }
+    },
+    "to": {
+      "stationId": "551",
+      "name": {
+        "en": "Matariyah",
+        "ar": "المطرية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "14:10",
+    "endTime": "16:20",
+    "stations": [
+      {
+        "stationId": 10,
+        "stationName": {
+          "en": "Mansoura",
+          "ar": "المنصورة"
+        },
+        "arrivalTime": null,
+        "departureTime": "14:10"
+      },
+      {
+        "stationId": 527,
+        "stationName": {
+          "en": "Sandub",
+          "ar": "سندوب"
+        },
+        "arrivalTime": "14:15",
+        "departureTime": "14:16"
+      },
+      {
+        "stationId": 529,
+        "stationName": {
+          "en": "Danabiq",
+          "ar": "الدنابيق"
+        },
+        "arrivalTime": "14:24",
+        "departureTime": "14:25"
+      },
+      {
+        "stationId": 530,
+        "stationName": {
+          "en": "Salamoun",
+          "ar": "سلامون"
+        },
+        "arrivalTime": "14:30",
+        "departureTime": "14:31"
+      },
+      {
+        "stationId": 531,
+        "stationName": {
+          "en": "Shuha",
+          "ar": "شها"
+        },
+        "arrivalTime": "14:34",
+        "departureTime": "14:35"
+      },
+      {
+        "stationId": 532,
+        "stationName": {
+          "en": "Mahallat Damanah",
+          "ar": "محلة دمنة"
+        },
+        "arrivalTime": "14:38",
+        "departureTime": "14:39"
+      },
+      {
+        "stationId": 533,
+        "stationName": {
+          "en": "Mit Dafer",
+          "ar": "ميت ضافر"
+        },
+        "arrivalTime": "14:45",
+        "departureTime": "14:46"
+      },
+      {
+        "stationId": 534,
+        "stationName": {
+          "en": "Khashashnah",
+          "ar": "الخشاشنة"
+        },
+        "arrivalTime": "14:50",
+        "departureTime": "14:51"
+      },
+      {
+        "stationId": 535,
+        "stationName": {
+          "en": "Dikirnis",
+          "ar": "دكرنس"
+        },
+        "arrivalTime": "14:57",
+        "departureTime": "14:58"
+      },
+      {
+        "stationId": 536,
+        "stationName": {
+          "en": "Mit Sharaf",
+          "ar": "ميت شرف"
+        },
+        "arrivalTime": "15:02",
+        "departureTime": "15:03"
+      },
+      {
+        "stationId": 537,
+        "stationName": {
+          "en": "Ashmoun Romman",
+          "ar": "اشمون الرمان"
+        },
+        "arrivalTime": "15:06",
+        "departureTime": "15:07"
+      },
+      {
+        "stationId": 538,
+        "stationName": {
+          "en": "Mit Khouly",
+          "ar": "ميت الخولي"
+        },
+        "arrivalTime": "15:14",
+        "departureTime": "15:15"
+      },
+      {
+        "stationId": 539,
+        "stationName": {
+          "en": "Mit Hadid",
+          "ar": "ميت حديد"
+        },
+        "arrivalTime": "15:18",
+        "departureTime": "15:19"
+      },
+      {
+        "stationId": 540,
+        "stationName": {
+          "en": "Mit Asem",
+          "ar": "ميت عاصم"
+        },
+        "arrivalTime": "15:21",
+        "departureTime": "15:22"
+      },
+      {
+        "stationId": 541,
+        "stationName": {
+          "en": "Kafr Allam",
+          "ar": "كفر علام"
+        },
+        "arrivalTime": "15:27",
+        "departureTime": "15:28"
+      },
+      {
+        "stationId": 542,
+        "stationName": {
+          "en": "Riyad",
+          "ar": "الرياض"
+        },
+        "arrivalTime": "15:33",
+        "departureTime": "15:34"
+      },
+      {
+        "stationId": 543,
+        "stationName": {
+          "en": "kurdi",
+          "ar": "الكردي"
+        },
+        "arrivalTime": "15:37",
+        "departureTime": "15:38"
+      },
+      {
+        "stationId": 544,
+        "stationName": {
+          "en": "Mit Salsil",
+          "ar": "ميت سلسيل"
+        },
+        "arrivalTime": "15:44",
+        "departureTime": "15:45"
+      },
+      {
+        "stationId": 545,
+        "stationName": {
+          "en": "Mit Marga Selsil",
+          "ar": "ميت مرجا سلسيل"
+        },
+        "arrivalTime": "15:49",
+        "departureTime": "15:50"
+      },
+      {
+        "stationId": 546,
+        "stationName": {
+          "en": "Jamaliyah",
+          "ar": "الجمالية"
+        },
+        "arrivalTime": "15:54",
+        "departureTime": "15:55"
+      },
+      {
+        "stationId": 547,
+        "stationName": {
+          "en": "Mit Khodeir",
+          "ar": "ميت خضير"
+        },
+        "arrivalTime": "15:59",
+        "departureTime": "16:00"
+      },
+      {
+        "stationId": 548,
+        "stationName": {
+          "en": "Manzalah",
+          "ar": "المنزلة"
+        },
+        "arrivalTime": "16:04",
+        "departureTime": "16:05"
+      },
+      {
+        "stationId": 549,
+        "stationName": {
+          "en": "Dar Salam",
+          "ar": "دار السلام"
+        },
+        "arrivalTime": "16:10",
+        "departureTime": "16:11"
+      },
+      {
+        "stationId": 550,
+        "stationName": {
+          "en": "Asafrah Manzalah",
+          "ar": "عصافرة المنزلة"
+        },
+        "arrivalTime": "16:16",
+        "departureTime": "16:17"
+      },
+      {
+        "stationId": 551,
+        "stationName": {
+          "en": "Matariyah",
+          "ar": "المطرية"
+        },
+        "arrivalTime": "16:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 25
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "08/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

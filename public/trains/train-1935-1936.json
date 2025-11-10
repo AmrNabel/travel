@@ -1,0 +1,144 @@
+{
+  "trainNumber": "1935-1936",
+  "trainType": {
+    "id": 3,
+    "name": {
+      "en": "AC Russian",
+      "ar": "مكيف روسي"
+    },
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "22",
+      "name": {
+        "en": "Marsa Matruh",
+        "ar": "مرسى مطروح"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:10",
+    "endTime": "22:25",
+    "stations": [
+      {
+        "stationId": 22,
+        "stationName": {
+          "en": "Marsa Matruh",
+          "ar": "مرسى مطروح"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:10"
+      },
+      {
+        "stationId": 255,
+        "stationName": {
+          "en": "Dabaa",
+          "ar": "الضبعة"
+        },
+        "arrivalTime": "16:41",
+        "departureTime": "16:48"
+      },
+      {
+        "stationId": 253,
+        "stationName": {
+          "en": "Sidi Abd Rahman",
+          "ar": "سيدي عبد الرحمن"
+        },
+        "arrivalTime": "17:09",
+        "departureTime": "17:16"
+      },
+      {
+        "stationId": 251,
+        "stationName": {
+          "en": "Alamein",
+          "ar": "العلمين"
+        },
+        "arrivalTime": "17:39",
+        "departureTime": "17:41"
+      },
+      {
+        "stationId": 247,
+        "stationName": {
+          "en": "Hammam",
+          "ar": "الحمام"
+        },
+        "arrivalTime": "18:23",
+        "departureTime": "18:25"
+      },
+      {
+        "stationId": 245,
+        "stationName": {
+          "en": "Burj Arab O",
+          "ar": "برج العرب"
+        },
+        "arrivalTime": "18:36",
+        "departureTime": "18:38"
+      },
+      {
+        "stationId": 231,
+        "stationName": {
+          "en": "Moharam Beek",
+          "ar": "محرم بك"
+        },
+        "arrivalTime": "19:35",
+        "departureTime": "19:45"
+      },
+      {
+        "stationId": 3,
+        "stationName": {
+          "en": "Damanhour",
+          "ar": "دمنهور"
+        },
+        "arrivalTime": "20:33",
+        "departureTime": "20:36"
+      },
+      {
+        "stationId": 4,
+        "stationName": {
+          "en": "Tanta",
+          "ar": "طنطا"
+        },
+        "arrivalTime": "21:15",
+        "departureTime": "21:20"
+      },
+      {
+        "stationId": 5,
+        "stationName": {
+          "en": "Banha",
+          "ar": "بنها"
+        },
+        "arrivalTime": "21:47",
+        "departureTime": "21:50"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "22:25",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 11
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "31/05/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

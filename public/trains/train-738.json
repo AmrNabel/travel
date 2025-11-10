@@ -1,0 +1,279 @@
+{
+  "trainNumber": "738",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "202",
+      "name": {
+        "en": "Edfu",
+        "ar": "ادفو"
+      }
+    },
+    "to": {
+      "stationId": "21",
+      "name": {
+        "en": "Aswan",
+        "ar": "اسوان"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "17:20",
+    "endTime": "19:55",
+    "stations": [
+      {
+        "stationId": 202,
+        "stationName": {
+          "en": "Edfu",
+          "ar": "ادفو"
+        },
+        "arrivalTime": null,
+        "departureTime": "17:20"
+      },
+      {
+        "stationId": 203,
+        "stationName": {
+          "en": "Fuzah",
+          "ar": "الفوزة"
+        },
+        "arrivalTime": "17:28",
+        "departureTime": "17:29"
+      },
+      {
+        "stationId": 204,
+        "stationName": {
+          "en": "Radisia",
+          "ar": "الرديسية"
+        },
+        "arrivalTime": "17:33",
+        "departureTime": "17:34"
+      },
+      {
+        "stationId": 205,
+        "stationName": {
+          "en": "Tunab",
+          "ar": "الطوناب"
+        },
+        "arrivalTime": "17:37",
+        "departureTime": "17:38"
+      },
+      {
+        "stationId": 206,
+        "stationName": {
+          "en": "Siraj",
+          "ar": "السراج"
+        },
+        "arrivalTime": "17:40",
+        "departureTime": "17:41"
+      },
+      {
+        "stationId": 207,
+        "stationName": {
+          "en": "Ramadi",
+          "ar": "الرمادي"
+        },
+        "arrivalTime": "17:46",
+        "departureTime": "17:47"
+      },
+      {
+        "stationId": 208,
+        "stationName": {
+          "en": "Gaafar Sadik",
+          "ar": "جعفر الصادق"
+        },
+        "arrivalTime": "17:50",
+        "departureTime": "17:51"
+      },
+      {
+        "stationId": 209,
+        "stationName": {
+          "en": "Silwa Bahari",
+          "ar": "سلوا"
+        },
+        "arrivalTime": "17:58",
+        "departureTime": "17:59"
+      },
+      {
+        "stationId": 210,
+        "stationName": {
+          "en": "sayid Said",
+          "ar": "السيد سعيد"
+        },
+        "arrivalTime": "18:03",
+        "departureTime": "18:04"
+      },
+      {
+        "stationId": 211,
+        "stationName": {
+          "en": "Kajuj",
+          "ar": "كاجوج"
+        },
+        "arrivalTime": "18:09",
+        "departureTime": "18:10"
+      },
+      {
+        "stationId": 212,
+        "stationName": {
+          "en": "Kalabsha",
+          "ar": "كلابشة"
+        },
+        "arrivalTime": "18:16",
+        "departureTime": "18:17"
+      },
+      {
+        "stationId": 213,
+        "stationName": {
+          "en": "Gebel Silsila",
+          "ar": "جبل السلسلة"
+        },
+        "arrivalTime": "18:22",
+        "departureTime": "18:23"
+      },
+      {
+        "stationId": 214,
+        "stationName": {
+          "en": "Raghama",
+          "ar": "الرغامة"
+        },
+        "arrivalTime": "18:29",
+        "departureTime": "18:30"
+      },
+      {
+        "stationId": 215,
+        "stationName": {
+          "en": "Kom Ombo",
+          "ar": "كوم امبو"
+        },
+        "arrivalTime": "18:37",
+        "departureTime": "18:38"
+      },
+      {
+        "stationId": 216,
+        "stationName": {
+          "en": "Shatb B",
+          "ar": "الشطب البلد"
+        },
+        "arrivalTime": "18:44",
+        "departureTime": "18:45"
+      },
+      {
+        "stationId": 217,
+        "stationName": {
+          "en": "Daraw",
+          "ar": "دراو"
+        },
+        "arrivalTime": "18:52",
+        "departureTime": "18:53"
+      },
+      {
+        "stationId": 218,
+        "stationName": {
+          "en": "Salam Aneibah",
+          "ar": "السلام النوبية"
+        },
+        "arrivalTime": "18:57",
+        "departureTime": "18:58"
+      },
+      {
+        "stationId": 219,
+        "stationName": {
+          "en": "Ballana",
+          "ar": "بلانة"
+        },
+        "arrivalTime": "19:07",
+        "departureTime": "19:08"
+      },
+      {
+        "stationId": 220,
+        "stationName": {
+          "en": "Retaj",
+          "ar": "الرتاج"
+        },
+        "arrivalTime": "19:13",
+        "departureTime": "19:14"
+      },
+      {
+        "stationId": 221,
+        "stationName": {
+          "en": "Jaafrah",
+          "ar": "الجعافرة"
+        },
+        "arrivalTime": "19:21",
+        "departureTime": "19:22"
+      },
+      {
+        "stationId": 222,
+        "stationName": {
+          "en": "Aaqab",
+          "ar": "الاعقاب"
+        },
+        "arrivalTime": "19:26",
+        "departureTime": "19:27"
+      },
+      {
+        "stationId": 223,
+        "stationName": {
+          "en": "Aaqab Q",
+          "ar": "الاعقاب ق"
+        },
+        "arrivalTime": "19:33",
+        "departureTime": "19:34"
+      },
+      {
+        "stationId": 224,
+        "stationName": {
+          "en": "Khttarah",
+          "ar": "الخطارة"
+        },
+        "arrivalTime": "19:38",
+        "departureTime": "19:39"
+      },
+      {
+        "stationId": 225,
+        "stationName": {
+          "en": "Shadedh",
+          "ar": "الشديدة"
+        },
+        "arrivalTime": "19:38",
+        "departureTime": "19:39"
+      },
+      {
+        "stationId": 226,
+        "stationName": {
+          "en": "Abo Resh Q",
+          "ar": "ابو الريش ق"
+        },
+        "arrivalTime": "19:44",
+        "departureTime": "19:45"
+      },
+      {
+        "stationId": 21,
+        "stationName": {
+          "en": "Aswan",
+          "ar": "اسوان"
+        },
+        "arrivalTime": "19:55",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 26
+  },
+  "status": {
+    "working": "26",
+    "lastUpdate": "27/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "trainNumber": "1082",
+  "trainType": {
+    "id": 6,
+    "name": {
+      "en": "Sleep",
+      "ar": "نوم"
+    },
+    "description": {
+      "en": "Comfortable sleeping trains for overnight long-distance travel",
+      "ar": "قطارات النوم المريحة للرحلات الليلية الطويلة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "1",
+      "name": {
+        "en": "Alexandria",
+        "ar": "الاسكندرية"
+      }
+    },
+    "to": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "19:20",
+    "endTime": "22:00",
+    "stations": [
+      {
+        "stationId": 1,
+        "stationName": {
+          "en": "Alexandria",
+          "ar": "الاسكندرية"
+        },
+        "arrivalTime": null,
+        "departureTime": "19:20"
+      },
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": "19:28",
+        "departureTime": "19:33"
+      },
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": "22:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 3
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "31/12/2024"
+  },
+  "notes": {
+    "en": "Operating only on Saturdays and Tuesdays (sleep+seats)",
+    "ar": "يعمل السبت والثلاثاء فقط (نوم+جلوس)"
+  }
+}

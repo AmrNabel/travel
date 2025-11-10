@@ -1,0 +1,261 @@
+{
+  "trainNumber": "752",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "20",
+      "name": {
+        "en": "Luxor",
+        "ar": "الاقصر"
+      }
+    },
+    "to": {
+      "stationId": "202",
+      "name": {
+        "en": "Edfu",
+        "ar": "ادفو"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "09:00",
+    "endTime": "12:15",
+    "stations": [
+      {
+        "stationId": 20,
+        "stationName": {
+          "en": "Luxor",
+          "ar": "الاقصر"
+        },
+        "arrivalTime": null,
+        "departureTime": "09:00"
+      },
+      {
+        "stationId": 179,
+        "stationName": {
+          "en": "Radwania",
+          "ar": "الرضوانية"
+        },
+        "arrivalTime": "09:07",
+        "departureTime": "09:08"
+      },
+      {
+        "stationId": 181,
+        "stationName": {
+          "en": "Wehdaa",
+          "ar": "الوحدة"
+        },
+        "arrivalTime": "09:12",
+        "departureTime": "09:13"
+      },
+      {
+        "stationId": 182,
+        "stationName": {
+          "en": "Toud",
+          "ar": "الطود"
+        },
+        "arrivalTime": "09:20",
+        "departureTime": "09:21"
+      },
+      {
+        "stationId": 183,
+        "stationName": {
+          "en": "Nagaa Gossor",
+          "ar": "نجع الجسور"
+        },
+        "arrivalTime": "09:25",
+        "departureTime": "09:26"
+      },
+      {
+        "stationId": 184,
+        "stationName": {
+          "en": "Armant",
+          "ar": "ارمنت"
+        },
+        "arrivalTime": "09:48",
+        "departureTime": "09:49"
+      },
+      {
+        "stationId": 185,
+        "stationName": {
+          "en": "Idisat",
+          "ar": "العديسات"
+        },
+        "arrivalTime": "09:52",
+        "departureTime": "09:53"
+      },
+      {
+        "stationId": 186,
+        "stationName": {
+          "en": "Shaghab",
+          "ar": "الشغب"
+        },
+        "arrivalTime": "09:57",
+        "departureTime": "09:58"
+      },
+      {
+        "stationId": 187,
+        "stationName": {
+          "en": "Maelah",
+          "ar": "المعلة"
+        },
+        "arrivalTime": "10:01",
+        "departureTime": "10:02"
+      },
+      {
+        "stationId": 188,
+        "stationName": {
+          "en": "Nagaa Abo Said",
+          "ar": "نجع ابو سعيد"
+        },
+        "arrivalTime": "10:07",
+        "departureTime": "10:08"
+      },
+      {
+        "stationId": 189,
+        "stationName": {
+          "en": "Mataenah",
+          "ar": "المطاعنة"
+        },
+        "arrivalTime": "10:29",
+        "departureTime": "10:30"
+      },
+      {
+        "stationId": 190,
+        "stationName": {
+          "en": "Deir",
+          "ar": "الدير"
+        },
+        "arrivalTime": "10:35",
+        "departureTime": "10:36"
+      },
+      {
+        "stationId": 191,
+        "stationName": {
+          "en": "Esna",
+          "ar": "اسنا"
+        },
+        "arrivalTime": "10:40",
+        "departureTime": "10:41"
+      },
+      {
+        "stationId": 192,
+        "stationName": {
+          "en": "Kelabeyah",
+          "ar": "الكلابية"
+        },
+        "arrivalTime": "10:47",
+        "departureTime": "10:48"
+      },
+      {
+        "stationId": 193,
+        "stationName": {
+          "en": "Gazirat Rageh",
+          "ar": "جزيرة راجح"
+        },
+        "arrivalTime": "10:51",
+        "departureTime": "10:52"
+      },
+      {
+        "stationId": 194,
+        "stationName": {
+          "en": "Sharawnah",
+          "ar": "الشراونة"
+        },
+        "arrivalTime": "10:59",
+        "departureTime": "11:00"
+      },
+      {
+        "stationId": 195,
+        "stationName": {
+          "en": "Sibaiyyah",
+          "ar": "السباعية"
+        },
+        "arrivalTime": "11:33",
+        "departureTime": "11:34"
+      },
+      {
+        "stationId": 196,
+        "stationName": {
+          "en": "Khoy N",
+          "ar": "الخوي ج"
+        },
+        "arrivalTime": "11:41",
+        "departureTime": "11:42"
+      },
+      {
+        "stationId": 197,
+        "stationName": {
+          "en": "Mahamid",
+          "ar": "المحاميد"
+        },
+        "arrivalTime": "11:48",
+        "departureTime": "11:49"
+      },
+      {
+        "stationId": 198,
+        "stationName": {
+          "en": "Phosphate N",
+          "ar": "الفوسفات ج"
+        },
+        "arrivalTime": "11:53",
+        "departureTime": "11:54"
+      },
+      {
+        "stationId": 199,
+        "stationName": {
+          "en": "Kilh",
+          "ar": "الكلح"
+        },
+        "arrivalTime": "11:58",
+        "departureTime": "11:59"
+      },
+      {
+        "stationId": 200,
+        "stationName": {
+          "en": "Dawamaria",
+          "ar": "الدومارية"
+        },
+        "arrivalTime": "12:07",
+        "departureTime": "12:08"
+      },
+      {
+        "stationId": 201,
+        "stationName": {
+          "en": "Atwani",
+          "ar": "العطواني"
+        },
+        "arrivalTime": "12:11",
+        "departureTime": "12:12"
+      },
+      {
+        "stationId": 202,
+        "stationName": {
+          "en": "Edfu",
+          "ar": "ادفو"
+        },
+        "arrivalTime": "12:15",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 24
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "23/01/2024"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

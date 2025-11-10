@@ -1,0 +1,144 @@
+{
+  "trainNumber": "4602",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "9",
+      "name": {
+        "en": "Suez",
+        "ar": "السويس"
+      }
+    },
+    "to": {
+      "stationId": "478",
+      "name": {
+        "en": "Adly Mansour",
+        "ar": "عدلي منصور"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "06:30",
+    "endTime": "11:25",
+    "stations": [
+      {
+        "stationId": 9,
+        "stationName": {
+          "en": "Suez",
+          "ar": "السويس"
+        },
+        "arrivalTime": null,
+        "departureTime": "06:30"
+      },
+      {
+        "stationId": 462,
+        "stationName": {
+          "en": "Agrod N",
+          "ar": "العجرود ج"
+        },
+        "arrivalTime": "07:00",
+        "departureTime": "07:01"
+      },
+      {
+        "stationId": 464,
+        "stationName": {
+          "en": "Jabal Obaid",
+          "ar": "جبل عوبيد"
+        },
+        "arrivalTime": "08:07",
+        "departureTime": "08:08"
+      },
+      {
+        "stationId": 466,
+        "stationName": {
+          "en": "Jabal Jufra",
+          "ar": "جبل الجفرة"
+        },
+        "arrivalTime": "08:56",
+        "departureTime": "08:57"
+      },
+      {
+        "stationId": 467,
+        "stationName": {
+          "en": "Wadi Sail",
+          "ar": "وادي السيل"
+        },
+        "arrivalTime": "09:19",
+        "departureTime": "09:20"
+      },
+      {
+        "stationId": 468,
+        "stationName": {
+          "en": "Robaikey",
+          "ar": "الربيكي"
+        },
+        "arrivalTime": "09:49",
+        "departureTime": "09:50"
+      },
+      {
+        "stationId": 469,
+        "stationName": {
+          "en": "Badr",
+          "ar": "بدر"
+        },
+        "arrivalTime": "10:07",
+        "departureTime": "10:08"
+      },
+      {
+        "stationId": 470,
+        "stationName": {
+          "en": "Shorouk",
+          "ar": "الشروق"
+        },
+        "arrivalTime": "10:27",
+        "departureTime": "10:28"
+      },
+      {
+        "stationId": 471,
+        "stationName": {
+          "en": "Darb Haj",
+          "ar": "درب الحاج"
+        },
+        "arrivalTime": "10:51",
+        "departureTime": "10:52"
+      },
+      {
+        "stationId": 472,
+        "stationName": {
+          "en": "Obour",
+          "ar": "العبور"
+        },
+        "arrivalTime": "11:11",
+        "departureTime": "11:12"
+      },
+      {
+        "stationId": 478,
+        "stationName": {
+          "en": "Adly Mansour",
+          "ar": "عدلي منصور"
+        },
+        "arrivalTime": "11:25",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 11
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "19/10/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

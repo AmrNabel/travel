@@ -1,0 +1,66 @@
+{
+  "0": {
+    "en": "Talgo",
+    "ar": "تالجو",
+    "description": {
+      "en": "Modern high-speed Talgo trains with advanced comfort features",
+      "ar": "قطارات تالجو الحديثة عالية السرعة مع وسائل راحة متقدمة"
+    }
+  },
+  "1": {
+    "en": "AC",
+    "ar": "مكيف",
+    "description": {
+      "en": "Air-conditioned trains providing comfortable journeys at all times",
+      "ar": "قطارات مكيفة توفر رحلة مريحة في جميع الأوقات"
+    }
+  },
+  "2": {
+    "en": "VIP",
+    "ar": "خاص",
+    "description": {
+      "en": "Luxury VIP trains with premium services and exceptional comfort",
+      "ar": "قطارات خاصة فاخرة بخدمات مميزة وراحة استثنائية"
+    }
+  },
+  "3": {
+    "en": "AC Russian",
+    "ar": "مكيف روسي",
+    "description": {
+      "en": "Russian air-conditioned trains with advanced technology and modern design",
+      "ar": "قطارات مكيفة روسية بتقنيات متطورة وتصميم عصري"
+    }
+  },
+  "4": {
+    "en": "Russian",
+    "ar": "روسي",
+    "description": {
+      "en": "Practical and reliable Russian trains for long-distance journeys",
+      "ar": "قطارات روسية عملية وموثوقة للرحلات الطويلة"
+    }
+  },
+  "5": {
+    "en": "Mix",
+    "ar": "مختلط",
+    "description": {
+      "en": "Mixed trains combining multiple service levels in one journey",
+      "ar": "قطارات مختلطة تجمع بين عدة مستويات من الخدمة"
+    }
+  },
+  "6": {
+    "en": "Sleep",
+    "ar": "نوم",
+    "description": {
+      "en": "Comfortable sleeping trains for overnight long-distance travel",
+      "ar": "قطارات النوم المريحة للرحلات الليلية الطويلة"
+    }
+  },
+  "7": {
+    "en": "Improved",
+    "ar": "محسن",
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  }
+}

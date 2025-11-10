@@ -1,0 +1,270 @@
+{
+  "trainNumber": "343",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "0",
+      "name": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      }
+    },
+    "to": {
+      "stationId": "564",
+      "name": {
+        "en": "Salheya",
+        "ar": "الصالحية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "15:40",
+    "endTime": "19:09",
+    "stations": [
+      {
+        "stationId": 0,
+        "stationName": {
+          "en": "Cairo",
+          "ar": "القاهرة"
+        },
+        "arrivalTime": null,
+        "departureTime": "15:40"
+      },
+      {
+        "stationId": 39,
+        "stationName": {
+          "en": "Zawya Hamraa",
+          "ar": "الزاوية الحمراء"
+        },
+        "arrivalTime": "15:46",
+        "departureTime": "15:47"
+      },
+      {
+        "stationId": 38,
+        "stationName": {
+          "en": "Shobra Khemah",
+          "ar": "شبرا الخيمة"
+        },
+        "arrivalTime": "15:55",
+        "departureTime": "15:56"
+      },
+      {
+        "stationId": 36,
+        "stationName": {
+          "en": "Qalyoub",
+          "ar": "قليوب"
+        },
+        "arrivalTime": "16:07",
+        "departureTime": "16:08"
+      },
+      {
+        "stationId": 489,
+        "stationName": {
+          "en": "Shibin Qanatir",
+          "ar": "شبين القناطر"
+        },
+        "arrivalTime": "16:30",
+        "departureTime": "16:31"
+      },
+      {
+        "stationId": 487,
+        "stationName": {
+          "en": "Mashtul",
+          "ar": "مشتول"
+        },
+        "arrivalTime": "16:40",
+        "departureTime": "16:41"
+      },
+      {
+        "stationId": 485,
+        "stationName": {
+          "en": "Inshas",
+          "ar": "انشاص"
+        },
+        "arrivalTime": "16:49",
+        "departureTime": "16:50"
+      },
+      {
+        "stationId": 482,
+        "stationName": {
+          "en": "Belbes",
+          "ar": "بلبيس"
+        },
+        "arrivalTime": "17:03",
+        "departureTime": "17:04"
+      },
+      {
+        "stationId": 480,
+        "stationName": {
+          "en": "Bardein",
+          "ar": "بردين"
+        },
+        "arrivalTime": "17:17",
+        "departureTime": "17:18"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "17:40",
+        "departureTime": "17:41"
+      },
+      {
+        "stationId": 510,
+        "stationName": {
+          "en": "Hihya",
+          "ar": "هيها"
+        },
+        "arrivalTime": "17:56",
+        "departureTime": "17:57"
+      },
+      {
+        "stationId": 513,
+        "stationName": {
+          "en": "Abo Kibir",
+          "ar": "ابو كبير"
+        },
+        "arrivalTime": "18:09",
+        "departureTime": "18:10"
+      },
+      {
+        "stationId": 552,
+        "stationName": {
+          "en": "Ghaba",
+          "ar": "الغابة"
+        },
+        "arrivalTime": "18:17",
+        "departureTime": "18:18"
+      },
+      {
+        "stationId": 553,
+        "stationName": {
+          "en": "Khalafallah",
+          "ar": "خلف الله"
+        },
+        "arrivalTime": "18:20",
+        "departureTime": "18:21"
+      },
+      {
+        "stationId": 554,
+        "stationName": {
+          "en": "Fadadnah",
+          "ar": "الفدادنة"
+        },
+        "arrivalTime": "18:23",
+        "departureTime": "18:24"
+      },
+      {
+        "stationId": 555,
+        "stationName": {
+          "en": "Bayrum",
+          "ar": "البيروم"
+        },
+        "arrivalTime": "18:27",
+        "departureTime": "18:28"
+      },
+      {
+        "stationId": 556,
+        "stationName": {
+          "en": "Faqus",
+          "ar": "فاقوس"
+        },
+        "arrivalTime": "18:33",
+        "departureTime": "18:34"
+      },
+      {
+        "stationId": 557,
+        "stationName": {
+          "en": "Geheinah",
+          "ar": "جهينة"
+        },
+        "arrivalTime": "18:38",
+        "departureTime": "18:39"
+      },
+      {
+        "stationId": 558,
+        "stationName": {
+          "en": "Kafr Haj Omar",
+          "ar": "كفر الحاج عمر"
+        },
+        "arrivalTime": "18:44",
+        "departureTime": "18:45"
+      },
+      {
+        "stationId": 559,
+        "stationName": {
+          "en": "Akyad",
+          "ar": "اكياد"
+        },
+        "arrivalTime": "18:50",
+        "departureTime": "18:51"
+      },
+      {
+        "stationId": 560,
+        "stationName": {
+          "en": "Drakh",
+          "ar": "الدراكة"
+        },
+        "arrivalTime": "18:53",
+        "departureTime": "18:54"
+      },
+      {
+        "stationId": 561,
+        "stationName": {
+          "en": "Abaza",
+          "ar": "اباظة"
+        },
+        "arrivalTime": "18:56",
+        "departureTime": "18:57"
+      },
+      {
+        "stationId": 562,
+        "stationName": {
+          "en": "Azzazi",
+          "ar": "العزازي"
+        },
+        "arrivalTime": "19:01",
+        "departureTime": "19:02"
+      },
+      {
+        "stationId": 563,
+        "stationName": {
+          "en": "Kabaysha",
+          "ar": "الكابيشة"
+        },
+        "arrivalTime": "19:05",
+        "departureTime": "19:06"
+      },
+      {
+        "stationId": 564,
+        "stationName": {
+          "en": "Salheya",
+          "ar": "الصالحية"
+        },
+        "arrivalTime": "19:09",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 25
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "07/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

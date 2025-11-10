@@ -1,0 +1,189 @@
+{
+  "trainNumber": "175",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "6",
+      "name": {
+        "en": "Zagazig",
+        "ar": "الزقازيق"
+      }
+    },
+    "to": {
+      "stationId": "564",
+      "name": {
+        "en": "Salheya",
+        "ar": "الصالحية"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "07:50",
+    "endTime": "10:00",
+    "stations": [
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": null,
+        "departureTime": "07:50"
+      },
+      {
+        "stationId": 511,
+        "stationName": {
+          "en": "Shirshimah",
+          "ar": "شرشيمة"
+        },
+        "arrivalTime": "08:04",
+        "departureTime": "08:05"
+      },
+      {
+        "stationId": 513,
+        "stationName": {
+          "en": "Abo Kibir",
+          "ar": "ابو كبير"
+        },
+        "arrivalTime": "08:59",
+        "departureTime": "09:00"
+      },
+      {
+        "stationId": 552,
+        "stationName": {
+          "en": "Ghaba",
+          "ar": "الغابة"
+        },
+        "arrivalTime": "09:08",
+        "departureTime": "09:09"
+      },
+      {
+        "stationId": 553,
+        "stationName": {
+          "en": "Khalafallah",
+          "ar": "خلف الله"
+        },
+        "arrivalTime": "09:11",
+        "departureTime": "09:12"
+      },
+      {
+        "stationId": 554,
+        "stationName": {
+          "en": "Fadadnah",
+          "ar": "الفدادنة"
+        },
+        "arrivalTime": "09:14",
+        "departureTime": "09:15"
+      },
+      {
+        "stationId": 555,
+        "stationName": {
+          "en": "Bayrum",
+          "ar": "البيروم"
+        },
+        "arrivalTime": "09:18",
+        "departureTime": "09:19"
+      },
+      {
+        "stationId": 556,
+        "stationName": {
+          "en": "Faqus",
+          "ar": "فاقوس"
+        },
+        "arrivalTime": "09:24",
+        "departureTime": "09:25"
+      },
+      {
+        "stationId": 557,
+        "stationName": {
+          "en": "Geheinah",
+          "ar": "جهينة"
+        },
+        "arrivalTime": "09:29",
+        "departureTime": "09:30"
+      },
+      {
+        "stationId": 558,
+        "stationName": {
+          "en": "Kafr Haj Omar",
+          "ar": "كفر الحاج عمر"
+        },
+        "arrivalTime": "09:35",
+        "departureTime": "09:36"
+      },
+      {
+        "stationId": 559,
+        "stationName": {
+          "en": "Akyad",
+          "ar": "اكياد"
+        },
+        "arrivalTime": "09:41",
+        "departureTime": "09:42"
+      },
+      {
+        "stationId": 560,
+        "stationName": {
+          "en": "Drakh",
+          "ar": "الدراكة"
+        },
+        "arrivalTime": "09:44",
+        "departureTime": "09:45"
+      },
+      {
+        "stationId": 561,
+        "stationName": {
+          "en": "Abaza",
+          "ar": "اباظة"
+        },
+        "arrivalTime": "09:47",
+        "departureTime": "09:48"
+      },
+      {
+        "stationId": 562,
+        "stationName": {
+          "en": "Azzazi",
+          "ar": "العزازي"
+        },
+        "arrivalTime": "09:51",
+        "departureTime": "09:52"
+      },
+      {
+        "stationId": 563,
+        "stationName": {
+          "en": "Kabaysha",
+          "ar": "الكابيشة"
+        },
+        "arrivalTime": "09:56",
+        "departureTime": "09:57"
+      },
+      {
+        "stationId": 564,
+        "stationName": {
+          "en": "Salheya",
+          "ar": "الصالحية"
+        },
+        "arrivalTime": "10:00",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 16
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "07/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

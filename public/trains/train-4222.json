@@ -1,0 +1,135 @@
+{
+  "trainNumber": "4222",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "2",
+      "name": {
+        "en": "Sidi Gaber",
+        "ar": "سيدي جابر"
+      }
+    },
+    "to": {
+      "stationId": "244",
+      "name": {
+        "en": "Burj Arab N",
+        "ar": "برج العرب ج"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "06:30",
+    "endTime": "08:15",
+    "stations": [
+      {
+        "stationId": 2,
+        "stationName": {
+          "en": "Sidi Gaber",
+          "ar": "سيدي جابر"
+        },
+        "arrivalTime": null,
+        "departureTime": "06:30"
+      },
+      {
+        "stationId": 231,
+        "stationName": {
+          "en": "Moharam Beek",
+          "ar": "محرم بك"
+        },
+        "arrivalTime": "06:47",
+        "departureTime": "06:48"
+      },
+      {
+        "stationId": 233,
+        "stationName": {
+          "en": "Metras",
+          "ar": "المتراس"
+        },
+        "arrivalTime": "07:02",
+        "departureTime": "07:03"
+      },
+      {
+        "stationId": 237,
+        "stationName": {
+          "en": "Abd Qader",
+          "ar": "عبد القادر"
+        },
+        "arrivalTime": "07:20",
+        "departureTime": "07:21"
+      },
+      {
+        "stationId": 238,
+        "stationName": {
+          "en": "Amreyah",
+          "ar": "العامرية"
+        },
+        "arrivalTime": "07:27",
+        "departureTime": "07:28"
+      },
+      {
+        "stationId": 239,
+        "stationName": {
+          "en": "Ekeingy Maryout",
+          "ar": "ايكنجي مريوط"
+        },
+        "arrivalTime": "07:34",
+        "departureTime": "07:35"
+      },
+      {
+        "stationId": 240,
+        "stationName": {
+          "en": "Maryout",
+          "ar": "مريوط"
+        },
+        "arrivalTime": "07:40",
+        "departureTime": "07:41"
+      },
+      {
+        "stationId": 241,
+        "stationName": {
+          "en": "Burj Arab Airport",
+          "ar": "مطار برج العرب"
+        },
+        "arrivalTime": "07:49",
+        "departureTime": "07:50"
+      },
+      {
+        "stationId": 243,
+        "stationName": {
+          "en": "25 Jan",
+          "ar": "25 يناير"
+        },
+        "arrivalTime": "08:04",
+        "departureTime": "08:05"
+      },
+      {
+        "stationId": 244,
+        "stationName": {
+          "en": "Burj Arab N",
+          "ar": "برج العرب ج"
+        },
+        "arrivalTime": "08:15",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 10
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "29/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "trainNumber": "653",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "247",
+      "name": {
+        "en": "Hammam",
+        "ar": "الحمام"
+      }
+    },
+    "to": {
+      "stationId": "231",
+      "name": {
+        "en": "Moharam Beek",
+        "ar": "محرم بك"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "14:40",
+    "endTime": "16:20",
+    "stations": [
+      {
+        "stationId": 247,
+        "stationName": {
+          "en": "Hammam",
+          "ar": "الحمام"
+        },
+        "arrivalTime": null,
+        "departureTime": "14:40"
+      },
+      {
+        "stationId": 246,
+        "stationName": {
+          "en": "Gharbaniat",
+          "ar": "الغربانيات"
+        },
+        "arrivalTime": "14:50",
+        "departureTime": "14:51"
+      },
+      {
+        "stationId": 245,
+        "stationName": {
+          "en": "Burj Arab O",
+          "ar": "برج العرب"
+        },
+        "arrivalTime": "14:57",
+        "departureTime": "14:58"
+      },
+      {
+        "stationId": 242,
+        "stationName": {
+          "en": "Baheeg",
+          "ar": "بهيج"
+        },
+        "arrivalTime": "15:05",
+        "departureTime": "15:06"
+      },
+      {
+        "stationId": 241,
+        "stationName": {
+          "en": "Burj Arab Airport",
+          "ar": "مطار برج العرب"
+        },
+        "arrivalTime": "15:15",
+        "departureTime": "15:16"
+      },
+      {
+        "stationId": 240,
+        "stationName": {
+          "en": "Maryout",
+          "ar": "مريوط"
+        },
+        "arrivalTime": "15:22",
+        "departureTime": "15:23"
+      },
+      {
+        "stationId": 239,
+        "stationName": {
+          "en": "Ekeingy Maryout",
+          "ar": "ايكنجي مريوط"
+        },
+        "arrivalTime": "15:29",
+        "departureTime": "15:30"
+      },
+      {
+        "stationId": 238,
+        "stationName": {
+          "en": "Amreyah",
+          "ar": "العامرية"
+        },
+        "arrivalTime": "15:36",
+        "departureTime": "15:37"
+      },
+      {
+        "stationId": 237,
+        "stationName": {
+          "en": "Abd Qader",
+          "ar": "عبد القادر"
+        },
+        "arrivalTime": "15:42",
+        "departureTime": "15:43"
+      },
+      {
+        "stationId": 236,
+        "stationName": {
+          "en": "Tafaro",
+          "ar": "التفرع"
+        },
+        "arrivalTime": "15:48",
+        "departureTime": "15:49"
+      },
+      {
+        "stationId": 235,
+        "stationName": {
+          "en": "Sidi Mergheb",
+          "ar": "سيدي مرغب"
+        },
+        "arrivalTime": "15:54",
+        "departureTime": "15:55"
+      },
+      {
+        "stationId": 234,
+        "stationName": {
+          "en": "Mowaslet Max",
+          "ar": "مواصلة المكس"
+        },
+        "arrivalTime": "16:01",
+        "departureTime": "16:02"
+      },
+      {
+        "stationId": 233,
+        "stationName": {
+          "en": "Metras",
+          "ar": "المتراس"
+        },
+        "arrivalTime": "16:05",
+        "departureTime": "16:06"
+      },
+      {
+        "stationId": 232,
+        "stationName": {
+          "en": "Genenet Qbaary",
+          "ar": "جنينة القباري"
+        },
+        "arrivalTime": "16:10",
+        "departureTime": "16:11"
+      },
+      {
+        "stationId": 231,
+        "stationName": {
+          "en": "Moharam Beek",
+          "ar": "محرم بك"
+        },
+        "arrivalTime": "16:20",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 15
+  },
+  "status": {
+    "working": null,
+    "lastUpdate": "24/11/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "trainNumber": "274",
+  "trainType": {
+    "id": 7,
+    "name": {
+      "en": "Improved",
+      "ar": "محسن"
+    },
+    "description": {
+      "en": "Enhanced trains with modern technology and updated comfort features",
+      "ar": "قطارات محسنة بتقنيات حديثة ووسائل راحة محدثة"
+    }
+  },
+  "route": {
+    "from": {
+      "stationId": "7",
+      "name": {
+        "en": "Ismailia",
+        "ar": "الاسماعيلية"
+      }
+    },
+    "to": {
+      "stationId": "6",
+      "name": {
+        "en": "Zagazig",
+        "ar": "الزقازيق"
+      }
+    }
+  },
+  "schedule": {
+    "startTime": "13:10",
+    "endTime": "15:05",
+    "stations": [
+      {
+        "stationId": 7,
+        "stationName": {
+          "en": "Ismailia",
+          "ar": "الاسماعيلية"
+        },
+        "arrivalTime": null,
+        "departureTime": "13:10"
+      },
+      {
+        "stationId": 431,
+        "stationName": {
+          "en": "Galaa Camp",
+          "ar": "معسكر الجلاء"
+        },
+        "arrivalTime": "13:15",
+        "departureTime": "13:16"
+      },
+      {
+        "stationId": 430,
+        "stationName": {
+          "en": "Nafesha",
+          "ar": "نفيشة"
+        },
+        "arrivalTime": "13:21",
+        "departureTime": "13:22"
+      },
+      {
+        "stationId": 429,
+        "stationName": {
+          "en": "Wasfih",
+          "ar": "الواصفية"
+        },
+        "arrivalTime": "13:29",
+        "departureTime": "13:30"
+      },
+      {
+        "stationId": 428,
+        "stationName": {
+          "en": "Abo Swer",
+          "ar": "ابو صوير"
+        },
+        "arrivalTime": "13:36",
+        "departureTime": "13:37"
+      },
+      {
+        "stationId": 427,
+        "stationName": {
+          "en": "Abo Gresh",
+          "ar": "ابو جريش"
+        },
+        "arrivalTime": "13:41",
+        "departureTime": "13:42"
+      },
+      {
+        "stationId": 426,
+        "stationName": {
+          "en": "mohamed Baghdady",
+          "ar": "محمد البغدادي"
+        },
+        "arrivalTime": "13:47",
+        "departureTime": "13:48"
+      },
+      {
+        "stationId": 425,
+        "stationName": {
+          "en": "Mahsmh",
+          "ar": "المحسمة"
+        },
+        "arrivalTime": "13:52",
+        "departureTime": "13:53"
+      },
+      {
+        "stationId": 424,
+        "stationName": {
+          "en": "Qassasin",
+          "ar": "القصاصين"
+        },
+        "arrivalTime": "14:02",
+        "departureTime": "14:03"
+      },
+      {
+        "stationId": 423,
+        "stationName": {
+          "en": "Baalwh",
+          "ar": "البعالوة "
+        },
+        "arrivalTime": "14:12",
+        "departureTime": "14:13"
+      },
+      {
+        "stationId": 422,
+        "stationName": {
+          "en": "Tal Kabeer",
+          "ar": "التل الكبير"
+        },
+        "arrivalTime": "14:21",
+        "departureTime": "14:22"
+      },
+      {
+        "stationId": 421,
+        "stationName": {
+          "en": "Mahjar Abo Hammad",
+          "ar": "محجر ابو حماد"
+        },
+        "arrivalTime": "14:29",
+        "departureTime": "14:30"
+      },
+      {
+        "stationId": 420,
+        "stationName": {
+          "en": "Abo Hammad",
+          "ar": "ابو حماد"
+        },
+        "arrivalTime": "14:36",
+        "departureTime": "14:37"
+      },
+      {
+        "stationId": 419,
+        "stationName": {
+          "en": "Sawah",
+          "ar": "الصوة"
+        },
+        "arrivalTime": "14:43",
+        "departureTime": "14:44"
+      },
+      {
+        "stationId": 418,
+        "stationName": {
+          "en": "Saft Hinnah",
+          "ar": "صفط الحنة"
+        },
+        "arrivalTime": "14:49",
+        "departureTime": "14:50"
+      },
+      {
+        "stationId": 417,
+        "stationName": {
+          "en": "Shabanat",
+          "ar": "الشبانات"
+        },
+        "arrivalTime": "14:55",
+        "departureTime": "14:56"
+      },
+      {
+        "stationId": 6,
+        "stationName": {
+          "en": "Zagazig",
+          "ar": "الزقازيق"
+        },
+        "arrivalTime": "15:05",
+        "departureTime": null
+      }
+    ],
+    "totalStations": 17
+  },
+  "status": {
+    "working": "This is a Test String :)",
+    "lastUpdate": "05/09/2023"
+  },
+  "notes": {
+    "en": null,
+    "ar": null
+  }
+}
