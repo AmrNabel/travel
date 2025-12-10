@@ -804,6 +804,8 @@ export default function SearchPage() {
                       onContact={() =>
                         handleContactRequest(request.id, request.userId)
                       }
+                      isOwnRequest={request.userId === user?.id}
+                      contactLoading={contactLoading === request.id}
                     />
                   ))
                 )}

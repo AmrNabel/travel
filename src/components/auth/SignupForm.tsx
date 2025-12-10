@@ -21,6 +21,7 @@ import {
   alpha,
   useTheme,
   Checkbox,
+  CircularProgress,
 } from '@mui/material';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
@@ -28,7 +29,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { UserRole } from '@/types/user';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 export const SignupForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -41,10 +42,12 @@ export const SignupForm: React.FC = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+  const [anonymousLoading, setAnonymousLoading] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('signup');
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
-  const { signUp } = useAuth();
+  const { signUp, signInWithGoogle, signInAnonymously } = useAuth();
   const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
@@ -163,11 +166,36 @@ export const SignupForm: React.FC = () => {
         </ToggleButtonGroup>
       </Box>
 
-      {/* Social Login Buttons */}
-      {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
+      {/* Social Signup Buttons */}
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
         <Button
           variant='outlined'
           fullWidth
+          disabled={googleLoading || loading || anonymousLoading}
+          onClick={async () => {
+            setError('');
+            setGoogleLoading(true);
+            try {
+              await signInWithGoogle();
+              // Loading will be reset on successful redirect
+              setTimeout(() => {
+                router.push('/');
+                setTimeout(() => {
+                  router.refresh();
+                }, 50);
+              }, 200);
+            } catch (err: unknown) {
+              const error = err as { message?: string; code?: string };
+              setGoogleLoading(false);
+              if (error.code === 'auth/popup-closed-by-user') {
+                setError(t('auth.googlePopupClosed'));
+              } else if (error.code === 'auth/popup-blocked') {
+                setError(t('auth.googlePopupBlocked'));
+              } else {
+                setError(error.message || t('auth.googleError'));
+              }
+            }
+          }}
           sx={{
             py: 1.5,
             borderWidth: 2,
@@ -180,12 +208,35 @@ export const SignupForm: React.FC = () => {
             },
           }}
         >
-          <GoogleIcon fontSize='small' />
-          {t('auth.signUpWith')} Google
+          {googleLoading ? (
+            <CircularProgress size={20} />
+          ) : (
+            <GoogleIcon fontSize='small' />
+          )}
+          {googleLoading ? t('common.loading') : t('auth.signUpWithGoogle')}
         </Button>
         <Button
           variant='outlined'
           fullWidth
+          disabled={anonymousLoading || loading || googleLoading}
+          onClick={async () => {
+            setError('');
+            setAnonymousLoading(true);
+            try {
+              await signInAnonymously();
+              // Loading will be reset on successful redirect
+              setTimeout(() => {
+                router.push('/');
+                setTimeout(() => {
+                  router.refresh();
+                }, 50);
+              }, 200);
+            } catch (err: unknown) {
+              const error = err as { message?: string };
+              setAnonymousLoading(false);
+              setError(error.message || t('auth.anonymousError'));
+            }
+          }}
           sx={{
             py: 1.5,
             borderWidth: 2,
@@ -198,17 +249,28 @@ export const SignupForm: React.FC = () => {
             },
           }}
         >
-          <FacebookIcon fontSize='small' />
-          {t('auth.signUpWith')} Facebook
+          {anonymousLoading ? (
+            <CircularProgress size={20} />
+          ) : (
+            <PersonOffIcon fontSize='small' />
+          )}
+          {anonymousLoading ? t('common.loading') : t('auth.continueAsGuest')}
         </Button>
-      </Box> */}
+        <Typography
+          variant='caption'
+          color='text.secondary'
+          sx={{ textAlign: 'center', mt: -1 }}
+        >
+          {t('auth.anonymousDesc')}
+        </Typography>
+      </Box>
 
       {/* Divider */}
-      {/* <Divider sx={{ my: 3 }}>
+      <Divider sx={{ my: 3 }}>
         <Typography variant='body2' color='text.secondary' fontWeight={600}>
           {t('common.or')}
         </Typography>
-      </Divider> */}
+      </Divider>
 
       {/* Error Alert */}
       {error && (
@@ -311,29 +373,31 @@ export const SignupForm: React.FC = () => {
           />
           <Typography variant='body2' color='text.secondary' sx={{ mt: 0.5 }}>
             I agree to the{' '}
-            <MuiLink
-              href='#'
-              sx={{
-                color: 'primary.main',
-                fontWeight: 600,
-                textDecoration: 'none',
-                '&:hover': { textDecoration: 'underline' },
-              }}
-            >
-              {t('home.footer.terms')}
-            </MuiLink>{' '}
+            <Link href='/terms-of-service' passHref legacyBehavior>
+              <MuiLink
+                sx={{
+                  color: 'primary.main',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  '&:hover': { textDecoration: 'underline' },
+                }}
+              >
+                {t('home.footer.terms')}
+              </MuiLink>
+            </Link>{' '}
             &{' '}
-            <MuiLink
-              href='#'
-              sx={{
-                color: 'primary.main',
-                fontWeight: 600,
-                textDecoration: 'none',
-                '&:hover': { textDecoration: 'underline' },
-              }}
-            >
-              {t('home.footer.privacy')}
-            </MuiLink>
+            <Link href='/privacy-policy' passHref legacyBehavior>
+              <MuiLink
+                sx={{
+                  color: 'primary.main',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  '&:hover': { textDecoration: 'underline' },
+                }}
+              >
+                {t('home.footer.privacy')}
+              </MuiLink>
+            </Link>
             .
           </Typography>
         </Box>

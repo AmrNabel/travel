@@ -235,12 +235,13 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
             />
           </Box>
 
-          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' }, minWidth: 0 }}>
             <Box
               sx={{
                 display: 'flex',
                 gap: 1,
                 flexDirection: { xs: 'column', sm: 'row' },
+                width: '100%',
               }}
             >
               {/* Send Offer Button */}
@@ -250,7 +251,9 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'stretch',
-                    minWidth: { xs: 'auto', sm: 140 },
+                    flex: { xs: '1 1 100%', sm: '0 0 auto' },
+                    minWidth: { xs: '100%', sm: 140 },
+                    maxWidth: { xs: '100%', sm: 'none' },
                   }}
                 >
                   <Button
@@ -258,6 +261,13 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                     size='small'
                     onClick={onSendOffer}
                     disabled={!showSendOffer}
+                    fullWidth={isOwnTrip ? false : undefined}
+                    sx={{
+                      whiteSpace: { xs: 'nowrap', sm: 'normal' },
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      minWidth: { xs: 0, sm: 140 },
+                    }}
                   >
                     {t('action.sendOffer')}
                   </Button>
@@ -265,7 +275,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                     <Typography
                       variant='caption'
                       color='text.secondary'
-                      sx={{ mt: 0.5 }}
+                      sx={{ mt: 0.5, textAlign: 'center' }}
                     >
                       {t('offer.needRequestHint')}
                     </Typography>
@@ -277,26 +287,51 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
               <Button
                 variant='contained'
                 size='small'
-                fullWidth
+                fullWidth={
+                  !isOwnTrip && !showSendOffer ? true : { xs: true, sm: false }
+                }
                 onClick={onMessage}
                 disabled={contactLoading || isOwnTrip}
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 1,
+                  gap: { xs: 0.5, sm: 1 },
                   justifyContent: 'center',
+                  minWidth: { xs: 0, sm: 120 },
+                  flex: { xs: '1 1 100%', sm: '0 0 auto' },
+                  px: { xs: 1, sm: 2 },
+                  whiteSpace: { xs: 'nowrap', sm: 'normal' },
+                  overflow: 'hidden',
                 }}
               >
                 {contactLoading ? (
                   <CircularProgress size={16} color='inherit' />
                 ) : (
-                  <ChatIcon fontSize='small' />
+                  <ChatIcon fontSize='small' sx={{ flexShrink: 0 }} />
                 )}
-                {contactLoading
-                  ? t('chat.connecting')
-                  : isOwnTrip
-                    ? t('card.yourTrip')
-                    : t('card.message')}
+                <Box
+                  component='span'
+                  sx={{
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                    display: { xs: 'none', sm: 'inline' },
+                  }}
+                >
+                  {contactLoading
+                    ? t('chat.connecting')
+                    : isOwnTrip
+                      ? t('card.yourTrip')
+                      : t('card.message')}
+                </Box>
+                <Box
+                  component='span'
+                  sx={{
+                    display: { xs: 'inline', sm: 'none' },
+                  }}
+                >
+                  {contactLoading ? '' : t('card.message')}
+                </Box>
               </Button>
             </Box>
           </Box>

@@ -87,6 +87,28 @@ export const SiteFooter = () => {
             {t('home.footer.contact')}
           </Button>
         </Link>
+        <Link href='/terms-of-service' passHref legacyBehavior>
+          <Button
+            size='small'
+            sx={{
+              color: 'text.secondary',
+              '&:hover': { color: 'primary.main' },
+            }}
+          >
+            {t('home.footer.terms')}
+          </Button>
+        </Link>
+        <Link href='/privacy-policy' passHref legacyBehavior>
+          <Button
+            size='small'
+            sx={{
+              color: 'text.secondary',
+              '&:hover': { color: 'primary.main' },
+            }}
+          >
+            {t('home.footer.privacy')}
+          </Button>
+        </Link>
       </Box>
 
       <Typography variant='body2' color='text.disabled' sx={{ mt: 3 }}>

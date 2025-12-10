@@ -9,6 +9,10 @@ import {
   signOut as firebaseSignOut,
   sendEmailVerification,
   updateProfile,
+  sendPasswordResetEmail,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInAnonymously,
 } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase/config';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
@@ -24,8 +28,11 @@ interface AuthContextType {
     userData: CreateUserInput
   ) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
+  signInAnonymously: () => Promise<void>;
   signOut: () => Promise<void>;
   refreshUser: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -119,8 +126,69 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     await signInWithEmailAndPassword(auth, email, password);
   };
 
+  const signInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    const firebaseUser = result.user;
+
+    // Check if user document already exists
+    const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
+
+    if (!userDoc.exists()) {
+      // Create user document for new Google user
+      const userData: CreateUserInput = {
+        email: firebaseUser.email || '',
+        name: firebaseUser.displayName || 'User',
+        role: 'both',
+      };
+
+      await setDoc(doc(db, 'users', firebaseUser.uid), {
+        ...userData,
+        photoURL: firebaseUser.photoURL,
+        rating: 0,
+        totalRatings: 0,
+        verified: firebaseUser.emailVerified,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    }
+  };
+
+  const signInAnonymously = async () => {
+    const result = await signInAnonymously(auth);
+    const firebaseUser = result.user;
+
+    // Generate a default display name
+    const guestName = `Guest User ${firebaseUser.uid.slice(0, 8)}`;
+
+    // Update Firebase profile with display name
+    await updateProfile(firebaseUser, {
+      displayName: guestName,
+    });
+
+    // Create user document for anonymous user
+    const userData: CreateUserInput = {
+      email: '',
+      name: guestName,
+      role: 'both',
+    };
+
+    await setDoc(doc(db, 'users', firebaseUser.uid), {
+      ...userData,
+      rating: 0,
+      totalRatings: 0,
+      verified: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  };
+
   const signOut = async () => {
     await firebaseSignOut(auth);
+  };
+
+  const resetPassword = async (email: string) => {
+    await sendPasswordResetEmail(auth, email);
   };
 
   const value = {
@@ -129,8 +197,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     loading,
     signUp,
     signIn,
+    signInWithGoogle,
+    signInAnonymously,
     signOut,
     refreshUser,
+    resetPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

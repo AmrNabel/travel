@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Container,
@@ -23,8 +22,132 @@ import { AuthGuard } from '@/components/auth/AuthGuard';
 import { useChat } from '@/hooks/useChat';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useUser } from '@/hooks/useUser';
 import ChatIcon from '@mui/icons-material/Chat';
 import { format } from 'date-fns';
+
+interface ChatListItemProps {
+  chat: any;
+  otherUserId: string | undefined;
+  index: number;
+  hasUnread: boolean;
+  onChatClick: (chatId: string) => void;
+  theme: any;
+  t: (key: string) => string;
+}
+
+function ChatListItem({
+  chat,
+  otherUserId,
+  index,
+  hasUnread,
+  onChatClick,
+  theme,
+  t,
+}: ChatListItemProps) {
+  const { user: otherUser, loading: userLoading } = useUser(otherUserId);
+
+  return (
+    <Box>
+      {index > 0 && <Divider />}
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => onChatClick(chat.id)}
+          sx={{
+            py: 2,
+            px: 3,
+            '&:hover': {
+              bgcolor: alpha(theme.palette.primary.main, 0.05),
+            },
+          }}
+        >
+          <ListItemAvatar>
+            <Avatar
+              sx={{
+                width: 56,
+                height: 56,
+                border: hasUnread ? 2 : 0,
+                borderColor: 'primary.main',
+              }}
+              src={otherUser?.photoURL}
+            >
+              {userLoading
+                ? 'U'
+                : otherUser?.name?.charAt(0).toUpperCase() ||
+                  otherUserId?.charAt(0).toUpperCase() ||
+                  'U'}
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary={
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  mb: 0.5,
+                }}
+              >
+                <Typography
+                  variant='subtitle1'
+                  fontWeight={hasUnread ? 700 : 600}
+                >
+                  {userLoading
+                    ? t('common.loading')
+                    : otherUser?.name || otherUserId?.slice(0, 8) || 'User'}
+                </Typography>
+                {chat.lastMessageAt && (
+                  <Typography variant='caption' color='text.secondary'>
+                    {format(chat.lastMessageAt, 'MMM d, h:mm a')}
+                  </Typography>
+                )}
+              </Box>
+            }
+            secondary={
+              <Box>
+                <Typography
+                  variant='body2'
+                  color='text.secondary'
+                  sx={{
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                    fontWeight: hasUnread ? 600 : 400,
+                  }}
+                >
+                  {chat.lastMessage || t('chat.noChats')}
+                </Typography>
+                {(chat.tripId || chat.requestId) && (
+                  <Chip
+                    label={
+                      chat.tripId ? t('chat.tripLabel') : t('chat.requestLabel')
+                    }
+                    size='small'
+                    sx={{
+                      mt: 1,
+                      height: 20,
+                      fontSize: '0.75rem',
+                      bgcolor: alpha(theme.palette.primary.main, 0.1),
+                      color: 'primary.main',
+                    }}
+                  />
+                )}
+              </Box>
+            }
+          />
+          {hasUnread && (
+            <Chip
+              label={t('chat.newLabel')}
+              color='primary'
+              size='small'
+              sx={{ ml: 1 }}
+            />
+          )}
+        </ListItemButton>
+      </ListItem>
+    </Box>
+  );
+}
 
 function ChatsPageContent() {
   const { chats, loading } = useChat();
@@ -121,102 +244,16 @@ function ChatsPageContent() {
             const hasUnread = false; // TODO: Implement unread message tracking
 
             return (
-              <Box key={chat.id}>
-                {index > 0 && <Divider />}
-                <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => handleChatClick(chat.id)}
-                    sx={{
-                      py: 2,
-                      px: 3,
-                      '&:hover': {
-                        bgcolor: alpha(theme.palette.primary.main, 0.05),
-                      },
-                    }}
-                  >
-                    <ListItemAvatar>
-                      <Avatar
-                        sx={{
-                          width: 56,
-                          height: 56,
-                          border: hasUnread ? 2 : 0,
-                          borderColor: 'primary.main',
-                        }}
-                      >
-                        {otherUserId?.charAt(0).toUpperCase() || 'U'}
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            mb: 0.5,
-                          }}
-                        >
-                          <Typography
-                            variant='subtitle1'
-                            fontWeight={hasUnread ? 700 : 600}
-                          >
-                            {t('chat.userPrefix')} {otherUserId?.slice(0, 8)}
-                          </Typography>
-                          {chat.lastMessageAt && (
-                            <Typography
-                              variant='caption'
-                              color='text.secondary'
-                            >
-                              {format(chat.lastMessageAt, 'MMM d, h:mm a')}
-                            </Typography>
-                          )}
-                        </Box>
-                      }
-                      secondary={
-                        <Box>
-                          <Typography
-                            variant='body2'
-                            color='text.secondary'
-                            sx={{
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              whiteSpace: 'nowrap',
-                              fontWeight: hasUnread ? 600 : 400,
-                            }}
-                          >
-                            {chat.lastMessage || t('chat.noChats')}
-                          </Typography>
-                          {(chat.tripId || chat.requestId) && (
-                            <Chip
-                              label={
-                                chat.tripId
-                                  ? t('chat.tripLabel')
-                                  : t('chat.requestLabel')
-                              }
-                              size='small'
-                              sx={{
-                                mt: 1,
-                                height: 20,
-                                fontSize: '0.75rem',
-                                bgcolor: alpha(theme.palette.primary.main, 0.1),
-                                color: 'primary.main',
-                              }}
-                            />
-                          )}
-                        </Box>
-                      }
-                    />
-                    {hasUnread && (
-                      <Chip
-                        label={t('chat.newLabel')}
-                        color='primary'
-                        size='small'
-                        sx={{ ml: 1 }}
-                      />
-                    )}
-                  </ListItemButton>
-                </ListItem>
-              </Box>
+              <ChatListItem
+                key={chat.id}
+                chat={chat}
+                otherUserId={otherUserId}
+                index={index}
+                hasUnread={hasUnread}
+                onChatClick={handleChatClick}
+                theme={theme}
+                t={t}
+              />
             );
           })}
         </List>

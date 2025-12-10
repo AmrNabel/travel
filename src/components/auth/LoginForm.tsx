@@ -15,22 +15,25 @@ import {
   ToggleButtonGroup,
   alpha,
   useTheme,
+  CircularProgress,
 } from '@mui/material';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 export const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+  const [anonymousLoading, setAnonymousLoading] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
 
-  const { signIn } = useAuth();
+  const { signIn, signInWithGoogle, signInAnonymously } = useAuth();
   const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
@@ -42,11 +45,18 @@ export const LoginForm: React.FC = () => {
 
     try {
       await signIn(email, password);
-      router.push('/');
+      // Wait for auth state to update before redirecting
+      // Firebase auth state updates asynchronously, so we wait a bit
+      setTimeout(() => {
+        router.push('/');
+        // Force a refresh to ensure NavBar updates with new auth state
+        setTimeout(() => {
+          router.refresh();
+        }, 50);
+      }, 200);
     } catch (err: unknown) {
       const error = err as { message?: string };
       setError(error.message || t('auth.invalidCredentials'));
-    } finally {
       setLoading(false);
     }
   };
@@ -120,10 +130,35 @@ export const LoginForm: React.FC = () => {
       </Box>
 
       {/* Social Login Buttons */}
-      {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
         <Button
           variant='outlined'
           fullWidth
+          disabled={googleLoading || loading || anonymousLoading}
+          onClick={async () => {
+            setError('');
+            setGoogleLoading(true);
+            try {
+              await signInWithGoogle();
+              // Loading will be reset on successful redirect
+              setTimeout(() => {
+                router.push('/');
+                setTimeout(() => {
+                  router.refresh();
+                }, 50);
+              }, 200);
+            } catch (err: unknown) {
+              const error = err as { message?: string; code?: string };
+              setGoogleLoading(false);
+              if (error.code === 'auth/popup-closed-by-user') {
+                setError(t('auth.googlePopupClosed'));
+              } else if (error.code === 'auth/popup-blocked') {
+                setError(t('auth.googlePopupBlocked'));
+              } else {
+                setError(error.message || t('auth.googleError'));
+              }
+            }
+          }}
           sx={{
             py: 1.5,
             borderWidth: 2,
@@ -136,12 +171,35 @@ export const LoginForm: React.FC = () => {
             },
           }}
         >
-          <GoogleIcon fontSize='small' />
-          {t('auth.signInWith')} Google
+          {googleLoading ? (
+            <CircularProgress size={20} />
+          ) : (
+            <GoogleIcon fontSize='small' />
+          )}
+          {googleLoading ? t('common.loading') : t('auth.signInWithGoogle')}
         </Button>
         <Button
           variant='outlined'
           fullWidth
+          disabled={anonymousLoading || loading || googleLoading}
+          onClick={async () => {
+            setError('');
+            setAnonymousLoading(true);
+            try {
+              await signInAnonymously();
+              // Loading will be reset on successful redirect
+              setTimeout(() => {
+                router.push('/');
+                setTimeout(() => {
+                  router.refresh();
+                }, 50);
+              }, 200);
+            } catch (err: unknown) {
+              const error = err as { message?: string };
+              setAnonymousLoading(false);
+              setError(error.message || t('auth.anonymousError'));
+            }
+          }}
           sx={{
             py: 1.5,
             borderWidth: 2,
@@ -154,17 +212,21 @@ export const LoginForm: React.FC = () => {
             },
           }}
         >
-          <FacebookIcon fontSize='small' />
-          {t('auth.signInWith')} Facebook
+          {anonymousLoading ? (
+            <CircularProgress size={20} />
+          ) : (
+            <PersonOffIcon fontSize='small' />
+          )}
+          {anonymousLoading ? t('common.loading') : t('auth.continueAsGuest')}
         </Button>
-      </Box> */}
+      </Box>
 
       {/* Divider */}
-      {/* <Divider sx={{ my: 3 }}>
+      <Divider sx={{ my: 3 }}>
         <Typography variant='body2' color='text.secondary' fontWeight={600}>
           {t('common.or')}
         </Typography>
-      </Divider> */}
+      </Divider>
 
       {/* Error Alert */}
       {error && (
@@ -227,18 +289,19 @@ export const LoginForm: React.FC = () => {
               </MuiLink>
             </Link>
           </Typography>
-          <MuiLink
-            href='#'
-            sx={{
-              fontWeight: 600,
-              color: 'primary.main',
-              textDecoration: 'none',
-              fontSize: '0.875rem',
-              '&:hover': { textDecoration: 'underline' },
-            }}
-          >
-            {t('auth.forgotPassword')}
-          </MuiLink>
+          <Link href='/forgot-password' passHref legacyBehavior>
+            <MuiLink
+              sx={{
+                fontWeight: 600,
+                color: 'primary.main',
+                textDecoration: 'none',
+                fontSize: '0.875rem',
+                '&:hover': { textDecoration: 'underline' },
+              }}
+            >
+              {t('auth.forgotPassword')}
+            </MuiLink>
+          </Link>
         </Box>
       </Box>
     </Paper>
