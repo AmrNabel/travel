@@ -8,7 +8,6 @@ import {
   Tabs,
   Tab,
   Paper,
-  Grid,
   Card,
   CardContent,
   Button,
@@ -35,6 +34,7 @@ import { useNotification } from '@/contexts/NotificationContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { AuthGuard } from '@/components/auth/AuthGuard';
 import { RatingDialog } from '@/components/ratings/RatingDialog';
+import { translateStatus } from '@/utils/translateStatus';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import FlightIcon from '@mui/icons-material/Flight';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -198,8 +198,16 @@ function OffersPageContent() {
     const isPending = offer.status === 'pending';
 
     return (
-      <Card elevation={2} sx={{ borderRadius: 2, overflow: 'visible' }}>
-        <CardContent sx={{ p: 3 }}>
+      <Card
+        elevation={2}
+        sx={{
+          borderRadius: 2,
+          overflow: 'visible',
+          width: '100%',
+          maxWidth: '100%',
+        }}
+      >
+        <CardContent sx={{ p: 3, width: '100%', maxWidth: '100%' }}>
           <Box
             sx={{
               display: 'flex',
@@ -216,9 +224,7 @@ function OffersPageContent() {
             </Box>
             <Chip
               icon={getStatusIcon(offer.status) || undefined}
-              label={
-                offer.status.charAt(0).toUpperCase() + offer.status.slice(1)
-              }
+              label={translateStatus(offer.status, t)}
               color={getStatusColor(offer.status) as any}
               size='small'
               sx={{
@@ -471,20 +477,45 @@ function OffersPageContent() {
     activeTab === 'received' ? receivedLoading : sentLoading;
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <Container maxWidth='lg' sx={{ py: 4 }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        bgcolor: 'background.default',
+        width: '100%',
+        maxWidth: '100vw',
+        overflowX: 'hidden',
+      }}
+    >
+      <Container
+        maxWidth='lg'
+        sx={{
+          py: 4,
+          px: { xs: 2, sm: 3 },
+          width: '100%',
+          maxWidth: '100%',
+        }}
+      >
         {/* Header */}
         <Box sx={{ mb: 4 }}>
           <Typography variant='h4' fontWeight={700} gutterBottom>
             {t('offer.myOffers')}
           </Typography>
           <Typography variant='body1' color='text.secondary'>
-            Manage offers you've sent and received
+            {t('offer.manageDescription')}
           </Typography>
         </Box>
 
         {/* Tabs */}
-        <Paper elevation={2} sx={{ borderRadius: 2, mb: 3 }}>
+        <Paper
+          elevation={2}
+          sx={{
+            borderRadius: 2,
+            mb: 3,
+            width: '100%',
+            maxWidth: '100%',
+            overflowX: 'hidden',
+          }}
+        >
           <Tabs
             value={activeTab}
             onChange={(_, value) => setActiveTab(value)}
@@ -521,7 +552,13 @@ function OffersPageContent() {
         ) : currentOffers.length === 0 ? (
           <Paper
             elevation={2}
-            sx={{ p: 6, textAlign: 'center', borderRadius: 3 }}
+            sx={{
+              p: 6,
+              textAlign: 'center',
+              borderRadius: 3,
+              width: '100%',
+              maxWidth: '100%',
+            }}
           >
             <LocalOfferIcon
               sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
@@ -533,7 +570,7 @@ function OffersPageContent() {
             </Typography>
             <Typography variant='body2' color='text.disabled' sx={{ mb: 3 }}>
               {activeTab === 'received'
-                ? 'Offers from senders will appear here'
+                ? t('offer.dialog.offersFromSenders')
                 : t('offer.noSentOffersDesc')}
             </Typography>
             {activeTab === 'sent' && (
@@ -546,13 +583,28 @@ function OffersPageContent() {
             )}
           </Paper>
         ) : (
-          <Grid container spacing={3}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 3,
+              width: '100%',
+              maxWidth: '100%',
+              margin: 0,
+            }}
+          >
             {currentOffers.map((offer) => (
-              <Grid item xs={12} md={6} key={offer.id}>
+              <Box
+                key={offer.id}
+                sx={{
+                  flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                  minWidth: 0,
+                }}
+              >
                 <OfferCard offer={offer} />
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         )}
       </Container>
 
@@ -565,14 +617,14 @@ function OffersPageContent() {
       >
         <DialogTitle>
           {confirmDialog.action === 'accept'
-            ? 'Accept Offer?'
-            : 'Decline Offer?'}
+            ? t('offer.dialog.acceptTitle')
+            : t('offer.dialog.declineTitle')}
         </DialogTitle>
         <DialogContent>
           <Typography>
             {confirmDialog.action === 'accept'
-              ? 'This will create a chat between you and the sender, and decline all other offers for this request.'
-              : 'Are you sure you want to decline this offer? This action cannot be undone.'}
+              ? t('offer.dialog.acceptMessage')
+              : t('offer.dialog.declineMessage')}
           </Typography>
         </DialogContent>
         <DialogActions>

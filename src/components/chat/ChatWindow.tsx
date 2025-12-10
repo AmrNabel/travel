@@ -9,10 +9,13 @@ import {
   IconButton,
   List,
   ListItem,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useChat } from '@/hooks/useChat';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { format } from 'date-fns';
 
 interface ChatWindowProps {
@@ -23,6 +26,9 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
   const [messageText, setMessageText] = useState('');
   const { messages, sendMessage } = useChat(chatId);
   const { user } = useAuth();
+  const { t } = useLanguage();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom
@@ -45,10 +51,16 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
   return (
     <Paper
       elevation={3}
-      sx={{ height: '600px', display: 'flex', flexDirection: 'column' }}
+      sx={{
+        height: { xs: 'calc(100vh - 200px)', sm: '600px' },
+        minHeight: { xs: '400px', sm: '600px' },
+        maxHeight: { xs: 'calc(100vh - 120px)', sm: '600px' },
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
       {/* Messages List */}
-      <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
+      <Box sx={{ flex: 1, overflow: 'auto', p: { xs: 1, sm: 2 } }}>
         <List>
           {messages.map((message) => {
             const isOwn = message.senderId === user?.id;
@@ -57,19 +69,34 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
                 key={message.id}
                 sx={{
                   justifyContent: isOwn ? 'flex-end' : 'flex-start',
+                  px: { xs: 0.5, sm: 1 },
                 }}
               >
                 <Box
                   sx={{
-                    maxWidth: '70%',
+                    maxWidth: { xs: '85%', sm: '70%' },
                     bgcolor: isOwn ? 'primary.main' : 'grey.200',
                     color: isOwn ? 'white' : 'text.primary',
                     borderRadius: 2,
-                    p: 1.5,
+                    p: { xs: 1, sm: 1.5 },
                   }}
                 >
-                  <Typography variant='body1'>{message.text}</Typography>
-                  <Typography variant='caption' sx={{ opacity: 0.7 }}>
+                  <Typography
+                    variant='body1'
+                    sx={{
+                      fontSize: { xs: '0.875rem', sm: '1rem' },
+                      wordBreak: 'break-word',
+                    }}
+                  >
+                    {message.text}
+                  </Typography>
+                  <Typography
+                    variant='caption'
+                    sx={{
+                      opacity: 0.7,
+                      fontSize: { xs: '0.7rem', sm: '0.75rem' },
+                    }}
+                  >
                     {format(message.createdAt, 'HH:mm')}
                   </Typography>
                 </Box>
@@ -84,17 +111,22 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
       <Box
         component='form'
         onSubmit={handleSend}
-        sx={{ p: 2, borderTop: 1, borderColor: 'divider' }}
+        sx={{ p: { xs: 1, sm: 2 }, borderTop: 1, borderColor: 'divider' }}
       >
         <Box display='flex' gap={1}>
           <TextField
             fullWidth
-            placeholder='Type a message...'
+            placeholder={t('chat.typeMessage')}
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
             size='small'
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                fontSize: { xs: '0.875rem', sm: '1rem' },
+              },
+            }}
           />
-          <IconButton type='submit' color='primary'>
+          <IconButton type='submit' color='primary' sx={{ flexShrink: 0 }}>
             <SendIcon />
           </IconButton>
         </Box>

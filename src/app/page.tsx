@@ -6,7 +6,6 @@ import {
   Button,
   Box,
   Paper,
-  Grid,
   CircularProgress,
   alpha,
   useTheme,
@@ -53,8 +52,20 @@ export default function HomePage() {
       >
         {/* Hero Section */}
         <Container maxWidth='lg' sx={{ flexGrow: 1, py: { xs: 6, md: 12 } }}>
-          <Grid container spacing={{ xs: 4, md: 8 }} alignItems='center'>
-            <Grid item xs={12} md={6}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: { xs: 4, md: 8 },
+              alignItems: 'center',
+            }}
+          >
+            <Box
+              sx={{
+                flex: { xs: '1 1 100%', md: '1 1 calc(50% - 32px)' },
+                minWidth: 0,
+              }}
+            >
               <Box>
                 <Typography
                   variant='h1'
@@ -108,8 +119,13 @@ export default function HomePage() {
                   </Link>
                 </Box>
               </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </Box>
+            <Box
+              sx={{
+                flex: { xs: '1 1 100%', md: '1 1 calc(50% - 32px)' },
+                minWidth: 0,
+              }}
+            >
               <Box
                 component='img'
                 src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800'
@@ -121,8 +137,8 @@ export default function HomePage() {
                   boxShadow: theme.shadows[11],
                 }}
               />
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
 
           {/* Features Section */}
           <Box
@@ -150,8 +166,19 @@ export default function HomePage() {
               {t('home.features.subtitle')}
             </Typography>
 
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={4}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 3,
+              }}
+            >
+              <Box
+                sx={{
+                  flex: { xs: '1 1 100%', md: '1 1 calc(33.333% - 16px)' },
+                  minWidth: 0,
+                }}
+              >
                 <Paper
                   elevation={2}
                   sx={{
@@ -187,9 +214,14 @@ export default function HomePage() {
                     {t('home.features.earnOnTravel.description')}
                   </Typography>
                 </Paper>
-              </Grid>
+              </Box>
 
-              <Grid item xs={12} md={4}>
+              <Box
+                sx={{
+                  flex: { xs: '1 1 100%', md: '1 1 calc(33.333% - 16px)' },
+                  minWidth: 0,
+                }}
+              >
                 <Paper
                   elevation={2}
                   sx={{
@@ -225,9 +257,14 @@ export default function HomePage() {
                     {t('home.features.sendWithTrust.description')}
                   </Typography>
                 </Paper>
-              </Grid>
+              </Box>
 
-              <Grid item xs={12} md={4}>
+              <Box
+                sx={{
+                  flex: { xs: '1 1 100%', md: '1 1 calc(33.333% - 16px)' },
+                  minWidth: 0,
+                }}
+              >
                 <Paper
                   elevation={2}
                   sx={{
@@ -261,8 +298,8 @@ export default function HomePage() {
                     {t('home.features.ecoFriendly.description')}
                   </Typography>
                 </Paper>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </Box>
         </Container>
       </Box>
@@ -293,8 +330,23 @@ export default function HomePage() {
           {t('home.loggedIn.welcome', { name: user.name })}
         </Typography>
 
-        <Grid container sx={{ gap: 3 }}>
-          <Grid item xs={12} sm={6} md={4}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+          }}
+        >
+          <Box
+            sx={{
+              flex: {
+                xs: '1 1 100%',
+                sm: '1 1 calc(50% - 12px)',
+                md: '1 1 calc(33.333% - 16px)',
+              },
+              minWidth: 0,
+            }}
+          >
             <Link href='/add-trip' passHref legacyBehavior>
               <Paper
                 elevation={2}
@@ -337,9 +389,18 @@ export default function HomePage() {
                 </Typography>
               </Paper>
             </Link>
-          </Grid>
+          </Box>
 
-          <Grid item xs={12} sm={6} md={4}>
+          <Box
+            sx={{
+              flex: {
+                xs: '1 1 100%',
+                sm: '1 1 calc(50% - 12px)',
+                md: '1 1 calc(33.333% - 16px)',
+              },
+              minWidth: 0,
+            }}
+          >
             <Link href='/send-item' passHref legacyBehavior>
               <Paper
                 elevation={2}
@@ -382,9 +443,18 @@ export default function HomePage() {
                 </Typography>
               </Paper>
             </Link>
-          </Grid>
+          </Box>
 
-          <Grid item xs={12} sm={6} md={4}>
+          <Box
+            sx={{
+              flex: {
+                xs: '1 1 100%',
+                sm: '1 1 calc(50% - 12px)',
+                md: '1 1 calc(33.333% - 16px)',
+              },
+              minWidth: 0,
+            }}
+          >
             <Link href='/search' passHref legacyBehavior>
               <Paper
                 elevation={2}
@@ -425,8 +495,8 @@ export default function HomePage() {
                 </Typography>
               </Paper>
             </Link>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

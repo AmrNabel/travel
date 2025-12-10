@@ -6,7 +6,6 @@ import {
   Box,
   Typography,
   Paper,
-  Grid,
   TextField,
   Button,
   Card,
@@ -151,9 +150,20 @@ export default function ContactUsPage() {
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 4,
+          }}
+        >
           {/* Contact Information */}
-          <Grid item xs={12} md={4}>
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', md: '0 0 calc(33.333% - 16px)' },
+              minWidth: 0,
+            }}
+          >
             <Box sx={{ mb: 4 }}>
               {contactInfo.map((info) => {
                 const IconComponent = info.icon;
@@ -221,10 +231,15 @@ export default function ContactUsPage() {
                 {t('contactUs.hours.description')}
               </Typography>
             </Paper>
-          </Grid>
+          </Box>
 
           {/* Contact Form */}
-          <Grid item xs={12} md={8}>
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', md: '1 1 calc(66.666% - 16px)' },
+              minWidth: 0,
+            }}
+          >
             <Paper
               elevation={3}
               sx={{
@@ -253,8 +268,19 @@ export default function ContactUsPage() {
               )}
 
               <Box component='form' onSubmit={handleSubmit}>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: 3,
+                  }}
+                >
+                  <Box
+                    sx={{
+                      flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 12px)' },
+                      minWidth: 0,
+                    }}
+                  >
                     <TextField
                       fullWidth
                       label={t('contactUs.form.name')}
@@ -264,8 +290,13 @@ export default function ContactUsPage() {
                       required
                       variant='outlined'
                     />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
+                  </Box>
+                  <Box
+                    sx={{
+                      flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 12px)' },
+                      minWidth: 0,
+                    }}
+                  >
                     <TextField
                       fullWidth
                       label={t('contactUs.form.email')}
@@ -276,8 +307,8 @@ export default function ContactUsPage() {
                       required
                       variant='outlined'
                     />
-                  </Grid>
-                  <Grid item xs={12}>
+                  </Box>
+                  <Box sx={{ flex: '1 1 100%' }}>
                     <TextField
                       fullWidth
                       label={t('contactUs.form.subject')}
@@ -287,8 +318,8 @@ export default function ContactUsPage() {
                       required
                       variant='outlined'
                     />
-                  </Grid>
-                  <Grid item xs={12}>
+                  </Box>
+                  <Box sx={{ flex: '1 1 100%' }}>
                     <TextField
                       fullWidth
                       label={t('contactUs.form.message')}
@@ -300,8 +331,8 @@ export default function ContactUsPage() {
                       rows={6}
                       variant='outlined'
                     />
-                  </Grid>
-                  <Grid item xs={12}>
+                  </Box>
+                  <Box sx={{ flex: '1 1 100%' }}>
                     <Button
                       type='submit'
                       variant='contained'
@@ -325,12 +356,12 @@ export default function ContactUsPage() {
                         ? t('contactUs.form.sending')
                         : t('contactUs.form.send')}
                     </Button>
-                  </Grid>
-                </Grid>
+                  </Box>
+                </Box>
               </Box>
             </Paper>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

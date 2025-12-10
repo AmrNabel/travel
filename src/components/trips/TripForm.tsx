@@ -8,7 +8,6 @@ import {
   Button,
   Typography,
   Alert,
-  Grid,
   Paper,
   Container,
   InputAdornment,
@@ -415,8 +414,19 @@ export const TripForm: React.FC = () => {
                   {stationsError}
                 </Alert>
               )}
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 3,
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <Autocomplete
                     options={stationNames}
                     value={formData.fromCity || null}
@@ -474,9 +484,14 @@ export const TripForm: React.FC = () => {
                       />
                     )}
                   />
-                </Grid>
+                </Box>
 
-                <Grid item xs={12} md={6}>
+                <Box
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <Autocomplete
                     options={stationNames}
                     value={formData.toCity || null}
@@ -534,8 +549,8 @@ export const TripForm: React.FC = () => {
                       />
                     )}
                   />
-                </Grid>
-              </Grid>
+                </Box>
+              </Box>
             </Box>
 
             {/* Train Details */}
@@ -558,8 +573,19 @@ export const TripForm: React.FC = () => {
                   {trainValidationError}
                 </Alert>
               )}
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 3,
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <TextField
                     label={t('trip.trainNumber', {
                       defaultValue: 'Train Number',
@@ -592,8 +618,13 @@ export const TripForm: React.FC = () => {
                       ),
                     }}
                   />
-                </Grid>
-                <Grid item xs={12} md={6}>
+                </Box>
+                <Box
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <TextField
                     label={t('trip.departureTime', {
                       defaultValue: 'Departure Time',
@@ -616,8 +647,8 @@ export const TripForm: React.FC = () => {
                       ),
                     }}
                   />
-                </Grid>
-              </Grid>
+                </Box>
+              </Box>
             </Box>
 
             {/* Date Section */}
@@ -630,8 +661,19 @@ export const TripForm: React.FC = () => {
               >
                 {t('form.dateLabel')}
               </Typography>
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 3,
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <TextField
                     label={t('trip.date')}
                     name='date'
@@ -654,8 +696,8 @@ export const TripForm: React.FC = () => {
                       ),
                     }}
                   />
-                </Grid>
-              </Grid>
+                </Box>
+              </Box>
             </Box>
 
             {/* Capacity & Price Section */}
@@ -668,13 +710,31 @@ export const TripForm: React.FC = () => {
               >
                 {t('trip.capacity')} & {t('trip.pricePerKg')}
               </Typography>
-              <Grid container spacing={3} alignItems='flex-end'>
-                <Grid item xs={12} md={6}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 3,
+                  alignItems: 'flex-end',
+                }}
+              >
+                <Box
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <Typography variant='body1' fontWeight={600} sx={{ mb: 2 }}>
                     {t('form.capacityLabel')}
                   </Typography>
-                  <Grid container spacing={2}>
-                    <Grid item xs={4}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 2,
+                    }}
+                  >
+                    <Box sx={{ flex: '1 1 calc(33.333% - 11px)', minWidth: 0 }}>
                       <Paper
                         elevation={selectedSize === 'Small' ? 8 : 1}
                         onClick={() => setSelectedSize('Small')}
@@ -711,9 +771,9 @@ export const TripForm: React.FC = () => {
                           {t('search.small')}
                         </Typography>
                       </Paper>
-                    </Grid>
+                    </Box>
 
-                    <Grid item xs={4}>
+                    <Box sx={{ flex: '1 1 calc(33.333% - 11px)', minWidth: 0 }}>
                       <Paper
                         elevation={selectedSize === 'Medium' ? 8 : 1}
                         onClick={() => setSelectedSize('Medium')}
@@ -750,9 +810,9 @@ export const TripForm: React.FC = () => {
                           {t('search.medium')}
                         </Typography>
                       </Paper>
-                    </Grid>
+                    </Box>
 
-                    <Grid item xs={4}>
+                    <Box sx={{ flex: '1 1 calc(33.333% - 11px)', minWidth: 0 }}>
                       <Paper
                         elevation={selectedSize === 'Large' ? 8 : 1}
                         onClick={() => setSelectedSize('Large')}
@@ -789,11 +849,16 @@ export const TripForm: React.FC = () => {
                           {t('search.large')}
                         </Typography>
                       </Paper>
-                    </Grid>
-                  </Grid>
-                </Grid>
+                    </Box>
+                  </Box>
+                </Box>
 
-                <Grid item xs={12} md={6}>
+                <Box
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <TextField
                     label={t('form.pricePerKgLabel')}
                     name='pricePerKg'
@@ -830,8 +895,8 @@ export const TripForm: React.FC = () => {
                       },
                     }}
                   />
-                </Grid>
-              </Grid>
+                </Box>
+              </Box>
             </Box>
 
             {/* Description (Optional) */}

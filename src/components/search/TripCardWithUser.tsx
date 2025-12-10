@@ -3,7 +3,6 @@
 import {
   Card,
   CardContent,
-  Grid,
   Box,
   Avatar,
   Typography,
@@ -17,6 +16,7 @@ import {
 import { Trip } from '@/types/trip';
 import { useUser } from '@/hooks/useUser';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { formatLocaleDate } from '@/utils/formatDate';
 import FlightIcon from '@mui/icons-material/Flight';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LuggageIcon from '@mui/icons-material/Luggage';
@@ -48,7 +48,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
   contactLoading,
 }) => {
   const theme = useTheme();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { user: traveler, loading: userLoading } = useUser(trip.userId);
 
   return (
@@ -87,8 +87,15 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
         </Box>
       )}
       <CardContent sx={{ p: 3 }}>
-        <Grid container spacing={2} alignItems='center'>
-          <Grid item xs={12} sm='auto'>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 2,
+            alignItems: 'center',
+          }}
+        >
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
             <Box
               sx={{
                 display: 'flex',
@@ -118,9 +125,9 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 </Typography>
               </Box>
             </Box>
-          </Grid>
+          </Box>
 
-          <Grid item xs={12} sm>
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '1 1 auto' }, minWidth: 0 }}>
             <Box
               sx={{
                 display: 'flex',
@@ -152,10 +159,10 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 </Typography>
               </Box>
             </Box>
-          </Grid>
+          </Box>
 
           {(trip.trainNumber || trip.departureTime) && (
-            <Grid item xs={12} sm='auto'>
+            <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
               <Box
                 sx={{
                   display: 'flex',
@@ -189,10 +196,10 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                   />
                 )}
               </Box>
-            </Grid>
+            </Box>
           )}
 
-          <Grid item xs={12} sm='auto'>
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
             <Box
               sx={{
                 display: 'flex',
@@ -209,13 +216,13 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
               />
               <Typography variant='body2' color='text.secondary'>
                 {trip.date
-                  ? new Date(trip.date).toLocaleDateString()
+                  ? formatLocaleDate(trip.date, language)
                   : 'Oct 15 - Oct 22'}
               </Typography>
             </Box>
-          </Grid>
+          </Box>
 
-          <Grid item xs={12} sm='auto'>
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
             <Chip
               icon={<LuggageIcon />}
               label={trip.capacity || 'Small'}
@@ -226,9 +233,9 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 fontWeight: 600,
               }}
             />
-          </Grid>
+          </Box>
 
-          <Grid item xs={12} sm='auto'>
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
             <Box
               sx={{
                 display: 'flex',
@@ -292,8 +299,8 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                     : t('card.message')}
               </Button>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </CardContent>
     </Card>
   );

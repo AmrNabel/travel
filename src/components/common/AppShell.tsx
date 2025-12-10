@@ -16,12 +16,22 @@ export const AppShell = ({ children }: AppShellProps) => {
         display: 'flex',
         flexDirection: 'column',
         bgcolor: 'background.default',
+        overflowX: 'hidden',
+        width: '100%',
+        maxWidth: '100vw',
       }}
     >
       <NavBar />
       <Box
         component='main'
-        sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+        sx={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          maxWidth: '100%',
+          overflowX: 'hidden',
+        }}
       >
         {children}
       </Box>

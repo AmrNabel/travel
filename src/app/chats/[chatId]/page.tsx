@@ -14,12 +14,23 @@ export default function ChatPage({ params }: { params: { chatId: string } }) {
   return (
     <AuthGuard>
       <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        <Container maxWidth='md' sx={{ py: 4 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 2 }}>
+        <Container maxWidth='md' sx={{ py: { xs: 2, sm: 4 } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              mb: { xs: 2, sm: 3 },
+              gap: 2,
+            }}
+          >
             <IconButton onClick={() => router.back()}>
               <ArrowBackIcon />
             </IconButton>
-            <Typography variant='h5' fontWeight={700}>
+            <Typography
+              variant='h5'
+              fontWeight={700}
+              sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
+            >
               {t('chat.chat')}
             </Typography>
           </Box>

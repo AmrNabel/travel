@@ -2,7 +2,15 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Box, TextField, Button, Typography, Alert, Grid } from '@mui/material';
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Alert,
+  Paper,
+  Container,
+} from '@mui/material';
 import { CreateRequestInput } from '@/types/request';
 import { useRequests } from '@/hooks/useRequests';
 import { useNotification } from '@/contexts/NotificationContext';
@@ -53,107 +61,158 @@ export const RequestForm: React.FC = () => {
   };
 
   return (
-    <Box
-      component='form'
-      onSubmit={handleSubmit}
-      sx={{ maxWidth: 600, mx: 'auto', mt: 4 }}
-    >
-      <Typography variant='h4' component='h1' gutterBottom>
+    <Box component='form' onSubmit={handleSubmit} sx={{ width: '100%' }}>
+      <Typography
+        variant='h3'
+        component='h1'
+        gutterBottom
+        fontWeight={900}
+        sx={{
+          mb: 4,
+          fontSize: { xs: '2rem', md: '2.5rem' },
+          textAlign: 'center',
+        }}
+      >
         {t('request.requestDelivery')}
       </Typography>
 
       {error && (
-        <Alert severity='error' sx={{ mb: 2 }}>
+        <Alert severity='error' sx={{ mb: 3, borderRadius: 2 }}>
           {error}
         </Alert>
       )}
-      <Alert severity='info' sx={{ mb: 2 }}>
+      <Alert severity='info' sx={{ mb: 3, borderRadius: 2 }}>
         {t('request.offerPrerequisite')}
       </Alert>
 
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label={t('request.fromCity')}
-            name='fromCity'
-            value={formData.fromCity}
-            onChange={handleChange}
-            fullWidth
-            required
-          />
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label={t('request.toCity')}
-            name='toCity'
-            value={formData.toCity}
-            onChange={handleChange}
-            fullWidth
-            required
-          />
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label={t('request.itemType')}
-            name='itemType'
-            value={formData.itemType}
-            onChange={handleChange}
-            fullWidth
-            required
-            helperText={t('form.itemTypePlaceholder')}
-          />
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label={t('request.weight')}
-            name='weight'
-            value={formData.weight}
-            onChange={handleChange}
-            fullWidth
-            required
-            helperText={t('form.weightPlaceholder')}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            label={t('request.offerPrice')}
-            name='offerPrice'
-            type='number'
-            value={formData.offerPrice}
-            onChange={handleChange}
-            fullWidth
-            required
-            inputProps={{ min: 0, step: 0.01 }}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            label={t('request.description')}
-            name='description'
-            value={formData.description}
-            onChange={handleChange}
-            fullWidth
-            multiline
-            rows={3}
-            helperText={t('form.descriptionPlaceholder')}
-          />
-        </Grid>
-      </Grid>
-
-      <Button
-        type='submit'
-        variant='contained'
-        fullWidth
-        disabled={loading}
-        sx={{ mt: 3 }}
+      <Paper
+        elevation={11}
+        sx={{
+          p: { xs: 3, md: 6 },
+          borderRadius: 4,
+          border: 1,
+          borderColor: 'divider',
+        }}
       >
-        {loading ? `${t('common.loading')}...` : t('common.submit')}
-      </Button>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+          }}
+        >
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 12px)' },
+              minWidth: 0,
+            }}
+          >
+            <TextField
+              label={t('request.fromCity')}
+              name='fromCity'
+              value={formData.fromCity}
+              onChange={handleChange}
+              fullWidth
+              required
+              size='small'
+            />
+          </Box>
+
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 12px)' },
+              minWidth: 0,
+            }}
+          >
+            <TextField
+              label={t('request.toCity')}
+              name='toCity'
+              value={formData.toCity}
+              onChange={handleChange}
+              fullWidth
+              required
+              size='small'
+            />
+          </Box>
+
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 12px)' },
+              minWidth: 0,
+            }}
+          >
+            <TextField
+              label={t('request.itemType')}
+              name='itemType'
+              value={formData.itemType}
+              onChange={handleChange}
+              fullWidth
+              required
+              helperText={t('form.itemTypePlaceholder')}
+              size='small'
+            />
+          </Box>
+
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 12px)' },
+              minWidth: 0,
+            }}
+          >
+            <TextField
+              label={t('request.weight')}
+              name='weight'
+              value={formData.weight}
+              onChange={handleChange}
+              fullWidth
+              required
+              helperText={t('form.weightPlaceholder')}
+              size='small'
+            />
+          </Box>
+
+          <Box sx={{ flex: '1 1 100%' }}>
+            <TextField
+              label={t('request.offerPrice')}
+              name='offerPrice'
+              type='number'
+              value={formData.offerPrice}
+              onChange={handleChange}
+              fullWidth
+              required
+              inputProps={{ min: 0, step: 0.01 }}
+              size='small'
+            />
+          </Box>
+
+          <Box sx={{ flex: '1 1 100%' }}>
+            <TextField
+              label={t('request.description')}
+              name='description'
+              value={formData.description}
+              onChange={handleChange}
+              fullWidth
+              multiline
+              rows={3}
+              helperText={t('form.descriptionPlaceholder')}
+              size='small'
+            />
+          </Box>
+
+          <Box sx={{ flex: '1 1 100%' }}>
+            <Button
+              type='submit'
+              variant='contained'
+              fullWidth
+              disabled={loading}
+              size='large'
+              sx={{ mt: 2 }}
+            >
+              {loading ? `${t('common.loading')}...` : t('common.submit')}
+            </Button>
+          </Box>
+        </Box>
+      </Paper>
     </Box>
   );
 };

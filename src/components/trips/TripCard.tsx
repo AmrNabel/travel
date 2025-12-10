@@ -9,8 +9,9 @@ import {
   Button,
 } from '@mui/material';
 import { Trip } from '@/types/trip';
-import { format } from 'date-fns';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { formatLocalizedDate } from '@/utils/formatDate';
+import { translateStatus } from '@/utils/translateStatus';
 
 interface TripCardProps {
   trip: Trip;
@@ -18,7 +19,7 @@ interface TripCardProps {
 }
 
 export const TripCard: React.FC<TripCardProps> = ({ trip, onContact }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
     <Card sx={{ mb: 2 }}>
       <CardContent>
@@ -28,11 +29,11 @@ export const TripCard: React.FC<TripCardProps> = ({ trip, onContact }) => {
               {trip.fromCity} → {trip.toCity}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              {format(trip.date, 'MMM dd, yyyy')}
+              {formatLocalizedDate(trip.date, 'MMM dd, yyyy', language)}
             </Typography>
           </Box>
           <Chip
-            label={trip.status}
+            label={translateStatus(trip.status, t)}
             color={trip.status === 'active' ? 'success' : 'default'}
             size='small'
           />
@@ -43,7 +44,8 @@ export const TripCard: React.FC<TripCardProps> = ({ trip, onContact }) => {
             <strong>{t('card.capacity')}:</strong> {trip.capacity}
           </Typography>
           <Typography variant='body2'>
-            <strong>{t('card.price')}:</strong> ${trip.pricePerKg}{t('card.perKg')}
+            <strong>{t('card.price')}:</strong> ${trip.pricePerKg}
+            {t('card.perKg')}
           </Typography>
           {trip.description && (
             <Typography variant='body2' mt={1}>

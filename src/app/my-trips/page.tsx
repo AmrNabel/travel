@@ -12,7 +12,6 @@ import {
   Button,
   alpha,
   useTheme,
-  Grid,
   Card,
   CardContent,
   Chip,
@@ -25,20 +24,21 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
+import { translateStatus } from '@/utils/translateStatus';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import LuggageIcon from '@mui/icons-material/Luggage';
 import AddIcon from '@mui/icons-material/Add';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { format } from 'date-fns';
 import Link from 'next/link';
 import { Trip } from '@/types/trip';
 import { DeliveryRequest } from '@/types/request';
+import { formatLocalizedDate } from '@/utils/formatDate';
 
 function MyTripsContent() {
   const { user } = useAuth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
   const [tripMenuAnchor, setTripMenuAnchor] = useState<null | HTMLElement>(
     null
@@ -99,12 +99,12 @@ function MyTripsContent() {
               {trip.fromCity} → {trip.toCity}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              {format(trip.date, 'MMM dd, yyyy')}
+              {formatLocalizedDate(trip.date, 'MMM dd, yyyy', language)}
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
             <Chip
-              label={trip.status}
+              label={translateStatus(trip.status, t)}
               size='small'
               color={trip.status === 'active' ? 'success' : 'default'}
             />
@@ -159,7 +159,7 @@ function MyTripsContent() {
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
             <Chip
-              label={request.status}
+              label={translateStatus(request.status, t)}
               size='small'
               color={request.status === 'pending' ? 'warning' : 'default'}
             />
@@ -282,13 +282,25 @@ function MyTripsContent() {
                 </Link>
               </Box>
             ) : (
-              <Grid container spacing={3}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 3,
+                }}
+              >
                 {trips.map((trip) => (
-                  <Grid item xs={12} md={6} key={trip.id}>
+                  <Box
+                    key={trip.id}
+                    sx={{
+                      flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                      minWidth: 0,
+                    }}
+                  >
                     {renderTripCard(trip)}
-                  </Grid>
+                  </Box>
                 ))}
-              </Grid>
+              </Box>
             )}
           </Box>
         )}
@@ -340,13 +352,25 @@ function MyTripsContent() {
                 </Link>
               </Box>
             ) : (
-              <Grid container spacing={3}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 3,
+                }}
+              >
                 {requests.map((request) => (
-                  <Grid item xs={12} md={6} key={request.id}>
+                  <Box
+                    key={request.id}
+                    sx={{
+                      flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
+                      minWidth: 0,
+                    }}
+                  >
                     {renderRequestCard(request)}
-                  </Grid>
+                  </Box>
                 ))}
-              </Grid>
+              </Box>
             )}
           </Box>
         )}

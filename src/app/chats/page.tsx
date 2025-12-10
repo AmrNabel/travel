@@ -160,7 +160,7 @@ function ChatsPageContent() {
                             variant='subtitle1'
                             fontWeight={hasUnread ? 700 : 600}
                           >
-                            User {otherUserId?.slice(0, 8)}
+                            {t('chat.userPrefix')} {otherUserId?.slice(0, 8)}
                           </Typography>
                           {chat.lastMessageAt && (
                             <Typography
@@ -188,7 +188,11 @@ function ChatsPageContent() {
                           </Typography>
                           {(chat.tripId || chat.requestId) && (
                             <Chip
-                              label={chat.tripId ? 'Trip' : 'Request'}
+                              label={
+                                chat.tripId
+                                  ? t('chat.tripLabel')
+                                  : t('chat.requestLabel')
+                              }
                               size='small'
                               sx={{
                                 mt: 1,
@@ -204,7 +208,7 @@ function ChatsPageContent() {
                     />
                     {hasUnread && (
                       <Chip
-                        label='New'
+                        label={t('chat.newLabel')}
                         color='primary'
                         size='small'
                         sx={{ ml: 1 }}

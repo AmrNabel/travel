@@ -6,7 +6,6 @@ import {
   Box,
   TextField,
   Button,
-  Grid,
   Typography,
   Paper,
   InputAdornment,
@@ -350,6 +349,9 @@ export default function SearchPage() {
         position: { md: 'sticky' },
         top: { md: 100 },
         height: 'fit-content',
+        width: '100%',
+        maxWidth: '100%',
+        overflowX: 'hidden',
       }}
     >
       <Typography variant='h6' gutterBottom fontWeight={700} sx={{ mb: 3 }}>
@@ -544,6 +546,9 @@ export default function SearchPage() {
         display: 'flex',
         flexDirection: 'column',
         bgcolor: 'background.default',
+        width: '100%',
+        maxWidth: '100vw',
+        overflowX: 'hidden',
       }}
     >
       {/* Header */}
@@ -558,178 +563,254 @@ export default function SearchPage() {
       </Drawer>
 
       {/* Main Content */}
-      <Container maxWidth='xl' sx={{ flexGrow: 1, py: 4 }}>
-        <Grid container spacing={3}>
+      <Container
+        maxWidth='xl'
+        sx={{
+          flexGrow: 1,
+          py: 4,
+          px: { xs: 2, sm: 3 },
+          width: '100%',
+          maxWidth: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 3,
+            width: '100%',
+            maxWidth: '100%',
+            margin: 0,
+          }}
+        >
           {/* Filters Sidebar - Desktop */}
           {!isMobile && (
-            <Grid item xs={12} md={3}>
-              {FilterSidebar}
-            </Grid>
+            <Box sx={{ flex: '0 0 25%', maxWidth: '25%' }}>{FilterSidebar}</Box>
           )}
 
           {/* Results */}
-          <Grid item xs={12} md={isMobile ? 12 : 9}>
-            <Box>
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', md: isMobile ? '1 1 100%' : '1 1 75%' },
+              width: '100%',
+              maxWidth: '100%',
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: { xs: 'flex-start', md: 'center' },
+                mb: 4,
+                flexDirection: { xs: 'column', md: 'row' },
+                gap: 2,
+              }}
+            >
+              <Box>
+                <Typography
+                  variant='h3'
+                  gutterBottom
+                  fontWeight={800}
+                  sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}
+                >
+                  {t('search.title')}
+                </Typography>
+                <Typography variant='body1' color='text.secondary'>
+                  {t('search.found', {
+                    count:
+                      activeTab === 'trips' ? trips.length : requests.length,
+                    type:
+                      activeTab === 'trips'
+                        ? t('myActivity.myTrips').toLowerCase()
+                        : t('myActivity.myRequests').toLowerCase(),
+                  })}
+                </Typography>
+              </Box>
+
+              <ToggleButtonGroup
+                value={activeTab}
+                exclusive
+                onChange={(_, value) => value && setActiveTab(value)}
+                sx={{
+                  bgcolor: 'background.default',
+                  p: 0.5,
+                  borderRadius: 2,
+                  '& .MuiToggleButton-root': {
+                    border: 'none',
+                    borderRadius: 1.5,
+                    px: 3,
+                    py: 1,
+                    fontWeight: 600,
+                    '&.Mui-selected': {
+                      bgcolor: 'background.paper',
+                      boxShadow: theme.shadows[2],
+                      '&:hover': {
+                        bgcolor: 'background.paper',
+                      },
+                    },
+                  },
+                }}
+              >
+                <ToggleButton value='trips'>
+                  {t('search.browseTrips')}
+                </ToggleButton>
+                <ToggleButton value='requests'>
+                  {t('search.browseRequests')}
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+
+            {activeTab === 'trips' && (
               <Box
                 sx={{
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: { xs: 'flex-start', md: 'center' },
-                  mb: 4,
-                  flexDirection: { xs: 'column', md: 'row' },
-                  gap: 2,
+                  flexDirection: 'column',
+                  gap: 3,
+                  width: '100%',
+                  maxWidth: '100%',
                 }}
               >
-                <Box>
-                  <Typography
-                    variant='h3'
-                    gutterBottom
-                    fontWeight={800}
-                    sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}
+                {activeTab === 'trips' && user && !hasActiveRequests && (
+                  <Alert
+                    severity='info'
+                    variant='outlined'
+                    sx={{
+                      display: 'flex',
+                      flexDirection: { xs: 'column', sm: 'row' },
+                      alignItems: { xs: 'flex-start', sm: 'center' },
+                      gap: { xs: 2, sm: 1 },
+                      p: { xs: 2, sm: 3 },
+                      width: '100%',
+                      maxWidth: '100%',
+                      overflowX: 'hidden',
+                    }}
+                    action={
+                      <Button
+                        component={NextLink}
+                        href='/send-item'
+                        size={isMobile ? 'medium' : 'small'}
+                        variant='contained'
+                        fullWidth={isMobile}
+                        sx={{
+                          minWidth: { xs: '100%', sm: 'auto' },
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {t('offer.createRequestCTA')}
+                      </Button>
+                    }
                   >
-                    {t('search.title')}
-                  </Typography>
-                  <Typography variant='body1' color='text.secondary'>
-                    {t('search.found', {
-                      count:
-                        activeTab === 'trips' ? trips.length : requests.length,
-                      type:
-                        activeTab === 'trips'
-                          ? t('myActivity.myTrips').toLowerCase()
-                          : t('myActivity.myRequests').toLowerCase(),
-                    })}
-                  </Typography>
-                </Box>
-
-                <ToggleButtonGroup
-                  value={activeTab}
-                  exclusive
-                  onChange={(_, value) => value && setActiveTab(value)}
-                  sx={{
-                    bgcolor: 'background.default',
-                    p: 0.5,
-                    borderRadius: 2,
-                    '& .MuiToggleButton-root': {
-                      border: 'none',
-                      borderRadius: 1.5,
-                      px: 3,
-                      py: 1,
-                      fontWeight: 600,
-                      '&.Mui-selected': {
-                        bgcolor: 'background.paper',
-                        boxShadow: theme.shadows[2],
-                        '&:hover': {
-                          bgcolor: 'background.paper',
-                        },
-                      },
-                    },
-                  }}
-                >
-                  <ToggleButton value='trips'>
-                    {t('search.browseTrips')}
-                  </ToggleButton>
-                  <ToggleButton value='requests'>
-                    {t('search.browseRequests')}
-                  </ToggleButton>
-                </ToggleButtonGroup>
-              </Box>
-
-              {activeTab === 'trips' && (
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                  {activeTab === 'trips' && user && !hasActiveRequests && (
-                    <Alert
-                      severity='info'
-                      variant='outlined'
-                      action={
-                        <Button
-                          component={NextLink}
-                          href='/send-item'
-                          size='small'
-                          variant='contained'
-                        >
-                          {t('offer.createRequestCTA')}
-                        </Button>
-                      }
-                    >
-                      <AlertTitle>
+                    <Box sx={{ flex: 1, width: { xs: '100%', sm: 'auto' } }}>
+                      <AlertTitle
+                        sx={{
+                          mb: { xs: 1, sm: 0.5 },
+                          fontSize: { xs: '0.95rem', sm: '1rem' },
+                        }}
+                      >
                         {t('offer.createRequestBannerTitle')}
                       </AlertTitle>
-                      {t('offer.createRequestBannerBody')}
-                    </Alert>
-                  )}
-                  {tripsLoading ? (
-                    <Typography>{t('common.loading')}...</Typography>
-                  ) : trips.length === 0 ? (
-                    <Paper
-                      elevation={2}
-                      sx={{ p: 6, textAlign: 'center', borderRadius: 3 }}
-                    >
-                      <FlightIcon
-                        sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
-                      />
-                      <Typography variant='h6' color='text.secondary'>
-                        {t('trip.noTrips')}
+                      <Typography
+                        variant='body2'
+                        sx={{
+                          fontSize: { xs: '0.875rem', sm: '0.875rem' },
+                          lineHeight: { xs: 1.5, sm: 1.43 },
+                        }}
+                      >
+                        {t('offer.createRequestBannerBody')}
                       </Typography>
-                      <Typography variant='body2' color='text.disabled'>
-                        {t('search.tryAdjusting')}
-                      </Typography>
-                    </Paper>
-                  ) : (
-                    trips.map((trip, index) => (
-                      <TripCardWithUser
-                        key={trip.id}
-                        trip={trip}
-                        index={index}
-                        isMatch={index === 0}
-                        showSendOffer={hasActiveRequests}
-                        showSendOfferHint={!!user && !hasActiveRequests}
-                        onSendOffer={() => handleSendOffer(trip)}
-                        onMessage={() =>
-                          handleContactTrip(trip.id, trip.userId)
-                        }
-                        isOwnTrip={trip.userId === user?.id}
-                        contactLoading={contactLoading === trip.id}
-                      />
-                    ))
-                  )}
-                </Box>
-              )}
+                    </Box>
+                  </Alert>
+                )}
+                {tripsLoading ? (
+                  <Typography>{t('common.loading')}...</Typography>
+                ) : trips.length === 0 ? (
+                  <Paper
+                    elevation={2}
+                    sx={{
+                      p: 6,
+                      textAlign: 'center',
+                      borderRadius: 3,
+                      width: '100%',
+                      maxWidth: '100%',
+                    }}
+                  >
+                    <FlightIcon
+                      sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
+                    />
+                    <Typography variant='h6' color='text.secondary'>
+                      {t('trip.noTrips')}
+                    </Typography>
+                    <Typography variant='body2' color='text.disabled'>
+                      {t('search.tryAdjusting')}
+                    </Typography>
+                  </Paper>
+                ) : (
+                  trips.map((trip, index) => (
+                    <TripCardWithUser
+                      key={trip.id}
+                      trip={trip}
+                      index={index}
+                      isMatch={index === 0}
+                      showSendOffer={hasActiveRequests}
+                      showSendOfferHint={!!user && !hasActiveRequests}
+                      onSendOffer={() => handleSendOffer(trip)}
+                      onMessage={() => handleContactTrip(trip.id, trip.userId)}
+                      isOwnTrip={trip.userId === user?.id}
+                      contactLoading={contactLoading === trip.id}
+                    />
+                  ))
+                )}
+              </Box>
+            )}
 
-              {activeTab === 'requests' && (
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                  {requestsLoading ? (
-                    <Typography>{t('common.loading')}...</Typography>
-                  ) : requests.length === 0 ? (
-                    <Paper
-                      elevation={2}
-                      sx={{ p: 6, textAlign: 'center', borderRadius: 3 }}
-                    >
-                      <LuggageIcon
-                        sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
-                      />
-                      <Typography variant='h6' color='text.secondary'>
-                        {t('request.noRequests')}
-                      </Typography>
-                      <Typography variant='body2' color='text.disabled'>
-                        {t('search.tryAdjusting')}
-                      </Typography>
-                    </Paper>
-                  ) : (
-                    requests.map((request) => (
-                      <RequestCard
-                        key={request.id}
-                        request={request}
-                        onContact={() =>
-                          handleContactRequest(request.id, request.userId)
-                        }
-                      />
-                    ))
-                  )}
-                </Box>
-              )}
-            </Box>
-          </Grid>
-        </Grid>
+            {activeTab === 'requests' && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 3,
+                  width: '100%',
+                  maxWidth: '100%',
+                }}
+              >
+                {requestsLoading ? (
+                  <Typography>{t('common.loading')}...</Typography>
+                ) : requests.length === 0 ? (
+                  <Paper
+                    elevation={2}
+                    sx={{
+                      p: 6,
+                      textAlign: 'center',
+                      borderRadius: 3,
+                      width: '100%',
+                      maxWidth: '100%',
+                    }}
+                  >
+                    <LuggageIcon
+                      sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
+                    />
+                    <Typography variant='h6' color='text.secondary'>
+                      {t('request.noRequests')}
+                    </Typography>
+                    <Typography variant='body2' color='text.disabled'>
+                      {t('search.tryAdjusting')}
+                    </Typography>
+                  </Paper>
+                ) : (
+                  requests.map((request) => (
+                    <RequestCard
+                      key={request.id}
+                      request={request}
+                      onContact={() =>
+                        handleContactRequest(request.id, request.userId)
+                      }
+                    />
+                  ))
+                )}
+              </Box>
+            )}
+          </Box>
+        </Box>
       </Container>
 
       {/* Offer Modal */}

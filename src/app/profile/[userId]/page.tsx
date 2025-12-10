@@ -8,7 +8,6 @@ import {
   Paper,
   Avatar,
   Chip,
-  Grid,
   Rating,
   CircularProgress,
   Button,
@@ -163,8 +162,15 @@ function ProfileContent({ userId }: { userId: string }) {
           background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.05)} 0%, ${alpha(theme.palette.secondary.main, 0.05)} 100%)`,
         }}
       >
-        <Grid container spacing={3} alignItems='center'>
-          <Grid item xs={12} sm='auto'>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+            alignItems: 'center',
+          }}
+        >
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
             <Avatar
               sx={{
                 width: { xs: 100, sm: 120 },
@@ -178,8 +184,8 @@ function ProfileContent({ userId }: { userId: string }) {
             >
               {profileUser.name.charAt(0).toUpperCase()}
             </Avatar>
-          </Grid>
-          <Grid item xs={12} sm>
+          </Box>
+          <Box sx={{ flex: { xs: '1 1 100%', sm: '1 1 auto' }, minWidth: 0 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
               <Typography variant='h4' fontWeight={800}>
                 {profileUser.name}
@@ -250,13 +256,25 @@ function ProfileContent({ userId }: { userId: string }) {
                 {refreshing ? t('profile.updating') : t('profile.refreshStats')}
               </Button>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Paper>
 
       {/* Stats */}
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} sm={4}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 3,
+          mb: 4,
+        }}
+      >
+        <Box
+          sx={{
+            flex: { xs: '1 1 100%', sm: '1 1 calc(33.333% - 16px)' },
+            minWidth: 0,
+          }}
+        >
           <Paper
             elevation={2}
             sx={{
@@ -272,8 +290,13 @@ function ProfileContent({ userId }: { userId: string }) {
               {t('rating.totalReviews')}
             </Typography>
           </Paper>
-        </Grid>
-        <Grid item xs={12} sm={4}>
+        </Box>
+        <Box
+          sx={{
+            flex: { xs: '1 1 100%', sm: '1 1 calc(33.333% - 16px)' },
+            minWidth: 0,
+          }}
+        >
           <Paper
             elevation={2}
             sx={{
@@ -294,8 +317,13 @@ function ProfileContent({ userId }: { userId: string }) {
               {t('rating.averageRating')}
             </Typography>
           </Paper>
-        </Grid>
-        <Grid item xs={12} sm={4}>
+        </Box>
+        <Box
+          sx={{
+            flex: { xs: '1 1 100%', sm: '1 1 calc(33.333% - 16px)' },
+            minWidth: 0,
+          }}
+        >
           <Paper
             elevation={2}
             sx={{
@@ -311,8 +339,8 @@ function ProfileContent({ userId }: { userId: string }) {
               {t('profile.verificationStatus')}
             </Typography>
           </Paper>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
 
       {/* Reviews */}
       <Paper elevation={2} sx={{ p: 3, borderRadius: 3 }}>

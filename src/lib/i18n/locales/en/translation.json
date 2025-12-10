@@ -216,7 +216,27 @@
     "createRequestBannerBody": "Add the item you want to send so travelers can review it before accepting your offer.",
     "createRequestCTA": "Create request",
     "needRequestHint": "Add your delivery request to enable offers with this traveler.",
-    "alreadyHaveOffer": "You already have a pending offer for this trip"
+    "alreadyHaveOffer": "You already have a pending offer for this trip",
+    "manageDescription": "Manage offers you've sent and received",
+    "modal": {
+      "title": "Send Offer",
+      "subtitle": "Make an offer to the traveler",
+      "yourOffer": "Your Offer",
+      "yourItem": "Your Item",
+      "suggested": "Suggested: ${{price}}",
+      "messagePlaceholder": "Any special instructions or questions...",
+      "sending": "Sending...",
+      "sendOffer": "Send Offer",
+      "capacity": "Capacity: {{capacity}}",
+      "pricePerKg": "${{price}}/kg"
+    },
+    "dialog": {
+      "acceptTitle": "Accept Offer?",
+      "acceptMessage": "This will create a chat between you and the sender, and decline all other offers for this request.",
+      "declineTitle": "Decline Offer?",
+      "declineMessage": "Are you sure you want to decline this offer? This action cannot be undone.",
+      "offersFromSenders": "Offers from senders will appear here"
+    }
   },
 
   "chat": {
@@ -229,7 +249,11 @@
     "chatCreated": "Chat created successfully!",
     "chatError": "Failed to create chat. Please try again.",
     "connecting": "Connecting...",
-    "goToChat": "Go to Chat"
+    "goToChat": "Go to Chat",
+    "userPrefix": "User",
+    "newLabel": "New",
+    "tripLabel": "Trip",
+    "requestLabel": "Request"
   },
 
   "rating": {
@@ -363,6 +387,19 @@
     "noStations": "No stations found"
   },
 
+  "status": {
+    "pending": "Pending",
+    "accepted": "Accepted",
+    "declined": "Declined",
+    "expired": "Expired",
+    "delivered": "Delivered",
+    "in_transit": "In Transit",
+    "active": "Active",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "matched": "Matched"
+  },
+
   "error": {
     "general": "Something went wrong. Please try again.",
     "network": "Network error. Please check your connection.",
@@ -380,7 +417,8 @@
     "acceptingOffer": "Failed to accept offer",
     "decliningOffer": "Failed to decline offer",
     "loadingStations": "Unable to load station list.",
-    "loadingTrain": "Unable to load train schedule. Please verify the number."
+    "loadingTrain": "Unable to load train schedule. Please verify the number.",
+    "sendingOfferFailed": "Failed to send offer"
   },
 
   "validation": {

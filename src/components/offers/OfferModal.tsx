@@ -14,10 +14,14 @@ import {
   InputAdornment,
   Divider,
   Chip,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { Trip } from '@/types/trip';
 import { DeliveryRequest } from '@/types/request';
 import { CreateOfferInput } from '@/types/offer';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { formatLocaleDate } from '@/utils/formatDate';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import MessageIcon from '@mui/icons-material/Message';
 import FlightIcon from '@mui/icons-material/Flight';
@@ -41,6 +45,9 @@ export const OfferModal: React.FC<OfferModalProps> = ({
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const { t, language } = useLanguage();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,26 +64,40 @@ export const OfferModal: React.FC<OfferModalProps> = ({
 
       onClose();
     } catch (err: any) {
-      setError(err.message || 'Failed to send offer');
+      setError(err.message || t('error.sendingOfferFailed'));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth='sm' fullWidth>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      maxWidth='sm'
+      fullWidth
+      fullScreen={isMobile}
+    >
       <DialogTitle>
         <Box>
-          <Typography variant='h5' fontWeight={700}>
-            Send Offer
+          <Typography
+            variant='h5'
+            fontWeight={700}
+            sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}
+          >
+            {t('offer.modal.title')}
           </Typography>
-          <Typography variant='body2' color='text.secondary'>
-            Make an offer to the traveler
+          <Typography
+            variant='body2'
+            color='text.secondary'
+            sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}
+          >
+            {t('offer.modal.subtitle')}
           </Typography>
         </Box>
       </DialogTitle>
 
-      <DialogContent>
+      <DialogContent sx={{ px: { xs: 2, sm: 3 } }}>
         {error && (
           <Alert severity='error' sx={{ mb: 2 }}>
             {error}
@@ -86,7 +107,7 @@ export const OfferModal: React.FC<OfferModalProps> = ({
         {/* Trip Summary */}
         <Box
           sx={{
-            p: 2,
+            p: { xs: 1.5, sm: 2 },
             bgcolor: 'background.default',
             borderRadius: 2,
             mb: 3,
@@ -94,27 +115,33 @@ export const OfferModal: React.FC<OfferModalProps> = ({
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
             <FlightIcon color='primary' />
-            <Typography variant='h6' fontWeight={600}>
+            <Typography
+              variant='h6'
+              fontWeight={600}
+              sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
+            >
               {trip.fromCity} → {trip.toCity}
             </Typography>
           </Box>
           <Typography variant='body2' color='text.secondary'>
-            {new Date(trip.date).toLocaleDateString('en-US', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric',
-            })}
+            {formatLocaleDate(trip.date, language)}
           </Typography>
-          <Box sx={{ display: 'flex', gap: 1, mt: 1 }}>
-            <Chip label={`Capacity: ${trip.capacity}`} size='small' />
-            <Chip label={`$${trip.pricePerKg}/kg`} size='small' />
+          <Box sx={{ display: 'flex', gap: 1, mt: 1, flexWrap: 'wrap' }}>
+            <Chip
+              label={t('offer.modal.capacity', { capacity: trip.capacity })}
+              size='small'
+            />
+            <Chip
+              label={t('offer.modal.pricePerKg', { price: trip.pricePerKg })}
+              size='small'
+            />
           </Box>
         </Box>
 
         {/* Item Details */}
         <Box sx={{ mb: 3 }}>
           <Typography variant='subtitle2' fontWeight={600} gutterBottom>
-            Your Item
+            {t('offer.modal.yourItem')}
           </Typography>
           <Typography variant='body2' color='text.secondary'>
             {request.itemType} • {request.weight}
@@ -131,7 +158,7 @@ export const OfferModal: React.FC<OfferModalProps> = ({
         {/* Offer Form */}
         <Box component='form' onSubmit={handleSubmit}>
           <TextField
-            label='Your Offer'
+            label={t('offer.modal.yourOffer')}
             type='number'
             value={offeredPrice}
             onChange={(e) => setOfferedPrice(Number(e.target.value))}
@@ -145,18 +172,20 @@ export const OfferModal: React.FC<OfferModalProps> = ({
                 </InputAdornment>
               ),
             }}
-            helperText={`Suggested: $${request.offerPrice}`}
+            helperText={t('offer.modal.suggested', {
+              price: request.offerPrice,
+            })}
           />
 
           <TextField
-            label='Message to Traveler (Optional)'
+            label={t('offer.messageToTraveler')}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             fullWidth
             multiline
             rows={3}
             margin='normal'
-            placeholder='Any special instructions or questions...'
+            placeholder={t('offer.modal.messagePlaceholder')}
             InputProps={{
               startAdornment: (
                 <InputAdornment
@@ -171,17 +200,30 @@ export const OfferModal: React.FC<OfferModalProps> = ({
         </Box>
       </DialogContent>
 
-      <DialogActions sx={{ p: 3, pt: 0 }}>
-        <Button onClick={onClose} disabled={loading}>
-          Cancel
+      <DialogActions
+        sx={{
+          p: { xs: 2, sm: 3 },
+          pt: 0,
+          flexDirection: { xs: 'column-reverse', sm: 'row' },
+          gap: 1,
+        }}
+      >
+        <Button
+          onClick={onClose}
+          disabled={loading}
+          fullWidth={isMobile}
+          sx={{ m: 0 }}
+        >
+          {t('common.cancel')}
         </Button>
         <Button
           onClick={handleSubmit}
           variant='contained'
           disabled={loading}
-          sx={{ minWidth: 120 }}
+          fullWidth={isMobile}
+          sx={{ minWidth: { xs: '100%', sm: 120 }, m: 0 }}
         >
-          {loading ? 'Sending...' : 'Send Offer'}
+          {loading ? t('offer.modal.sending') : t('offer.modal.sendOffer')}
         </Button>
       </DialogActions>
     </Dialog>

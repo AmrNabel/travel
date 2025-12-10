@@ -216,7 +216,27 @@
     "createRequestBannerBody": "اكتب تفاصيل الحاجة اللي عايز تبعتها عشان المسافرين يراجعوها قبل ما يقبلوا العرض.",
     "createRequestCTA": "اعمل طلب",
     "needRequestHint": "بعد ما تسجل طلب التوصيل هتقدر تبعت عروض للمسافرين.",
-    "alreadyHaveOffer": "انت عندك عرض منتظر للرحلة دي فعلاً"
+    "alreadyHaveOffer": "انت عندك عرض منتظر للرحلة دي فعلاً",
+    "manageDescription": "إدارة العروض اللي بعتها واللي استلمتها",
+    "modal": {
+      "title": "ابعت عرض",
+      "subtitle": "اعمل عرض للمسافر",
+      "yourOffer": "عرضك",
+      "yourItem": "حاجتك",
+      "suggested": "المقترح: ${{price}}",
+      "messagePlaceholder": "أي تعليمات خاصة أو أسئلة...",
+      "sending": "جاري الإرسال...",
+      "sendOffer": "ابعت العرض",
+      "capacity": "المساحة: {{capacity}}",
+      "pricePerKg": "${{price}}/كيلو"
+    },
+    "dialog": {
+      "acceptTitle": "تقبل العرض؟",
+      "acceptMessage": "ده هيخلي محادثة بينك وبين المرسل، ويرفض كل العروض التانية للطلب ده.",
+      "declineTitle": "ترفض العرض؟",
+      "declineMessage": "متأكد إنك عايز ترفض العرض ده؟ العملية دي مش هتقدر ترجعها.",
+      "offersFromSenders": "العروض من المرسلين هتظهر هنا"
+    }
   },
 
   "chat": {
@@ -229,7 +249,11 @@
     "chatCreated": "تم إنشاء المحادثة بنجاح!",
     "chatError": "فشل إنشاء المحادثة. حاول تاني.",
     "connecting": "جاري الاتصال...",
-    "goToChat": "روح للمحادثة"
+    "goToChat": "روح للمحادثة",
+    "userPrefix": "مستخدم",
+    "newLabel": "جديد",
+    "tripLabel": "رحلة",
+    "requestLabel": "طلب"
   },
 
   "rating": {
@@ -363,6 +387,19 @@
     "noStations": "مافيش محطات"
   },
 
+  "status": {
+    "pending": "منتظر",
+    "accepted": "مقبول",
+    "declined": "مرفوض",
+    "expired": "منتهي",
+    "delivered": "تم التوصيل",
+    "in_transit": "في الطريق",
+    "active": "نشط",
+    "completed": "مكتمل",
+    "cancelled": "ملغي",
+    "matched": "متطابق"
+  },
+
   "error": {
     "general": "في حاجة غلط. حاول تاني.",
     "network": "مشكلة في الإنترنت. تأكد من الاتصال.",
@@ -380,7 +417,8 @@
     "acceptingOffer": "فشل قبول العرض",
     "decliningOffer": "فشل رفض العرض",
     "loadingStations": "مش قادرين نحمّل قائمة المحطات.",
-    "loadingTrain": "مش قادرين نحمّل بيانات القطار. اتأكد من الرقم."
+    "loadingTrain": "مش قادرين نحمّل بيانات القطار. اتأكد من الرقم.",
+    "sendingOfferFailed": "فشل إرسال العرض"
   },
 
   "validation": {

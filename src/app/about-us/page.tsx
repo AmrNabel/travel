@@ -5,7 +5,6 @@ import {
   Box,
   Typography,
   Paper,
-  Grid,
   Card,
   CardContent,
   useTheme,
@@ -77,8 +76,20 @@ export default function AboutUsPage() {
         </Box>
 
         {/* Mission & Vision */}
-        <Grid container spacing={4} sx={{ mb: 8 }}>
-          <Grid item xs={12} md={6}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 4,
+            mb: 8,
+          }}
+        >
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', md: '1 1 calc(50% - 16px)' },
+              minWidth: 0,
+            }}
+          >
             <Paper
               elevation={3}
               sx={{
@@ -98,12 +109,21 @@ export default function AboutUsPage() {
               <Typography variant='h5' gutterBottom sx={{ fontWeight: 600 }}>
                 {t('aboutUs.mission.title')}
               </Typography>
-              <Typography variant='body1' color='text.secondary' sx={{ lineHeight: 1.8 }}>
+              <Typography
+                variant='body1'
+                color='text.secondary'
+                sx={{ lineHeight: 1.8 }}
+              >
                 {t('aboutUs.mission.description')}
               </Typography>
             </Paper>
-          </Grid>
-          <Grid item xs={12} md={6}>
+          </Box>
+          <Box
+            sx={{
+              flex: { xs: '1 1 100%', md: '1 1 calc(50% - 16px)' },
+              minWidth: 0,
+            }}
+          >
             <Paper
               elevation={3}
               sx={{
@@ -123,12 +143,16 @@ export default function AboutUsPage() {
               <Typography variant='h5' gutterBottom sx={{ fontWeight: 600 }}>
                 {t('aboutUs.vision.title')}
               </Typography>
-              <Typography variant='body1' color='text.secondary' sx={{ lineHeight: 1.8 }}>
+              <Typography
+                variant='body1'
+                color='text.secondary'
+                sx={{ lineHeight: 1.8 }}
+              >
                 {t('aboutUs.vision.description')}
               </Typography>
             </Paper>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         {/* Values */}
         <Box sx={{ mb: 8 }}>
@@ -139,11 +163,27 @@ export default function AboutUsPage() {
           >
             {t('aboutUs.values.title')}
           </Typography>
-          <Grid container spacing={3}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 3,
+            }}
+          >
             {values.map((value) => {
               const IconComponent = value.icon;
               return (
-                <Grid item xs={12} sm={6} md={3} key={value.key}>
+                <Box
+                  key={value.key}
+                  sx={{
+                    flex: {
+                      xs: '1 1 100%',
+                      sm: '1 1 calc(50% - 12px)',
+                      md: '1 1 calc(25% - 18px)',
+                    },
+                    minWidth: 0,
+                  }}
+                >
                   <Card
                     sx={{
                       height: '100%',
@@ -165,7 +205,11 @@ export default function AboutUsPage() {
                           mb: 2,
                         }}
                       />
-                      <Typography variant='h6' gutterBottom sx={{ fontWeight: 600 }}>
+                      <Typography
+                        variant='h6'
+                        gutterBottom
+                        sx={{ fontWeight: 600 }}
+                      >
                         {t(`aboutUs.values.${value.key}.title`)}
                       </Typography>
                       <Typography variant='body2' color='text.secondary'>
@@ -173,10 +217,10 @@ export default function AboutUsPage() {
                       </Typography>
                     </CardContent>
                   </Card>
-                </Grid>
+                </Box>
               );
             })}
-          </Grid>
+          </Box>
         </Box>
 
         {/* How It Works */}
@@ -188,11 +232,23 @@ export default function AboutUsPage() {
           >
             {t('aboutUs.howItWorks.title')}
           </Typography>
-          <Grid container spacing={4}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 4,
+            }}
+          >
             {steps.map((step, index) => {
               const IconComponent = step.icon;
               return (
-                <Grid item xs={12} md={4} key={step.key}>
+                <Box
+                  key={step.key}
+                  sx={{
+                    flex: { xs: '1 1 100%', md: '1 1 calc(33.333% - 22px)' },
+                    minWidth: 0,
+                  }}
+                >
                   <Paper
                     elevation={3}
                     sx={{
@@ -231,20 +287,27 @@ export default function AboutUsPage() {
                         mt: 2,
                       }}
                     />
-                    <Typography variant='h6' gutterBottom sx={{ fontWeight: 600 }}>
+                    <Typography
+                      variant='h6'
+                      gutterBottom
+                      sx={{ fontWeight: 600 }}
+                    >
                       {t(`aboutUs.howItWorks.${step.key}.title`)}
                     </Typography>
-                    <Typography variant='body1' color='text.secondary' sx={{ lineHeight: 1.8 }}>
+                    <Typography
+                      variant='body1'
+                      color='text.secondary'
+                      sx={{ lineHeight: 1.8 }}
+                    >
                       {t(`aboutUs.howItWorks.${step.key}.description`)}
                     </Typography>
                   </Paper>
-                </Grid>
+                </Box>
               );
             })}
-          </Grid>
+          </Box>
         </Box>
       </Container>
     </Box>
   );
 }
-

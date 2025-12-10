@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Card, CardContent, Skeleton, Grid } from '@mui/material';
+import { Box, Card, CardContent, Skeleton } from '@mui/material';
 
 export const TripCardSkeleton = () => (
   <Card elevation={2}>
@@ -50,11 +50,18 @@ export const ChatListSkeleton = () => (
 export const ProfileSkeleton = () => (
   <Box>
     <Card elevation={2} sx={{ p: 4, mb: 4 }}>
-      <Grid container spacing={3} alignItems='center'>
-        <Grid item xs={12} sm='auto'>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 3,
+          alignItems: 'center',
+        }}
+      >
+        <Box sx={{ flex: { xs: '1 1 100%', sm: '0 0 auto' } }}>
           <Skeleton variant='circular' width={120} height={120} />
-        </Grid>
-        <Grid item xs={12} sm>
+        </Box>
+        <Box sx={{ flex: { xs: '1 1 100%', sm: '1 1 auto' }, minWidth: 0 }}>
           <Skeleton variant='text' width='40%' height={40} />
           <Box sx={{ display: 'flex', gap: 1, my: 2 }}>
             <Skeleton
@@ -77,12 +84,25 @@ export const ProfileSkeleton = () => (
             height={40}
             sx={{ borderRadius: 24, mt: 2 }}
           />
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Card>
-    <Grid container spacing={3} sx={{ mb: 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 3,
+        mb: 4,
+      }}
+    >
       {[1, 2, 3].map((i) => (
-        <Grid item xs={12} sm={4} key={i}>
+        <Box
+          key={i}
+          sx={{
+            flex: { xs: '1 1 100%', sm: '1 1 calc(33.333% - 16px)' },
+            minWidth: 0,
+          }}
+        >
           <Card elevation={2} sx={{ p: 3, textAlign: 'center' }}>
             <Skeleton
               variant='text'
@@ -97,8 +117,8 @@ export const ProfileSkeleton = () => (
               sx={{ mx: 'auto' }}
             />
           </Card>
-        </Grid>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   </Box>
 );
