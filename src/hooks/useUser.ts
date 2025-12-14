@@ -8,6 +8,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+  phone?: string;
   photoURL?: string;
   createdAt: Date;
 }
@@ -31,6 +32,7 @@ export const useUser = (userId: string | undefined) => {
             id: userDoc.id,
             name: userData.name || 'User',
             email: userData.email,
+            phone: userData.phone,
             photoURL: userData.photoURL,
             createdAt: userData.createdAt?.toDate(),
           });

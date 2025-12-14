@@ -268,7 +268,10 @@
     "userPrefix": "User",
     "newLabel": "New",
     "tripLabel": "Trip",
-    "requestLabel": "Request"
+    "requestLabel": "Request",
+    "callUser": "Call {{name}}",
+    "noPhoneNumber": "This user hasn't provided a phone number",
+    "phoneNumberCopied": "Phone number copied: {{phone}}"
   },
 
   "rating": {

@@ -268,7 +268,10 @@
     "userPrefix": "مستخدم",
     "newLabel": "جديد",
     "tripLabel": "رحلة",
-    "requestLabel": "طلب"
+    "requestLabel": "طلب",
+    "callUser": "اتصل بـ {{name}}",
+    "noPhoneNumber": "المستخدم ده ما قدمش رقم تليفون",
+    "phoneNumberCopied": "تم نسخ رقم التليفون: {{phone}}"
   },
 
   "rating": {
