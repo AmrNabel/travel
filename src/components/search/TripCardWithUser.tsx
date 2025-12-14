@@ -287,9 +287,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
               <Button
                 variant='contained'
                 size='small'
-                fullWidth={
-                  !isOwnTrip && !showSendOffer ? true : { xs: true, sm: false }
-                }
+                fullWidth={!isOwnTrip && !showSendOffer}
                 onClick={onMessage}
                 disabled={contactLoading || isOwnTrip}
                 sx={{
@@ -298,6 +296,10 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                   gap: { xs: 0.5, sm: 1 },
                   justifyContent: 'center',
                   minWidth: { xs: 0, sm: 120 },
+                  width: {
+                    xs: '100%',
+                    sm: isOwnTrip || showSendOffer ? 'auto' : '100%',
+                  },
                   flex: { xs: '1 1 100%', sm: '0 0 auto' },
                   px: { xs: 1, sm: 2 },
                   whiteSpace: { xs: 'nowrap', sm: 'normal' },

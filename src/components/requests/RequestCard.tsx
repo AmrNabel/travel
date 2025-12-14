@@ -225,7 +225,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
               <Button
                 variant='contained'
                 size='small'
-                fullWidth={{ xs: true, sm: false }}
+                fullWidth
                 onClick={onContact}
                 disabled={contactLoading || isOwnRequest}
                 sx={{
@@ -234,6 +234,7 @@ export const RequestCard: React.FC<RequestCardProps> = ({
                   gap: { xs: 0.5, sm: 1 },
                   justifyContent: 'center',
                   minWidth: { xs: 0, sm: 140 },
+                  width: { xs: '100%', sm: 'auto' },
                   px: { xs: 1, sm: 2 },
                   whiteSpace: { xs: 'nowrap', sm: 'normal' },
                   overflow: 'hidden',

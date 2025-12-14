@@ -12,7 +12,7 @@ import {
   sendPasswordResetEmail,
   signInWithPopup,
   GoogleAuthProvider,
-  signInAnonymously,
+  signInAnonymously as firebaseSignInAnonymously,
 } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase/config';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
@@ -155,7 +155,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const signInAnonymously = async () => {
-    const result = await signInAnonymously(auth);
+    const result = await firebaseSignInAnonymously(auth);
     const firebaseUser = result.user;
 
     // Generate a default display name
