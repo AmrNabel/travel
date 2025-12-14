@@ -56,27 +56,32 @@ function ChatListItem({
           sx={{
             py: 2,
             px: 3,
+            transition: 'all 0.2s ease-in-out',
             '&:hover': {
-              bgcolor: alpha(theme.palette.primary.main, 0.05),
+              bgcolor: alpha(theme.palette.primary.main, 0.08),
+              transform: 'translateX(4px)',
             },
           }}
         >
           <ListItemAvatar>
-            <Avatar
-              sx={{
-                width: 56,
-                height: 56,
-                border: hasUnread ? 2 : 0,
-                borderColor: 'primary.main',
-              }}
-              src={otherUser?.photoURL}
-            >
-              {userLoading
-                ? 'U'
-                : otherUser?.name?.charAt(0).toUpperCase() ||
-                  otherUserId?.charAt(0).toUpperCase() ||
-                  'U'}
-            </Avatar>
+            {userLoading ? (
+              <CircularProgress size={28} sx={{ m: 1 }} />
+            ) : (
+              <Avatar
+                sx={{
+                  m: 1,
+                  width: 56,
+                  height: 56,
+                  border: hasUnread ? 2 : 0,
+                  borderColor: 'primary.main',
+                  bgcolor: otherUser?.photoURL ? 'transparent' : 'primary.main',
+                }}
+                src={otherUser?.photoURL}
+              >
+                {otherUser?.name?.charAt(0).toUpperCase() ||
+                  t('chat.userPrefix')}
+              </Avatar>
+            )}
           </ListItemAvatar>
           <ListItemText
             primary={
@@ -91,10 +96,20 @@ function ChatListItem({
                 <Typography
                   variant='subtitle1'
                   fontWeight={hasUnread ? 700 : 600}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                  }}
                 >
-                  {userLoading
-                    ? t('common.loading')
-                    : otherUser?.name || otherUserId?.slice(0, 8) || 'User'}
+                  {userLoading ? (
+                    <>
+                      <CircularProgress size={16} />
+                      <Box component='span'>{t('common.loading')}</Box>
+                    </>
+                  ) : (
+                    otherUser?.name || t('chat.userPrefix')
+                  )}
                 </Typography>
                 {chat.lastMessageAt && (
                   <Typography variant='caption' color='text.secondary'>

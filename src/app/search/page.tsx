@@ -18,6 +18,7 @@ import {
   CircularProgress,
   Alert,
   AlertTitle,
+  alpha,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import NextLink from 'next/link';
@@ -33,6 +34,7 @@ import { OfferModal } from '@/components/offers/OfferModal';
 import { Trip } from '@/types/trip';
 import { DeliveryRequest } from '@/types/request';
 import { TripCardWithUser } from '@/components/search/TripCardWithUser';
+import { RequestCardSkeleton } from '@/components/common/LoadingSkeleton';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import FlightIcon from '@mui/icons-material/Flight';
@@ -774,27 +776,69 @@ export default function SearchPage() {
                 }}
               >
                 {requestsLoading ? (
-                  <Typography>{t('common.loading')}...</Typography>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 3,
+                      width: '100%',
+                      maxWidth: '100%',
+                    }}
+                  >
+                    {[1, 2, 3].map((i) => (
+                      <RequestCardSkeleton key={i} />
+                    ))}
+                  </Box>
                 ) : requests.length === 0 ? (
                   <Paper
                     elevation={2}
                     sx={{
-                      p: 6,
+                      p: { xs: 4, sm: 6 },
                       textAlign: 'center',
                       borderRadius: 3,
                       width: '100%',
                       maxWidth: '100%',
                     }}
                   >
-                    <LuggageIcon
-                      sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
-                    />
-                    <Typography variant='h6' color='text.secondary'>
+                    <Box
+                      sx={{
+                        width: 120,
+                        height: 120,
+                        borderRadius: '50%',
+                        bgcolor: alpha(theme.palette.secondary.main, 0.1),
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mx: 'auto',
+                        mb: 3,
+                      }}
+                    >
+                      <LuggageIcon
+                        sx={{ fontSize: 60, color: 'secondary.main' }}
+                      />
+                    </Box>
+                    <Typography variant='h5' gutterBottom fontWeight={700}>
                       {t('request.noRequests')}
                     </Typography>
-                    <Typography variant='body2' color='text.disabled'>
+                    <Typography
+                      variant='body1'
+                      color='text.secondary'
+                      sx={{ maxWidth: 400, mx: 'auto', mb: 3 }}
+                    >
                       {t('search.tryAdjusting')}
                     </Typography>
+                    <Button
+                      variant='outlined'
+                      onClick={handleResetFilters}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1,
+                        mx: 'auto',
+                      }}
+                    >
+                      {t('search.reset')}
+                    </Button>
                   </Paper>
                 ) : (
                   requests.map((request) => (
