@@ -20,6 +20,11 @@ import { CreateTripInput } from '@/types/trip';
 import { useTrips } from '@/hooks/useTrips';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import {
+  getCityOptions,
+  filterCityOption,
+  type CityOptionFull,
+} from '@/lib/cities';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -62,9 +67,9 @@ export const TripForm: React.FC = () => {
     departureTime: '',
   });
   const [error, setError] = useState('');
-  const [stationNames, setStationNames] = useState<string[]>([]);
-  const [stationsLoading, setStationsLoading] = useState(false);
-  const [stationsError, setStationsError] = useState('');
+  const [cityOptions, setCityOptions] = useState<CityOptionFull[]>([]);
+  const [citiesLoading, setCitiesLoading] = useState(false);
+  const [citiesError, setCitiesError] = useState('');
   const [trainData, setTrainData] = useState<TrainData | null>(null);
   const [trainLoading, setTrainLoading] = useState(false);
   const [trainError, setTrainError] = useState('');
@@ -94,46 +99,27 @@ export const TripForm: React.FC = () => {
 
   useEffect(() => {
     let isActive = true;
-    const controller = new AbortController();
-    const loadStations = async () => {
-      setStationsLoading(true);
-      setStationsError('');
-      try {
-        const filePath =
-          language === 'ar-EG' ? '/stations-ar.json' : '/stations-en.json';
-        const response = await fetch(filePath, { signal: controller.signal });
-        if (!response.ok) {
-          throw new Error(`Failed to load stations: ${response.status}`);
-        }
-        const data = await response.json();
-        if (!Array.isArray(data)) {
-          throw new Error('Invalid stations format.');
-        }
+    setCitiesLoading(true);
+    setCitiesError('');
+    getCityOptions(language === 'ar-EG' ? 'ar-EG' : 'en')
+      .then((options) => {
+        if (isActive) setCityOptions(options);
+      })
+      .catch((err) => {
         if (!isActive) return;
-        setStationNames(data);
-      } catch (err) {
-        if (!isActive || controller.signal.aborted) {
-          return;
-        }
         console.error(err);
-        setStationsError(
+        setCitiesError(
           t('error.loadingStations', {
             defaultValue: 'Unable to load station list.',
           })
         );
-        setStationNames([]);
-      } finally {
-        if (isActive) {
-          setStationsLoading(false);
-        }
-      }
-    };
-
-    loadStations();
-
+        setCityOptions([]);
+      })
+      .finally(() => {
+        if (isActive) setCitiesLoading(false);
+      });
     return () => {
       isActive = false;
-      controller.abort();
     };
   }, [language, t]);
 
@@ -239,7 +225,14 @@ export const TripForm: React.FC = () => {
           station.stationName?.en,
           station.stationName?.ar,
         ].filter(Boolean) as string[];
-        return possibleNames.some((name) => normalize(name) === normalizedCity);
+        return possibleNames.some((name) => {
+          const n = normalize(name);
+          return (
+            n === normalizedCity ||
+            n.includes(normalizedCity) ||
+            normalizedCity.includes(n)
+          );
+        });
       });
     };
 
@@ -409,9 +402,9 @@ export const TripForm: React.FC = () => {
               >
                 {t('trip.fromCity')} & {t('trip.toCity')}
               </Typography>
-              {stationsError && (
+              {citiesError && (
                 <Alert severity='error' sx={{ mb: 2, borderRadius: 2 }}>
-                  {stationsError}
+                  {citiesError}
                 </Alert>
               )}
               <Box
@@ -427,29 +420,38 @@ export const TripForm: React.FC = () => {
                     minWidth: 0,
                   }}
                 >
-                  <Autocomplete
-                    options={stationNames}
-                    value={formData.fromCity || null}
+                  <Autocomplete<CityOptionFull>
+                    options={cityOptions}
+                    value={
+                      cityOptions.find((o) => o.value === formData.fromCity) ??
+                      null
+                    }
+                    getOptionLabel={(opt) => opt.label}
                     onChange={(_, value) =>
                       setFormData((prev) => ({
                         ...prev,
-                        fromCity: value ?? '',
+                        fromCity: value?.value ?? '',
                       }))
                     }
-                    loading={stationsLoading}
+                    filterOptions={(options, { inputValue }) =>
+                      options.filter((opt) =>
+                        filterCityOption(inputValue, opt)
+                      )
+                    }
+                    loading={citiesLoading}
                     autoHighlight
                     disablePortal
                     loadingText={t('common.loading', {
                       defaultValue: 'Loading...',
                     })}
                     noOptionsText={
-                      stationsLoading
+                      citiesLoading
                         ? t('common.loading', { defaultValue: 'Loading...' })
                         : t('form.noStations', {
                             defaultValue: 'No stations found',
                           })
                     }
-                    disabled={stationsLoading}
+                    disabled={citiesLoading}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -470,7 +472,7 @@ export const TripForm: React.FC = () => {
                           ),
                           endAdornment: (
                             <>
-                              {stationsLoading && (
+                              {citiesLoading && (
                                 <CircularProgress
                                   color='inherit'
                                   size={18}
@@ -492,29 +494,38 @@ export const TripForm: React.FC = () => {
                     minWidth: 0,
                   }}
                 >
-                  <Autocomplete
-                    options={stationNames}
-                    value={formData.toCity || null}
+                  <Autocomplete<CityOptionFull>
+                    options={cityOptions}
+                    value={
+                      cityOptions.find((o) => o.value === formData.toCity) ??
+                      null
+                    }
+                    getOptionLabel={(opt) => opt.label}
                     onChange={(_, value) =>
                       setFormData((prev) => ({
                         ...prev,
-                        toCity: value ?? '',
+                        toCity: value?.value ?? '',
                       }))
                     }
-                    loading={stationsLoading}
+                    filterOptions={(options, { inputValue }) =>
+                      options.filter((opt) =>
+                        filterCityOption(inputValue, opt)
+                      )
+                    }
+                    loading={citiesLoading}
                     autoHighlight
                     disablePortal
                     loadingText={t('common.loading', {
                       defaultValue: 'Loading...',
                     })}
                     noOptionsText={
-                      stationsLoading
+                      citiesLoading
                         ? t('common.loading', { defaultValue: 'Loading...' })
                         : t('form.noStations', {
                             defaultValue: 'No stations found',
                           })
                     }
-                    disabled={stationsLoading}
+                    disabled={citiesLoading}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -535,7 +546,7 @@ export const TripForm: React.FC = () => {
                           ),
                           endAdornment: (
                             <>
-                              {stationsLoading && (
+                              {citiesLoading && (
                                 <CircularProgress
                                   color='inherit'
                                   size={18}

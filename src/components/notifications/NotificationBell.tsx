@@ -15,6 +15,8 @@ export const NotificationBell: React.FC = () => {
       <IconButton
         onClick={() => setOpen(true)}
         sx={{ color: 'text.secondary' }}
+        aria-label="Notifications"
+        data-testid="notification-bell"
       >
         <Badge badgeContent={unreadCount} color='error'>
           <NotificationsIcon />

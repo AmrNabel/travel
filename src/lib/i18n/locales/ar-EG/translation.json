@@ -271,7 +271,8 @@
     "requestLabel": "طلب",
     "callUser": "اتصل بـ {{name}}",
     "noPhoneNumber": "المستخدم ده ما قدمش رقم تليفون",
-    "phoneNumberCopied": "تم نسخ رقم التليفون: {{phone}}"
+    "phoneNumberCopied": "تم نسخ رقم التليفون: {{phone}}",
+    "startOfferFirst": "قبل عرض أولاً عشان تقدر تبعت رسائل."
   },
 
   "rating": {
@@ -288,7 +289,8 @@
     "submitRating": "إرسال التقييم",
     "skip": "تخطي",
     "ratingSuccess": "✅ تم إرسال التقييم! شكراً!",
-    "ratingError": "فشل إرسال التقييم",
+    "ratingError": "فشل إرسال التقييم: {{message}}",
+    "ratingErrorShort": "فشل إرسال التقييم",
     "selectRating": "اختار تقييم من فضلك",
     "helpsBuildTrust": "تقييمك بيساعد في بناء الثقة في المجتمع",
     "reviews": "المراجعات",
@@ -327,18 +329,38 @@
 
   "notification": {
     "notifications": "الإشعارات",
+    "unread": "غير مقروء",
+    "unreadItems": "{{count}} إشعارات غير مقروءة",
     "markAsRead": "علّم كمقروءة",
     "markAllAsRead": "علّم الكل كمقروءة",
     "noNotifications": "مافيش إشعارات",
     "noNotificationsDesc": "انت متابع كل حاجة!",
     "filterAll": "الكل",
     "filterUnread": "غير المقروءة",
+    "filterOffers": "عروض",
+    "filterMessages": "رسائل",
+    "filterUpdates": "تحديثات",
     "offerReceived": "📬 عرض جديد!",
     "offerAccepted": "✅ تم قبول العرض!",
     "itemDelivered": "✅ الحاجة اتوصلت!",
     "tripCompleted": "🎉 الرحلة اكتملت!",
     "reviewRequest": "⭐ من فضلك قيّم تجربتك",
-    "newMessage": "💬 رسالة جديدة"
+    "newMessage": "💬 رسالة جديدة",
+    "offerReceivedTitle": "📬 عرض جديد!",
+    "offerReceivedMessage": "{{name}} بعتلك عرض بـ ${{price}} لرحلة لـ {{city}}",
+    "offerDeclinedTitle": "العرض مش متختار",
+    "offerDeclinedMessage": "المسافر اختار عرض تاني للتوصيلة دي.",
+    "offerAcceptedTitle": "🎉 تم قبول العرض!",
+    "offerAcceptedMessage": "تم قبول عرضك. ابدأ المحادثة للتنسيق!",
+    "matchFoundTitle": "تم التأكيد!",
+    "matchFoundMessage": "قبلت عرض. المحادثة جاهزة للتنسيق.",
+    "itemDeliveredTitle": "✅ الحاجة اتوصلت!",
+    "itemDeliveredMessage": "الحاجة اتوصّلت! من فضلك قيّم تجربتك.",
+    "itemDeliveredMessageWithType": "تم توصيل {{itemType}} بنجاح!",
+    "tripCompletedTitle": "🎉 الرحلة اكتملت!",
+    "tripCompletedMessage": "رحلة من {{fromCity}} لـ {{toCity}} اكتملت. قيّم المرسلين!",
+    "itemPickedUpTitle": "📦 الحاجة اتنقلت!",
+    "itemPickedUpMessage": "تم استلام {{itemType}} وهي دلوقتي في الطريق."
   },
 
   "admin": {
@@ -392,7 +414,8 @@
     "fromCityPlaceholder": "القاهرة، مصر",
     "toCityPlaceholder": "اسوان",
     "itemTypePlaceholder": "إلكترونيات، مستندات، إلخ.",
-    "weightPlaceholder": "مثلاً ٢ كيلو",
+    "weightPlaceholder": "1–50 كيلو (رقم صحيح)",
+    "weightInvalid": "الوزن لازم يكون رقم صحيح من 1 لـ 50 كيلو.",
     "descriptionPlaceholder": "أي تفاصيل إضافية...",
     "pricePlaceholder": "أدخل المبلغ",
     "dateLabel": "تاريخ السفر",

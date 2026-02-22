@@ -23,6 +23,8 @@ i18n
   // init i18next
   .init({
     resources,
+    // Initial default (first paint); LanguageContext also sets ar-EG when localStorage is empty, so they stay aligned
+    lng: 'ar-EG',
     fallbackLng: 'ar-EG',
     supportedLngs: ['en', 'ar-EG'],
     debug: process.env.NODE_ENV === 'development',

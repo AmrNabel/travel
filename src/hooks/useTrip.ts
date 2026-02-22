@@ -56,6 +56,8 @@ export const useTrip = () => {
           priority: 'high',
           title: '✅ Item Delivered!',
           message: 'Your item has been delivered! Please rate your experience.',
+          titleKey: 'notification.itemDeliveredTitle',
+          messageKey: 'notification.itemDeliveredMessage',
           actionUrl: `/profile/${user.id}`,
           actionData: {
             tripId,
@@ -81,6 +83,12 @@ export const useTrip = () => {
         priority: 'medium',
         title: '🎉 Trip Completed!',
         message: `Your trip from ${tripData.fromCity} to ${tripData.toCity} is complete. Rate your senders!`,
+        titleKey: 'notification.tripCompletedTitle',
+        messageKey: 'notification.tripCompletedMessage',
+        messageParams: {
+          fromCity: tripData.fromCity ?? '',
+          toCity: tripData.toCity ?? '',
+        },
         actionUrl: '/my-trips',
         actionData: { tripId },
         read: false,

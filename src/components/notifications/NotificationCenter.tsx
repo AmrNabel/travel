@@ -20,6 +20,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { useNotifications } from '@/hooks/useNotifications';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Notification } from '@/types/notification';
 import CloseIcon from '@mui/icons-material/Close';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -27,6 +28,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import MessageIcon from '@mui/icons-material/Message';
 import StarIcon from '@mui/icons-material/Star';
 import { formatDistanceToNow } from 'date-fns';
+import { ar } from 'date-fns/locale';
 
 interface NotificationCenterProps {
   open: boolean;
@@ -37,6 +39,7 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
   open,
   onClose,
 }) => {
+  const { t, language } = useLanguage();
   const { notifications, unreadCount, markAsRead, markAllAsRead } =
     useNotifications();
   const [filter, setFilter] = useState<
@@ -104,18 +107,22 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
             borderColor: 'divider',
           }}
         >
-          <Box>
-            <Typography variant='h6' fontWeight={700}>
-              Notifications
+          <Box sx={{ textAlign: 'start', minWidth: 0 }}>
+            <Typography variant='h6' fontWeight={700} component='div'>
+              {t('notification.notifications')}
             </Typography>
-            <Typography variant='caption' color='text.secondary'>
-              {unreadCount} unread
+            <Typography
+              variant='caption'
+              color='text.secondary'
+              sx={{ display: 'block', mt: 0.25 }}
+            >
+              {t('notification.unreadItems', { count: unreadCount })}
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', gap: 1 }}>
             {unreadCount > 0 && (
               <Button size='small' onClick={markAllAsRead}>
-                Mark all read
+                {t('notification.markAllAsRead')}
               </Button>
             )}
             <IconButton onClick={onClose} size='small'>
@@ -131,10 +138,10 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
           variant='fullWidth'
           sx={{ borderBottom: 1, borderColor: 'divider' }}
         >
-          <Tab label='All' value='all' />
-          <Tab label='Offers' value='offers' />
-          <Tab label='Messages' value='messages' />
-          <Tab label='Updates' value='updates' />
+          <Tab label={t('notification.filterAll')} value='all' />
+          <Tab label={t('notification.filterOffers')} value='offers' />
+          <Tab label={t('notification.filterMessages')} value='messages' />
+          <Tab label={t('notification.filterUpdates')} value='updates' />
         </Tabs>
 
         {/* Notifications List */}
@@ -154,10 +161,10 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
                 sx={{ fontSize: 64, color: 'text.disabled', mb: 2 }}
               />
               <Typography variant='h6' color='text.secondary'>
-                No notifications
+                {t('notification.noNotifications')}
               </Typography>
               <Typography variant='body2' color='text.disabled'>
-                You're all caught up!
+                {t('notification.noNotificationsDesc')}
               </Typography>
             </Box>
           ) : (
@@ -210,7 +217,9 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
                           fontWeight={notification.read ? 400 : 700}
                           sx={{ mb: 0.5 }}
                         >
-                          {notification.title}
+                          {notification.titleKey
+                            ? t(notification.titleKey)
+                            : notification.title}
                         </Typography>
                         <Typography
                           variant='body2'
@@ -224,11 +233,21 @@ export const NotificationCenter: React.FC<NotificationCenterProps> = ({
                             WebkitBoxOrient: 'vertical',
                           }}
                         >
-                          {notification.message}
+                          {notification.messageKey
+                            ? t(
+                                notification.messageKey,
+                                Object.fromEntries(
+                                  Object.entries(
+                                    notification.messageParams ?? {}
+                                  ).map(([k, v]) => [k, String(v)])
+                                )
+                              )
+                            : notification.message}
                         </Typography>
                         <Typography variant='caption' color='text.disabled'>
                           {formatDistanceToNow(notification.createdAt, {
                             addSuffix: true,
+                            locale: language === 'ar-EG' ? ar : undefined,
                           })}
                         </Typography>
                       </Box>

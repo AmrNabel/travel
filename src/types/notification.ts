@@ -21,6 +21,12 @@ export interface Notification {
   title: string;
   message: string;
 
+  /** i18n: key for t() to render title in user language */
+  titleKey?: string;
+  /** i18n: key for t() to render message in user language */
+  messageKey?: string;
+  messageParams?: Record<string, string | number>;
+
   // Status
   read: boolean;
   readAt?: Date;
@@ -48,6 +54,9 @@ export interface CreateNotificationInput {
   type: NotificationType;
   title: string;
   message: string;
+  titleKey?: string;
+  messageKey?: string;
+  messageParams?: Record<string, string | number>;
   actionUrl?: string;
   actionData?: Record<string, string>;
   priority?: NotificationPriority;

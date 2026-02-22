@@ -48,7 +48,7 @@ export const NavBar = () => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuAnchor, setUserMenuAnchor] = useState<null | HTMLElement>(
-    null
+    null,
   );
 
   const handleSignOut = async () => {
@@ -158,7 +158,7 @@ export const NavBar = () => {
   return (
     <AppBar position='sticky' elevation={0}>
       <Toolbar sx={{ py: 1 }}>
-        <Link href='/' style={{ textDecoration: 'none', flexGrow: 1 }}>
+        <Link href='/' style={{ textDecoration: 'none', flexGrow: 0.5 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             <FlightTakeoffIcon sx={{ fontSize: 32, color: 'primary.main' }} />
             <Typography

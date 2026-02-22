@@ -213,7 +213,10 @@ export default function ChatPage({ params }: { params: { chatId: string } }) {
               )}
             </Box>
           </Paper>
-          <ChatWindow chatId={params.chatId} />
+          <ChatWindow
+            chatId={params.chatId}
+            canSend={Boolean(chat?.tripId && chat?.requestId)}
+          />
         </Container>
       </Box>
     </AuthGuard>

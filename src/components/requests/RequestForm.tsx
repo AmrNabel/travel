@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Box,
@@ -15,11 +15,21 @@ import {
   useTheme,
   Autocomplete,
   CircularProgress,
+  Select,
+  MenuItem,
+  IconButton,
 } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import { CreateRequestInput } from '@/types/request';
 import { useRequests } from '@/hooks/useRequests';
 import { useNotification } from '@/contexts/NotificationContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import {
+  getCityOptions,
+  filterCityOption,
+  type CityOptionFull,
+} from '@/lib/cities';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import LuggageIcon from '@mui/icons-material/Luggage';
@@ -34,14 +44,26 @@ export const RequestForm: React.FC = () => {
     toCity: '',
     itemType: '',
     weight: '',
-    offerPrice: 0,
+    offerPrice: 50,
     description: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [stationNames, setStationNames] = useState<string[]>([]);
-  const [stationsLoading, setStationsLoading] = useState(false);
-  const [stationsError, setStationsError] = useState('');
+  const [cityOptions, setCityOptions] = useState<CityOptionFull[]>([]);
+  const [citiesLoading, setCitiesLoading] = useState(false);
+  const [citiesError, setCitiesError] = useState('');
+
+  const PRICE_STEP = 10;
+  const PRICE_MIN = 50;
+  const PRICE_MAX = 500;
+  const priceOptions = useMemo(
+    () =>
+      Array.from(
+        { length: (PRICE_MAX - PRICE_MIN) / PRICE_STEP + 1 },
+        (_, i) => PRICE_MIN + i * PRICE_STEP
+      ),
+    []
+  );
 
   const { createRequest } = useRequests();
   const router = useRouter();
@@ -51,46 +73,25 @@ export const RequestForm: React.FC = () => {
 
   useEffect(() => {
     let isActive = true;
-    const controller = new AbortController();
-    const loadStations = async () => {
-      setStationsLoading(true);
-      setStationsError('');
-      try {
-        const filePath =
-          language === 'ar-EG' ? '/stations-ar.json' : '/stations-en.json';
-        const response = await fetch(filePath, { signal: controller.signal });
-        if (!response.ok) {
-          throw new Error(`Failed to load stations: ${response.status}`);
-        }
-        const data = await response.json();
-        if (!Array.isArray(data)) {
-          throw new Error('Invalid stations format.');
-        }
+    setCitiesLoading(true);
+    setCitiesError('');
+    getCityOptions(language === 'ar-EG' ? 'ar-EG' : 'en')
+      .then((options) => {
+        if (isActive) setCityOptions(options);
+      })
+      .catch((err) => {
         if (!isActive) return;
-        setStationNames(data);
-      } catch (err) {
-        if (!isActive || controller.signal.aborted) {
-          return;
-        }
         console.error(err);
-        setStationsError(
-          t('error.loadingStations', {
-            defaultValue: 'Unable to load station list.',
-          })
+        setCitiesError(
+          t('error.loadingStations', { defaultValue: 'Unable to load station list.' })
         );
-        setStationNames([]);
-      } finally {
-        if (isActive) {
-          setStationsLoading(false);
-        }
-      }
-    };
-
-    loadStations();
-
+        setCityOptions([]);
+      })
+      .finally(() => {
+        if (isActive) setCitiesLoading(false);
+      });
     return () => {
       isActive = false;
-      controller.abort();
     };
   }, [language, t]);
 
@@ -102,8 +103,36 @@ export const RequestForm: React.FC = () => {
     }));
   }, [language]);
 
+  // Normalize offerPrice to a valid step (50, 60, …) when not in options (e.g. stale state)
+  useEffect(() => {
+    if (
+      typeof formData.offerPrice === 'number' &&
+      !priceOptions.includes(formData.offerPrice)
+    ) {
+      setFormData((prev) => ({
+        ...prev,
+        offerPrice: PRICE_MIN,
+      }));
+    }
+  }, [formData.offerPrice, priceOptions]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    if (name === 'weight') {
+      const digits = value.replace(/\D/g, '');
+      const withoutLeadingZeros = digits.replace(/^0+/, '') || '';
+      const num =
+        withoutLeadingZeros === ''
+          ? 0
+          : Math.min(50, Math.max(0, parseInt(withoutLeadingZeros, 10) || 0));
+      const weightStr =
+        digits === '' ? '' : num === 0 ? '' : String(num);
+      setFormData((prev) => ({
+        ...prev,
+        weight: weightStr,
+      }));
+      return;
+    }
     setFormData((prev) => ({
       ...prev,
       [name]: name === 'offerPrice' ? parseFloat(value) || 0 : value,
@@ -113,6 +142,11 @@ export const RequestForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    const weightNum = formData.weight ? parseInt(formData.weight, 10) : NaN;
+    if (!formData.weight || weightNum < 1 || weightNum > 50 || !Number.isInteger(weightNum)) {
+      setError(t('form.weightInvalid', { defaultValue: 'Weight must be an integer between 1 and 50 kg.' }));
+      return;
+    }
     setLoading(true);
 
     try {
@@ -173,9 +207,9 @@ export const RequestForm: React.FC = () => {
               >
                 {t('request.fromCity')} & {t('request.toCity')}
               </Typography>
-              {stationsError && (
+              {citiesError && (
                 <Alert severity='error' sx={{ mb: 2, borderRadius: 2 }}>
-                  {stationsError}
+                  {citiesError}
                 </Alert>
               )}
               <Box
@@ -191,29 +225,38 @@ export const RequestForm: React.FC = () => {
                     minWidth: 0,
                   }}
                 >
-                  <Autocomplete
-                    options={stationNames}
-                    value={formData.fromCity || null}
+                  <Autocomplete<CityOptionFull>
+                    options={cityOptions}
+                    value={
+                      cityOptions.find((o) => o.value === formData.fromCity) ??
+                      null
+                    }
+                    getOptionLabel={(opt) => opt.label}
                     onChange={(_, value) =>
                       setFormData((prev) => ({
                         ...prev,
-                        fromCity: value ?? '',
+                        fromCity: value?.value ?? '',
                       }))
                     }
-                    loading={stationsLoading}
+                    filterOptions={(options, { inputValue }) =>
+                      options.filter((opt) =>
+                        filterCityOption(inputValue, opt)
+                      )
+                    }
+                    loading={citiesLoading}
                     autoHighlight
                     disablePortal
                     loadingText={t('common.loading', {
                       defaultValue: 'Loading...',
                     })}
                     noOptionsText={
-                      stationsLoading
+                      citiesLoading
                         ? t('common.loading', { defaultValue: 'Loading...' })
                         : t('form.noStations', {
                             defaultValue: 'No stations found',
                           })
                     }
-                    disabled={stationsLoading}
+                    disabled={citiesLoading}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -234,7 +277,7 @@ export const RequestForm: React.FC = () => {
                           ),
                           endAdornment: (
                             <>
-                              {stationsLoading && (
+                              {citiesLoading && (
                                 <CircularProgress
                                   color='inherit'
                                   size={18}
@@ -256,29 +299,38 @@ export const RequestForm: React.FC = () => {
                     minWidth: 0,
                   }}
                 >
-                  <Autocomplete
-                    options={stationNames}
-                    value={formData.toCity || null}
+                  <Autocomplete<CityOptionFull>
+                    options={cityOptions}
+                    value={
+                      cityOptions.find((o) => o.value === formData.toCity) ??
+                      null
+                    }
+                    getOptionLabel={(opt) => opt.label}
                     onChange={(_, value) =>
                       setFormData((prev) => ({
                         ...prev,
-                        toCity: value ?? '',
+                        toCity: value?.value ?? '',
                       }))
                     }
-                    loading={stationsLoading}
+                    filterOptions={(options, { inputValue }) =>
+                      options.filter((opt) =>
+                        filterCityOption(inputValue, opt)
+                      )
+                    }
+                    loading={citiesLoading}
                     autoHighlight
                     disablePortal
                     loadingText={t('common.loading', {
                       defaultValue: 'Loading...',
                     })}
                     noOptionsText={
-                      stationsLoading
+                      citiesLoading
                         ? t('common.loading', { defaultValue: 'Loading...' })
                         : t('form.noStations', {
                             defaultValue: 'No stations found',
                           })
                     }
-                    disabled={stationsLoading}
+                    disabled={citiesLoading}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -299,7 +351,7 @@ export const RequestForm: React.FC = () => {
                           ),
                           endAdornment: (
                             <>
-                              {stationsLoading && (
+                              {citiesLoading && (
                                 <CircularProgress
                                   color='inherit'
                                   size={18}
@@ -371,6 +423,8 @@ export const RequestForm: React.FC = () => {
                     onChange={handleChange}
                     fullWidth
                     required
+                    inputMode='numeric'
+                    inputProps={{ min: 0, max: 50, step: 1 }}
                     helperText={t('form.weightPlaceholder')}
                     InputProps={{
                       startAdornment: (
@@ -399,49 +453,70 @@ export const RequestForm: React.FC = () => {
                   display: 'flex',
                   flexWrap: 'wrap',
                   gap: 3,
+                  alignItems: 'center',
                 }}
               >
                 <Box
                   sx={{
                     flex: { xs: '1 1 100%', md: '1 1 calc(50% - 12px)' },
                     minWidth: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
                   }}
                 >
-                  <TextField
-                    label={t('request.offerPrice')}
-                    name='offerPrice'
-                    type='number'
-                    value={formData.offerPrice}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                    inputProps={{ min: 0, step: 0.01 }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position='start'>
-                          <AttachMoneyIcon sx={{ color: 'text.secondary' }} />
-                        </InputAdornment>
-                      ),
-                      endAdornment: (
-                        <InputAdornment position='end'>
-                          <Typography
-                            variant='body2'
-                            color='text.secondary'
-                            fontWeight={600}
-                          >
-                            EGP
-                          </Typography>
-                        </InputAdornment>
-                      ),
-                    }}
-                    sx={{
-                      '& .MuiOutlinedInput-root.Mui-focused': {
-                        '& .MuiOutlinedInput-notchedOutline': {
-                          borderColor: 'secondary.main',
-                        },
-                      },
-                    }}
-                  />
+                  <IconButton
+                    size='small'
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        offerPrice: Math.max(
+                          PRICE_MIN,
+                          (prev.offerPrice || PRICE_MIN) - PRICE_STEP
+                        ),
+                      }))
+                    }
+                    disabled={formData.offerPrice <= PRICE_MIN}
+                    aria-label={t('common.decrease', { defaultValue: 'Decrease' })}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                    <AttachMoneyIcon sx={{ color: 'text.secondary', fontSize: 20 }} />
+                    <Select
+                      value={priceOptions.includes(formData.offerPrice) ? formData.offerPrice : PRICE_MIN}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          offerPrice: Number(e.target.value),
+                        }))
+                      }
+                      size='small'
+                      sx={{ minWidth: 100 }}
+                    >
+                      {priceOptions.map((p) => (
+                        <MenuItem key={p} value={p}>
+                          {p} EGP
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Box>
+                  <IconButton
+                    size='small'
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        offerPrice: Math.min(
+                          PRICE_MAX,
+                          (prev.offerPrice || PRICE_MIN) + PRICE_STEP
+                        ),
+                      }))
+                    }
+                    disabled={formData.offerPrice >= PRICE_MAX}
+                    aria-label={t('common.increase', { defaultValue: 'Increase' })}
+                  >
+                    <AddIcon />
+                  </IconButton>
                 </Box>
               </Box>
             </Box>

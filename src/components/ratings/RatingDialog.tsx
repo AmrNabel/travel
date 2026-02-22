@@ -17,6 +17,7 @@ import {
 import StarIcon from '@mui/icons-material/Star';
 import { useRatings } from '@/hooks/useRatings';
 import { useNotification } from '@/contexts/NotificationContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface RatingDialogProps {
   open: boolean;
@@ -42,10 +43,11 @@ export const RatingDialog: React.FC<RatingDialogProps> = ({
   const [loading, setLoading] = useState(false);
   const { createRating } = useRatings();
   const { showNotification } = useNotification();
+  const { t } = useLanguage();
 
   const handleSubmit = async () => {
     if (score === 0) {
-      showNotification('Please select a rating', 'warning');
+      showNotification(t('rating.selectRating'), 'warning');
       return;
     }
 
@@ -59,7 +61,7 @@ export const RatingDialog: React.FC<RatingDialogProps> = ({
         comment: comment.trim() || undefined,
       });
 
-      showNotification('✅ Rating submitted! Thank you!', 'success');
+      showNotification(t('rating.ratingSuccess'), 'success');
       onClose();
 
       // Reset form
@@ -67,7 +69,11 @@ export const RatingDialog: React.FC<RatingDialogProps> = ({
       setComment('');
     } catch (error: any) {
       console.error('Error submitting rating:', error);
-      showNotification('Failed to submit rating: ' + error.message, 'error');
+      const msg = error?.message?.trim();
+      showNotification(
+        msg ? t('rating.ratingError', { message: msg }) : t('rating.ratingErrorShort'),
+        'error'
+      );
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Container,
   Box,
@@ -19,12 +19,15 @@ import {
   Alert,
   AlertTitle,
   alpha,
+  ThemeProvider,
+  createTheme,
+  Autocomplete,
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import NextLink from 'next/link';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
-import { useChat } from '@/hooks/useChat';
+import { getCityOptions, filterCityOption, type CityOptionFull } from '@/lib/cities';
 import { useOffers } from '@/hooks/useOffers';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNotification } from '@/contexts/NotificationContext';
@@ -42,12 +45,56 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LuggageIcon from '@mui/icons-material/Luggage';
 import TrainIcon from '@mui/icons-material/Train';
 
-// Capacity mapping for size range filtering
+// Capacity mapping for size range filtering (trips)
 const CAPACITY_MAP: Record<string, number> = {
   Small: 1,
   Medium: 3,
   Large: 5,
 };
+
+// Weight mapping for request size filtering (same 0-5 scale; parse "5kg" or use label)
+const WEIGHT_MAP: Record<string, number> = {
+  Small: 1,
+  Medium: 3,
+  Large: 5,
+};
+
+/**
+ * Parses request.weight to a number in 0-5 scale for size-range filtering.
+ * "5kg" -> 5, "Small" -> 1. Unparseable -> 0. Weights above 5 (e.g. "12kg") are clamped to 5
+ * so they appear in the max range of the filter slider.
+ */
+function parseRequestWeight(weight: string): number {
+  if (!weight?.trim()) return 0;
+  const w = weight.trim();
+  const fromMap = WEIGHT_MAP[w];
+  if (fromMap !== undefined) return fromMap;
+  const kgMatch = w.match(/^(\d+)\s*kg$/i) ?? w.match(/^(\d+)$/);
+  if (kgMatch) {
+    const n = parseInt(kgMatch[1], 10);
+    return Math.min(5, Math.max(0, n));
+  }
+  return 0;
+}
+
+/** Trip start time in ms (date at 00:00 + departureTime). Missing departureTime = start of day. */
+function getTripStartMs(trip: Trip): number {
+  const d = new Date(trip.date);
+  d.setHours(0, 0, 0, 0);
+  const dep = trip.departureTime?.trim();
+  if (dep) {
+    const match = dep.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?/);
+    if (match) {
+      d.setHours(
+        parseInt(match[1], 10),
+        parseInt(match[2], 10),
+        match[3] ? parseInt(match[3], 10) : 0,
+        0,
+      );
+    }
+  }
+  return d.getTime();
+}
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useState({
@@ -56,10 +103,9 @@ export default function SearchPage() {
   });
   const [activeTab, setActiveTab] = useState<'trips' | 'requests'>('trips');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
-  const [contactLoading, setContactLoading] = useState<string | null>(null);
   const [offerModalOpen, setOfferModalOpen] = useState(false);
   const [selectedTripForOffer, setSelectedTripForOffer] = useState<Trip | null>(
-    null
+    null,
   );
   const [selectedRequestForOffer, setSelectedRequestForOffer] =
     useState<DeliveryRequest | null>(null);
@@ -69,7 +115,7 @@ export default function SearchPage() {
     trainNumber: '',
     dateStart: '',
     dateEnd: '',
-    sizeRange: [0, 5] as [number, number],
+    sizeRange: [0, 50] as [number, number],
   });
 
   // Applied filters (used for actual filtering)
@@ -77,7 +123,7 @@ export default function SearchPage() {
     trainNumber: '',
     dateStart: '',
     dateEnd: '',
-    sizeRange: [0, 5] as [number, number],
+    sizeRange: [0, 50] as [number, number],
   });
 
   // Train data for showing departure time
@@ -85,9 +131,29 @@ export default function SearchPage() {
   const [trainLoading, setTrainLoading] = useState(false);
   const [trainDepartureTime, setTrainDepartureTime] = useState<string>('');
 
+  // City options for from/to (bilingual)
+  const [cityOptions, setCityOptions] = useState<CityOptionFull[]>([]);
+  const [cityOptionsLoading, setCityOptionsLoading] = useState(true);
+
+  // Display-only cache for trips/requests (TTL 3 min). Does not reduce Firestore reads;
+  // useTrips/useRequests still run. Avoids loading flicker when reusing same filters.
+  const CACHE_TTL_MS = 3 * 60 * 1000;
+  const [searchCache, setSearchCache] = useState<{
+    key: string;
+    trips: Trip[];
+    requests: DeliveryRequest[];
+    timestamp: number;
+  } | null>(null);
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const router = useRouter();
+
+  // LTR theme for the size slider so it always renders 0→50 left-to-right in RTL (Arabic)
+  const ltrTheme = useMemo(
+    () => createTheme({ ...theme, direction: 'ltr' }),
+    [theme]
+  );
 
   const { user } = useAuth();
   const { t, language } = useLanguage();
@@ -179,111 +245,119 @@ export default function SearchPage() {
     }
   }, [trainData, searchParams.fromCity, language]);
 
+  // Load city options for from/to
+  useEffect(() => {
+    let isActive = true;
+    setCityOptionsLoading(true);
+    getCityOptions(language === 'ar-EG' ? 'ar-EG' : 'en')
+      .then((opts) => {
+        if (isActive) setCityOptions(opts);
+      })
+      .catch(() => {
+        if (isActive) setCityOptions([]);
+      })
+      .finally(() => {
+        if (isActive) setCityOptionsLoading(false);
+      });
+    return () => {
+      isActive = false;
+    };
+  }, [language]);
+
   const { trips: allTrips, loading: tripsLoading } = useTrips(searchParams);
   const { requests, loading: requestsLoading } = useRequests(searchParams);
 
-  // Filter trips based on applied filters
-  const trips = allTrips.filter((trip) => {
-    // Train number filter
-    if (
-      appliedFilters.trainNumber &&
-      trip.trainNumber?.toLowerCase() !==
-        appliedFilters.trainNumber.toLowerCase()
-    ) {
-      return false;
+  // Update cache when hook data arrives
+  const cacheKey = JSON.stringify(searchParams);
+  useEffect(() => {
+    if (!tripsLoading && !requestsLoading) {
+      setSearchCache({
+        key: cacheKey,
+        trips: allTrips,
+        requests,
+        timestamp: Date.now(),
+      });
     }
+  }, [cacheKey, tripsLoading, requestsLoading, allTrips, requests]);
 
-    // Date range filter
-    if (appliedFilters.dateStart || appliedFilters.dateEnd) {
-      const tripDate = new Date(trip.date);
-      tripDate.setHours(0, 0, 0, 0);
+  const cacheHit =
+    searchCache &&
+    searchCache.key === cacheKey &&
+    Date.now() - searchCache.timestamp < CACHE_TTL_MS;
+  const displayTrips = cacheHit ? searchCache.trips : allTrips;
+  const displayRequests = cacheHit ? searchCache.requests : requests;
+  const displayLoading = cacheHit ? false : tripsLoading || requestsLoading;
 
-      if (appliedFilters.dateStart) {
-        const startDate = new Date(appliedFilters.dateStart);
-        startDate.setHours(0, 0, 0, 0);
-        if (tripDate < startDate) return false;
+  // Filter trips based on applied filters and past-date (memoized to avoid new array refs when deps unchanged)
+  const trips = useMemo(() => {
+    const nowMs = Date.now();
+    return displayTrips.filter((trip) => {
+      // Past-date: hide trips that have already started
+      if (getTripStartMs(trip) < nowMs) return false;
+
+      // Train number filter
+      if (
+        appliedFilters.trainNumber &&
+        trip.trainNumber?.toLowerCase() !==
+          appliedFilters.trainNumber.toLowerCase()
+      ) {
+        return false;
       }
 
-      if (appliedFilters.dateEnd) {
-        const endDate = new Date(appliedFilters.dateEnd);
-        endDate.setHours(23, 59, 59, 999);
-        if (tripDate > endDate) return false;
+      // Date range filter
+      if (appliedFilters.dateStart || appliedFilters.dateEnd) {
+        const tripDate = new Date(trip.date);
+        tripDate.setHours(0, 0, 0, 0);
+
+        if (appliedFilters.dateStart) {
+          const startDate = new Date(appliedFilters.dateStart);
+          startDate.setHours(0, 0, 0, 0);
+          if (tripDate < startDate) return false;
+        }
+
+        if (appliedFilters.dateEnd) {
+          const endDate = new Date(appliedFilters.dateEnd);
+          endDate.setHours(23, 59, 59, 999);
+          if (tripDate > endDate) return false;
+        }
       }
-    }
 
-    // Size range filter
-    const tripCapacity = CAPACITY_MAP[trip.capacity] ?? 0;
-    if (
-      tripCapacity < appliedFilters.sizeRange[0] ||
-      tripCapacity > appliedFilters.sizeRange[1]
-    ) {
-      return false;
-    }
+      // Size range filter
+      const tripCapacity = CAPACITY_MAP[trip.capacity] ?? 0;
+      if (
+        tripCapacity < appliedFilters.sizeRange[0] ||
+        tripCapacity > appliedFilters.sizeRange[1]
+      ) {
+        return false;
+      }
 
-    return true;
-  });
+      return true;
+    });
+  }, [displayTrips, appliedFilters]);
+
+  // Filter requests by applied size range (weight maps to same 0-5 scale)
+  const filteredRequests = useMemo(
+    () =>
+      displayRequests.filter((request) => {
+        const weightNum = parseRequestWeight(request.weight);
+        return (
+          weightNum >= appliedFilters.sizeRange[0] &&
+          weightNum <= appliedFilters.sizeRange[1]
+        );
+      }),
+    [displayRequests, appliedFilters],
+  );
   // Get user's own requests for sending offers
   const { requests: myRequests } = useRequests(
-    user ? { userId: user.id } : undefined
+    user ? { userId: user.id } : undefined,
   );
   const hasActiveRequests = user
     ? myRequests.some((r) => r.status === 'pending')
     : false;
-  const { createChat } = useChat();
   const { createOffer } = useOffers();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-  };
-
-  const handleContactTrip = async (tripId: string, userId: string) => {
-    if (!user) {
-      showNotification(t('auth.loginToAccess'), 'warning');
-      router.push('/login');
-      return;
-    }
-
-    if (user.id === userId) {
-      showNotification(t('card.yourTrip'), 'info');
-      return;
-    }
-
-    try {
-      setContactLoading(tripId);
-      const chatId = await createChat(userId, tripId);
-      showNotification(t('chat.chatCreated'), 'success');
-      setTimeout(() => router.push(`/chats/${chatId}`), 500);
-    } catch (error) {
-      console.error('Error creating chat:', error);
-      showNotification(t('chat.chatError'), 'error');
-    } finally {
-      setContactLoading(null);
-    }
-  };
-
-  const handleContactRequest = async (requestId: string, userId: string) => {
-    if (!user) {
-      showNotification(t('auth.loginToAccess'), 'warning');
-      router.push('/login');
-      return;
-    }
-
-    if (user.id === userId) {
-      showNotification(t('card.yourRequest'), 'info');
-      return;
-    }
-
-    try {
-      setContactLoading(requestId);
-      const chatId = await createChat(userId, undefined, requestId);
-      showNotification(t('chat.chatCreated'), 'success');
-      setTimeout(() => router.push(`/chats/${chatId}`), 500);
-    } catch (error) {
-      console.error('Error creating chat:', error);
-      showNotification(t('chat.chatError'), 'error');
-    } finally {
-      setContactLoading(null);
-    }
   };
 
   const handleSendOffer = (trip: Trip) => {
@@ -336,7 +410,7 @@ export default function SearchPage() {
       trainNumber: '',
       dateStart: '',
       dateEnd: '',
-      sizeRange: [0, 5] as [number, number],
+      sizeRange: [0, 50] as [number, number],
     };
     setFilters(resetFilters);
     setAppliedFilters(resetFilters);
@@ -361,44 +435,82 @@ export default function SearchPage() {
       </Typography>
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <TextField
-          label={t('search.from')}
-          placeholder={t('form.fromCityPlaceholder')}
-          value={searchParams.fromCity}
-          onChange={(e) =>
-            setSearchParams((prev) => ({ ...prev, fromCity: e.target.value }))
+        <Autocomplete<CityOptionFull>
+          options={cityOptions}
+          value={
+            cityOptions.find((o) => o.value === searchParams.fromCity) ?? null
           }
-          fullWidth
+          getOptionLabel={(opt) => opt.label}
+          onChange={(_, value) =>
+            setSearchParams((prev) => ({
+              ...prev,
+              fromCity: value?.value ?? '',
+            }))
+          }
+          filterOptions={(options, { inputValue }) =>
+            options.filter((opt) => filterCityOption(inputValue, opt))
+          }
+          loading={cityOptionsLoading}
           size='small'
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position='start'>
-                <FlightTakeoffIcon
-                  sx={{ color: 'text.secondary', fontSize: 20 }}
-                />
-              </InputAdornment>
-            ),
-          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label={t('search.from')}
+              placeholder={t('form.fromCityPlaceholder')}
+              InputProps={{
+                ...params.InputProps,
+                startAdornment: (
+                  <>
+                    <InputAdornment position='start'>
+                      <FlightTakeoffIcon
+                        sx={{ color: 'text.secondary', fontSize: 20 }}
+                      />
+                    </InputAdornment>
+                    {params.InputProps.startAdornment}
+                  </>
+                ),
+              }}
+            />
+          )}
         />
 
-        <TextField
-          label={t('search.to')}
-          placeholder={t('form.toCityPlaceholder')}
-          value={searchParams.toCity}
-          onChange={(e) =>
-            setSearchParams((prev) => ({ ...prev, toCity: e.target.value }))
+        <Autocomplete<CityOptionFull>
+          options={cityOptions}
+          value={
+            cityOptions.find((o) => o.value === searchParams.toCity) ?? null
           }
-          fullWidth
+          getOptionLabel={(opt) => opt.label}
+          onChange={(_, value) =>
+            setSearchParams((prev) => ({
+              ...prev,
+              toCity: value?.value ?? '',
+            }))
+          }
+          filterOptions={(options, { inputValue }) =>
+            options.filter((opt) => filterCityOption(inputValue, opt))
+          }
+          loading={cityOptionsLoading}
           size='small'
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position='start'>
-                <FlightLandIcon
-                  sx={{ color: 'text.secondary', fontSize: 20 }}
-                />
-              </InputAdornment>
-            ),
-          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label={t('search.to')}
+              placeholder={t('form.toCityPlaceholder')}
+              InputProps={{
+                ...params.InputProps,
+                startAdornment: (
+                  <>
+                    <InputAdornment position='start'>
+                      <FlightLandIcon
+                        sx={{ color: 'text.secondary', fontSize: 20 }}
+                      />
+                    </InputAdornment>
+                    {params.InputProps.startAdornment}
+                  </>
+                ),
+              }}
+            />
+          )}
         />
 
         <Box>
@@ -493,38 +605,40 @@ export default function SearchPage() {
           />
         </Box>
 
-        <Box>
-          <Typography variant='body2' fontWeight={600} sx={{ mb: 2 }}>
-            {t('search.itemSize')} (
-            {t('search.sizeRange', {
-              defaultValue: 'Range',
-            })}
-            )
-          </Typography>
-          <Slider
-            value={filters.sizeRange}
-            onChange={(_, newValue) =>
-              setFilters((prev) => ({
-                ...prev,
-                sizeRange: newValue as [number, number],
-              }))
-            }
-            valueLabelDisplay='auto'
-            min={0}
-            max={5}
-            step={1}
-            marks={[
-              { value: 0, label: '0kg' },
-              { value: 1, label: t('search.small').split('(')[0].trim() },
-              { value: 3, label: t('search.medium').split('(')[0].trim() },
-              { value: 5, label: t('search.large').split('(')[0].trim() },
-            ]}
-            sx={{ mb: 1 }}
-          />
-          <Typography variant='caption' color='text.secondary'>
-            {filters.sizeRange[0]}kg - {filters.sizeRange[1]}kg
-          </Typography>
-        </Box>
+        <ThemeProvider theme={ltrTheme}>
+          <Box sx={{ direction: 'ltr' }}>
+            <Typography variant='body2' fontWeight={600} sx={{ mb: 1 }}>
+              {t('search.itemSize')} (
+              {t('search.sizeRange', {
+                defaultValue: 'Range',
+              })}
+              )
+            </Typography>
+            <Slider
+              value={filters.sizeRange}
+              onChange={(_, newValue) =>
+                setFilters((prev) => ({
+                  ...prev,
+                  sizeRange: newValue as [number, number],
+                }))
+              }
+              valueLabelDisplay='auto'
+              min={0}
+              max={50}
+              step={1}
+              marks={[
+                { value: 0, label: '0kg' },
+                { value: 10, label: t('search.small').split('(')[0].trim() },
+                { value: 30, label: t('search.medium').split('(')[0].trim() },
+                { value: 50, label: t('search.large').split('(')[0].trim() },
+              ]}
+              sx={{ mb: 1 }}
+            />
+            <Typography variant='caption' color='text.secondary'>
+              {filters.sizeRange[0]}kg - {filters.sizeRange[1]}kg
+            </Typography>
+          </Box>
+        </ThemeProvider>
 
         <Button
           variant='gradient'
@@ -620,7 +734,9 @@ export default function SearchPage() {
                 <Typography variant='body1' color='text.secondary'>
                   {t('search.found', {
                     count:
-                      activeTab === 'trips' ? trips.length : requests.length,
+                      activeTab === 'trips'
+                        ? trips.length
+                        : filteredRequests.length,
                     type:
                       activeTab === 'trips'
                         ? t('myActivity.myTrips').toLowerCase()
@@ -723,7 +839,7 @@ export default function SearchPage() {
                     </Box>
                   </Alert>
                 )}
-                {tripsLoading ? (
+                {displayLoading ? (
                   <Typography>{t('common.loading')}...</Typography>
                 ) : trips.length === 0 ? (
                   <Paper
@@ -755,10 +871,10 @@ export default function SearchPage() {
                       isMatch={index === 0}
                       showSendOffer={hasActiveRequests}
                       showSendOfferHint={!!user && !hasActiveRequests}
+                      showMessageButton={false}
                       onSendOffer={() => handleSendOffer(trip)}
-                      onMessage={() => handleContactTrip(trip.id, trip.userId)}
                       isOwnTrip={trip.userId === user?.id}
-                      contactLoading={contactLoading === trip.id}
+                      contactLoading={false}
                     />
                   ))
                 )}
@@ -775,7 +891,7 @@ export default function SearchPage() {
                   maxWidth: '100%',
                 }}
               >
-                {requestsLoading ? (
+                {displayLoading ? (
                   <Box
                     sx={{
                       display: 'flex',
@@ -789,7 +905,7 @@ export default function SearchPage() {
                       <RequestCardSkeleton key={i} />
                     ))}
                   </Box>
-                ) : requests.length === 0 ? (
+                ) : filteredRequests.length === 0 ? (
                   <Paper
                     elevation={2}
                     sx={{
@@ -841,15 +957,11 @@ export default function SearchPage() {
                     </Button>
                   </Paper>
                 ) : (
-                  requests.map((request) => (
+                  filteredRequests.map((request) => (
                     <RequestCard
                       key={request.id}
                       request={request}
-                      onContact={() =>
-                        handleContactRequest(request.id, request.userId)
-                      }
                       isOwnRequest={request.userId === user?.id}
-                      contactLoading={contactLoading === request.id}
                     />
                   ))
                 )}

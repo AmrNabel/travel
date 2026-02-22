@@ -23,9 +23,13 @@ import { format } from 'date-fns';
 
 interface ChatWindowProps {
   chatId: string;
+  canSend?: boolean;
 }
 
-export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
+export const ChatWindow: React.FC<ChatWindowProps> = ({
+  chatId,
+  canSend = true,
+}) => {
   const [messageText, setMessageText] = useState('');
   const { messages, sendMessage } = useChat(chatId);
   const { user } = useAuth();
@@ -182,6 +186,15 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
           bgcolor: 'background.paper',
         }}
       >
+        {!canSend && (
+          <Typography
+            variant='body2'
+            color='text.secondary'
+            sx={{ mb: 1 }}
+          >
+            {t('chat.startOfferFirst')}
+          </Typography>
+        )}
         <Box display='flex' gap={1} alignItems='center'>
           <TextField
             fullWidth
@@ -189,6 +202,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
             size='small'
+            disabled={!canSend}
             sx={{
               '& .MuiOutlinedInput-root': {
                 fontSize: { xs: '0.875rem', sm: '1rem' },
@@ -200,7 +214,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
           <IconButton
             type='submit'
             color='primary'
-            disabled={!messageText.trim()}
+            disabled={!canSend || !messageText.trim()}
             sx={{
               flexShrink: 0,
               bgcolor: 'primary.main',

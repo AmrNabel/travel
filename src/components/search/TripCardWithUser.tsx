@@ -30,8 +30,9 @@ interface TripCardWithUserProps {
   isMatch: boolean;
   showSendOffer: boolean;
   showSendOfferHint?: boolean;
+  showMessageButton?: boolean;
   onSendOffer: () => void;
-  onMessage: () => void;
+  onMessage?: () => void;
   isOwnTrip: boolean;
   contactLoading: boolean;
 }
@@ -42,6 +43,7 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
   isMatch,
   showSendOffer,
   showSendOfferHint = false,
+  showMessageButton = true,
   onSendOffer,
   onMessage,
   isOwnTrip,
@@ -283,58 +285,60 @@ export const TripCardWithUser: React.FC<TripCardWithUserProps> = ({
                 </Box>
               )}
 
-              {/* Contact Button */}
-              <Button
-                variant='contained'
-                size='small'
-                fullWidth={!isOwnTrip && !showSendOffer}
-                onClick={onMessage}
-                disabled={contactLoading || isOwnTrip}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: { xs: 0.5, sm: 1 },
-                  justifyContent: 'center',
-                  minWidth: { xs: 0, sm: 120 },
-                  width: {
-                    xs: '100%',
-                    sm: isOwnTrip || showSendOffer ? 'auto' : '100%',
-                  },
-                  flex: { xs: '1 1 100%', sm: '0 0 auto' },
-                  px: { xs: 1, sm: 2 },
-                  whiteSpace: { xs: 'nowrap', sm: 'normal' },
-                  overflow: 'hidden',
-                }}
-              >
-                {contactLoading ? (
-                  <CircularProgress size={16} color='inherit' />
-                ) : (
-                  <ChatIcon fontSize='small' sx={{ flexShrink: 0 }} />
-                )}
-                <Box
-                  component='span'
+              {/* Contact Button - only when showMessageButton is true (e.g. hidden on search page) */}
+              {showMessageButton && (
+                <Button
+                  variant='contained'
+                  size='small'
+                  fullWidth={!isOwnTrip && !showSendOffer}
+                  onClick={onMessage ?? (() => {})}
+                  disabled={contactLoading || isOwnTrip}
                   sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: { xs: 0.5, sm: 1 },
+                    justifyContent: 'center',
+                    minWidth: { xs: 0, sm: 120 },
+                    width: {
+                      xs: '100%',
+                      sm: isOwnTrip || showSendOffer ? 'auto' : '100%',
+                    },
+                    flex: { xs: '1 1 100%', sm: '0 0 auto' },
+                    px: { xs: 1, sm: 2 },
+                    whiteSpace: { xs: 'nowrap', sm: 'normal' },
                     overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                    display: { xs: 'none', sm: 'inline' },
                   }}
                 >
-                  {contactLoading
-                    ? t('chat.connecting')
-                    : isOwnTrip
-                      ? t('card.yourTrip')
-                      : t('card.message')}
-                </Box>
-                <Box
-                  component='span'
-                  sx={{
-                    display: { xs: 'inline', sm: 'none' },
-                  }}
-                >
-                  {contactLoading ? '' : t('card.message')}
-                </Box>
-              </Button>
+                  {contactLoading ? (
+                    <CircularProgress size={16} color='inherit' />
+                  ) : (
+                    <ChatIcon fontSize='small' sx={{ flexShrink: 0 }} />
+                  )}
+                  <Box
+                    component='span'
+                    sx={{
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                      display: { xs: 'none', sm: 'inline' },
+                    }}
+                  >
+                    {contactLoading
+                      ? t('chat.connecting')
+                      : isOwnTrip
+                        ? t('card.yourTrip')
+                        : t('card.message')}
+                  </Box>
+                  <Box
+                    component='span'
+                    sx={{
+                      display: { xs: 'inline', sm: 'none' },
+                    }}
+                  >
+                    {contactLoading ? '' : t('card.message')}
+                  </Box>
+                </Button>
+              )}
             </Box>
           </Box>
         </Box>
