@@ -27,7 +27,11 @@ import { useRouter } from 'next/navigation';
 import NextLink from 'next/link';
 import { useTrips } from '@/hooks/useTrips';
 import { useRequests } from '@/hooks/useRequests';
-import { getCityOptions, filterCityOption, type CityOptionFull } from '@/lib/cities';
+import {
+  getCityOptions,
+  filterCityOption,
+  type CityOptionFull,
+} from '@/lib/cities';
 import { useOffers } from '@/hooks/useOffers';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNotification } from '@/contexts/NotificationContext';
@@ -152,7 +156,7 @@ export default function SearchPage() {
   // LTR theme for the size slider so it always renders 0→50 left-to-right in RTL (Arabic)
   const ltrTheme = useMemo(
     () => createTheme({ ...theme, direction: 'ltr' }),
-    [theme]
+    [theme],
   );
 
   const { user } = useAuth();
@@ -801,6 +805,10 @@ export default function SearchPage() {
                       width: '100%',
                       maxWidth: '100%',
                       overflowX: 'hidden',
+                      '& .MuiAlert-action': {
+                        marginLeft: language === 'ar-EG' ? '0' : 'auto',
+                        marginRight: language === 'ar-EG' ? 'auto' : '0',
+                      },
                     }}
                     action={
                       <Button
