@@ -123,13 +123,65 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const signIn = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    const credential = await signInWithEmailAndPassword(auth, email, password);
+
+    try {
+      const idToken = await credential.user.getIdToken();
+
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idToken }),
+      });
+
+      if (!response.ok) {
+        console.error(
+          'Failed to create session cookie:',
+          await response.text(),
+        );
+        throw new Error('Unable to establish a secure session.');
+      }
+    } catch (error) {
+      console.error(
+        'Error synchronizing session cookie after sign-in:',
+        error,
+      );
+      throw error;
+    }
   };
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
     const firebaseUser = result.user;
+
+    try {
+      const idToken = await firebaseUser.getIdToken();
+
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idToken }),
+      });
+
+      if (!response.ok) {
+        console.error(
+          'Failed to create session cookie (Google):',
+          await response.text(),
+        );
+        throw new Error('Unable to establish a secure session.');
+      }
+    } catch (error) {
+      console.error(
+        'Error synchronizing session cookie after Google sign-in:',
+        error,
+      );
+      throw error;
+    }
 
     // Check if user document already exists
     const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
@@ -181,9 +233,41 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       createdAt: new Date(),
       updatedAt: new Date(),
     });
+
+    try {
+      const idToken = await firebaseUser.getIdToken();
+
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idToken }),
+      });
+
+      if (!response.ok) {
+        console.error(
+          'Failed to create session cookie (anonymous):',
+          await response.text(),
+        );
+        throw new Error('Unable to establish a secure session.');
+      }
+    } catch (error) {
+      console.error(
+        'Error synchronizing session cookie after anonymous sign-in:',
+        error,
+      );
+      throw error;
+    }
   };
 
   const signOut = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (error) {
+      console.error('Error clearing session cookie on logout:', error);
+    }
+
     await firebaseSignOut(auth);
   };
 

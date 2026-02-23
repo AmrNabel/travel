@@ -6,9 +6,15 @@ import { SiteFooter } from '@/components/common/SiteFooter';
 
 interface AppShellProps {
   children: React.ReactNode;
+  initialUser?: {
+    id: string;
+    name: string;
+    email: string | null;
+    photoURL?: string | null;
+  } | null;
 }
 
-export const AppShell = ({ children }: AppShellProps) => {
+export const AppShell = ({ children, initialUser }: AppShellProps) => {
   return (
     <Box
       sx={{
@@ -21,7 +27,7 @@ export const AppShell = ({ children }: AppShellProps) => {
         maxWidth: '100vw',
       }}
     >
-      <NavBar />
+      <NavBar initialUser={initialUser ?? null} />
       <Box
         component='main'
         sx={{

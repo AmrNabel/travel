@@ -39,8 +39,19 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { NotificationBell } from '@/components/notifications/NotificationBell';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-export const NavBar = () => {
-  const { user, signOut } = useAuth();
+type InitialUser = {
+  id: string;
+  name: string;
+  email: string | null;
+  photoURL?: string | null;
+};
+
+interface NavBarProps {
+  initialUser?: InitialUser | null;
+}
+
+export const NavBar = ({ initialUser = null }: NavBarProps) => {
+  const { user, loading, signOut } = useAuth();
   const { t } = useLanguage();
   const router = useRouter();
   const theme = useTheme();
@@ -50,6 +61,8 @@ export const NavBar = () => {
   const [userMenuAnchor, setUserMenuAnchor] = useState<null | HTMLElement>(
     null,
   );
+
+  const effectiveUser = loading ? (user ?? initialUser) : (user ?? null);
 
   const handleSignOut = async () => {
     try {
@@ -69,7 +82,7 @@ export const NavBar = () => {
     setUserMenuAnchor(null);
   };
 
-  if (!user) {
+  if (!effectiveUser) {
     // Not authenticated navbar
     return (
       <AppBar position='sticky' elevation={0}>
@@ -286,7 +299,7 @@ export const NavBar = () => {
                   fontSize: '1rem',
                 }}
               >
-                {user.name.charAt(0).toUpperCase()}
+                {effectiveUser.name.charAt(0).toUpperCase()}
               </Avatar>
             </IconButton>
             <Menu
@@ -303,15 +316,15 @@ export const NavBar = () => {
                 sx={{ px: 2, py: 1.5, borderBottom: 1, borderColor: 'divider' }}
               >
                 <Typography variant='subtitle2' fontWeight={600}>
-                  {user.name}
+                  {effectiveUser.name}
                 </Typography>
                 <Typography variant='caption' color='text.secondary'>
-                  {user.email}
+                  {effectiveUser.email}
                 </Typography>
               </Box>
               <MenuItem
                 component={Link}
-                href={`/profile/${user.id}`}
+                href={`/profile/${effectiveUser.id}`}
                 onClick={handleUserMenuClose}
                 sx={{ py: 1.5, gap: 2 }}
               >
@@ -352,14 +365,14 @@ export const NavBar = () => {
                   fontSize: '1.25rem',
                 }}
               >
-                {user.name.charAt(0).toUpperCase()}
+                {effectiveUser.name.charAt(0).toUpperCase()}
               </Avatar>
               <Box>
                 <Typography variant='subtitle1' fontWeight={600}>
-                  {user.name}
+                  {effectiveUser.name}
                 </Typography>
                 <Typography variant='caption' color='text.secondary'>
-                  {user.email}
+                  {effectiveUser.email}
                 </Typography>
               </Box>
             </Box>
@@ -435,7 +448,7 @@ export const NavBar = () => {
             <ListItem disablePadding>
               <ListItemButton
                 component={Link}
-                href={`/profile/${user.id}`}
+                href={`/profile/${effectiveUser.id}`}
                 sx={{ gap: 2 }}
               >
                 <ListItemIcon sx={{ minWidth: 'auto' }}>

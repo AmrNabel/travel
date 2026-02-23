@@ -80,7 +80,11 @@ function ProfileContent({ userId }: { userId: string }) {
   }, [userId]);
 
   const handleContact = async () => {
-    if (!currentUser) return;
+    if (!currentUser) {
+      showNotification(t('auth.signInToContinue'), 'info');
+      router.push('/login');
+      return;
+    }
 
     try {
       setContactLoading(true);
@@ -104,7 +108,7 @@ function ProfileContent({ userId }: { userId: string }) {
           rating: stats.rating.toFixed(1),
           count: stats.totalRatings,
         }),
-        'success'
+        'success',
       );
       // Reload the profile to show updated stats
       const user = await getDocument<User>('users', userId);
